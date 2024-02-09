@@ -4,6 +4,9 @@ import { Provider } from 'react-redux';
 import { HashRouter, Route, Routes } from 'react-router-dom';
 
 import { store } from '@redux/configure-store';
+
+import 'antd/dist/antd.css';
+
 import { MainPage } from './pages';
 
 import 'normalize.css';
