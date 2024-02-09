@@ -1,0 +1,35 @@
+.wrapper {
+    padding-top: 50px;
+    :global {
+        .ant-menu-item {
+            margin-top: 18px;
+        }
+        .ant-menu-item:first-child {
+            margin-top: 0;
+        }
+        .ant-menu-item:hover,
+        .ant-menu-item-active {
+            color: #597ef7;
+        }
+    }
+
+    @media screen and (max-width: 480px) {
+        padding-top: 16px;
+        :global {
+            .ant-menu-item {
+                margin-top: 10px;
+                padding-right: 8px;
+            }
+        }
+    }
+}
+
+.link {
+    color: #262626;
+    line-height: 130%;
+    [data-icon='calendar'] {
+        path:first-child {
+            fill: #061178;
+        }
+    }
+}
