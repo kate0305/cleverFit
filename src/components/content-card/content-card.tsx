@@ -4,7 +4,7 @@ import { Card } from 'antd';
 import styles from './content-card.module.scss';
 
 type ContentCardProps = {
-    title?: string;
+    title?: ReactNode;
     content: JSX.Element;
     className: string;
     bordered: boolean;
