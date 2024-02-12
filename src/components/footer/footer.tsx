@@ -20,7 +20,13 @@ export const AppFooter: React.FC = () => {
             <Row justify='space-between' align='bottom'>
                 <Col md={{ order: 2 }} sm={{ span: 24 }} className={styles.item}>
                     <ContentCard
-                        title='Скачать на телефон'
+                        title={
+                            <LinkButton
+                                to='/'
+                                text='Скачать на телефон'
+                                className={styles.apps_title}
+                            />
+                        }
                         extra='Доступно в PRO-тарифе'
                         bordered={false}
                         className='card_apps'
