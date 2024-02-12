@@ -10,7 +10,7 @@ export const ActionsList = () => {
         <Row
             gutter={[
                 { xs: 0, sm: 16 },
-                { xs: 6, sm: 16 },
+                { xs: 8, sm: 16 },
             ]}
             style={{ maxWidth: '768px', marginTop: '16px' }}
         >
