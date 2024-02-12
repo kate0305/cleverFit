@@ -1,0 +1,14 @@
+.ant-card > * {
+    color: inherit;
+    line-height: inherit;
+}
+
+.ant-card-head {
+    min-height: auto;
+}
+
+.ant-card-head-title,
+.ant-card-extra {
+    padding: 0;
+}
+
