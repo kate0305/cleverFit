@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
 
+import styles from './link-btn.module.scss';
+
 type LinkButtonProps = {
     to: string;
     icon?: JSX.Element;
@@ -8,7 +10,7 @@ type LinkButtonProps = {
 };
 
 export const LinkButton = ({ to, icon, text, className }: LinkButtonProps) => (
-    <Link to={to} className={className}>
+    <Link to={to} className={`${styles.link_btn} ${className}`}>
         {icon}
         {text}
     </Link>
