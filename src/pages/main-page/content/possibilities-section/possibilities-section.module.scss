@@ -1,0 +1,15 @@
+.text {
+    margin-bottom: 0;
+    font-size: 16px;
+    line-height: 130%;
+    color: #061178;
+}
+
+:global {
+    div .ant-typography {
+        margin-bottom: 0;
+    }
+    .ant-card-body {
+        padding: 0;
+    }
+}

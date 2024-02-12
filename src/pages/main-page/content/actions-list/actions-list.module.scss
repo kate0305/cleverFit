@@ -1,0 +1,12 @@
+.card_body {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    padding: 18px 0;
+    line-height: 130%;
+    color: #2f54eb;
+    @media screen and (max-width: 970px) {
+        padding: 19px 0;
+    }
+}
+
