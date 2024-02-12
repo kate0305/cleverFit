@@ -1,0 +1,35 @@
+.button {
+    position: absolute;
+    top: 50%;
+    right: -20px;
+    width: 20px;
+    height: 66px;
+    border: none;
+    border-radius: 0;
+    clip-path: polygon(0 0, 100% 10%, 100% 90%, 0% 100%);
+    transform: translateY(-50%);
+
+    @media screen and (max-width: 480px) {
+        top: 24px;
+        right: -31px;
+        width: 32px;
+        height: 48px;
+        clip-path: polygon(0 0, 100% 10%, 100% 90%, 0% 100%);
+        transform: translateY(0);
+    }
+}
+
+:global {
+    .ant-btn-icon-only {
+        * {
+            font-size: 14px;
+        }
+    }
+    @media screen and (max-width: 480px) {
+        .ant-btn-icon-only {
+            * {
+                font-size: 16px;
+            }
+        }
+    }
+}

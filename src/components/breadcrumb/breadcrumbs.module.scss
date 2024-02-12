@@ -1,0 +1,9 @@
+.breadcrumbs {
+    li:last-child {
+        color: #262626;
+        line-height: 130%;
+    }
+
+    @media screen and (max-width: 480px) {
+    }
+}

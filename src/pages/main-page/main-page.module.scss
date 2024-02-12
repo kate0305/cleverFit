@@ -1,0 +1,9 @@
+.wrapper {
+    margin: 0 auto;
+    max-width: 1440px;
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(270deg, rgba(255, 255, 255, 0) 0%, rgba(255, 253, 253, 0.8) 100%),
+        url('/images/main-page-bg_light.jpg') center / cover, lightgray 50% / cover;
+    background-repeat: no-repeat;
+}
