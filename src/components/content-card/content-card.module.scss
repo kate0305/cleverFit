@@ -3,11 +3,6 @@
     border-radius: 2px;
 }
 
-%card-withbase {
-    background: #fff;
-    border-radius: 2px;
-}
-
 .main_card {
     @extend %card-base;
     padding: 24px;

@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { Layout } from 'antd';
 import { Logo } from '@components/logo';
-import styles from './sidebar.module.scss';
 import { Navbar } from '@components/navbar';
 import { SideToggleBtn } from '@components/buttons/toggle-side-menu-button';
 import { ExitBtn } from '@components/buttons/exit-button';
+
+import styles from './sidebar.module.scss';
 
 const { Sider } = Layout;
 

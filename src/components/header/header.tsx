@@ -1,7 +1,6 @@
 import React from 'react';
-import { Layout } from 'antd';
-import { Breadcrumbs } from '@components/breadcrumb/breadcrumbs';
-import { Typography } from 'antd';
+import { Layout, Typography } from 'antd';
+import { Breadcrumbs } from '@components/breadcrumbs';
 import { SettingsBtn } from '@components/buttons/settings-button';
 
 import styles from './header.module.scss';

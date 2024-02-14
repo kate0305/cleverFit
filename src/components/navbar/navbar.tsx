@@ -1,5 +1,4 @@
 import { Menu } from 'antd';
-
 import { createMenuItemsArr } from './data';
 
 import styles from './navbar.module.scss';

@@ -1,7 +1,7 @@
 import { Col, Row } from 'antd';
-import { actions } from '../data';
 import { ContentCard } from '@components/content-card';
 import { LinkButton } from '@components/buttons/link-button';
+import { actions } from '../data';
 
 import styles from './actions-list.module.scss';
 

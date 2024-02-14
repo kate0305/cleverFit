@@ -1,5 +1,6 @@
-import styles from './logo.module.scss';
 import { Link } from 'react-router-dom';
+
+import styles from './logo.module.scss';
 
 type LogoProps = {
     isClosedSidebar: boolean;
