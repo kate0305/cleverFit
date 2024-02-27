@@ -1,7 +1,7 @@
 import React, { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
+import { selectIsLoading } from '@redux/redusers/app-slice';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
-import { selectIsLoading } from '@redux/redusers/sign-up-slice';
 import { Loader } from '@components/loader';
 import classnames from 'classnames/bind';
 import styles from './auth-layout.module.scss';
