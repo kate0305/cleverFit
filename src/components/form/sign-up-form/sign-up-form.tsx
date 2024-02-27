@@ -11,8 +11,8 @@ import { StatusCode } from '@type/status-code';
 import { REGISTRATION_ERR, REGISTRATION_ERR_409, REGISTRATION_SUCCESS } from '@constants/index';
 import { PrimaryBtn } from '@components/buttons/primary-button';
 import { signUpFormFildsData } from './data';
-import { FormItem } from '../form-item/form-item';
 import { SubmitButton } from './submit-button';
+import { FormItem } from '../form-item';
 import styles from './sign-up-form.module.scss';
 
 export const SignUpForm: React.FC = () => {
