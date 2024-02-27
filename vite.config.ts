@@ -17,8 +17,17 @@ export default defineConfig({
             '@hooks': path.resolve(__dirname, 'src/hooks'),
             '@pages': path.resolve(__dirname, 'src/pages'),
             '@redux': path.resolve(__dirname, 'src/redux'),
-            '@types': path.resolve(__dirname, 'src/types'),
+            '@sass': path.resolve(__dirname, 'src/sass'),
+            '@services': path.resolve(__dirname, 'src/services'),
+            '@type': path.resolve(__dirname, 'src/types'),
             '@utils': path.resolve(__dirname, 'src/utils'),
         },
     },
+    // css: {
+    //     preprocessorOptions: {
+    //         scss: {
+    //             additionalData: `@import './src/sass/abstracts.scss';`,
+    //         },
+    //     },
+    // },
 });
