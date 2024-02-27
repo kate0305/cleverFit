@@ -1,0 +1,36 @@
+@mixin screen-middle {
+    @media screen and (max-width: 834px) {
+        @content;
+    }
+}
+
+@mixin phone {
+    @media screen and (max-width: 480px) {
+        @content;
+    }
+}
+
+@mixin logo-base {
+    display: block;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: width 0.3s cubic-bezier(0.2, 0, 0, 1) 0s;
+}
+
+@mixin form-wrapper {
+    width: 100%;
+    margin: 0 16px;
+    padding: 64px 32px;
+    background-color: var(--base-light);
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.15);
+    border-radius: 2px;
+}
+
+@mixin form-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
