@@ -1,15 +1,5 @@
-@import './components/content-card/content-card.css';
-:root {
-    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-    font-weight: 400;
-
-    background-color: #fff;
-
-    font-synthesis: none;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
+@import '@components/content-card/content-card.css';
+@import '@constants/variables';
 
 body {
     margin: 0;
@@ -18,9 +8,49 @@ body {
     line-height: 100%;
 }
 
+:root {
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    font-weight: 400;
+
+    background-color: var(--base-light);
+
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h1 {
+    margin: 0;
+}
+
 ol,
 ul {
     margin: 0;
     padding: 0;
     list-style: none;
 }
+
+a {
+    color: inherit;
+}
+
+/* reset styles ant design */
+.ant-tabs,
+.ant-form {
+    line-height: 130%;
+    color: #262626;
+}
+
+.ant-tabs {
+    font-size: 16px;
+
+}
+.ant-tabs > *,
+.ant-form > * {
+    line-height: inherit;
+}
+.ant-btn {
+    height: auto;
+    line-height: 130%;
+ }

@@ -1,24 +1,39 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useAppDispatch } from '@hooks/typed-react-redux-hooks';
+import { reset } from '@redux/redusers/user-data-slice';
+import { useLocalStorage } from '@utils/use-local-storage';
+import { Paths } from '@type/paths';
 import { Layout } from 'antd';
 import { Logo } from '@components/logo';
-import styles from './sidebar.module.scss';
 import { Navbar } from '@components/navbar';
 import { SideToggleBtn } from '@components/buttons/toggle-side-menu-button';
 import { ExitBtn } from '@components/buttons/exit-button';
+import styles from './sidebar.module.scss';
 
 const { Sider } = Layout;
 
 export const Sidebar: React.FC = () => {
-    const defaultCollapsedWidth = 64;
+    const dispatch = useAppDispatch();
+    const navigate = useNavigate();
+    const [, , removeLocalStorageItem] = useLocalStorage('token', null);
     const [collapsed, setCollapsed] = useState(false);
+    const defaultCollapsedWidth = 64;
     const [collapsedWidth, setCollapsedWidth] = useState(defaultCollapsedWidth);
     const isWidthChanged = collapsedWidth !== defaultCollapsedWidth;
+
     const handleBreakpoint = (broken: boolean) => {
         if (broken) {
             setCollapsedWidth(1);
         } else {
             setCollapsedWidth(defaultCollapsedWidth);
         }
+    };
+
+    const logOut = () => {
+        removeLocalStorageItem();
+        dispatch(reset());
+        navigate(Paths.AUTH, { replace: true });
     };
 
     return (
@@ -39,7 +54,7 @@ export const Sidebar: React.FC = () => {
                 isClosedSidebar={collapsed}
                 isWidthChanged={isWidthChanged}
             />
-            <ExitBtn isClosedSidebar={collapsed} isWidthChanged={isWidthChanged} />
+            <ExitBtn isClosedSidebar={collapsed} isWidthChanged={isWidthChanged} onClick={logOut} />
         </Sider>
     );
 };

@@ -1,9 +1,9 @@
 import React from 'react';
-import { Col, Layout, Row } from 'antd';
 import { Link } from 'react-router-dom';
+import { Col, Layout, Row } from 'antd';
 import { ContentCard } from '@components/content-card';
-import { appsList } from './data';
 import { LinkButton } from '@components/buttons/link-button';
+import { appsList } from './data';
 
 import styles from './/footer.module.scss';
 

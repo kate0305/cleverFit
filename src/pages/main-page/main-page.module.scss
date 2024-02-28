@@ -1,9 +1,16 @@
-.wrapper {
-    margin: 0 auto;
-    max-width: 1440px;
-    width: 100%;
-    min-height: 100vh;
-    background: linear-gradient(270deg, rgba(255, 255, 255, 0) 0%, rgba(255, 253, 253, 0.8) 100%),
-        url('/images/main-page-bg_light.jpg') center / cover, lightgray 50% / cover;
-    background-repeat: no-repeat;
+.content {
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    @media screen and (max-width: 768px) {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+}
+
+.text {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 130%;
+    color: #262626;
 }

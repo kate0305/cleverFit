@@ -1,0 +1,30 @@
+@use '../../sass/mixins.scss' as m;
+
+.wrapper {
+    @include m.form-wrapper;
+    max-width: 539px;
+    @include m.phone {
+        padding: 32px 16px;
+    }
+}
+
+.container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    @include m.logo-base;
+    width: 309px;
+    height: 76px;
+    margin-bottom: 48px;
+    background-image: url('https://raw.githubusercontent.com/kate0305/library-image-data/eed471fd5ae30291edc132acf604b83db84e554f/images/svg/logo_long.svg');
+    @include m.phone {
+        width: 203px;
+        height: 50px;
+        margin-bottom: 32px;
+    }
+}

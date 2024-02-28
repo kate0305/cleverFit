@@ -1,23 +1,20 @@
 import { Button } from 'antd';
-
-import styles from './exit-btn.module.scss';
 import { ExitIcon } from '@components/icons/exit-icon';
+import styles from './exit-btn.module.scss';
 
 type ExitBtnProps = {
     isClosedSidebar: boolean;
     isWidthChanged: boolean;
+    onClick: () => void;
 };
 
-export const ExitBtn = ({ isClosedSidebar, isWidthChanged }: ExitBtnProps) => {
-    const handleClick = () => console.log('click');
-    return (
-        <Button
-            block
-            icon={!isWidthChanged && <ExitIcon />}
-            onClick={handleClick}
-            className={styles.button}
-        >
-            {!isClosedSidebar && 'Выход'}
-        </Button>
-    );
-};
+export const ExitBtn = ({ isClosedSidebar, isWidthChanged, onClick }: ExitBtnProps) => (
+    <Button
+        block
+        icon={!isWidthChanged && <ExitIcon />}
+        onClick={onClick}
+        className={styles.button}
+    >
+        {!isClosedSidebar && 'Выход'}
+    </Button>
+);
