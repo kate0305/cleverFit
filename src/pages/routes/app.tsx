@@ -1,5 +1,5 @@
 import { lazy } from 'react';
-import { Navigate,Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import { HistoryRouter } from 'redux-first-history/rr6';
 
 import { history } from '@redux/configure-store';
@@ -27,16 +27,16 @@ export const App = () => {
         <>
             <HistoryRouter history={history}>
                 <Routes>
-                    <Route path={Paths.HOME} element={<Navigate to={Paths.MAIN} replace />}></Route>
                     <Route
-                        path={Paths.MAIN}
+                        path={Paths.HOME}
                         element={
                             <PrivateRoute>
                                 <MainLayout />
                             </PrivateRoute>
                         }
                     >
-                        <Route index element={<MainPage />} />
+                        <Route index element={<Navigate to={Paths.MAIN} replace />} />
+                        <Route path={Paths.MAIN} element={<MainPage />} />
                     </Route>
                     <Route
                         path={Paths.AUTH}

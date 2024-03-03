@@ -13,7 +13,14 @@ import { useLocalStorage } from '@utils/use-local-storage';
 import { SingInFormData } from '@type/auth';
 import { Paths } from '@type/paths';
 import { StatusCode } from '@type/status-code';
-import { CHECK_EMAIL_ERR, CHECK_EMAIL_ERR_404, CONFIRM_EMAIL, LOGIN_ERR } from '@constants/index';
+import {
+    BASE_URL,
+    CHECK_EMAIL_ERR,
+    CHECK_EMAIL_ERR_404,
+    CONFIRM_EMAIL,
+    GOOGLE_AUTH,
+    LOGIN_ERR,
+} from '@constants/index';
 
 import { PrimaryBtn } from '@components/buttons/primary-button';
 
@@ -87,6 +94,8 @@ export const SignInForm: React.FC = () => {
             setIsForgotDisabled(false);
         }
     };
+
+    const goToGoogleAuth = () => (window.location.href = `${BASE_URL}${GOOGLE_AUTH}`);
 
     useEffect(() => {
         if (fromError && userEmail) {
@@ -174,6 +183,7 @@ export const SignInForm: React.FC = () => {
                 htmlType='button'
                 btnText='Войти через Google'
                 className='google'
+                onClick={goToGoogleAuth}
             />
         </>
     );

@@ -11,6 +11,7 @@ export const LG_WIDTH = '992px';
 export const BASE_URL = 'https://marathon-api.clevertec.ru';
 export const SIGN_UP = '/auth/registration';
 export const SIGN_IN = '/auth/login';
+export const GOOGLE_AUTH = '/auth/google';
 export const CHECK_EMAIL = '/auth/check-email';
 export const CONFIRM_EMAIL_URL = '/auth/confirm-email';
 export const CHANGE_PASSWORD_URL = '/auth/change-password';
