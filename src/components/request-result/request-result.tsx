@@ -1,9 +1,13 @@
 import { Navigate, useLocation } from 'react-router-dom';
+import { Result } from 'antd';
+
 import { Paths } from '@type/paths';
 import { ResultRequestKeys } from '@type/result-request-keys';
-import { Result } from 'antd';
+
 import { LinkButton } from '@components/buttons/link-button';
+
 import { RequestResultData, RequestResultKeys } from './data';
+
 import styles from './request-result.module.scss';
 
 export type RequestResultProps = {

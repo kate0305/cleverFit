@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import VerificationInput from 'react-verification-input';
 import classnames from 'classnames/bind';
+
 import styles from './verification-code-input.module.scss';
 
 const cx = classnames.bind(styles);

@@ -1,7 +1,8 @@
-import { ResultStatusType } from 'antd/lib/result';
-import { AuthPaths, Paths } from '@type/paths';
-import { LinkProps } from 'react-router-dom';
 import { ReactNode } from 'react';
+import { LinkProps } from 'react-router-dom';
+import { ResultStatusType } from 'antd/lib/result';
+
+import { AuthPaths, Paths } from '@type/paths';
 import { CHANGE_PASSWORD } from '@constants/index';
 
 export type ResultProps = {

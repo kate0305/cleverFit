@@ -1,12 +1,16 @@
 import { useEffect } from 'react';
 import { Navigate, useLocation, useNavigate } from 'react-router-dom';
+import { Result } from 'antd';
+
 import { selectUserEmail } from '@redux/redusers/user-data-slice';
 import { useAppSelector } from '@hooks/index';
 import { useConfirmEmailMutation } from '@services/clever-fit-service';
+
 import { Paths } from '@type/paths';
 import { CHANGE_PASSWORD } from '@constants/index';
-import { Result } from 'antd';
+
 import { VerificationCodeInput } from '@components/inputs/verification-input';
+
 import styles from './confirm-email-form.module.scss';
 
 export const ConfirmEmailForm = () => {

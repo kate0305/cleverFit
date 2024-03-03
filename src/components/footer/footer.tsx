@@ -1,8 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Col, Layout, Row } from 'antd';
-import { ContentCard } from '@components/content-card';
+
 import { LinkButton } from '@components/buttons/link-button';
+import { ContentCard } from '@components/content-card';
+
 import { appsList } from './data';
 
 import styles from './/footer.module.scss';

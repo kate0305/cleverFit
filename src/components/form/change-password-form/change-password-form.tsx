@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { Navigate, useLocation, useNavigate } from 'react-router-dom';
+import { Form, Input, Typography } from 'antd';
+import { Rule } from 'antd/lib/form';
+
 import { selectChangePasswordData, setChangePasswordData } from '@redux/redusers/user-data-slice';
 import { useAppDispatch, useAppSelector } from '@hooks/index';
 import { useChangePasswordMutation } from '@services/clever-fit-service';
-import { ChangePasswordReq } from '@type/service';
+
 import { Paths } from '@type/paths';
+import { ChangePasswordReq } from '@type/service';
 import { CHANGE_PASSWORD_ERR, CHANGE_PASSWORD_SUCCESS } from '@constants/index';
-import { Form, Input, Typography } from 'antd';
-import { Rule } from 'antd/lib/form';
+
 import { PrimaryBtn } from '@components/buttons/primary-button';
+
 import styles from './change-password-form.module.scss';
 
 const { Title } = Typography;

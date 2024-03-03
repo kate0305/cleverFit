@@ -1,4 +1,5 @@
 import { Input } from 'antd';
+
 import { FormItemProps } from '../form-item/form-item';
 
 type signUpFormFild = FormItemProps & {

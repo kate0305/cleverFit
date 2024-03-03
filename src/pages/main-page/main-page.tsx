@@ -1,8 +1,11 @@
 import React from 'react';
 import { Col, Layout, Row, Typography } from 'antd';
+
 import { ContentCard } from '@components/content-card';
-import { PossibilitieSection } from './content/possibilities-section';
+
 import { ActionsList } from './content/actions-list';
+import { PossibilitieSection } from './content/possibilities-section';
+
 import styles from './main-page.module.scss';
 
 const { Content } = Layout;

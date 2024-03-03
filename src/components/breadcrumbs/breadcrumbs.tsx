@@ -1,7 +1,7 @@
 import React from 'react';
+import { Breadcrumb } from 'antd';
 
 import styles from './breadcrumbs.module.scss';
-import { Breadcrumb } from 'antd';
 
 export const Breadcrumbs: React.FC = () => {
     return (

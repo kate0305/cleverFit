@@ -1,5 +1,7 @@
 import { Button } from 'antd';
+
 import { ExitIcon } from '@components/icons/exit-icon';
+
 import styles from './exit-btn.module.scss';
 
 type ExitBtnProps = {

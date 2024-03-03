@@ -1,7 +1,9 @@
 import { Button } from 'antd';
 import { SettingOutlined } from '@ant-design/icons';
-import { LG_WIDTH, SM_WIDTH } from '@constants/index';
+
 import { useMediaQuery } from '@utils/use-media-query';
+
+import { LG_WIDTH, SM_WIDTH } from '@constants/index';
 
 import styles from './settings-btn.module.scss';
 

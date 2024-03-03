@@ -1,8 +1,8 @@
+import { ReactNode } from 'react';
 import { Button } from 'antd';
 import { ButtonType } from 'antd/lib/button';
 
 import styles from './primary-btn.module.scss';
-import { ReactNode } from 'react';
 
 export type PrimaryBtnProps = {
     type?: ButtonType;

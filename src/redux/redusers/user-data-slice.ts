@@ -1,7 +1,10 @@
 import { RootState } from '@redux/configure-store';
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { ChangePasswordReq, UserReq } from '@type/service';
+
 import { getLocalStorageValue } from '@utils/use-local-storage';
+
+import { ChangePasswordReq, UserReq } from '@type/service';
+
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 type UserDataReducerState = {
     userData: UserReq | null;

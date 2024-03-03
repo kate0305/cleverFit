@@ -1,10 +1,13 @@
-import { configureStore } from '@reduxjs/toolkit';
-import { listenerMiddleware } from './listener-middleware';
-import { createReduxHistoryContext } from 'redux-first-history';
 import { createBrowserHistory } from 'history';
+import { createReduxHistoryContext } from 'redux-first-history';
+
 import { cleverFitApi } from '@services/clever-fit-service';
-import { userDataReduser } from './redusers/user-data-slice';
+
 import { appReduser } from './redusers/app-slice';
+import { userDataReduser } from './redusers/user-data-slice';
+import { listenerMiddleware } from './listener-middleware';
+
+import { configureStore } from '@reduxjs/toolkit';
 
 const { createReduxHistory, routerMiddleware, routerReducer } = createReduxHistoryContext({
     history: createBrowserHistory(),

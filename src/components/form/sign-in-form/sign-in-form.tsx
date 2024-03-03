@@ -1,17 +1,22 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
-import { selectUserEmail, setEmail, setToken } from '@redux/redusers/user-data-slice';
-import { useCheckEmailMutation, useSignInUserMutation } from '@services/clever-fit-service';
 import { Checkbox, Form, Input } from 'antd';
 import { GooglePlusOutlined } from '@ant-design/icons';
+
+import { selectUserEmail, setEmail, setToken } from '@redux/redusers/user-data-slice';
+import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
+import { useCheckEmailMutation, useSignInUserMutation } from '@services/clever-fit-service';
+
 import { errorHandler } from '@utils/error-handler';
 import { useLocalStorage } from '@utils/use-local-storage';
+
 import { SingInFormData } from '@type/auth';
 import { Paths } from '@type/paths';
 import { StatusCode } from '@type/status-code';
 import { CHECK_EMAIL_ERR, CHECK_EMAIL_ERR_404, CONFIRM_EMAIL, LOGIN_ERR } from '@constants/index';
+
 import { PrimaryBtn } from '@components/buttons/primary-button';
+
 import styles from './sign-in-form.module.scss';
 
 export const SignInForm: React.FC = () => {

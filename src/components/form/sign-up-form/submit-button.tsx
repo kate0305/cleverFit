@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Form, FormInstance } from 'antd';
+
 import { PrimaryBtn } from '@components/buttons/primary-button';
 
 export const SubmitButton = (prop: { form: FormInstance }) => {
@@ -17,7 +18,7 @@ export const SubmitButton = (prop: { form: FormInstance }) => {
                 isTouched && setIsSubmitDisabled(true);
             });
     }, [prop.form, values]);
-    
+
     return (
         <PrimaryBtn
             type='primary'
