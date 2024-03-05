@@ -1,8 +1,6 @@
 import { CSSProperties, ReactNode } from 'react';
 import { Card } from 'antd';
 
-import styles from './content-card.module.scss';
-
 type ContentCardProps = {
     title?: ReactNode;
     content: JSX.Element;
@@ -32,7 +30,7 @@ export const ContentCard = ({
         extra={extra}
         headStyle={headStyle}
         bodyStyle={bodyStyle}
-        className={styles[className]}
+        className={className}
         style={style}
         data-test-id={dataTestId}
     >

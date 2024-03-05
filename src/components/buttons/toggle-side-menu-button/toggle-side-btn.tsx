@@ -1,6 +1,9 @@
 import { Button } from 'antd';
 import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
 
+import { toggleSidebar } from '@redux/redusers/app-slice';
+import { useAppDispatch } from '@hooks/typed-react-redux-hooks';
+
 import styles from './toggle-side-btn.module.scss';
 
 type SideToggleBtnProps = {
@@ -10,7 +13,12 @@ type SideToggleBtnProps = {
 };
 
 export const SideToggleBtn = ({ isClosedSidebar, toggleSideBar, isWidthChanged }: SideToggleBtnProps) => {
-    const handleClick = () => toggleSideBar(!isClosedSidebar);
+    const dispatch = useAppDispatch();
+    const handleClick = () => {
+        toggleSideBar(!isClosedSidebar);
+        dispatch(toggleSidebar());
+    };
+
     return (
         <Button
             icon={isClosedSidebar ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
