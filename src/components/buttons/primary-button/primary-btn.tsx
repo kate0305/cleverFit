@@ -2,16 +2,14 @@ import { ReactNode } from 'react';
 import { Button } from 'antd';
 import { ButtonType } from 'antd/lib/button';
 
-import styles from './primary-btn.module.scss';
-
 export type PrimaryBtnProps = {
+    className: string;
     type?: ButtonType;
     icon?: ReactNode;
     htmlType?: React.ButtonHTMLAttributes<HTMLButtonElement>['type'];
     btnText?: string;
     onClick?: () => void;
     disabled?: boolean;
-    className: string;
     dataTestId?: string;
 };
 
@@ -31,7 +29,7 @@ export const PrimaryBtn = ({
         htmlType={htmlType}
         onClick={onClick}
         disabled={disabled}
-        className={styles[`${className}`]}
+        className={className}
         data-test-id={dataTestId}
     >
         {btnText}
