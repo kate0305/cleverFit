@@ -1,5 +1,3 @@
-import { RootState } from '@redux/configure-store';
-
 import { commonOnQueryStarted } from '@utils/api-query-started';
 
 import type {
@@ -9,32 +7,23 @@ import type {
     LoginResp,
     UserReq,
 } from '@type/service';
-import { BASE_URL, CHANGE_PASSWORD_URL, CHECK_EMAIL, CONFIRM_EMAIL_URL, SIGN_IN, SIGN_UP } from '@constants/index';
+import {
+    CHANGE_PASSWORD_URL,
+    CHECK_EMAIL,
+    CONFIRM_EMAIL_URL,
+    SIGN_IN,
+    SIGN_UP,
+} from '@constants/index';
 
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { cleverFitApi } from './base-query';
 
-export const cleverFitApi = createApi({
-    reducerPath: 'cleverFitApi',
-    baseQuery: fetchBaseQuery({
-        baseUrl: BASE_URL,
-        credentials: 'include',
-        prepareHeaders: (headers, { getState }) => {
-            const token = (getState() as RootState).userDataReduser.token;
-            if (token) {
-                headers.set('Authorization', `Bearer ${token}`);
-            }
-
-            return headers;
-        },
-    }),
-
+export const authApi = cleverFitApi.injectEndpoints({
     endpoints: (builder) => ({
         signUpUser: builder.mutation<void, UserReq>({
             query: (data) => ({
                 url: SIGN_UP,
                 method: 'POST',
                 body: data,
-                credentials: 'include',
             }),
             async onQueryStarted(_, { dispatch, queryFulfilled }) {
                 await commonOnQueryStarted({ dispatch, queryFulfilled }, true);
@@ -46,7 +35,6 @@ export const cleverFitApi = createApi({
                 url: SIGN_IN,
                 method: 'POST',
                 body: data,
-                credentials: 'include',
             }),
             async onQueryStarted(_, { dispatch, queryFulfilled }) {
                 await commonOnQueryStarted({ dispatch, queryFulfilled }, true);
@@ -58,7 +46,6 @@ export const cleverFitApi = createApi({
                 url: CHECK_EMAIL,
                 method: 'POST',
                 body: data,
-                credentials: 'include',
             }),
             async onQueryStarted(_, { dispatch, queryFulfilled }) {
                 await commonOnQueryStarted({ dispatch, queryFulfilled }, true);
@@ -70,7 +57,6 @@ export const cleverFitApi = createApi({
                 url: CONFIRM_EMAIL_URL,
                 method: 'POST',
                 body: data,
-                credentials: 'include',
             }),
             async onQueryStarted(_, { dispatch, queryFulfilled }) {
                 await commonOnQueryStarted({ dispatch, queryFulfilled }, true);
@@ -82,7 +68,6 @@ export const cleverFitApi = createApi({
                 url: CHANGE_PASSWORD_URL,
                 method: 'POST',
                 body: data,
-                credentials: 'include',
             }),
             async onQueryStarted(_, { dispatch, queryFulfilled }) {
                 await commonOnQueryStarted({ dispatch, queryFulfilled }, true);
@@ -97,4 +82,4 @@ export const {
     useCheckEmailMutation,
     useConfirmEmailMutation,
     useChangePasswordMutation,
-} = cleverFitApi;
+} = authApi;
