@@ -20,7 +20,7 @@ export const ActionsList = () => {
                 <Col md={{ span: 8 }} sm={{ span: 24 }} xs={{ span: 24 }} key={id}>
                     <ContentCard
                         title={title}
-                        className='main_card_mini'
+                        className={styles.main_card_mini}
                         bordered={false}
                         content={
                             <LinkButton

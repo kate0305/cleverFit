@@ -1,4 +1,4 @@
-@use '../../../sass/mixins.scss' as m;
+@use '@sass/mixins.scss' as m;
 
 .form {
     width: 100%;
@@ -74,3 +74,17 @@
     box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.04);
 }
 
+.sign_in_btn {
+    @include m.primary-btn;
+}
+
+.forgot_btn {
+    padding: 0;
+    font-size: 16px;
+    color: var(--primary-light-6);
+    border: none;
+    @include m.phone {
+        font-size: 14px;
+        padding: 0 7px;
+    }
+}

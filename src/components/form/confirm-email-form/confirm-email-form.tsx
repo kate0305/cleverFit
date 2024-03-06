@@ -4,7 +4,7 @@ import { Result } from 'antd';
 
 import { selectUserEmail } from '@redux/redusers/user-data-slice';
 import { useAppSelector } from '@hooks/index';
-import { useConfirmEmailMutation } from '@services/clever-fit-service';
+import { useConfirmEmailMutation } from '@services/auth-service';
 
 import { Paths } from '@type/paths';
 import { CHANGE_PASSWORD } from '@constants/index';

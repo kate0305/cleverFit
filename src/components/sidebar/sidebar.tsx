@@ -36,8 +36,8 @@ export const Sidebar: React.FC = () => {
     };
 
     const logOut = () => {
-        removeLocalStorageItem();
         dispatch(reset());
+        removeLocalStorageItem();
         navigate(Paths.AUTH, { replace: true });
     };
 

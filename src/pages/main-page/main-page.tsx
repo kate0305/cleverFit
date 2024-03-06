@@ -16,7 +16,7 @@ export const MainPage: React.FC = () => (
         <Row gutter={16} style={{ maxWidth: '768px' }}>
             <Col span={24}>
                 <ContentCard
-                    className='main_card'
+                    className={styles.main_card}
                     bordered={false}
                     content={<PossibilitieSection />}
                 />
@@ -31,7 +31,7 @@ export const MainPage: React.FC = () => (
         >
             <Col span={24}>
                 <ContentCard
-                    className='main_card'
+                    className={styles.main_card}
                     bordered={false}
                     content={
                         <Paragraph className={styles.text}>

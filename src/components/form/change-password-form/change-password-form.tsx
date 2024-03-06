@@ -5,7 +5,7 @@ import { Rule } from 'antd/lib/form';
 
 import { selectChangePasswordData, setChangePasswordData } from '@redux/redusers/user-data-slice';
 import { useAppDispatch, useAppSelector } from '@hooks/index';
-import { useChangePasswordMutation } from '@services/clever-fit-service';
+import { useChangePasswordMutation } from '@services/auth-service';
 
 import { Paths } from '@type/paths';
 import { ChangePasswordReq } from '@type/service';
@@ -113,7 +113,7 @@ export const ChangePasswordForm: React.FC = () => {
                                     disabled={isBtnDisable}
                                     htmlType='submit'
                                     btnText='Сохранить'
-                                    className='btn_change_password'
+                                    className={styles.btn_change_password}
                                     dataTestId='change-submit-button'
                                 />
                             </Form.Item>

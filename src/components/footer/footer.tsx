@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Col, Layout, Row } from 'antd';
 
+import { Paths } from '@type/paths';
+
 import { LinkButton } from '@components/buttons/link-button';
 import { ContentCard } from '@components/content-card';
 
@@ -31,12 +33,12 @@ export const AppFooter: React.FC = () => {
                         }
                         extra='Доступно в PRO-тарифе'
                         bordered={false}
-                        className='card_apps'
+                        className={styles.card_apps}
                         content={<ContentCardsBodyList />}
                     />
                 </Col>
                 <Col md={{ order: 1 }} sm={24} className={styles.item}>
-                    <Link to='/' className={styles.link}>
+                    <Link to={Paths.FEEDBACKS} className={styles.link} data-test-id='see-reviews'>
                         Смотреть отзывы
                     </Link>
                 </Col>

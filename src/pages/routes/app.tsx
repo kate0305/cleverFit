@@ -10,6 +10,7 @@ import { AuthPaths, Paths, ResultPaths } from '@type/paths';
 import { ResultRequestKeys } from '@type/result-request-keys';
 
 import { AuthPage } from '@pages/auth-page';
+import { FeedbacksPage } from '@pages/feedbacks-page';
 import { PrivateRoute } from '@pages/routes/private-routes';
 import { PublicRoute } from '@pages/routes/public-routes';
 import { ChangePasswordForm } from '@components/form/change-password-form';
@@ -37,6 +38,7 @@ export const App = () => {
                     >
                         <Route index element={<Navigate to={Paths.MAIN} replace />} />
                         <Route path={Paths.MAIN} element={<MainPage />} />
+                        <Route path={Paths.FEEDBACKS} element={<FeedbacksPage />} />
                     </Route>
                     <Route
                         path={Paths.AUTH}
@@ -54,7 +56,7 @@ export const App = () => {
                     <Route path={Paths.RESULT} element={<AuthLayout />}>
                         <Route
                             path={ResultPaths.REGISTRATION_SUCCESS}
-                            element={<RequestResult keyErr={ResultRequestKeys.SIGN_UP_SUC} />}
+                            element={<RequestResult keyErr={ResultRequestKeys.SIGN_UP_SUCCESS} />}
                         />
                         <Route
                             path={ResultPaths.REGISTRATION_ERR}

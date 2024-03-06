@@ -1,3 +1,5 @@
+@use '@sass/mixins.scss' as m;
+
 .content {
     display: flex;
     flex-direction: column;
@@ -13,4 +15,13 @@
     font-weight: 500;
     line-height: 130%;
     color: #262626;
+}
+
+.main_card {
+    @include m.card-base;
+    padding: 24px;
+    box-shadow: var(--box-shadow-dark);
+    @media screen and (max-width: 576px) {
+        padding: 16px;
+    }
 }

@@ -1,11 +1,10 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Checkbox, Form, Input } from 'antd';
-import { GooglePlusOutlined } from '@ant-design/icons';
 
 import { selectUserEmail, setEmail, setToken } from '@redux/redusers/user-data-slice';
 import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
-import { useCheckEmailMutation, useSignInUserMutation } from '@services/clever-fit-service';
+import { useCheckEmailMutation, useSignInUserMutation } from '@services/auth-service';
 
 import { errorHandler } from '@utils/error-handler';
 import { useLocalStorage } from '@utils/use-local-storage';
@@ -13,15 +12,9 @@ import { useLocalStorage } from '@utils/use-local-storage';
 import { SingInFormData } from '@type/auth';
 import { Paths } from '@type/paths';
 import { StatusCode } from '@type/status-code';
-import {
-    BASE_URL,
-    CHECK_EMAIL_ERR,
-    CHECK_EMAIL_ERR_404,
-    CONFIRM_EMAIL,
-    GOOGLE_AUTH,
-    LOGIN_ERR,
-} from '@constants/index';
+import { CHECK_EMAIL_ERR, CHECK_EMAIL_ERR_404, CONFIRM_EMAIL, LOGIN_ERR } from '@constants/index';
 
+import { GoogleAuthBtn } from '@components/buttons/google-auth-button';
 import { PrimaryBtn } from '@components/buttons/primary-button';
 
 import styles from './sign-in-form.module.scss';
@@ -95,8 +88,6 @@ export const SignInForm: React.FC = () => {
         }
     };
 
-    const goToGoogleAuth = () => (window.location.href = `${BASE_URL}${GOOGLE_AUTH}`);
-
     useEffect(() => {
         if (fromError && userEmail) {
             handleCheckEmail(userEmail);
@@ -160,7 +151,7 @@ export const SignInForm: React.FC = () => {
                         type='link'
                         htmlType='button'
                         btnText='Забыли пароль?'
-                        className='forgot'
+                        className={styles.forgot_btn}
                         disabled={isForgotDisabled}
                         onClick={handleForgotPassword}
                         dataTestId='login-forgot-button'
@@ -172,19 +163,12 @@ export const SignInForm: React.FC = () => {
                         type='primary'
                         htmlType='submit'
                         btnText='Войти'
-                        className='btn'
+                        className={styles.sign_in_btn}
                         dataTestId='login-submit-button'
                     />
                 </Form.Item>
             </Form>
-            <PrimaryBtn
-                type='default'
-                icon={<GooglePlusOutlined />}
-                htmlType='button'
-                btnText='Войти через Google'
-                className='google'
-                onClick={goToGoogleAuth}
-            />
+            <GoogleAuthBtn />
         </>
     );
 };
