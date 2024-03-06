@@ -1,0 +1,15 @@
+@use '@sass/mixins.scss' as m;
+.rating {
+    line-height: 100%;
+    :global {
+        .ant-rate-star:not(:last-child) {
+            // margin-left: 0;
+            margin-right: 4px;
+            line-height: 100%;
+        }
+    }
+}
+
+.header {
+    @include m.flex;
+}
