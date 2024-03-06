@@ -1,24 +1,26 @@
+@use '@sass/mixins.scss' as m;
+
 .wrapper {
     padding-top: 50px;
     :global {
         .ant-menu-item {
-            margin-top: 18px;
+            margin-top: var(--gap-ll);
         }
         .ant-menu-item:first-child {
             margin-top: 0;
         }
         .ant-menu-item:hover,
         .ant-menu-item-active {
-            color: #597ef7;
+            color: var(--primary-light-5);
         }
     }
 
-    @media screen and (max-width: 480px) {
-        padding-top: 16px;
+    @include m.phone {
+        padding-top: var(--gap-l);
         :global {
             .ant-menu-item {
-                margin-top: 10px;
-                padding-right: 8px;
+                margin-top: var(--gap-m);
+                padding-right: var(--gap-ms);
             }
         }
     }

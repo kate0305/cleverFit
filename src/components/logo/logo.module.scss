@@ -1,22 +1,16 @@
-// %logo-base {
-//     display: block;
-//     background-size: contain;
-//     background-position: center;
-//     background-repeat: no-repeat;
-//     transition: width 0.3s cubic-bezier(0.2, 0, 0, 1) 0s;
-// }
-@use '../../sass/mixins' as m;
+@use '@sass/mixins' as m;
+
 .logo {
     @include m.logo-base;
-    margin-top: 14px;
+    margin-top: var(--gap-mm);
     margin-bottom: 17px;
     margin-left: 29px;
     width: 133px;
     height: 33px;
     background-image: url('https://raw.githubusercontent.com/kate0305/library-image-data/eed471fd5ae30291edc132acf604b83db84e554f/images/svg/logo_long.svg');
-    @media screen and (max-width: 480px) {
-        margin-top: 16px;
-        margin-bottom: 16px;
+    @include m.phone {
+        margin-top: var(--gap-l);
+        margin-bottom: var(--gap-l);
         margin-left: 17px;
         width: 72px;
         height: 18px;
@@ -26,12 +20,12 @@
 .logo_short {
     @include m.logo-base;
     margin-top: 19px;
-    margin-bottom: 18px;
+    margin-bottom: var(--gap-ll);
     margin-left: 18px;
     width: 29px;
     height: 27px;
     background-image: url('https://raw.githubusercontent.com/kate0305/library-image-data/eed471fd5ae30291edc132acf604b83db84e554f/images/svg/logo_short.svg');
-    @media screen and (max-width: 480px) {
+    @include m.phone {
         display: none;
     }
 }

@@ -34,12 +34,12 @@
         }
         .ant-result-title {
             font-weight: 500;
-            line-height: 130%;
+            line-height: var(--line-height-base);
             color: var(--light-title-85);
         }
 
         .ant-result-subtitle {
-            line-height: 130%;
+            line-height: var(--line-height-base);
             color: var(--light-secondary-45);
         }
     }
@@ -54,9 +54,7 @@
 }
 
 .footer {
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 130%;
+    @include m.font;
     text-align: center;
     color: var(--light-secondary-45);
     @include m.phone {

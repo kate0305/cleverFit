@@ -18,7 +18,7 @@
 .btn {
     @include m.primary-btn;
     @include m.font;
-    padding: 10px 15px;
+    padding: var(--padding-primary-btn);
     color: var(--base-light);
     &:hover {
         color: var(--base-light);
@@ -33,12 +33,12 @@
     :global {
         .ant-result-title {
             font-weight: 500;
-            line-height: 130%;
+            line-height: var(--line-height-base);
             color: var(--light-title-85);
         }
 
         .ant-result-subtitle {
-            line-height: 130%;
+            line-height: var(--line-height-base);
             color: var(--light-secondary-45);
         }
 

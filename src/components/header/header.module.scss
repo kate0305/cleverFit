@@ -1,21 +1,26 @@
+@use '@sass/mixins.scss' as m;
+
 .header {
     height: auto;
     padding: 16px 24px;
-    background-color: #f0f5ff;
+    background-color: var(--primary-light-1);
 
     .title {
         margin: 0;
         padding: 6px 0;
-        font-weight: 700;
-        font-size: 38px;
-        line-height: 130%;
-        color: #262626;
+        @include m.font(
+            $size: 3var
+                (
+                    --gap-ms,
+                ),
+            $weight: 700
+        );
+        color: var(--light-title-85);
         @media screen and (max-width: 992px) {
-            font-weight: 500;
-            font-size: 24px;
+            @include m.font($size: 24px, $weight: 500);
         }
         @media screen and (max-width: 576px) {
-            font-size: 20px;
+            font-size: var(--font-size-l);
         }
     }
 }
@@ -23,7 +28,7 @@
 .container {
     display: flex;
     justify-content: space-between;
-    margin-top: 8px;
+    margin-top: var(--gap-ms);
     @media screen and (max-width: 576px) {
         margin-top: 0;
     }

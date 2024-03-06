@@ -7,13 +7,13 @@
     @include m.tablet-l {
         flex-direction: row;
         justify-content: flex-start;
-        gap: 16px;
-        margin-bottom: 12px;
+        gap: var(--gap-l);
+        margin-bottom: var(--gap-mm);
     }
 }
 
 .avatar {
-    margin-bottom: 12px;
+    margin-bottom: var(--gap-mm);
     @include m.tablet-l {
         margin-bottom: 0;
     }

@@ -1,8 +1,15 @@
+@mixin tablet {
+    @media screen and (max-width: 768px) {
+        @content;
+    }
+}
+
 @mixin tablet-l {
     @media screen and (max-width: 834px) {
         @content;
     }
 }
+
 @mixin tablet-xl {
     @media screen and (max-width: 1024px) {
         @content;
@@ -22,10 +29,10 @@
 }
 
 @mixin font($size: 14px, $height: 130%, $weight: 400, $style: normal) {
-  font-size: $size;
-  font-style: $style;
-  font-weight: $weight;
-  line-height: $height;
+    font-size: $size;
+    font-style: $style;
+    font-weight: $weight;
+    line-height: $height;
 }
 
 @mixin logo-base {
@@ -71,7 +78,12 @@
     border-radius: var(--border-radius-xs);
     box-shadow: var(--box-shadow-dark);
     @include phone {
-        font-size: 14px;
+        font-size: var(--font-size-base);
     }
 }
 
+@mixin input-affix-wrapper {
+    padding: 10px 12px;
+    border-radius: var(-border-radius-xs);
+    border-color: var(--light-border);
+}

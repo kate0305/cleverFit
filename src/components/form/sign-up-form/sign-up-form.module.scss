@@ -1,8 +1,8 @@
-@use '../../../sass/mixins.scss' as m;
+@use '@sass/mixins.scss' as m;
 
 .form {
     width: 100%;
-    margin-top: 8px;
+    margin-top: var(--gap-ms);
     @include m.phone {
         margin-top: 0;
     }
@@ -27,19 +27,17 @@
         .ant-input-group > *,
         .ant-input-affix-wrapper,
         .ant-input {
-            line-height: 130%;
+            line-height: var(--line-height-base);
             color: var(--light-title-85);
         }
 
         .ant-input {
-            line-height: 130%;
+            line-height: var(--line-height-base);
         }
 
         .ant-input,
         .ant-input-affix-wrapper {
-            padding: 10px 12px;
-            border-radius: 2px;
-            border-color: var(--light-border);
+            @include m.input-affix-wrapper;
         }
         .ant-form-item-control-input {
             min-height: auto;
@@ -56,30 +54,23 @@
         }
         .ant-form-item-explain {
             font-size: 12px;
-            line-height: 130%;
+            line-height: var(--line-height-base);
         }
     }
 }
 
 .forgot {
-    font-size: 16px;
+    font-size: var(--font-size-m);
     color: var(--primary-light-6);
     @include m.phone {
-        font-size: 14px;
+        font-size: var(--font-size-base);
     }
 }
 
 .primary {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include m.primary-btn;
     padding: 7px 15px;
-    font-size: 16px;
-    line-height: 130%;
-    text-shadow: none;
-    background: var(--primary-light-6);
-    border: 1px solid var(--primary-light-6);
-    border-radius: 2px;
-    box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.04);
+    @include phone {
+        font-size: var(--font-size-m);
+    }
 }

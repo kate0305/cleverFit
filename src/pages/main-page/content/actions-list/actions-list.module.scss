@@ -3,7 +3,7 @@
 .card_body {
     display: flex;
     justify-content: center;
-    gap: 8px;
+    gap: var(--gap-ms);
     padding: 19px 0;
     line-height: 130%;
     color: #2f54eb;

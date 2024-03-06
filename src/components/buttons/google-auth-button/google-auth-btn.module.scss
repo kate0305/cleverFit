@@ -2,16 +2,16 @@
 
 .google {
     @include m.primary-btn;
-    margin-top: 16px;
+    margin-top: var(--gap-l);
     margin-bottom: 109px;
-    padding: 9px 15px;
+    padding: var(--padding-primary-btn);
     background: var(--base-light);
     border-color: var(--light-border);
-    box-shadow: 0px 2px 0px 0px rgba(0, 0, 0, 0.02);
+    box-shadow: var(--box-shadow-light);
     :global {
         .anticon {
             display: flex;
-            margin-right: 2px;
+            margin-right: var(--gap-xxs);
             @include m.phone {
                 display: none;
             }

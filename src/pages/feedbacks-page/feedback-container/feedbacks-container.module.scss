@@ -8,12 +8,12 @@
 
 .btn_group {
     @include m.flex;
-    gap: 8px;
+    gap: var(--gap-ms);
     margin-bottom: 6px;
     @include m.tablet-l {
         flex-direction: column;
         width: 100%;
-        gap: 16px;
+        gap: var(--gap-l);
     }
 }
 
@@ -29,8 +29,8 @@
 .feedback_btn {
     @include m.primary-btn;
     width: fit-content;
-    padding: 10px 15px;
-    font-size: 14px;
+    padding: var(--padding-primary-btn);
+    font-size: var(--font-size-base);
     @include m.tablet-l {
         width: 100%;
     }
@@ -38,7 +38,7 @@
 
 .all_feedbacks_btn {
     @extend .feedback_btn;
-    font-size: 16px;
+    font-size: var(--font-size-m);
     color: var(--primary-light-6);
     border: none;
     background-color: transparent;

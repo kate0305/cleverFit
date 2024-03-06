@@ -15,7 +15,7 @@
         right: -31px;
         width: 32px;
         height: 48px;
-        padding: 16px 8px;
+        padding: var(--gap-l) var(--gap-ms);
         transform: translateY(0);
     }
 }
@@ -23,13 +23,13 @@
 :global {
     .ant-btn-icon-only {
         * {
-            font-size: 14px;
+            font-size: var(--font-size-base);
         }
     }
     @include m.phone {
         .ant-btn-icon-only {
             * {
-                font-size: 16px;
+                font-size: var(--font-size-m);
             }
         }
     }
