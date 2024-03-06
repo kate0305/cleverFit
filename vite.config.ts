@@ -23,11 +23,4 @@ export default defineConfig({
             '@utils': path.resolve(__dirname, 'src/utils'),
         },
     },
-    // css: {
-    //     preprocessorOptions: {
-    //         scss: {
-    //             additionalData: `@import './src/sass/abstracts.scss';`,
-    //         },
-    //     },
-    // },
 });
