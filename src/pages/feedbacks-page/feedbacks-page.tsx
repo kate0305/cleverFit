@@ -45,15 +45,15 @@ export const FeedbacksPage = () => {
     }, [dispatch, navigate, removeLocalStorageItem]);
 
     useEffect(() => {
-        if (error) {
-            const err = errorHandler(error);
-            if (typeof err !== 'string' && err) {
-                const { errStatus } = err;
-                if (errStatus === StatusCode.FORBIDDEN) {
-                    logOut();
-                } else {
-                    setOpenErrModal(true);
-                }
+        if (!error) return;
+
+        const err = errorHandler(error);
+        if (typeof err !== 'string' && err) {
+            const { errStatus } = err;
+            if (errStatus === StatusCode.FORBIDDEN) {
+                logOut();
+            } else {
+                setOpenErrModal(true);
             }
         }
     }, [error, logOut]);
