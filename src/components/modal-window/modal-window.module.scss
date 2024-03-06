@@ -1,0 +1,18 @@
+@use '@sass/mixins.scss' as m;
+
+.modal {
+    max-width: calc(100vw - 32px);
+    :global {
+        .ant-modal-content {
+            box-shadow: none;
+            .ant-modal-body {
+                padding: 0;
+            }
+        }
+        .ant-result-subtitle {
+            @include m.phone {
+                letter-spacing: -0.1px;
+            }
+        }
+    }
+}
