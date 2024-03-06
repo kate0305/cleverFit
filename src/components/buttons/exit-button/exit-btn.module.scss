@@ -1,12 +1,13 @@
 @use '@sass/mixins.scss' as m;
 
-button {
+.button {
     position: absolute;
     bottom: 0;
     padding: 11px 0;
     height: 40px;
     @include m.flex($j-c: flex-start);
-    padding-left:var(--line-height-base);
+    padding-left: var(--gap-l);
+    line-height: var(--line-height-base);
     border: none;
     border-radius: 0;
     box-shadow: 0 1px 0 0 #f0f0f0 inset;

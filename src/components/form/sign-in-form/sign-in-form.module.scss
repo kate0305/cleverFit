@@ -58,7 +58,7 @@
 .primary {
     @include m.primary-btn;
     padding: 7px 15px;
-    @include phone {
+    @include m.phone {
         font-size: var(--font-size-m);
     }
 }
