@@ -3,6 +3,11 @@
     --screen-middle: 834px;
     --screen-phone: 480px;
 
+    /* decor */
+    --border-radius-xs: 2px;
+    --box-shadow-dark: 0 2px 0 0 rgba(0, 0, 0, 0.04);
+    --box-shadow-light: 0 2px 0 0 rgba(0, 0, 0, 0.02);
+
     /* colors */
 
     /* base color */
