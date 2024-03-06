@@ -1,6 +1,13 @@
+@use '@sass/mixins.scss' as m;
+
 .breadcrumbs {
-    li:last-child {
+    @include m.font;
+    li:last-child a {
         color: var(--light-title-85);
-        line-height: 130%;
+    }
+    :global {
+        .ant-breadcrumb-link a {
+            color: var(--light-secondary-45);
+        }
     }
 }

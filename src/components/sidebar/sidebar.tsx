@@ -1,14 +1,19 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAppDispatch } from '@hooks/typed-react-redux-hooks';
-import { reset } from '@redux/redusers/user-data-slice';
-import { useLocalStorage } from '@utils/use-local-storage';
-import { Paths } from '@type/paths';
 import { Layout } from 'antd';
+
+import { reset } from '@redux/redusers/user-data-slice';
+import { useAppDispatch } from '@hooks/typed-react-redux-hooks';
+
+import { useLocalStorage } from '@utils/use-local-storage';
+
+import { Paths } from '@type/paths';
+
+import { ExitBtn } from '@components/buttons/exit-button';
+import { SideToggleBtn } from '@components/buttons/toggle-side-menu-button';
 import { Logo } from '@components/logo';
 import { Navbar } from '@components/navbar';
-import { SideToggleBtn } from '@components/buttons/toggle-side-menu-button';
-import { ExitBtn } from '@components/buttons/exit-button';
+
 import styles from './sidebar.module.scss';
 
 const { Sider } = Layout;
@@ -31,8 +36,8 @@ export const Sidebar: React.FC = () => {
     };
 
     const logOut = () => {
-        removeLocalStorageItem();
         dispatch(reset());
+        removeLocalStorageItem();
         navigate(Paths.AUTH, { replace: true });
     };
 

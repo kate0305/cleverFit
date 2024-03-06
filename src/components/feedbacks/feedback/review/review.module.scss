@@ -1,0 +1,27 @@
+@use '@sass/mixins.scss' as m;
+.wrapper {
+    margin-left: var(--gap-mm);
+    @include m.flex($items: flex-start);
+    flex-direction: column;
+    @include m.tablet-l {
+        margin-left: 0;
+    }
+}
+
+.header {
+    @include m.flex;
+    gap: var(--gap-l);
+}
+
+.data {
+    @include m.font($size: 12px);
+    color: var(--light-disable-25);
+}
+
+.review {
+    max-width: 1100px;
+    margin-top: var(--gap-mm);
+    @include m.font;
+    word-break: break-word;
+    color: var(--light-secondary-45);
+}

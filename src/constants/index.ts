@@ -7,10 +7,17 @@ export const MD_WIDTH = '768px';
 export const LG_WIDTH = '992px';
 
 
-//base url for API
+//base and part url for API
 export const BASE_URL = 'https://marathon-api.clevertec.ru';
+export const SIGN_UP = '/auth/registration';
+export const SIGN_IN = '/auth/login';
+export const GOOGLE_AUTH = '/auth/google';
+export const CHECK_EMAIL = '/auth/check-email';
+export const CONFIRM_EMAIL_URL = '/auth/confirm-email';
+export const CHANGE_PASSWORD_URL = '/auth/change-password';
+export const FEEDBACK = 'feedback';
 
-
+//route paths
 export const REGISTRATION = `${Paths.AUTH}/${AuthPaths.REGISTRATION}`;
 export const CONFIRM_EMAIL = `${Paths.AUTH}/${AuthPaths.CONFIRM_EMAIL}`;
 export const CHANGE_PASSWORD = `${Paths.AUTH}/${AuthPaths.CHANGE_PASSWORD}`;
@@ -22,3 +29,15 @@ export const CHECK_EMAIL_ERR = `${Paths.RESULT}/${ResultPaths.CHECK_EMAIL_ERR}`;
 export const CHECK_EMAIL_ERR_404 = `${Paths.RESULT}/${ResultPaths.CHECK_EMAIL_ERR_404}`;
 export const CHANGE_PASSWORD_SUCCESS = `${Paths.RESULT}/${ResultPaths.CHANGE_PASSWORD_SUCCESS}`;
 export const CHANGE_PASSWORD_ERR = `${Paths.RESULT}/${ResultPaths.CHANGE_PASSWORD_ERR}`;
+
+
+//date
+export const DATE_OPTIONS: Intl.DateTimeFormatOptions = {
+    year: 'numeric',
+    month: 'numeric',
+    day: 'numeric',
+};
+
+export const BREADCRUMB_NAMES: Record<string, string> = {
+    '/feedbacks': 'Отзывы пользователей',
+};

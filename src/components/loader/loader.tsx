@@ -1,5 +1,7 @@
 import Lottie from 'lottie-react';
+
 import loader from './loader.json';
+
 import styles from './loader.module.scss';
 
 export const Loader = () => (

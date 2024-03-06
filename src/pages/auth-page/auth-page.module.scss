@@ -1,4 +1,4 @@
-@use '../../sass/mixins.scss' as m;
+@use '@sass/mixins.scss' as m;
 
 .wrapper {
     @include m.form-wrapper;
@@ -10,10 +10,8 @@
 
 .container {
     width: 100%;
-    display: flex;
+    @include m.flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
 }
 
 .logo {

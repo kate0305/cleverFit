@@ -1,5 +1,6 @@
-import { CalendarTwoTone, HeartFilled, TrophyFilled, IdcardOutlined } from '@ant-design/icons';
-import { MenuItem, getListItemWithIcon } from '@utils/get-list-item-with-icon';
+import { CalendarTwoTone, HeartFilled, IdcardOutlined,TrophyFilled } from '@ant-design/icons';
+
+import { getListItemWithIcon,MenuItem } from '@utils/get-list-item-with-icon';
 
 import styles from './navbar.module.scss';
 

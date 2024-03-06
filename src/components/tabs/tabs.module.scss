@@ -1,4 +1,4 @@
-@use '../../sass/mixins.scss' as m;
+@use '@sass/mixins.scss' as m;
 
 .tabs {
     width: 100%;
@@ -12,22 +12,20 @@
 
         .ant-tabs-nav-list {
             width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            @include m.flex($j-c: space-between);
         }
         .ant-tabs-tab {
             width: 50%;
             margin: 0;
             justify-content: center;
-            font-size: 16px;
+            font-size: var(--font-size-m);
             &.ant-tabs-tab-active {
                 .ant-tabs-tab-btn {
                     text-shadow: none;
                 }
             }
             @include m.phone {
-                font-size: 14px;
+                font-size: var(--font-size-base);
             }
         }
     }

@@ -1,21 +1,30 @@
-import React, { Suspense } from 'react';
-import { Outlet } from 'react-router-dom';
+import { Suspense } from 'react';
+import { Outlet, useLocation } from 'react-router-dom';
 import { Layout } from 'antd';
-import { Sidebar } from '@components/sidebar';
-import { AppHeader } from '@components/header';
+
+import { Paths } from '@type/paths';
+
 import { AppFooter } from '@components/footer';
+import { AppHeader } from '@components/header';
 import { Loader } from '@components/loader';
+import { Sidebar } from '@components/sidebar';
+
 import styles from './main-layout.module.scss';
 
-export const MainLayout: React.FC = () => (
-    <Layout className={styles.wrapper}>
-        <Sidebar />
-        <Layout style={{ background: 'transparent' }}>
-            <AppHeader />
-            <Suspense fallback={<Loader />}>
-                <Outlet />
-            </Suspense>
-            <AppFooter />
+export const MainLayout = () => {
+    const { pathname } = useLocation();
+    const isMainPage = pathname === Paths.MAIN;
+    
+    return (
+        <Layout className={styles.wrapper}>
+            <Sidebar />
+            <Layout style={{ background: 'transparent' }}>
+                <AppHeader isMainPage={isMainPage} />
+                <Suspense fallback={<Loader />}>
+                    <Outlet />
+                </Suspense>
+                { isMainPage && <AppFooter />}
+            </Layout>
         </Layout>
-    </Layout>
-);
+    );
+};

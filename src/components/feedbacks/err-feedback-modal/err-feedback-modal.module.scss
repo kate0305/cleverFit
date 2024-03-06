@@ -1,0 +1,7 @@
+@use '@sass/mixins.scss' as m;
+
+.btn_err {
+    padding: var(--padding-primary-btn);
+    @include m.font;
+    width: 48.55%;
+}

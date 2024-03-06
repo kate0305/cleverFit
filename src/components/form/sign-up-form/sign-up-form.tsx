@@ -1,18 +1,24 @@
 import React, { useCallback, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '@hooks/index';
-import { useSignUpUserMutation } from '@services/clever-fit-service';
-import { selectUserData, setSignUpData } from '@redux/redusers/user-data-slice';
 import { Form } from 'antd';
-import { GooglePlusOutlined } from '@ant-design/icons';
+
+import { selectUserData, setSignUpData } from '@redux/redusers/user-data-slice';
+import { useAppDispatch, useAppSelector } from '@hooks/index';
+import { useSignUpUserMutation } from '@services/auth-service';
+
 import { errorHandler } from '@utils/error-handler';
+
 import { UserReq } from '@type/service';
 import { StatusCode } from '@type/status-code';
 import { REGISTRATION_ERR, REGISTRATION_ERR_409, REGISTRATION_SUCCESS } from '@constants/index';
-import { PrimaryBtn } from '@components/buttons/primary-button';
+
+import { GoogleAuthBtn } from '@components/buttons/google-auth-button';
+
+import { FormItem } from '../form-item';
+
 import { signUpFormFildsData } from './data';
 import { SubmitButton } from './submit-button';
-import { FormItem } from '../form-item';
+
 import styles from './sign-up-form.module.scss';
 
 export const SignUpForm: React.FC = () => {
@@ -77,13 +83,7 @@ export const SignUpForm: React.FC = () => {
                     <SubmitButton form={form} />
                 </Form.Item>
             </Form>
-            <PrimaryBtn
-                type='default'
-                icon={<GooglePlusOutlined />}
-                htmlType='button'
-                btnText='Регистрация через Google'
-                className='google_reg'
-            />
+            <GoogleAuthBtn isSignUpForm/>
         </>
     );
 };

@@ -1,0 +1,25 @@
+@use '@sass/mixins.scss' as m;
+.wrapper {
+    max-width: 174px;
+    width: 100%;
+    @include m.flex;
+    flex-direction: column;
+    @include m.tablet-l {
+        flex-direction: row;
+        justify-content: flex-start;
+        gap: var(--gap-l);
+        margin-bottom: var(--gap-mm);
+    }
+}
+
+.avatar {
+    margin-bottom: var(--gap-mm);
+    @include m.tablet-l {
+        margin-bottom: 0;
+    }
+}
+
+.name {
+    @include m.flex;
+    flex-direction: column;
+}

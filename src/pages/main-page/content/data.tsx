@@ -1,4 +1,4 @@
-import { HeartFilled, CalendarTwoTone, IdcardOutlined } from "@ant-design/icons";
+import { CalendarTwoTone, HeartFilled, IdcardOutlined } from "@ant-design/icons";
 
 export const possibilities = [
     {

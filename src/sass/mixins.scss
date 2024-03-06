@@ -1,5 +1,17 @@
-@mixin screen-middle {
+@mixin tablet {
+    @media screen and (max-width: 768px) {
+        @content;
+    }
+}
+
+@mixin tablet-l {
     @media screen and (max-width: 834px) {
+        @content;
+    }
+}
+
+@mixin tablet-xl {
+    @media screen and (max-width: 1024px) {
         @content;
     }
 }
@@ -8,6 +20,19 @@
     @media screen and (max-width: 480px) {
         @content;
     }
+}
+
+@mixin flex($display: flex, $j-c: center, $items: center) {
+    display: $display;
+    justify-content: $j-c;
+    align-items: $items;
+}
+
+@mixin font($size: 14px, $height: 130%, $weight: 400, $style: normal) {
+    font-size: $size;
+    font-style: $style;
+    font-weight: $weight;
+    line-height: $height;
 }
 
 @mixin logo-base {
@@ -20,11 +45,13 @@
 
 @mixin form-wrapper {
     width: 100%;
-    margin: 0 16px;
     padding: 64px 32px;
     background-color: var(--base-light);
     box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.15);
     border-radius: 2px;
+    @include phone {
+        max-width: calc(100vw - 32px);
+    }
 }
 
 @mixin form-container {
@@ -33,4 +60,30 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+@mixin card-base {
+    background: var(--base-light);
+    border-radius: var(--border-radius-xs);
+}
+
+@mixin primary-btn {
+    width: 100%;
+    @include flex;
+    padding: 9px 15px;
+    @include font($size: 16px);
+    text-shadow: none;
+    background: var(--primary-light-6);
+    border: 1px solid var(--primary-light-6);
+    border-radius: var(--border-radius-xs);
+    box-shadow: var(--box-shadow-dark);
+    @include phone {
+        font-size: var(--font-size-base);
+    }
+}
+
+@mixin input-affix-wrapper {
+    padding: 10px 12px;
+    border-radius: var(-border-radius-xs);
+    border-color: var(--light-border);
 }

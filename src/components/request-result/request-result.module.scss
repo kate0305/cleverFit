@@ -1,4 +1,4 @@
-@use '../../sass/mixins.scss' as m;
+@use '@sass/mixins.scss' as m;
 
 .wrapper {
     @include m.form-wrapper;
@@ -16,22 +16,10 @@
 }
 
 .btn {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 7px 15px;
-    font-size: 16px;
-    line-height: 130%;
-    text-shadow: none;
+    @include m.primary-btn;
+    @include m.font;
+    padding: var(--padding-primary-btn);
     color: var(--base-light);
-    background: var(--primary-light-6);
-    border: 1px solid var(--primary-light-6);
-    border-radius: 2px;
-    box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.04);
-    padding: 10px 15px;
-    font-size: 14px;
-    transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
     &:hover {
         color: var(--base-light);
         border-color: var(--ant-primary-color-hover);
@@ -45,12 +33,12 @@
     :global {
         .ant-result-title {
             font-weight: 500;
-            line-height: 130%;
+            line-height: var(--line-height-base);
             color: var(--light-title-85);
         }
 
         .ant-result-subtitle {
-            line-height: 130%;
+            line-height: var(--line-height-base);
             color: var(--light-secondary-45);
         }
 
@@ -64,9 +52,7 @@
 
 .wrapper_err_500 {
     @extend .wrapper;
-    @include m.phone {
-        padding: 64px 32px 56px;
-    }
+    padding: 64px 32px 56px;
 }
 
 .err_500 {
@@ -87,6 +73,5 @@
             max-width: 371px;
             margin: auto;
         }
-
     }
 }

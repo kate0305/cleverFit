@@ -1,5 +1,6 @@
 import React from 'react';
 import { Typography } from 'antd';
+
 import { possibilities } from '../data';
 
 import styles from './possibilities-section.module.scss';

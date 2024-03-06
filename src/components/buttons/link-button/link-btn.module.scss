@@ -1,6 +1,7 @@
+@use '@sass/mixins.scss' as m;
+
 .link_btn {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    line-height: 130%;
+    @include m.flex;
+    gap: var(--gap-ms);
+    line-height: var(--line-height-base);
 }

@@ -1,25 +1,28 @@
+@use '@sass/mixins.scss' as m;
+
 .footer {
     padding: 0 24px 42px;
     background: transparent;
-    @media screen and (max-width: 768px) {
-        padding-left: 16px;
-        padding-right: 16px;
+    @include m.tablet {
+        padding-left: var(--gap-l);
+        padding-right: var(--gap-l);
     }
 }
+
 .item {
     flex: 0 1 auto;
-    @media screen and (max-width: 768px) {
+    @include m.tablet {
         flex-basis: 100%;
     }
 }
 
 .link {
     display: flex;
-    padding: 10px 15px;
-    font-size: 16px;
-    line-height: 130%;
-    color: #2f54eb;
-    @media screen and (max-width: 768px) {
+    padding: vap(--padding-primary-btn);
+    font-size: var(--font-size-m);
+    line-height: var(--line-height-base);
+    color: var(--primary-light-6);
+    @include m.tablet {
         margin-top: 24px;
         justify-content: center;
     }
@@ -32,15 +35,46 @@
 
 .apps_title {
     font-weight: 400;
-    line-height: 130%;
-    color: #2f54eb;
+    line-height: var(--line-height-base);
+    color: var(--primary-light-6);
 }
 
 .app {
     width: 120px;
     padding: 7px 0;
-    color: #262626;
-    @media screen and (max-width: 768px) {
+    @include m.tablet {
         width: 164px;
+    }
+}
+
+.card_apps {
+    @include m.card-base;
+    box-shadow: var(--box-shadow-light);
+    :global {
+        .ant-card-head-wrapper {
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 12px 0;
+            @include m.tablet {
+                align-items: center;
+            }
+        }
+        .ant-card-extra {
+            margin-top: var(--gap-ms);
+            margin-left: 0;
+            font-weight: 400;
+            line-height: var(--line-height-base);
+            color: var(--light-secondary-45);
+        }
+        .ant-card-body {
+            display: flex;
+            padding: 12px 0;
+        }
+        @include m.tablet {
+            .ant-card-head-wrapper,
+            .ant-card-body {
+                @include m.flex;
+            }
+        }
     }
 }

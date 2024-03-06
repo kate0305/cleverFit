@@ -1,3 +1,7 @@
+export enum Tags {
+    FEEDBACKS = 'Feedbacks',
+}
+
 export type UserReq = {
     email: string;
     password: string;
@@ -22,3 +26,7 @@ export type ChangePasswordReq = {
     confirmPassword: string;
 };
 
+export type FeedbackReq = {
+    message: string;
+    rating: number;
+};

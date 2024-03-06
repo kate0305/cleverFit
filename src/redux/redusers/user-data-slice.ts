@@ -1,13 +1,17 @@
 import { RootState } from '@redux/configure-store';
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { ChangePasswordReq, UserReq } from '@type/service';
+
 import { getLocalStorageValue } from '@utils/use-local-storage';
+
+import { ChangePasswordReq, FeedbackReq, UserReq } from '@type/service';
+
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 type UserDataReducerState = {
     userData: UserReq | null;
     changePasswordData: ChangePasswordReq | null;
     email: string | null;
     token: string | null;
+    reviewData: FeedbackReq | null;
 };
 
 const initialState: UserDataReducerState = {
@@ -15,6 +19,7 @@ const initialState: UserDataReducerState = {
     changePasswordData: null,
     email: null,
     token: getLocalStorageValue('token', null),
+    reviewData: null,
 };
 
 export const userDataSlice = createSlice({
@@ -33,13 +38,14 @@ export const userDataSlice = createSlice({
         setChangePasswordData(state, action: PayloadAction<ChangePasswordReq>) {
             state.changePasswordData = action.payload;
         },
-        reset: () => {
-            return initialState;
+        setReviewData(state, action: PayloadAction<FeedbackReq>) {
+            state.reviewData = action.payload;
         },
+        reset: () => initialState,
     },
 });
 
-export const { setSignUpData, setToken, setEmail, setChangePasswordData, reset } =
+export const { setSignUpData, setToken, setEmail, setChangePasswordData, setReviewData, reset } =
     userDataSlice.actions;
 export const userDataReduser = userDataSlice.reducer;
 
@@ -48,3 +54,4 @@ export const selectUserEmail = (state: RootState) => state.userDataReduser.email
 export const selectToken = (state: RootState) => state.userDataReduser.token;
 export const selectChangePasswordData = (state: RootState) =>
     state.userDataReduser.changePasswordData;
+export const selectReviewData = (state: RootState) => state.userDataReduser.reviewData;

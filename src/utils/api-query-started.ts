@@ -1,4 +1,5 @@
 import { addLoader, removeLoader } from "@redux/redusers/app-slice";
+
 import { ThunkDispatch, UnknownAction } from "@reduxjs/toolkit";
 
 type OnQueryStarted = {
