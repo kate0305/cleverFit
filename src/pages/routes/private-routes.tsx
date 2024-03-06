@@ -22,7 +22,6 @@ export const PrivateRoute = (prop: { children: JSX.Element }) => {
         if (tokenFromQueryParams) {
             dispatch(setToken(tokenFromQueryParams));
             setLocalStorageItem(tokenFromQueryParams);
-            navigate(Paths.MAIN);
         }
     }, [dispatch, navigate, setLocalStorageItem, tokenFromQueryParams]);
 
