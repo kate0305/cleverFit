@@ -1,0 +1,11 @@
+@use '@sass/mixins.scss' as m;
+
+.btn_success {
+    padding: 10px 15px;
+    @include m.font;
+    width: 100%;
+}
+
+
+
+

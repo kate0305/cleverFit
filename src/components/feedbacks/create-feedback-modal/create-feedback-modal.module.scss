@@ -1,0 +1,43 @@
+@use '@sass/mixins.scss' as m;
+
+.wrapper {
+    .ant-modal-close {
+        font-size: 14px;
+    }
+    :global {
+        .ant-modal-title {
+            @include m.font($size: 16px, $weight: 500);
+            color: var(--light-title-85);
+        }
+        .ant-modal-close-x {
+            font-size: 14px;
+            color: rgba(0, 0, 0, 0.85);
+        }
+        .ant-form-item {
+            margin-bottom: 16px;
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+        textarea {
+            @include m.font;
+            color: var(--light-title-85);
+        }
+        .ant-modal-footer {
+            padding: 10px 24px;
+        }
+    }
+}
+
+.textarea {
+    padding: 5px 12px;
+    resize: vertical !important;
+}
+
+.btn {
+    padding: 10px 15px;
+    @include m.font;
+    @include m.phone {
+        width: 100%;
+    }
+}
