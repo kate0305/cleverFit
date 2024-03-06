@@ -1,0 +1,19 @@
+@use '@sass/mixins.scss' as m;
+
+.main {
+    @include m.flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 24px;
+    padding-bottom: 42px;
+    @include m.phone {
+        margin: 0;
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+}
+
+.main_with_feedbacks {
+    @extend .main;
+    margin: auto;
+}

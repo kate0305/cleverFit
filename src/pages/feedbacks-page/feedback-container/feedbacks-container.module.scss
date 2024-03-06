@@ -1,0 +1,46 @@
+@use '@sass/mixins.scss' as m;
+
+.feedbacks {
+    width: 100%;
+    max-height: calc(100vh - 274px);
+    overflow-y: auto;
+}
+
+.btn_group {
+    @include m.flex;
+    gap: 8px;
+    margin-bottom: 6px;
+    @include m.tablet-l {
+        flex-direction: column;
+        width: 100%;
+        gap: 16px;
+    }
+}
+
+.btn_group_has_feedback {
+    @extend .btn_group;
+    align-self: flex-start;
+    margin-top: 112px;
+    @include m.tablet-l {
+        margin-top: 32px;
+    }
+}
+
+.feedback_btn {
+    @include m.primary-btn;
+    width: fit-content;
+    padding: 10px 15px;
+    font-size: 14px;
+    @include m.tablet-l {
+        width: 100%;
+    }
+}
+
+.all_feedbacks_btn {
+    @extend .feedback_btn;
+    font-size: 16px;
+    color: var(--primary-light-6);
+    border: none;
+    background-color: transparent;
+    box-shadow: none;
+}
