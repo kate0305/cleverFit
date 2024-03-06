@@ -1,7 +1,7 @@
 import { createBrowserHistory } from 'history';
 import { createReduxHistoryContext } from 'redux-first-history';
 
-import { cleverFitApi } from '@services/clever-fit-service';
+import { cleverFitApi } from '@services/base-query';
 
 import { appReduser } from './redusers/app-slice';
 import { userDataReduser } from './redusers/user-data-slice';
