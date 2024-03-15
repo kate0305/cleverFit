@@ -4,6 +4,7 @@ export enum Paths {
     AUTH = '/auth',
     RESULT = '/result',
     FEEDBACKS = '/feedbacks',
+    CALENDAR = '/calendar',
 }
 
 export enum AuthPaths {
