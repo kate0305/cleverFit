@@ -4,6 +4,7 @@ import { createReduxHistoryContext } from 'redux-first-history';
 import { cleverFitApi } from '@services/base-query';
 
 import { appReduser } from './redusers/app-slice';
+import { trainingReduser } from './redusers/trainings-slice';
 import { userDataReduser } from './redusers/user-data-slice';
 import { listenerMiddleware } from './listener-middleware';
 
@@ -17,6 +18,7 @@ export const store = configureStore({
     reducer: {
         userDataReduser,
         appReduser,
+        trainingReduser,
         router: routerReducer,
         [cleverFitApi.reducerPath]: cleverFitApi.reducer,
     },

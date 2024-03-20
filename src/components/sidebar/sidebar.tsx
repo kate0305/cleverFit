@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useLayoutEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Layout } from 'antd';
 
@@ -6,8 +6,10 @@ import { reset } from '@redux/redusers/user-data-slice';
 import { useAppDispatch } from '@hooks/typed-react-redux-hooks';
 
 import { useLocalStorage } from '@utils/use-local-storage';
+import { useMediaQuery } from '@utils/use-media-query';
 
 import { Paths } from '@type/paths';
+import { XS_WIDTH } from '@constants/index';
 
 import { ExitBtn } from '@components/buttons/exit-button';
 import { SideToggleBtn } from '@components/buttons/toggle-side-menu-button';
@@ -23,9 +25,14 @@ export const Sidebar: React.FC = () => {
     const navigate = useNavigate();
     const [, , removeLocalStorageItem] = useLocalStorage('token', null);
     const [collapsed, setCollapsed] = useState(false);
+    const isMobilePhone = useMediaQuery(`(max-width: ${XS_WIDTH})`);
     const defaultCollapsedWidth = 64;
     const [collapsedWidth, setCollapsedWidth] = useState(defaultCollapsedWidth);
     const isWidthChanged = collapsedWidth !== defaultCollapsedWidth;
+
+    useLayoutEffect(() => {
+        if (isMobilePhone) setCollapsed(true);
+    }, [collapsed, isMobilePhone]);
 
     const handleBreakpoint = (broken: boolean) => {
         if (broken) {
@@ -44,7 +51,7 @@ export const Sidebar: React.FC = () => {
     return (
         <Sider
             trigger={null}
-            breakpoint='xs'
+            breakpoint='sm'
             onBreakpoint={handleBreakpoint}
             collapsible
             collapsed={collapsed}

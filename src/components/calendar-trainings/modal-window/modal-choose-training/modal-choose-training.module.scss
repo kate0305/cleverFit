@@ -1,0 +1,116 @@
+@use '@sass/mixins.scss' as m;
+
+@mixin wrapper_mobile {
+    position: fixed;
+    top: auto;
+    right: auto;
+    left: 50%;
+    max-width: 312px;
+    transform: translate(-50%, 0);
+}
+
+.wrapper {
+    position: absolute;
+    top: 0;
+    left: 3px;
+    min-width: 264px;
+    width: 100%;
+    @include m.card-base;
+    box-shadow: var(--box-shadow-custom-modal);
+    z-index: 4;
+    :global {
+        .ant-card-head {
+            margin: 0;
+            padding: 0 var(--gap-mm) 0 var(--gap-ms);
+        }
+
+        .ant-card-body {
+            padding: var(--gap-l) 0;
+        }
+
+        .ant-select {
+            .ant-select-selector {
+                text-align: left;
+                border-color: transparent;
+            }
+            .ant-select-selection-placeholder {
+                color: var(--light-title-85);
+            }
+            .ant-select-arrow {
+                color: var(--light-secondary-45);
+            }
+        }
+
+        .ant-empty-image {
+            margin-bottom: 0;
+        }
+        .ant-card-actions {
+            flex-direction: column;
+            padding: var(--gap-mm);
+            box-shadow: 0px 1px 0px 0px #f0f0f0 inset;
+            border: none;
+            & li {
+                margin: 0;
+            }
+        }
+    }
+
+    @include m.phone {
+        min-width: 312px;
+        @include wrapper_mobile;
+    }
+}
+
+.wrapper_last_day {
+    @extend .wrapper;
+    left: auto;
+    right: 3px;
+    @include m.phone {
+        @include wrapper_mobile;
+    }
+}
+
+.title {
+    padding: 12px 0;
+    @include m.flex($j-c: space-between);
+    div {
+        @include m.font;
+    }
+}
+
+.content {
+    padding: 0 var(--gap-mm);
+}
+
+.btn_add {
+    margin-bottom: var(--gap-ms);
+    padding: var(--gap-ss) var(--gap-42);
+    font-size: var(--font-size-base);
+    color: var(--light-title-85);
+    @include m.tablet {
+        width: 288px;
+    }
+}
+
+.btn_save {
+    padding: 7px 83px;
+    @include m.tablet {
+        width: 288px;
+        span {
+            width: 100%;
+        }
+    }
+}
+
+.exircise {
+    @include m.flex($j-c: space-between);
+    :global(.ant-btn-block) {
+        width: fit-content;
+    }
+}
+
+.name {
+    margin: 0;
+    @include m.font;
+    color: var(--light-secondary-45);
+}

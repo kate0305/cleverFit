@@ -1,29 +1,31 @@
-import { CalendarTwoTone, HeartFilled, IdcardOutlined,TrophyFilled } from '@ant-design/icons';
+import { CalendarTwoTone, HeartFilled, IdcardOutlined, TrophyFilled } from '@ant-design/icons';
 
-import { getListItemWithIcon,MenuItem } from '@utils/get-list-item-with-icon';
+import { getListItemWithIcon, MenuItem } from '@utils/get-list-item-with-icon';
+
+import { Paths } from '@type/paths';
 
 import styles from './navbar.module.scss';
 
 const data = [
     {
-        key: '1',
+        key: Paths.CALENDAR,
         icon: (
-            <CalendarTwoTone style={{ fontSize: '14px' }} twoToneColor={['#061178', '#061178']} />
+            <CalendarTwoTone style={{ fontSize: '14px' }} twoToneColor={['##061178', '##061178']} />
         ),
         label: 'Календарь',
     },
     {
-        key: '2',
+        key: 'training',
         icon: <HeartFilled style={{ color: '#061178', fontSize: '14px' }} />,
         label: 'Тренировки',
     },
     {
-        key: '3',
+        key: 'achievements',
         icon: <TrophyFilled style={{ color: '#061178', fontSize: '14px' }} />,
         label: 'Достижения',
     },
     {
-        key: '4',
+        key: 'profile',
         icon: <IdcardOutlined style={{ color: '#061178', fontSize: '14px' }} />,
         label: 'Профиль',
     },

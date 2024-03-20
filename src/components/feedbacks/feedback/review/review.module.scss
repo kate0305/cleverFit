@@ -14,7 +14,7 @@
 }
 
 .data {
-    @include m.font($size: 12px);
+    @include m.font($size: var(--gap-mm));
     color: var(--light-disable-25);
 }
 

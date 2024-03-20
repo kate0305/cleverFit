@@ -5,12 +5,16 @@
     :global {
         .ant-menu-item {
             margin-top: var(--gap-ll);
+            &::after {
+                border-color: var(--blue-light-6);
+            }
         }
         .ant-menu-item:first-child {
             margin-top: 0;
         }
         .ant-menu-item:hover,
-        .ant-menu-item-active {
+        .ant-menu-item-active,
+        .ant-menu-item-selected {
             color: var(--primary-light-5);
         }
     }

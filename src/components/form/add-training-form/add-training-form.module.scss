@@ -1,0 +1,105 @@
+@use '@sass/mixins.scss' as m;
+
+.form {
+    width: 100%;
+    padding: var(--gap-24) var(--gap-32);
+    :global {
+        .ant-form-item-label {
+            width: 100%;
+            margin-bottom: var(--gap-ss);
+            padding: 0;
+            padding-left: var(--gap-ms);
+            border-bottom: 1px solid var(--light-dividers);
+            background: var(--light-dividers);
+            & label {
+                @include m.font($size: var(--font-size-small));
+                color: var(--light-title-85);
+            }
+        }
+        .ant-form-item {
+            margin-bottom: var(--gap-ms);
+        }
+        .ant-input-group-addon {
+            .ant-form-item {
+                margin-bottom: 0;
+            }
+        }
+        .ant-form-item-control-input-content {
+            line-height: var(--line-height-base);
+        }
+        @include m.tablet {
+            padding: var(--gap-24) var(--gap-l);
+        }
+    }
+}
+
+.container {
+    overflow-y: auto;
+}
+
+.input_block:not(:first-child) {
+    margin-top: var(--gap-24);
+}
+
+.btn_add {
+    width: 100%;
+    padding: 11px var(--gap-mm);
+    background-color: var(--light-dividers);
+    border: none;
+    border-radius: var(--gap-xxs) var(--gap-xxs) var(--gap-ss) var(--gap-ss);
+    text-align: left;
+}
+
+.details_wrap {
+    display: flex;
+    gap: var(--gap-32);
+}
+
+.wrap {
+    display: flex;
+}
+
+.divider {
+    margin: 0 var(--gap-xxs) var(--gap-m) var(--gap-xxs);
+    @include m.flex($items: flex-end);
+    @include m.font;
+    color: var(--light-disable-25);
+}
+
+.checkBox {
+    :global(.ant-form-item-control-input) {
+        min-height: var(--gap-22);
+    }
+}
+
+.btn_group {
+    width: 100%;
+    margin-top: var(--gap-l);
+    @include m.flex;
+    :global {
+        .ant-form-item {
+            margin: 0;
+        }
+        .ant-form-item-control-input {
+            min-height: auto;
+        }
+        .ant-btn-ghost[disabled] {
+            background-color: var(--light-dividers);
+        }
+    }
+}
+
+.btn_add_edit {
+    @extend .btn_add;
+    width: 50%;
+    padding: var(--gap-m) var(--gap-mm);
+    border-radius: var(--gap-xxs) 0 0 var(-gap-ss);
+    text-align: center;
+}
+
+.btn_add_edit_left {
+    @extend .btn_add;
+    width: 50%;
+    border-radius: 0 var(--gap-xxs) var(-gap-ss) 0;
+    text-align: center;
+}

@@ -1,3 +1,5 @@
+@use '@sass/mixins.scss' as m;
+
 .button {
     align-self: flex-start;
     margin-left: var(--gap-m);
@@ -12,8 +14,10 @@
     }
     @media screen and (max-width: 576px) {
         margin-left: 0;
+        padding: 7px 0;
+        font-size: 14px;
         border-radius: var(--border-radius-circle);
-        border: var(border-style-base);
+        border: var(--border-style-base);
         background: var(--base-light);
         box-shadow: var(--box-shadow-dark);
         span {

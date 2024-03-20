@@ -3,7 +3,7 @@
     line-height: 100%;
     :global {
         .ant-rate-star:not(:last-child) {
-            margin-right: 4px;
+            margin-right: var(--gap-4);
             line-height: 100%;
         }
     }

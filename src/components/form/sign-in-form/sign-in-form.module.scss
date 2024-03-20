@@ -7,13 +7,13 @@
         .ant-form-item {
             margin-bottom: 0;
             &:first-child {
-                margin-bottom: 32px;
+                margin-bottom: var(--gap-32);
             }
             &:nth-child(2) {
                 margin-bottom: 30px;
             }
             &:nth-child(3) {
-                padding: 24px 0 23px 0;
+                padding: var(--gap-24) 0 23px 0;
             }
         }
 

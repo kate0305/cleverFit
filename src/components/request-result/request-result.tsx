@@ -18,7 +18,8 @@ export type RequestResultProps = {
 
 export const RequestResult = ({ keyErr, buttonsGroup }: RequestResultProps) => {
     const location = useLocation();
-    const isFeedbackPage = location.pathname === Paths.FEEDBACKS;
+    const isFeedbackPage =
+        location.pathname === Paths.FEEDBACKS || location.pathname === Paths.MAIN;
     const fromError = location.state && (location.state.fromErr || location.state.fromServer);
     const isShowResult = isFeedbackPage || fromError;
     const { status, title, message, btnText, navigateTo, state, dataTestId } =

@@ -1,0 +1,10 @@
+@use '@sass/mixins.scss' as m;
+
+.button {
+    width: fit-content;
+    @include m.flex;
+    border: none;
+    &:hover {
+        background-color: var(--light-background);
+    }
+}

@@ -2,12 +2,12 @@
 
 .header {
     height: auto;
-    padding: 16px 24px;
+    padding: var(--padding-block);
     background-color: var(--primary-light-1);
 
     .title {
         margin: 0;
-        padding: 6px 0;
+        padding: var(--gap-ss) 0;
         @include m.font(
             $size: 3var
                 (
@@ -17,7 +17,7 @@
         );
         color: var(--light-title-85);
         @media screen and (max-width: 992px) {
-            @include m.font($size: 24px, $weight: 500);
+            @include m.font($size: var(--gap-24), $weight: 500);
         }
         @media screen and (max-width: 576px) {
             font-size: var(--font-size-l);

@@ -1,0 +1,60 @@
+@use '@sass/mixins.scss' as m;
+
+.wrapper {
+    @include m.flex($j-c: space-between, $items: flex-start);
+    flex-direction: column;
+}
+
+.wrap_modal {
+    @extend .wrapper;
+    padding: var(--gap-l) var(--gap-mm);
+    gap: var(--gap-ms);
+}
+
+.training {
+    span {
+        top: 0;
+        @include m.flex($j-c: space-between);
+        @include m.font($size: var(--gap-mm));
+        color: var(--light-title-85);
+    }
+}
+
+.training_modal {
+    width: 100%;
+    @include m.flex($j-c: space-between);
+    @include m.font($size: var(--gap-mm));
+    color: var(--light-title-85);
+    :global {
+        .ant-btn.ant-btn-block,
+        .ant-btn.ant-btn-block {
+            width: fit-content;
+        }
+    }
+    &:hover {
+        background-color: var(--light-background);
+    }
+}
+
+.training_disabled {
+    @extend .training_modal;
+    :global {
+        .ant-badge-status-text {
+            color: var(--light-disable-25);
+        }
+        .ant-btn[disabled] {
+            background: none;
+        }
+    }
+}
+
+.mobile_day {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 50%;
+    left: 50%;
+    background-color: var(--primary-light-1);
+    transform: translate(-50%, -50%);
+    z-index: -1;
+}

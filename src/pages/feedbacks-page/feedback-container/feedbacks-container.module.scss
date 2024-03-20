@@ -9,7 +9,7 @@
 .btn_group {
     @include m.flex;
     gap: var(--gap-ms);
-    margin-bottom: 6px;
+    margin-bottom: var(--gap-ss);
     @include m.tablet-l {
         flex-direction: column;
         width: 100%;
@@ -22,7 +22,7 @@
     align-self: flex-start;
     margin-top: 112px;
     @include m.tablet-l {
-        margin-top: 32px;
+        margin-top: var(--gap-32);
     }
 }
 

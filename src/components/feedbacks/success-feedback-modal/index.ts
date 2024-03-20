@@ -1,1 +1,1 @@
-export { CreateReviewModal } from './success-feedback-modal';
+export { SuccessFeedbackModal } from './success-feedback-modal';

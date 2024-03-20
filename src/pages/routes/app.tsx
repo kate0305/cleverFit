@@ -9,16 +9,14 @@ import { useAppSelector } from '@hooks/index';
 import { AuthPaths, Paths, ResultPaths } from '@type/paths';
 import { ResultRequestKeys } from '@type/result-request-keys';
 
-import { AuthPage } from '@pages/auth-page';
-import { FeedbacksPage } from '@pages/feedbacks-page';
-import { PrivateRoute } from '@pages/routes/private-routes';
-import { PublicRoute } from '@pages/routes/public-routes';
 import { ChangePasswordForm } from '@components/form/change-password-form';
 import { ConfirmEmailForm } from '@components/form/confirm-email-form';
 import { AuthLayout } from '@components/layouts/auth-layout';
 import { MainLayout } from '@components/layouts/main-layout';
 import { Loader } from '@components/loader';
 import { RequestResult } from '@components/request-result/request-result';
+
+import { AuthPage, CalendarPage, FeedbacksPage, PrivateRoute, PublicRoute } from '..';
 
 const MainPage = lazy(() => import('..'));
 
@@ -39,6 +37,7 @@ export const App = () => {
                         <Route index element={<Navigate to={Paths.MAIN} replace />} />
                         <Route path={Paths.MAIN} element={<MainPage />} />
                         <Route path={Paths.FEEDBACKS} element={<FeedbacksPage />} />
+                        <Route path={Paths.CALENDAR} element={<CalendarPage />} />
                     </Route>
                     <Route
                         path={Paths.AUTH}
