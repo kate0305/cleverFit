@@ -22,27 +22,26 @@ export const MainPage = () => {
 
     return (
         <>
-            {isErr && (
-                <ModalWindow
-                    isOpen={isErr}
-                    dataTestId='modal-no-review'
-                    children={
-                        <RequestResult
-                            keyErr={ResultRequestKeys.GET_FEEDBACK_ERR}
-                            buttonsGroup={
-                                <PrimaryBtn
-                                    type='primary'
-                                    htmlType='button'
-                                    className={styles.btn_err}
-                                    btnText='Назад'
-                                    onClick={closeErrModal}
-                                    dataTestId='write-review-not-saved-modal'
-                                />
-                            }
-                        />
-                    }
-                />
-            )}
+            <ModalWindow
+                isOpen={isErr}
+                dataTestId='modal-no-review'
+                children={
+                    <RequestResult
+                        keyErr={ResultRequestKeys.GET_FEEDBACK_ERR}
+                        buttonsGroup={
+                            <PrimaryBtn
+                                type='primary'
+                                htmlType='button'
+                                className={styles.btn_err}
+                                btnText='Назад'
+                                onClick={closeErrModal}
+                                dataTestId='write-review-not-saved-modal'
+                            />
+                        }
+                    />
+                }
+            />
+
             <Content className={styles.content}>
                 <Row gutter={16} style={{ maxWidth: '768px' }}>
                     <Col span={24}>
