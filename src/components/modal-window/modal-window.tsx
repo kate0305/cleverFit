@@ -14,6 +14,7 @@ type ModalWindowgProps = {
     onCancel?: () => void;
     maskStyle?: CSSProperties;
     className?: string;
+    dataTestId?: string;
 };
 
 export const ModalWindow = ({
@@ -27,6 +28,7 @@ export const ModalWindow = ({
     onCancel,
     maskStyle,
     className,
+    dataTestId,
 }: ModalWindowgProps) => {
     return (
         <Modal
@@ -49,6 +51,7 @@ export const ModalWindow = ({
             className={className || styles.modal}
             zIndex={1}
             children={children}
+            data-test-id={dataTestId}
         />
     );
 };

@@ -10,6 +10,7 @@ export type PrimaryBtnProps = {
     btnText?: string;
     onClick?: () => void;
     disabled?: boolean;
+    loading?: boolean;
     dataTestId?: string;
 };
 
@@ -20,6 +21,7 @@ export const PrimaryBtn = ({
     btnText,
     onClick,
     disabled,
+    loading,
     className,
     dataTestId,
 }: PrimaryBtnProps) => (
@@ -29,6 +31,7 @@ export const PrimaryBtn = ({
         htmlType={htmlType}
         onClick={onClick}
         disabled={disabled}
+        loading={loading}
         className={className}
         data-test-id={dataTestId}
     >

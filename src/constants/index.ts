@@ -15,7 +15,10 @@ export const GOOGLE_AUTH = '/auth/google';
 export const CHECK_EMAIL = '/auth/check-email';
 export const CONFIRM_EMAIL_URL = '/auth/confirm-email';
 export const CHANGE_PASSWORD_URL = '/auth/change-password';
-export const FEEDBACK = 'feedback';
+export const FEEDBACK = '/feedback';
+export const TRAINING = '/training';
+export const TRAINING_LIST = '/catalogs/training-list';
+
 
 //route paths
 export const REGISTRATION = `${Paths.AUTH}/${AuthPaths.REGISTRATION}`;
@@ -38,6 +41,9 @@ export const DATE_OPTIONS: Intl.DateTimeFormatOptions = {
     day: 'numeric',
 };
 
+
+//breadcrumbs
 export const BREADCRUMB_NAMES: Record<string, string> = {
     '/feedbacks': 'Отзывы пользователей',
+    '/calendar': 'Календарь',
 };

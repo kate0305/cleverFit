@@ -50,7 +50,7 @@
     box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.15);
     border-radius: 2px;
     @include phone {
-        max-width: calc(100vw - 32px);
+        max-width: var(--max-width-modal);
     }
 }
 

@@ -1,6 +1,7 @@
 @use '@sass/mixins.scss' as m;
 
 .card_body {
+    width: 100%;
     display: flex;
     justify-content: center;
     gap: var(--gap-ms);

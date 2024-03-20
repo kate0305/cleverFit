@@ -1,5 +1,7 @@
 import { CalendarTwoTone, HeartFilled, IdcardOutlined } from "@ant-design/icons";
 
+import { Paths } from "@type/paths";
+
 export const possibilities = [
     {
         id: '1',
@@ -25,17 +27,23 @@ export const actions = [
         title: 'Расписать тренировки',
         iconLabel: 'Тренировки',
         icon: <HeartFilled style={{ color: '#2f54eb' }} />,
+        navigateTo: '',
+        dataTestId: '',
     },
     {
         id: '2',
         title: 'Назначить календарь',
         iconLabel: 'Календарь',
         icon: <CalendarTwoTone twoToneColor={['#2f54eb', '#2f54eb']} />,
+        navigateTo: Paths.CALENDAR,
+        dataTestId: 'menu-button-calendar',
     },
     {
         id: '3',
         title: 'Заполнить профиль',
         iconLabel: 'Профиль',
         icon: <IdcardOutlined style={{ color: '#2f54eb' }} />,
+        navigateTo: '',
+        dataTestId: '',
     },
 ];

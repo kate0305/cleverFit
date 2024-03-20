@@ -2,7 +2,7 @@
 
 .header {
     height: auto;
-    padding: 16px 24px;
+    padding: var(--padding-block);
     background-color: var(--primary-light-1);
 
     .title {
