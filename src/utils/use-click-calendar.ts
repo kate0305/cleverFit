@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useLayoutEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { useLazyGetUserTrainingsQuery } from '@services/training-service';
@@ -19,7 +19,7 @@ export const useCalendarClick = () => {
         setErr(false);
     };
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         if (isError) {
             setErr(true);
         }
