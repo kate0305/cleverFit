@@ -1,0 +1,9 @@
+@use '@sass/mixins.scss' as m;
+
+.empty {
+    margin: 16px 12px;
+    @include m.flex;
+    & img {
+        width: 32px;
+    }
+}

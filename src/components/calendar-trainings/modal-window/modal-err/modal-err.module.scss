@@ -1,0 +1,66 @@
+@use '@sass/mixins.scss' as m;
+
+.modal_training_list_err {
+    :global {
+        .ant-modal-content {
+            max-width: 384px;
+            border-radius: var(--border-radius-s);
+            box-shadow: 0px 9px 28px 8px rgba(0, 0, 0, 0.05), 0px 6px 16px 0px rgba(0, 0, 0, 0.08),
+                0px 3px 6px -4px rgba(0, 0, 0, 0.12);
+        }
+        .ant-modal-body {
+            padding: 16px 24px;
+            line-height: var(--line-height-base);
+        }
+        .ant-modal-confirm-title {
+            max-width: 258px;
+            .ant-typography {
+                @include m.font($size: var(--font-size-m));
+                color: var(--light-title-85);
+            }
+        }
+        .ant-modal-confirm-content {
+            .ant-typography-secondary {
+                color: var(--light-secondary-45);
+            }
+        }
+        .ant-modal-confirm-btns {
+            margin-top: var(--gap-l);
+        }
+        .ant-modal-close-x {
+            margin-right: var(--gap-ms);
+        }
+    }
+}
+
+.modal_save_training_err {
+    @include m.phone {
+        max-width: var(--max-width-modal);
+    }
+
+    :global {
+        .ant-modal-content {
+            border-radius: var(--border-radius-xs);
+            box-shadow: 0px 9px 28px 8px rgba(0, 0, 0, 0.05), 0px 6px 16px 0px rgba(0, 0, 0, 0.08),
+                0px 3px 6px -4px rgba(0, 0, 0, 0.12);
+        }
+        .ant-modal-body {
+            padding: 32px 32px 24px;
+            line-height: var(--line-height-base);
+        }
+        .ant-modal-confirm-title {
+            .ant-typography {
+                @include m.font($size: var(--font-size-m), $weight: 500);
+                color: var(--light-title-85);
+            }
+        }
+        .ant-modal-confirm-content {
+            .ant-typography-secondary {
+                color: var(--light-title-85);
+            }
+        }
+        .ant-btn-primary {
+            padding: var(--padding-primary-btn);
+        }
+    }
+}
