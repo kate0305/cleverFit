@@ -6,7 +6,7 @@
     }
     :global {
         .ant-modal-title {
-            @include m.font($size: 16px, $weight: 500);
+            @include m.font($size: var(--gap-l), $weight: 500);
             color: var(--light-title-85);
         }
         .ant-modal-close-x {
@@ -24,13 +24,13 @@
             color: var(--light-title-85);
         }
         .ant-modal-footer {
-            padding: 10px 24px;
+            padding: var(--gap-m) var(--gap-24);
         }
     }
 }
 
 .textarea {
-    padding: 5px 12px;
+    padding: 5px var(--gap-mm);
     resize: vertical !important;
 }
 

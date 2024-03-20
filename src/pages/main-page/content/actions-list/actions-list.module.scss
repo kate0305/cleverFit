@@ -16,7 +16,7 @@
 .main_card_mini {
     @include m.card-base;
     :global(.ant-card-head-title) {
-        padding: 12px 0;
+        padding: var(--gap-mm) 0;
         text-align: center;
         font-weight: 400;
         line-height: 130%;

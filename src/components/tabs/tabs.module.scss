@@ -7,7 +7,7 @@
         .ant-tabs-nav {
             width: 100%;
             flex-grow: 1;
-            margin-bottom: 24px;
+            margin-bottom: var(--gap-24);
         }
 
         .ant-tabs-nav-list {

@@ -4,7 +4,7 @@
     @include m.flex;
     flex-direction: column;
     width: 100%;
-    padding: 24px;
+    padding: var(--gap-24);
     padding-bottom: 42px;
     @include m.phone {
         margin: 0;

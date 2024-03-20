@@ -1,40 +1,40 @@
 @use '@sass/mixins.scss' as m;
 
 .wrapper {
-    padding: 0 32px;
-    border-radius: 8px 0px 0px 8px;
+    padding: 0 var(--gap-32);
+    border-radius: var(--gap-ms) 0 0 var(--gap-ms);
     box-shadow: 0px 9px 28px 8px rgba(0, 0, 0, 0.05), 0px 3px 6px -4px rgba(0, 0, 0, 0.12),
         0px 6px 16px 0px rgba(0, 0, 0, 0.08);
 
     :global {
         .ant-drawer-content-wrapper {
-            border-radius: 8px 0 0 8px;
+            border-radius: var(--gap-ms) 0px 0px var(--gap-ms);
             box-shadow: 0 9px 28px 8px rgba(0, 0, 0, 0.05), 0 3px 6px -4px rgba(0, 0, 0, 0.12),
-                0 6px 16px 0 rgba(0, 0, 0, 0.08);
+                0 6px var(--gap-l) 0 rgba(0, 0, 0, 0.08);
             @include m.tablet {
                 max-height: 555px;
                 height: 100%;
-                border-radius: 24px 24px 0px 0px;
+                border-radius: var(--gap-24) var(--gap-24) 0 0;
             }
         }
         .ant-drawer-content {
-            border-radius: 8px 0 0 8px;
+            border-radius: var(--gap-ms) 0 0 var(--gap-ms);
             @include m.tablet {
-                border-radius: 24px 24px 0px 0px;
+                border-radius: var(--gap-24) var(--gap-24) 0 0;
             }
         }
         .ant-drawer-header {
-            padding: 24px 32px 16px;
+            padding: var(--gap-24) var(--gap-32) var(--gap-l);
             border: none;
             @include m.tablet {
-                padding: 24px 16px 16px;
+                padding: var(--gap-24) var(--gap-l) var(--gap-l);
             }
         }
         .ant-drawer-header-title {
             flex-direction: row-reverse;
         }
         .ant-typography {
-            @include m.font($size: 20px, $weight: 500);
+            @include m.font($size: var(--font-size-l), $weight: 500);
             color: var(--light-title-85);
         }
         .ant-drawer-close {
@@ -50,14 +50,14 @@
         }
     }
     @include m.tablet {
-        padding: 0 16px;
-        border-radius: 24px 24px 0px 0px;
+        padding: 0 var(--gap-l);
+        border-radius: var(--gap-24) var(--gap-24) 0 0;
     }
 }
 
 .title {
     @include m.flex($j-c: flex-start);
-    gap: 10px;
+    gap: var(--gap-m);
 }
 
 .icon {
@@ -66,7 +66,7 @@
 
 .data {
     @include m.flex($j-c: space-between);
-    padding: 0 32px 8px;
+    padding: 0 var(--gap-32) var(--gap-ms);
     :global {
         .ant-typography {
             @include m.font($weight: 500);
@@ -74,7 +74,7 @@
         }
     }
     @include m.tablet {
-        padding: 0 16px 8px;
+        padding: 0 var(--gap-l) var(--gap-ms);
     }
 }
 
@@ -90,9 +90,9 @@
 .watning {
     margin: 0;
     margin-top: auto;
-    padding: 32px;
+    padding: var(--gap-32);
     padding-top: 0;
-    @include m.font($size: 12px);
+    @include m.font($size: var(--font-size-small));
     color: var(--light-secondary-45);
     text-align: center;
 }

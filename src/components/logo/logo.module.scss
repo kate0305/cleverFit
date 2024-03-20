@@ -21,7 +21,7 @@
     @include m.logo-base;
     margin-top: 19px;
     margin-bottom: var(--gap-ll);
-    margin-left: 18px;
+    margin-left: var(--gap-ll);
     width: 29px;
     height: 27px;
     background-image: url('https://raw.githubusercontent.com/kate0305/library-image-data/eed471fd5ae30291edc132acf604b83db84e554f/images/svg/logo_short.svg');

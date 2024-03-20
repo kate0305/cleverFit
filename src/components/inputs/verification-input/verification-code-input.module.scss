@@ -5,7 +5,7 @@
     gap: var(--gap-mm);
     @include m.phone {
         gap: var(--gap-ms);
-        padding: 0 10px;
+        padding: 0 var(--gap-m);
     }
 }
 .character {

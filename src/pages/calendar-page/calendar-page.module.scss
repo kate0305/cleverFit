@@ -2,15 +2,15 @@
 
 .wrapper {
     height: calc(100vh - 86px);
-    margin-top: -8px;
-    padding: 0 24px 16px;
+    margin-top: -var(--gap-ms);
+    padding: 0 var(--gap-24) var(--gap-l);
     background-color: var(--primary-light-1);
     @include m.flex($j-c: flex-start);
     flex-direction: column;
     overflow-y: auto;
     @include m.tablet {
         height: auto;
-        margin-top: -14px;
+        margin-top: -var(--gap-ml);
     }
 }
 
@@ -61,7 +61,7 @@
             padding: 0 11px;
             @include m.tablet {
                 height: 20px;
-                padding: 1px 12px;
+                padding: 1px var(--gap-mm);
             }
         }
 
@@ -72,7 +72,7 @@
             }
             .ant-picker-body {
                 padding: 0;
-                padding-top: 2px;
+                padding-top: var(--gap-xxs);
                 @include m.tablet {
                     padding: var(--gap-ms);
                 }
@@ -127,7 +127,7 @@
         }
 
         .ant-picker-body {
-            padding: 2px 0;
+            padding: var(--gap-xxs) 0;
         }
 
         .ant-picker-content {
@@ -135,7 +135,7 @@
                 height: auto;
             }
             thead th {
-                padding: 6px 0;
+                padding: var(--gap-ss) 0;
             }
             th {
                 color: var(--light-secondary-45);
@@ -172,7 +172,7 @@
     @include m.tablet {
         margin-left: 0;
         padding: 7px 0;
-        font-size: 14px;
+        font-size: var(--font-size-base);
         border-radius: var(--border-radius-circle);
         border: none;
         box-shadow: none;

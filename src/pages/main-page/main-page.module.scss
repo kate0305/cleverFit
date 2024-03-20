@@ -3,7 +3,7 @@
 .content {
     display: flex;
     flex-direction: column;
-    padding: 24px;
+    padding: var(--gap-24);
     @media screen and (max-width: 768px) {
         padding-left: var(--gap-l);
         padding-right: var(--gap-l);
@@ -19,7 +19,7 @@
 
 .main_card {
     @include m.card-base;
-    padding: 24px;
+    padding: var(--gap-24);
     box-shadow: var(--box-shadow-dark);
     @media screen and (max-width: 576px) {
         padding: var(--gap-l);

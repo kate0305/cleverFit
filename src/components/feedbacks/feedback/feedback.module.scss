@@ -6,7 +6,7 @@
     padding: var(--gap-l);
     @include m.card-base;
     @include m.font;
-    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.15);
+    box-shadow: V;
     :global(.ant-card-body) {
         padding: 0;
         @include m.flex($j-c: flex-start, $items: flex-start);
