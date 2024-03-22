@@ -1,14 +1,12 @@
 import { useState } from 'react';
 import { Checkbox, Form, FormInstance, Input, InputNumber } from 'antd';
 import dayjs, { Dayjs } from 'dayjs';
-import { MinusOutlined, PlusOutlined } from '@ant-design/icons';
-
 import { createTraining, selectTrainingData } from '@redux/redusers/trainings-slice';
+
+import { MinusOutlined, PlusOutlined } from '@ant-design/icons';
 import { useAppDispatch, useAppSelector } from '@hooks/index';
-
-import { checkIsPastDate } from '@utils/check-is-past-date';
-
 import { Exercise, UserTraining } from '@type/training';
+import { checkIsPastDate } from '@utils/check-is-past-date';
 
 import { PrimaryBtn } from '@components/buttons/primary-button';
 
@@ -49,13 +47,15 @@ export const AddTrainingForm = ({
     const getInitialFormValues = () => {
         if (exercises.length) return { fields: exercises };
         if (isEditMode && exerisesForEdit.length) return { fields: exerisesForEdit };
+
         return { fields: [{}] };
     };
 
     const initialFormValues = getInitialFormValues();
 
     const onFinish = (values: Record<string, FormValues[]>) => {
-        const trainings = [...values.fields].filter((training) => training.name);
+        const trainings = [...values.fields].filter((value) => value.name);
+
         dispatch(
             createTraining({
                 name,
@@ -71,6 +71,7 @@ export const AddTrainingForm = ({
         const arrIndexes = formValues.fields
             .map((value, index) => value && value.isChecked && index)
             .filter((value): value is number => typeof value === 'number');
+
         return arrIndexes;
     };
 
@@ -92,108 +93,104 @@ export const AddTrainingForm = ({
             preserve={false}
         >
             <Form.List name='fields'>
-                {(fields, { add, remove }) => {
-                    return (
-                        <div>
-                            <div className={styles.container}>
-                                {fields.map(({ key, name, ...restField }, index) => (
-                                    <div className={styles.input_block} key={key}>
-                                        <Form.Item {...restField} name={[name, 'name']}>
-                                            <Input
-                                                placeholder='Упражнение'
-                                                data-test-id={`modal-drawer-right-input-exercise${index}`}
-                                                addonAfter={
-                                                    isEditMode && (
-                                                        <Form.Item
-                                                            {...restField}
-                                                            name={[name, 'isChecked']}
-                                                            valuePropName='checked'
-                                                            className={styles.checkBox}
-                                                        >
-                                                            <Checkbox
-                                                                data-test-id={`modal-drawer-right-checkbox-exercise${index}`}
-                                                            />
-                                                        </Form.Item>
-                                                    )
-                                                }
+                {(fields, { add, remove }) => (
+                    <div>
+                        <div className={styles.container}>
+                            {fields.map(({ key, name, ...restField }, index) => (
+                                <div className={styles.input_block} key={key}>
+                                    <Form.Item {...restField} name={[name, 'name']}>
+                                        <Input
+                                            placeholder='Упражнение'
+                                            data-test-id={`modal-drawer-right-input-exercise${index}`}
+                                            addonAfter={
+                                                isEditMode && (
+                                                    <Form.Item
+                                                        {...restField}
+                                                        name={[name, 'isChecked']}
+                                                        valuePropName='checked'
+                                                        className={styles.checkBox}
+                                                    >
+                                                        <Checkbox
+                                                            data-test-id={`modal-drawer-right-checkbox-exercise${index}`}
+                                                        />
+                                                    </Form.Item>
+                                                )
+                                            }
+                                        />
+                                    </Form.Item>
+                                    <div className={styles.details_wrap}>
+                                        <Form.Item
+                                            {...restField}
+                                            name={[name, 'approaches']}
+                                            label='Подходы'
+                                        >
+                                            <InputNumber
+                                                min={1}
+                                                placeholder='1'
+                                                addonBefore='+'
+                                                data-test-id={`modal-drawer-right-input-approach${index}`}
                                             />
                                         </Form.Item>
-                                        <div className={styles.details_wrap}>
+                                        <div className={styles.wrap}>
                                             <Form.Item
                                                 {...restField}
-                                                name={[name, 'approaches']}
-                                                label='Подходы'
+                                                name={[name, 'weight']}
+                                                label='Вес, кг'
+                                            >
+                                                <InputNumber
+                                                    min={0}
+                                                    placeholder='0'
+                                                    data-test-id={`modal-drawer-right-input-weight${index}`}
+                                                />
+                                            </Form.Item>
+                                            <span className={styles.divider}>x</span>
+                                            <Form.Item
+                                                {...restField}
+                                                name={[name, 'replays']}
+                                                label='Количество'
                                             >
                                                 <InputNumber
                                                     min={1}
-                                                    placeholder='1'
-                                                    addonBefore='+'
-                                                    data-test-id={`modal-drawer-right-input-approach${index}`}
+                                                    placeholder='3'
+                                                    data-test-id={`modal-drawer-right-input-quantity${index}`}
                                                 />
                                             </Form.Item>
-                                            <div className={styles.wrap}>
-                                                <Form.Item
-                                                    {...restField}
-                                                    name={[name, 'weight']}
-                                                    label='Вес, кг'
-                                                >
-                                                    <InputNumber
-                                                        min={0}
-                                                        placeholder='0'
-                                                        data-test-id={`modal-drawer-right-input-weight${index}`}
-                                                    />
-                                                </Form.Item>
-                                                <span className={styles.divider}>x</span>
-                                                <Form.Item
-                                                    {...restField}
-                                                    name={[name, 'replays']}
-                                                    label='Количество'
-                                                >
-                                                    <InputNumber
-                                                        min={1}
-                                                        placeholder='3'
-                                                        data-test-id={`modal-drawer-right-input-quantity${index}`}
-                                                    />
-                                                </Form.Item>
-                                            </div>
                                         </div>
                                     </div>
-                                ))}
-                            </div>
-                            <div className={isEditMode ? styles.btn_group : ''}>
-                                <Form.Item
-                                    className={isEditMode ? styles.btn_add_edit : styles.btn_add}
-                                >
-                                    <PrimaryBtn
-                                        type='link'
-                                        icon={
-                                            <PlusOutlined
-                                                style={{ fontSize: '14px', color: '#2f54eb' }}
-                                            />
-                                        }
-                                        onClick={() => add()}
-                                        btnText='Добавить ещё'
-                                        className={''}
-                                    />
-                                </Form.Item>
-                                {isEditMode && (
-                                    <PrimaryBtn
-                                        type='ghost'
-                                        icon={<MinusOutlined style={{ fontSize: '14px' }} />}
-                                        onClick={() => {
-                                            remove(formValuesChecked);
-                                        }}
-                                        className={
-                                            isEditMode ? styles.btn_add_edit_left : styles.btn_add
-                                        }
-                                        btnText='Удалить'
-                                        disabled={!formValuesChecked.length}
-                                    />
-                                )}
-                            </div>
+                                </div>
+                            ))}
                         </div>
-                    );
-                }}
+                        <div className={isEditMode ? styles.btn_group : ''}>
+                            <Form.Item
+                                className={isEditMode ? styles.btn_add_edit_left : styles.btn_add}
+                            >
+                                <PrimaryBtn
+                                    type='link'
+                                    icon={
+                                        <PlusOutlined
+                                            style={{ fontSize: '14px', color: '#2f54eb' }}
+                                        />
+                                    }
+                                    onClick={() => add()}
+                                    btnText='Добавить ещё'
+                                    className=''
+                                />
+                            </Form.Item>
+                            {isEditMode && (
+                                <PrimaryBtn
+                                    type='ghost'
+                                    icon={<MinusOutlined style={{ fontSize: '14px' }} />}
+                                    onClick={() => {
+                                        remove(formValuesChecked);
+                                    }}
+                                    className={styles.btn_add_edit}
+                                    btnText='Удалить'
+                                    disabled={!formValuesChecked.length}
+                                />
+                            )}
+                        </div>
+                    </div>
+                )}
             </Form.List>
         </Form>
     );

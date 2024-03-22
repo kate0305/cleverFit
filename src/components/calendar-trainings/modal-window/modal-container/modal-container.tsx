@@ -1,14 +1,12 @@
-import { Dispatch, useState } from 'react';
+import { Dispatch, Fragment,useState } from 'react';
 import { Dayjs } from 'dayjs';
-
 import { selectTrainingData } from '@redux/redusers/trainings-slice';
-import { useAppSelector } from '@hooks/index';
 
+import { MD_WIDTH } from '@constants/index';
+import { useAppSelector } from '@hooks/index';
+import { DateFormats } from '@type/dates';
 import { getFormattedDate } from '@utils/get-formatted-date';
 import { useMediaQuery } from '@utils/use-media-query';
-
-import { DateFormats } from '@type/dates';
-import { MD_WIDTH } from '@constants/index';
 
 import { ModalChooseTraining } from '../modal-choose-training';
 import { ModalDay } from '../modal-day';
@@ -20,7 +18,7 @@ type ModalContainerProps = {
 };
 
 export const ModalContainer = ({ date, setClosePortal, saveTraining }: ModalContainerProps) => {
-    const isMiddleScreen = useMediaQuery(`(max-width: 1200px)`);
+    const isMiddleScreen = useMediaQuery('(max-width: 1200px)');
     const isTablet = useMediaQuery(`(min-width: ${MD_WIDTH})`);
 
     const getDayOfWeek = date.day();
@@ -49,7 +47,7 @@ export const ModalContainer = ({ date, setClosePortal, saveTraining }: ModalCont
     };
 
     return (
-        <>
+        <Fragment>
             {isOpenCreateTraining && (
                 <ModalDay
                     date={date}
@@ -70,6 +68,6 @@ export const ModalContainer = ({ date, setClosePortal, saveTraining }: ModalCont
                     isRightModalPosition={isRightModalPosition}
                 />
             )}
-        </>
+        </Fragment>
     );
 };

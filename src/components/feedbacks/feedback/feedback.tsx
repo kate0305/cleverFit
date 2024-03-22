@@ -1,3 +1,5 @@
+import { Fragment } from 'react';
+
 import { ContentCard } from '@components/content-card';
 
 import { Review } from './review';
@@ -18,10 +20,10 @@ export const Feedback = ({ fullName, image, message, rating, date }: UserProps) 
         bordered={false}
         className={styles.feedback}
         content={
-            <>
+            <Fragment>
                 <User fullName={fullName} image={image} />
                 <Review rating={rating} date={date} message={message} />
-            </>
+            </Fragment>
         }
     />
 );

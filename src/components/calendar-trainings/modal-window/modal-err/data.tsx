@@ -1,5 +1,6 @@
 import { CSSProperties, ReactNode } from 'react';
 import { Typography } from 'antd';
+
 import { CloseCircleOutlined, CloseOutlined } from '@ant-design/icons';
 
 import styles from './modal-err.module.scss';

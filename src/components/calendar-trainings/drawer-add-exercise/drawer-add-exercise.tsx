@@ -1,18 +1,16 @@
 import { Dispatch } from 'react';
 import { Badge, Drawer, Form, Typography } from 'antd';
 import { Dayjs } from 'dayjs';
-import { CloseOutlined, EditOutlined, PlusOutlined } from '@ant-design/icons';
-
 import { selectEditTrainingData } from '@redux/redusers/trainings-slice';
-import { useAppSelector } from '@hooks/index';
 
+import { CloseOutlined, EditOutlined, PlusOutlined } from '@ant-design/icons';
+import { MD_WIDTH } from '@constants/index';
+import { useAppSelector } from '@hooks/index';
+import { DateFormats } from '@type/dates';
+import { BadgeColors, UserTraining } from '@type/training';
 import { checkIsPastDate } from '@utils/check-is-past-date';
 import { getFormattedDate } from '@utils/get-formatted-date';
 import { useMediaQuery } from '@utils/use-media-query';
-
-import { DateFormats } from '@type/dates';
-import { BadgeColors, UserTraining } from '@type/training';
-import { MD_WIDTH } from '@constants/index';
 
 import { AddTrainingForm } from '@components/form/add-training-form';
 

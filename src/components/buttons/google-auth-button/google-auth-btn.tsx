@@ -1,14 +1,14 @@
 import { GooglePlusOutlined } from '@ant-design/icons';
-
 import { BASE_URL, GOOGLE_AUTH } from '@constants/index';
 
 import { PrimaryBtn } from '../primary-button';
 
 import styles from './google-auth-btn.module.scss';
 
-
 export const GoogleAuthBtn = (props: { isSignUpForm?: boolean }) => {
-    const goToGoogleAuth = () => (window.location.href = `${BASE_URL}${GOOGLE_AUTH}`);
+    const goToGoogleAuth = () => {
+        window.location.href = `${BASE_URL}${GOOGLE_AUTH}`;
+    };
 
     return (
         <PrimaryBtn
@@ -21,4 +21,3 @@ export const GoogleAuthBtn = (props: { isSignUpForm?: boolean }) => {
         />
     );
 };
-

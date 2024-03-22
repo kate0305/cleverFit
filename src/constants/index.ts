@@ -1,13 +1,13 @@
-import { AuthPaths, Paths, ResultPaths } from "@type/paths";
+import { AuthPaths, Paths, ResultPaths } from '@type/paths';
 
-//breakpoints width
+// breakpoints width
 export const XS_WIDTH = '480px';
 export const SM_WIDTH = '576px';
 export const MD_WIDTH = '768px';
 export const LG_WIDTH = '992px';
 
 
-//base and part url for API
+// base and part url for API
 export const BASE_URL = 'https://marathon-api.clevertec.ru';
 export const SIGN_UP = '/auth/registration';
 export const SIGN_IN = '/auth/login';
@@ -20,7 +20,7 @@ export const TRAINING = '/training';
 export const TRAINING_LIST = '/catalogs/training-list';
 
 
-//route paths
+// route paths
 export const REGISTRATION = `${Paths.AUTH}/${AuthPaths.REGISTRATION}`;
 export const CONFIRM_EMAIL = `${Paths.AUTH}/${AuthPaths.CONFIRM_EMAIL}`;
 export const CHANGE_PASSWORD = `${Paths.AUTH}/${AuthPaths.CHANGE_PASSWORD}`;
@@ -34,7 +34,7 @@ export const CHANGE_PASSWORD_SUCCESS = `${Paths.RESULT}/${ResultPaths.CHANGE_PAS
 export const CHANGE_PASSWORD_ERR = `${Paths.RESULT}/${ResultPaths.CHANGE_PASSWORD_ERR}`;
 
 
-//date
+// date
 export const DATE_OPTIONS: Intl.DateTimeFormatOptions = {
     year: 'numeric',
     month: 'numeric',
@@ -42,7 +42,7 @@ export const DATE_OPTIONS: Intl.DateTimeFormatOptions = {
 };
 
 
-//breadcrumbs
+// breadcrumbs
 export const BREADCRUMB_NAMES: Record<string, string> = {
     '/feedbacks': 'Отзывы пользователей',
     '/calendar': 'Календарь',

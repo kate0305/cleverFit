@@ -1,11 +1,10 @@
-import { lazy } from 'react';
+import { Fragment, lazy } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { HistoryRouter } from 'redux-first-history/rr6';
-
 import { history } from '@redux/configure-store';
 import { selectIsLoading } from '@redux/redusers/app-slice';
-import { useAppSelector } from '@hooks/index';
 
+import { useAppSelector } from '@hooks/index';
 import { AuthPaths, Paths, ResultPaths } from '@type/paths';
 import { ResultRequestKeys } from '@type/result-request-keys';
 
@@ -22,8 +21,9 @@ const MainPage = lazy(() => import('..'));
 
 export const App = () => {
     const isLoading = useAppSelector(selectIsLoading);
+
     return (
-        <>
+        <Fragment>
             <HistoryRouter history={history}>
                 <Routes>
                     <Route
@@ -34,7 +34,7 @@ export const App = () => {
                             </PrivateRoute>
                         }
                     >
-                        <Route index element={<Navigate to={Paths.MAIN} replace />} />
+                        <Route index={true} element={<Navigate to={Paths.MAIN} replace={true} />} />
                         <Route path={Paths.MAIN} element={<MainPage />} />
                         <Route path={Paths.FEEDBACKS} element={<FeedbacksPage />} />
                         <Route path={Paths.CALENDAR} element={<CalendarPage />} />
@@ -47,7 +47,7 @@ export const App = () => {
                             </PublicRoute>
                         }
                     >
-                        <Route index element={<AuthPage />} />
+                        <Route index={true} element={<AuthPage />} />
                         <Route path={AuthPaths.REGISTRATION} element={<AuthPage />} />
                         <Route path={AuthPaths.CONFIRM_EMAIL} element={<ConfirmEmailForm />} />
                         <Route path={AuthPaths.CHANGE_PASSWORD} element={<ChangePasswordForm />} />
@@ -95,6 +95,6 @@ export const App = () => {
                 </Routes>
             </HistoryRouter>
             {isLoading && <Loader />}
-        </>
+        </Fragment>
     );
 };

@@ -1,7 +1,6 @@
 import { RootState } from '@redux/configure-store';
 
 import { BASE_URL } from '@constants/index';
-
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 export const cleverFitApi = createApi({
@@ -10,7 +9,8 @@ export const cleverFitApi = createApi({
         baseUrl: BASE_URL,
         credentials: 'include',
         prepareHeaders: (headers, { getState }) => {
-            const token = (getState() as RootState).userDataReduser.token;
+            const {token} = (getState() as RootState).userDataReduser;
+
             if (token) {
                 headers.set('Authorization', `Bearer ${token}`);
             }

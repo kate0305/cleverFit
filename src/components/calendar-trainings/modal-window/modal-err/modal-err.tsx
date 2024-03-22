@@ -18,22 +18,24 @@ export const getModalErr = (modalType: ModalErrTypes, onClick?: () => void) => {
     } = ModalErrData[modalType];
 
     Modal.error({
-        title: title,
+        title,
         content: message,
-        okText: okText,
-        icon: icon,
+        okText,
+        icon,
         centered: true,
         okButtonProps: { 'data-test-id': bntDataTestId },
-        maskStyle: maskStyle,
-        closable: closable,
-        closeIcon: closeIcon,
-        className: className,
+        maskStyle,
+        closable,
+        closeIcon,
+        className,
         onCancel() {
             Modal.destroyAll();
         },
         onOk() {
+            if (onClick) {
+                onClick();
+            }
             Modal.destroyAll();
-            onClick && onClick();
         },
     });
 };

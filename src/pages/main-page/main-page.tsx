@@ -1,8 +1,8 @@
+import { Fragment } from 'react';
 import { Col, Layout, Row, Typography } from 'antd';
 
-import { useCalendarClick } from '@utils/use-click-calendar';
-
 import { ResultRequestKeys } from '@type/result-request-keys';
+import { useCalendarClick } from '@utils/use-click-calendar';
 
 import { PrimaryBtn } from '@components/buttons/primary-button';
 import { ContentCard } from '@components/content-card';
@@ -21,26 +21,22 @@ export const MainPage = () => {
     const { isErr, handleClick, closeErrModal } = useCalendarClick();
 
     return (
-        <>
-            <ModalWindow
-                isOpen={isErr}
-                dataTestId='modal-no-review'
-                children={
-                    <RequestResult
-                        keyErr={ResultRequestKeys.GET_FEEDBACK_ERR}
-                        buttonsGroup={
-                            <PrimaryBtn
-                                type='primary'
-                                htmlType='button'
-                                className={styles.btn_err}
-                                btnText='Назад'
-                                onClick={closeErrModal}
-                                dataTestId='write-review-not-saved-modal'
-                            />
-                        }
-                    />
-                }
-            />
+        <Fragment>
+            <ModalWindow isOpen={isErr} dataTestId='modal-no-review'>
+                <RequestResult
+                    keyErr={ResultRequestKeys.GET_FEEDBACK_ERR}
+                    buttonsGroup={
+                        <PrimaryBtn
+                            type='primary'
+                            htmlType='button'
+                            className={styles.btn_err}
+                            btnText='Назад'
+                            onClick={closeErrModal}
+                            dataTestId='write-review-not-saved-modal'
+                        />
+                    }
+                />
+            </ModalWindow>
 
             <Content className={styles.content}>
                 <Row gutter={16} style={{ maxWidth: '768px' }}>
@@ -75,6 +71,6 @@ export const MainPage = () => {
                 </Row>
                 <ActionsList onClick={handleClick} />
             </Content>
-        </>
+        </Fragment>
     );
 };

@@ -20,25 +20,22 @@ export const TrainingList = ({
     fromModalDay,
     isInCalendar,
     isLaptop,
-}: TrainingListProps) => (
-    <>
-        {trainingsListForSelectedDay && (
+}: TrainingListProps) => {
+    const getClassName = (isImplementation: boolean) => {
+        if (isImplementation) return styles.training_disabled;
+        if (isInCalendar) return styles.training;
 
+        return styles.training_modal;
+    };
+
+    return (
+        !!trainingsListForSelectedDay.length && (
             <ul className={isInCalendar ? styles.wrapper : styles.wrap_modal}>
                 {trainingsListForSelectedDay.map(({ name, isImplementation }, index) =>
                     !isLaptop && isInCalendar ? (
                         <div className={styles.mobile_day} key={name} />
                     ) : (
-                        <li
-                            key={name}
-                            className={
-                                isImplementation
-                                    ? styles.training_disabled
-                                    : isInCalendar
-                                    ? styles.training
-                                    : styles.training_modal
-                            }
-                        >
+                        <li key={name} className={getClassName(isImplementation)}>
                             <Badge
                                 color={BadgeColors[name as keyof typeof BadgeColors]}
                                 text={name}
@@ -55,6 +52,6 @@ export const TrainingList = ({
                     ),
                 )}
             </ul>
-        )}
-    </>
-);
+        )
+    );
+};

@@ -1,6 +1,7 @@
 import { createBrowserHistory } from 'history';
 import { createReduxHistoryContext } from 'redux-first-history';
 
+import { configureStore } from '@reduxjs/toolkit';
 import { cleverFitApi } from '@services/base-query';
 
 import { appReduser } from './redusers/app-slice';
@@ -8,7 +9,6 @@ import { trainingReduser } from './redusers/trainings-slice';
 import { userDataReduser } from './redusers/user-data-slice';
 import { listenerMiddleware } from './listener-middleware';
 
-import { configureStore } from '@reduxjs/toolkit';
 
 const { createReduxHistory, routerMiddleware, routerReducer } = createReduxHistoryContext({
     history: createBrowserHistory(),

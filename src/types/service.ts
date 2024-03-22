@@ -1,4 +1,4 @@
-import { UserTraining } from "./training";
+import { UserTraining } from './training';
 
 export enum Tags {
     FEEDBACKS = 'Feedbacks',

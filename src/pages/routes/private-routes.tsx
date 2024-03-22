@@ -1,12 +1,10 @@
 import { useEffect } from 'react';
 import { Navigate, useNavigate, useSearchParams } from 'react-router-dom';
-
 import { selectToken, setToken } from '@redux/redusers/user-data-slice';
+
 import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
-
-import { useLocalStorage } from '@utils/use-local-storage';
-
 import { Paths } from '@type/paths';
+import { useLocalStorage } from '@utils/use-local-storage';
 
 export const PrivateRoute = (prop: { children: JSX.Element }) => {
     const dispatch = useAppDispatch();
@@ -25,5 +23,5 @@ export const PrivateRoute = (prop: { children: JSX.Element }) => {
         }
     }, [dispatch, navigate, setLocalStorageItem, tokenFromQueryParams]);
 
-    return isHaveToken ? prop.children : <Navigate to={Paths.AUTH} replace />;
+    return isHaveToken ? prop.children : <Navigate to={Paths.AUTH} replace={true} />;
 };

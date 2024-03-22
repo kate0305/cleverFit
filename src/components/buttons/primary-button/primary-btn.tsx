@@ -8,6 +8,7 @@ export type PrimaryBtnProps = {
     icon?: ReactNode;
     htmlType?: React.ButtonHTMLAttributes<HTMLButtonElement>['type'];
     btnText?: string;
+    href?: string;
     onClick?: () => void;
     disabled?: boolean;
     loading?: boolean;
@@ -19,6 +20,7 @@ export const PrimaryBtn = ({
     icon,
     htmlType,
     btnText,
+    href,
     onClick,
     disabled,
     loading,
@@ -29,6 +31,7 @@ export const PrimaryBtn = ({
         type={type}
         icon={icon}
         htmlType={htmlType}
+        href={href}
         onClick={onClick}
         disabled={disabled}
         loading={loading}

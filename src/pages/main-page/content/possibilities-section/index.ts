@@ -1,1 +1,1 @@
-export { PossibilitieSection } from './/possibilities-section';
+export { PossibilitieSection } from './possibilities-section';

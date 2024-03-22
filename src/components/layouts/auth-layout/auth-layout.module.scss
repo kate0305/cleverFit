@@ -13,7 +13,7 @@
 }
 
 .filter {
-    &::before {
+    &:before {
         content: '';
         position: fixed;
         max-width: 1440px;

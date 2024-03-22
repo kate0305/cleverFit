@@ -1,15 +1,13 @@
 import React, { useLayoutEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Layout } from 'antd';
-
 import { reset } from '@redux/redusers/user-data-slice';
-import { useAppDispatch } from '@hooks/typed-react-redux-hooks';
 
+import { XS_WIDTH } from '@constants/index';
+import { useAppDispatch } from '@hooks/typed-react-redux-hooks';
+import { Paths } from '@type/paths';
 import { useLocalStorage } from '@utils/use-local-storage';
 import { useMediaQuery } from '@utils/use-media-query';
-
-import { Paths } from '@type/paths';
-import { XS_WIDTH } from '@constants/index';
 
 import { ExitBtn } from '@components/buttons/exit-button';
 import { SideToggleBtn } from '@components/buttons/toggle-side-menu-button';
@@ -32,7 +30,7 @@ export const Sidebar: React.FC = () => {
 
     useLayoutEffect(() => {
         if (isMobilePhone) setCollapsed(true);
-    }, [collapsed, isMobilePhone]);
+    }, [isMobilePhone]);
 
     const handleBreakpoint = (broken: boolean) => {
         if (broken) {
@@ -53,10 +51,10 @@ export const Sidebar: React.FC = () => {
             trigger={null}
             breakpoint='sm'
             onBreakpoint={handleBreakpoint}
-            collapsible
+            collapsible={true}
             collapsed={collapsed}
             collapsedWidth={collapsedWidth}
-            width={!isWidthChanged ? 208 : 106}
+            width={isWidthChanged ? 106 : 208}
             className={styles.wrapper}
         >
             <Logo isClosedSidebar={collapsed} />

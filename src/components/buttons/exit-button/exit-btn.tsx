@@ -12,7 +12,7 @@ type ExitBtnProps = {
 
 export const ExitBtn = ({ isClosedSidebar, isWidthChanged, onClick }: ExitBtnProps) => (
     <Button
-        block
+        block={true}
         icon={!isWidthChanged && <ExitIcon />}
         onClick={onClick}
         className={styles.button}

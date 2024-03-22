@@ -92,14 +92,14 @@
 .btn_add_edit {
     @extend .btn_add;
     width: 50%;
-    padding: var(--gap-10) var(--gap-12);
-    border-radius: var(--gap-2) 0 0 var(-gap-ss);
+    padding: var(--gap-12) var(--gap-12);
+    border-radius:  0px 0 var(--gap-6) 0px;
     text-align: center;
 }
 
 .btn_add_edit_left {
     @extend .btn_add;
     width: 50%;
-    border-radius: 0 var(--gap-2) var(-gap-ss) 0;
+    border-radius: 0 0 0 var(--gap-6);
     text-align: center;
 }

@@ -8,8 +8,7 @@ import styles from './header.module.scss';
 const { Header } = Layout;
 const { Title } = Typography;
 
-export const AppHeader = (props: { isMainPage: boolean }) => {
-    return (
+export const AppHeader = (props: { isMainPage: boolean }) => (
         <Header className={styles.header}>
             <Breadcrumbs />
             {props.isMainPage && (
@@ -23,4 +22,3 @@ export const AppHeader = (props: { isMainPage: boolean }) => {
             )}
         </Header>
     );
-};

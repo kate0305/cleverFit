@@ -2,13 +2,10 @@
 
 .wrapper {
     padding: 0 var(--gap-32);
-    border-radius: var(--gap-8) 0 0 var(--gap-8);
-    box-shadow: 0px 9px 28px 8px rgba(0, 0, 0, 0.05), 0px 3px 6px -4px rgba(0, 0, 0, 0.12),
-        0px 6px 16px 0px rgba(0, 0, 0, 0.08);
 
     :global {
         .ant-drawer-content-wrapper {
-            border-radius: var(--gap-8) 0px 0px var(--gap-8);
+            border-radius: var(--gap-8) 0 0 var(--gap-8);
             box-shadow: 0 9px 28px 8px rgba(0, 0, 0, 0.05), 0 3px 6px -4px rgba(0, 0, 0, 0.12),
                 0 6px var(--gap-16) 0 rgba(0, 0, 0, 0.08);
             @include m.tablet {
@@ -51,7 +48,6 @@
     }
     @include m.tablet {
         padding: 0 var(--gap-16);
-        border-radius: var(--gap-24) var(--gap-24) 0 0;
     }
 }
 

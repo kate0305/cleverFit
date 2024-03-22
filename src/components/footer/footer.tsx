@@ -9,7 +9,7 @@ import { ContentCard } from '@components/content-card';
 
 import { appsList } from './data';
 
-import styles from './/footer.module.scss';
+import styles from './footer.module.scss';
 
 const { Footer } = Layout;
 

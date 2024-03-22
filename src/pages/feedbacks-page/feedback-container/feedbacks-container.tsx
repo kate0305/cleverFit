@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { Fragment, useMemo, useState } from 'react';
 
 import { Review } from '@type/feedbacks';
 
@@ -26,7 +26,7 @@ export const FeedbacksContainer = ({ feedbacks, isHaveFeedbacks, openReviewModal
     const feedbacksForRender = isAllFeedbacks ? sortedFeedbacks : partOfFeedbacks;
 
     return (
-        <>
+        <Fragment>
             {!isHaveFeedbacks && <NoFeedback />}
             {isHaveFeedbacks && (
                 <div className={styles.feedbacks}>
@@ -62,6 +62,6 @@ export const FeedbacksContainer = ({ feedbacks, isHaveFeedbacks, openReviewModal
                     />
                 )}
             </div>
-        </>
+        </Fragment>
     );
 };

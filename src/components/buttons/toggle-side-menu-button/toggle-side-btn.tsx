@@ -1,7 +1,7 @@
 import { Button } from 'antd';
-import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
-
 import { toggleSidebar } from '@redux/redusers/app-slice';
+
+import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
 import { useAppDispatch } from '@hooks/typed-react-redux-hooks';
 
 import styles from './toggle-side-btn.module.scss';

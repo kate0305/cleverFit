@@ -4,9 +4,7 @@ import {
     setUserTrainingsList,
 } from '@redux/redusers/trainings-slice';
 
-import { commonOnQueryStarted } from '@utils/api-query-started';
-import { getFormattedDate } from '@utils/get-formatted-date';
-
+import { TRAINING, TRAINING_LIST } from '@constants/index';
 import { DateFormats } from '@type/dates';
 import {
     Tags,
@@ -16,7 +14,8 @@ import {
     UserTrainingResp,
 } from '@type/service';
 import { UserTraining } from '@type/training';
-import { TRAINING, TRAINING_LIST } from '@constants/index';
+import { commonOnQueryStarted } from '@utils/api-query-started';
+import { getFormattedDate } from '@utils/get-formatted-date';
 
 import { cleverFitApi } from './base-query';
 
@@ -30,23 +29,26 @@ export const trainingApi = cleverFitApi
                     try {
                         await commonOnQueryStarted({ dispatch, queryFulfilled }, true);
                         const { data: userTrainings } = await queryFulfilled;
+
                         dispatch(setUserTrainingsList(userTrainings));
-                    } catch(e) {
-                        console.log(e)
+                    } catch (e) {
+                        console.log(e);
                     }
                 },
                 transformResponse: (response: UserTraining[]): UserTrainingResp => {
                     const dateArr = response.map((training) =>
-                        getFormattedDate(training['date'], DateFormats.EN),
+                        getFormattedDate(training.date, DateFormats.EN),
                     );
                     const userTraining: UserTrainingResp = {};
-                    dateArr.forEach(
-                        (date) =>
-                            (userTraining[date] = response.filter(
-                                (training) =>
-                                    getFormattedDate(training.date, DateFormats.EN) === date,
-                            )),
-                    );
+
+                    dateArr.forEach((date) => {
+                        userTraining[date] = response.filter(
+                            (training) => getFormattedDate(training.date, DateFormats.EN) === date
+                        );
+
+                        return userTraining[date];
+                    });
+
                     return userTraining;
                 },
                 providesTags: [Tags.TRAINING],
@@ -58,9 +60,10 @@ export const trainingApi = cleverFitApi
                     try {
                         await commonOnQueryStarted({ dispatch, queryFulfilled }, true);
                         const { data: appTrainingList } = await queryFulfilled;
+
                         dispatch(setAppTrainingsList(appTrainingList));
-                    } catch(e) {
-                        console.log(e)
+                    } catch (e) {
+                        console.log(e);
                     }
                 },
             }),

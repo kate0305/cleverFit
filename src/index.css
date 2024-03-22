@@ -1,4 +1,3 @@
-@import '@components/content-card/content-card.css';
 @import '@constants/variables';
 
 body {
@@ -58,4 +57,18 @@ a {
 h1 .ant-typography,
 div .ant-typography{
   margin-bottom: 0;
+}
+
+.ant-card > * {
+    color: inherit;
+    line-height: inherit;
+}
+
+.ant-card-head {
+    min-height: auto;
+}
+
+.ant-card-head-title,
+.ant-card-extra {
+    padding: 0;
 }

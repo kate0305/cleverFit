@@ -1,6 +1,5 @@
-import { CalendarTwoTone, HeartFilled, IdcardOutlined } from "@ant-design/icons";
-
-import { Paths } from "@type/paths";
+import { CalendarTwoTone, HeartFilled, IdcardOutlined } from '@ant-design/icons';
+import { Paths } from '@type/paths';
 
 export const possibilities = [
     {

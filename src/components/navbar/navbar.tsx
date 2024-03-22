@@ -1,9 +1,8 @@
 import { useLocation } from 'react-router-dom';
 import { Menu, MenuProps } from 'antd';
 
-import { useCalendarClick } from '@utils/use-click-calendar';
-
 import { Paths } from '@type/paths';
+import { useCalendarClick } from '@utils/use-click-calendar';
 
 import { createMenuItemsArr } from './data';
 

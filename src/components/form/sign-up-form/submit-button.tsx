@@ -3,6 +3,8 @@ import { Form, FormInstance } from 'antd';
 
 import { PrimaryBtn } from '@components/buttons/primary-button';
 
+import styles from './sign-up-form.module.scss';
+
 export const SubmitButton = (prop: { form: FormInstance }) => {
     const values = Form.useWatch([], prop.form);
     const [isSubmitDisabled, setIsSubmitDisabled] = useState(false);
@@ -15,7 +17,8 @@ export const SubmitButton = (prop: { form: FormInstance }) => {
             })
             .catch(() => {
                 const isTouched = prop.form.isFieldsTouched();
-                isTouched && setIsSubmitDisabled(true);
+
+                if (isTouched) setIsSubmitDisabled(true);
             });
     }, [prop.form, values]);
 
@@ -25,7 +28,7 @@ export const SubmitButton = (prop: { form: FormInstance }) => {
             htmlType='submit'
             btnText='Войти'
             disabled={isSubmitDisabled}
-            className='btn'
+            className={styles.btn}
             dataTestId='registration-submit-button'
         />
     );

@@ -1,9 +1,10 @@
-import { useCallback, useEffect, useLayoutEffect, useState } from 'react';
+import { useEffect, useLayoutEffect, useState } from 'react';
 import { CalendarProps } from 'antd';
 import ru from 'antd/es/calendar/locale/ru_RU';
 import dayjs, { Dayjs } from 'dayjs';
-
 import { selectTrainingData } from '@redux/redusers/trainings-slice';
+
+import { MD_WIDTH } from '@constants/index';
 import { useAppSelector } from '@hooks/index';
 import {
     useCreateTrainingMutation,
@@ -11,13 +12,11 @@ import {
     useLazyGetTrainingListQuery,
     useLazyGetUserTrainingsQuery,
 } from '@services/training-service';
-
-import { getFormattedDate } from '@utils/get-formatted-date';
-import { useMediaQuery } from '@utils/use-media-query';
-
 import { DateFormats } from '@type/dates';
 import { ModalErrTypes } from '@type/modal-types';
-import { MD_WIDTH } from '@constants/index';
+import { getFormattedDate } from '@utils/get-formatted-date';
+import { getTargetElement } from '@utils/get-target-element';
+import { useMediaQuery } from '@utils/use-media-query';
 
 import { SettingsBtn } from '@components/buttons/settings-button';
 import { Calendar } from '@components/calendar-trainings/calendar';
@@ -37,8 +36,7 @@ const locale: typeof ru = {
 };
 
 export const CalendarPage = () => {
-    const { userTrainingsList, editTrainingData, training } =
-        useAppSelector(selectTrainingData);
+    const { userTrainingsList, editTrainingData, training } = useAppSelector(selectTrainingData);
 
     const isLaptop = useMediaQuery(`(min-width: ${MD_WIDTH})`);
 
@@ -52,20 +50,22 @@ export const CalendarPage = () => {
         }
     };
 
-    const selectDate = useCallback((date: Dayjs) => {
+    const selectDate = (date: Dayjs) => {
         if (date.month() === selectedMonth) {
             setSelectedDay(date);
-            const parentElem = document.querySelector(`[title*='${date.format(DateFormats.EN)}']`);
+            const parentElem = getTargetElement(date, DateFormats.EN);
+
             setShowPortal(parentElem);
         }
         if (isLaptop && date.month() !== selectedMonth) {
             setShowPortal(null);
         }
-    }, [isLaptop, selectedMonth]);
+    };
 
     const dateCellRender = (date: Dayjs) => {
         const trainingsListForSelectedDay =
             userTrainingsList[getFormattedDate(date, DateFormats.EN)] ?? [];
+
         return (
             <TrainingList
                 isInCalendar={true}
@@ -92,6 +92,7 @@ export const CalendarPage = () => {
                 id: editTrainingData.editTrainingId,
                 ...training,
             };
+
             await editTraining(trainingData);
         } else {
             await createTraining(training);
@@ -117,11 +118,11 @@ export const CalendarPage = () => {
     useEffect(() => {
         if (createTrainingSucc || updateTrainingSucc) {
             getUserTraining();
-            selectDate(selectedDay);
+            const parentElem = getTargetElement(selectedDay, DateFormats.EN);
+
+            setShowPortal(parentElem);
         }
     }, [createTrainingSucc, getUserTraining, selectedDay, updateTrainingSucc]);
-
-
 
     return (
         <main className={styles.wrapper}>

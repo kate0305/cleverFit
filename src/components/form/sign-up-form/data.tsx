@@ -2,11 +2,11 @@ import { Input } from 'antd';
 
 import { FormItemProps } from '../form-item/form-item';
 
-type signUpFormFild = FormItemProps & {
+type SignUpFormFild = FormItemProps & {
     id: string;
 }
 
-export const signUpFormFildsData: signUpFormFild[] = [
+export const signUpFormFildsData: SignUpFormFild[] = [
     {
         id: '1',
         name: 'email',
@@ -51,6 +51,7 @@ export const signUpFormFildsData: signUpFormFild[] = [
                     if (!value || getFieldValue('password') === value) {
                         return Promise.resolve();
                     }
+
                     return Promise.reject(new Error('Пароли не совпадают'));
                 },
             }),

@@ -1,4 +1,4 @@
-import { UserReq } from "./service";
+import { UserReq } from './service';
 
 export type SingInFormData = UserReq & {
     remember: boolean;

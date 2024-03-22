@@ -1,18 +1,16 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Checkbox, Form, Input } from 'antd';
-
 import { selectUserEmail, setEmail, setToken } from '@redux/redusers/user-data-slice';
+
+import { CHECK_EMAIL_ERR, CHECK_EMAIL_ERR_404, CONFIRM_EMAIL, LOGIN_ERR } from '@constants/index';
 import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { useCheckEmailMutation, useSignInUserMutation } from '@services/auth-service';
-
-import { errorHandler } from '@utils/error-handler';
-import { useLocalStorage } from '@utils/use-local-storage';
-
 import { SingInFormData } from '@type/auth';
 import { Paths } from '@type/paths';
 import { StatusCode } from '@type/status-code';
-import { CHECK_EMAIL_ERR, CHECK_EMAIL_ERR_404, CONFIRM_EMAIL, LOGIN_ERR } from '@constants/index';
+import { errorHandler } from '@utils/error-handler';
+import { useLocalStorage } from '@utils/use-local-storage';
 
 import { GoogleAuthBtn } from '@components/buttons/google-auth-button';
 import { PrimaryBtn } from '@components/buttons/primary-button';
@@ -27,13 +25,14 @@ export const SignInForm: React.FC = () => {
     const [isForgotDisabled, setIsForgotDisabled] = useState(false);
     const [, setLocalStorageItem] = useLocalStorage('token', '');
     const userEmail = useAppSelector(selectUserEmail);
-    const [signInUser, { data, isError, isSuccess }] = useSignInUserMutation();
+    const [signInUser, { data: userLoginData, isError, isSuccess }] = useSignInUserMutation();
     const [checkEmail] = useCheckEmailMutation();
     const [form] = Form.useForm<SingInFormData>();
     const fromError = location.state && location.state.fromErr;
 
     const onSubmit = async (values: SingInFormData) => {
         const { email, password, remember } = values;
+
         setIsChecked(remember);
         await signInUser({ email, password });
     };
@@ -47,17 +46,17 @@ export const SignInForm: React.FC = () => {
                 });
             } catch (e) {
                 const err = errorHandler(e);
-                if (typeof err !== 'string' && err) {
-                    const { errStatus, errMsg } = err;
 
-                    errStatus === StatusCode.NOT_FOUND && errMsg.includes('Email не найден')
-                        ? navigate(CHECK_EMAIL_ERR_404, {
-                              state: { fromServer: true },
-                          })
-                        : navigate(CHECK_EMAIL_ERR, {
-                              state: { fromServer: true },
-                          });
-                }
+                if (typeof err === 'string' || !err) return;
+
+                const { errStatus, errMsg } = err;
+
+                if (errStatus === StatusCode.NOT_FOUND && errMsg.includes('Email не найден')) {
+                    navigate(CHECK_EMAIL_ERR_404, { state: { fromServer: true } });
+                } else
+                    navigate(CHECK_EMAIL_ERR, {
+                        state: { fromServer: true },
+                    });
             }
         },
         [checkEmail, navigate],
@@ -66,23 +65,27 @@ export const SignInForm: React.FC = () => {
     const validateEmail = async () => {
         try {
             const { email } = await form.validateFields(['email']);
+
             return email;
         } catch {
-            setIsForgotDisabled(true);
+            return setIsForgotDisabled(true);
         }
     };
 
     const handleForgotPassword = async () => {
         const email = await validateEmail();
+
         if (email) {
-            const email = form.getFieldValue('email');
-            dispatch(setEmail(email));
-            await handleCheckEmail(email);
+            const emailValue = form.getFieldValue('email');
+
+            dispatch(setEmail(emailValue));
+            await handleCheckEmail(emailValue);
         }
     };
 
     const onFormValuesChange = (changedValues: SingInFormData) => {
         const formFieldName = Object.keys(changedValues)[0];
+
         if (formFieldName === 'email') {
             setIsForgotDisabled(false);
         }
@@ -96,22 +99,23 @@ export const SignInForm: React.FC = () => {
 
     useEffect(() => {
         if (isSuccess) {
-            if (data) {
-                const { accessToken } = data;
-                dispatch(setToken(accessToken));
-                isChecked && setLocalStorageItem(accessToken);
-                navigate(Paths.MAIN);
-            }
+            if (!userLoginData) return;
+
+            const { accessToken } = userLoginData;
+
+            dispatch(setToken(accessToken));
+            if (isChecked) setLocalStorageItem(accessToken);
+            navigate(Paths.MAIN);
         }
         if (isError) {
             navigate(LOGIN_ERR, {
                 state: { fromServer: true },
             });
         }
-    }, [data, dispatch, isChecked, isError, isSuccess, navigate, setLocalStorageItem]);
+    }, [userLoginData, dispatch, isChecked, isError, isSuccess, navigate, setLocalStorageItem]);
 
     return (
-        <>
+        <React.Fragment>
             <Form
                 name='sign-in'
                 form={form}
@@ -143,7 +147,7 @@ export const SignInForm: React.FC = () => {
                     />
                 </Form.Item>
                 <Form.Item>
-                    <Form.Item name='remember' valuePropName='checked' noStyle>
+                    <Form.Item name='remember' valuePropName='checked' noStyle={true}>
                         <Checkbox data-test-id='login-remember'>Запомнить меня</Checkbox>
                     </Form.Item>
 
@@ -169,6 +173,6 @@ export const SignInForm: React.FC = () => {
                 </Form.Item>
             </Form>
             <GoogleAuthBtn />
-        </>
+        </React.Fragment>
     );
 };

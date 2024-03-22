@@ -1,7 +1,7 @@
 import { Button } from 'antd';
-import { EditOutlined, EditTwoTone } from '@ant-design/icons';
-
 import { setEditTrainingData } from '@redux/redusers/trainings-slice';
+
+import { EditOutlined, EditTwoTone } from '@ant-design/icons';
 import { useAppDispatch } from '@hooks/typed-react-redux-hooks';
 
 import styles from './edit-btn.module.scss';
@@ -21,12 +21,12 @@ export const EditBtn = ({ index, onClick, size, disabled, fromModalDay }: EditBt
         if (fromModalDay) {
             dispatch(setEditTrainingData({ isEditMode: true, editTrainingIndex: index }));
         }
-        onClick && onClick();
+        if (onClick) onClick();
     };
 
     return (
         <Button
-            block
+            block={true}
             icon={
                 disabled ? (
                     <EditTwoTone

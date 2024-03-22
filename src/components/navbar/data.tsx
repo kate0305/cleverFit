@@ -1,8 +1,6 @@
 import { CalendarTwoTone, HeartFilled, IdcardOutlined, TrophyFilled } from '@ant-design/icons';
-
-import { getListItemWithIcon, MenuItem } from '@utils/get-list-item-with-icon';
-
 import { Paths } from '@type/paths';
+import { getListItemWithIcon, MenuItem } from '@utils/get-list-item-with-icon';
 
 import styles from './navbar.module.scss';
 
@@ -10,7 +8,7 @@ const data = [
     {
         key: Paths.CALENDAR,
         icon: (
-            <CalendarTwoTone style={{ fontSize: '14px' }} twoToneColor={['##061178', '##061178']} />
+            <CalendarTwoTone style={{ fontSize: '14px' }} twoToneColor={['#061178', '#061178']} />
         ),
         label: 'Календарь',
     },
@@ -36,13 +34,17 @@ export const createMenuItemsArr = (
     isClosedSidebar: boolean,
 ): MenuItem[] => {
     const arr = data.map(({ key, icon, label }) => {
-        const Icon = () => (!isWidthChanged ? icon : null);
+        const Icon = () => (isWidthChanged ? null : icon);
 
         const padding = () => {
             if (isWidthChanged) return '8px';
             if (!isClosedSidebar) return '18px';
+
+            return undefined;
         };
+
         return getListItemWithIcon(label, key, <Icon />, { paddingLeft: padding() }, styles.link);
     });
+
     return arr;
 };

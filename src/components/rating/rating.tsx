@@ -1,4 +1,5 @@
 import { Rate } from 'antd';
+
 import { StarFilled, StarOutlined } from '@ant-design/icons';
 
 import styles from './rating.module.scss';

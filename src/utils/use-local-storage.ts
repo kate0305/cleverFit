@@ -15,6 +15,7 @@ export const useLocalStorage = <T>(key: string, initialValue: T) => {
         const onStorage = (e: StorageEvent) => {
             if (e.key === key) {
                 const newValue = (e.newValue && JSON.parse(e.newValue)) ?? undefined;
+
                 setValue(newValue);
             }
         };
