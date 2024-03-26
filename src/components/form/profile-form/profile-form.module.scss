@@ -1,0 +1,105 @@
+@use '@sass/mixins.scss' as m;
+
+.form {
+    max-width: 480px;
+    width: 100%;
+    @include m.flex($items: flex-start);
+    flex-direction: column;
+    gap: var(--gap-24);
+
+    .title {
+        margin-bottom: var(--gap-24);
+        @include m.font($size: var(--font-size-m), $weight: 500);
+        color: var(--light-title-85);
+        border: none;
+        @include m.phone {
+            margin-bottom: var(--gap-20);
+        }
+    }
+
+    @include m.phone {
+        gap: var(--gap-20);
+    }
+
+}
+
+.info_wrapper,
+.auth_wrapper {
+    width: 100%;
+    padding: 0;
+}
+
+.info_wrapper {
+    margin-bottom: var(--gap-16);
+    @include m.phone {
+        margin-bottom: 0;
+    }
+}
+
+.inputs_container {
+    @include m.flex($j-c: flex-start, $items: flex-start);
+    gap: var(--gap-24);
+    :global {
+        .ant-form-item:not(:last-child) {
+            margin-bottom: 16px;
+        }
+        .ant-form-item:last-child {
+            margin-bottom: 0;
+        }
+        .ant-input-lg,
+        .ant-picker-large {
+            @include m.font;
+            padding: var(--gap-10) var(--gap-12);
+        }
+    }
+    @include m.phone {
+        gap: var(--gap-16);
+        flex-direction: column-reverse;
+    }
+}
+
+.inputs_column {
+    width: 100%;
+}
+
+.auth_wrapper {
+    :global {
+        .ant-form-item:first-child {
+            margin-bottom: var(--gap-32);
+        }
+        .ant-form-item:nth-child(2) {
+            margin-bottom: var(--gap-46);
+            @include m.phone {
+                margin-bottom: var(--gap-44);
+            }
+        }
+        .ant-form-item:nth-child(3) {
+            margin-bottom: var(--gap-30);
+        }
+        .ant-form-item-explain {
+            padding-top: var(--gap-2);
+            @include m.font($size: var(--font-size-s));
+            color: var(--light-secondary-45);
+        }
+        .ant-input-lg,
+        .ant-picker-large {
+            @include m.font;
+            padding: var(--gap-10) var(--gap-12);
+        }
+    }
+}
+
+.submit_btn {
+    margin-bottom: 0;
+    @include m.phone {
+        width: 100%;
+        margin-bottom: var(--gap-20);
+    }
+}
+
+.btn {
+    @include m.primary-btn;
+    @include m.phone {
+        font-size: var(--font-size-m);
+    }
+}
