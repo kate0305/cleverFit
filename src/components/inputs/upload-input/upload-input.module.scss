@@ -1,0 +1,95 @@
+@use '@sass/mixins.scss' as m;
+
+form .upload {
+    @include m.phone {
+        :global {
+            .ant-col.ant-form-item-control,
+            .ant-col.ant-form-item-label {
+                flex: 0 0 48%;
+            }
+            .ant-form-item-label {
+                padding: 0;
+                label {
+                    @include m.font($size: var(--font-size-s));
+                }
+            }
+        }
+    }
+}
+
+.upload {
+    @include m.phone {
+        width: 100%;
+        margin: 0;
+        @include m.flex($j-c: space-between);
+    }
+    :global {
+        .ant-upload {
+            line-height: var(--line-height-base);
+            @include m.phone {
+                width: 100%;
+            }
+        }
+        .ant-upload.ant-upload-select-picture-card {
+            margin: 0;
+        }
+        .anticon.anticon-delete,
+        .anticon.anticon-eye {
+            svg {
+                fill: var(--base-light);
+                @include m.phone {
+                    fill: var(--light-secondary-45);
+                    fill-opacity: 1;
+                }
+            }
+        }
+        .anticon-plus,
+        .anticon-upload {
+            svg {
+                fill: var(--neutral-gray-13);
+            }
+        }
+        .anticon-upload {
+            @include m.phone {
+                fill-opacity: 0.25;
+            }
+        }
+        .ant-form-item-control-input-content > span {
+            display: block;
+            width: fit-content;
+            @include m.phone {
+                width: 100%;
+            }
+        }
+        @include m.phone {
+            .ant-row {
+                width: 100%;
+                @include m.flex($j-c: space-between);
+                flex-flow: nowrap;
+                gap: 16px;
+            }
+            .ant-form-item-control:first-child:not([class^='ant-col-']):not([class*=' ant-col-']) {
+                flex-basis: 100%;
+            }
+            .ant-upload-list-item {
+                margin-top: 0;
+            }
+        }
+    }
+}
+
+.upload_btn {
+    width: fit-content;
+    @include m.phone {
+        width: 100%;
+        padding: var(--gap-10) var(--gap-28);
+        @include m.font;
+    }
+}
+
+.upload_text {
+    max-width: 70px;
+    margin-top: var(--gap-6);
+    @include m.font;
+    color: var(--light-secondary-45);
+}
