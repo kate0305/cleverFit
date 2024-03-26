@@ -1,0 +1,23 @@
+@use '@sass/mixins.scss' as m;
+
+.alert {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    max-width: 395px;
+    width: 100%;
+    padding: 8px 18px;
+    @include m.phone {
+        bottom: 48px;
+        max-width: calc(100% - 48px);
+    }
+    :global {
+        .ant-alert-icon {
+            margin-right: 12px;
+        }
+        .ant-alert-message {
+            @include m.font;
+        }
+    }
+}
