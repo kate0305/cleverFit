@@ -13,17 +13,18 @@ import styles from './main-layout.module.scss';
 
 export const MainLayout = () => {
     const { pathname } = useLocation();
+    const fromPage = pathname;
     const isMainPage = pathname === Paths.MAIN;
-    
+
     return (
         <Layout className={styles.wrapper}>
             <Sidebar />
             <Layout style={{ background: 'transparent' }}>
-                <AppHeader isMainPage={isMainPage} />
+                <AppHeader fromPage={fromPage} />
                 <Suspense fallback={<Loader />}>
                     <Outlet />
                 </Suspense>
-                { isMainPage && <AppFooter />}
+                {isMainPage && <AppFooter />}
             </Layout>
         </Layout>
     );

@@ -34,8 +34,9 @@ export const AppFooter: React.FC = () => {
                         extra='Доступно в PRO-тарифе'
                         bordered={false}
                         className={styles.card_apps}
-                        content={<ContentCardsBodyList />}
-                    />
+                    >
+                        <ContentCardsBodyList />
+                    </ContentCard>
                 </Col>
                 <Col md={{ order: 1 }} sm={24} className={styles.item}>
                     <Link to={Paths.FEEDBACKS} className={styles.link} data-test-id='see-reviews'>

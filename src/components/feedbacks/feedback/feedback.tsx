@@ -16,14 +16,10 @@ type UserProps = {
 };
 
 export const Feedback = ({ fullName, image, message, rating, date }: UserProps) => (
-    <ContentCard
-        bordered={false}
-        className={styles.feedback}
-        content={
-            <Fragment>
-                <User fullName={fullName} image={image} />
-                <Review rating={rating} date={date} message={message} />
-            </Fragment>
-        }
-    />
+    <ContentCard bordered={false} className={styles.feedback}>
+        <Fragment>
+            <User fullName={fullName} image={image} />
+            <Review rating={rating} date={date} message={message} />
+        </Fragment>
+    </ContentCard>
 );

@@ -1,4 +1,4 @@
-import{ Dispatch, Fragment } from 'react';
+import { Dispatch, Fragment } from 'react';
 import { Card } from 'antd';
 import { Dayjs } from 'dayjs';
 
@@ -56,8 +56,8 @@ export const ModalDay = ({
                 />,
             ]}
             dataTestId='modal-create-training'
-            content={
-                <Fragment>
+        >
+            <Fragment>
                     <div className={styles.title}>
                         <Meta
                             title={`Тренировки на ${formattedDate}`}
@@ -82,7 +82,6 @@ export const ModalDay = ({
                         <EmptyBlock />
                     )}
                 </Fragment>
-            }
-        />
+        </ContentCard>
     );
 };

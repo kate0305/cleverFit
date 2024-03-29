@@ -56,7 +56,7 @@ export const ConfirmEmailForm = () => {
                     subTitle={
                         <Fragment>
                             <p className={styles.message}>
-                                Мы отправили вам на e-mail{' '}
+                                Мы отправили вам на e-mail
                                 <span className={styles.email}>{userEmail}</span>
                             </p>
                             <p className={styles.message}>

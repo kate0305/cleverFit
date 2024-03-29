@@ -1,22 +1,21 @@
-import { Dispatch } from 'react';
-import { Badge, Drawer, Form, Typography } from 'antd';
+import { Dispatch, Fragment } from 'react';
+import { Badge, Form, Typography } from 'antd';
 import { Dayjs } from 'dayjs';
 import { selectEditTrainingData } from '@redux/redusers/trainings-slice';
 
-import { CloseOutlined, EditOutlined, PlusOutlined } from '@ant-design/icons';
-import { MD_WIDTH } from '@constants/index';
+import { EditOutlined, PlusOutlined } from '@ant-design/icons';
 import { useAppSelector } from '@hooks/index';
 import { DateFormats } from '@type/dates';
 import { BadgeColors, UserTraining } from '@type/training';
 import { checkIsPastDate } from '@utils/check-is-past-date';
 import { getFormattedDate } from '@utils/get-formatted-date';
-import { useMediaQuery } from '@utils/use-media-query';
 
+import { DrawerComponent } from '@components/drawer';
 import { AddTrainingForm } from '@components/form/add-training-form';
 
 import styles from './drawer-add-exercise.module.scss';
 
-const { Title, Paragraph } = Typography;
+const { Paragraph } = Typography;
 
 type DrawerAddExerciseProps = {
     date: Dayjs;
@@ -36,7 +35,6 @@ export const DrawerAddExercise = ({
     const [form] = Form.useForm();
     const { isEditMode } = useAppSelector(selectEditTrainingData);
     const formattedDate = getFormattedDate(date, DateFormats.LOCAL);
-    const isLaptop = useMediaQuery(`(min-width: ${MD_WIDTH})`);
 
     const closeDrawer = () => {
         form.submit();
@@ -44,9 +42,11 @@ export const DrawerAddExercise = ({
     };
 
     return (
-        <Drawer
-            title={
-                <Title level={4} className={styles.title}>
+        <DrawerComponent
+            isOpenDrawer={isOpenDrawer}
+            setCloseDrawer={closeDrawer}
+            titleChildren={
+                <Fragment>
                     <span className={styles.icon}>
                         {isEditMode ? (
                             <EditOutlined style={{ fontSize: '14px' }} />
@@ -55,18 +55,9 @@ export const DrawerAddExercise = ({
                         )}
                     </span>
                     {isEditMode ? 'Редактирование' : 'Добавление упражнений'}
-                </Title>
+                </Fragment>
             }
-            width={408}
-            onClose={closeDrawer}
-            open={isOpenDrawer}
-            mask={false}
-            className={styles.wrapper}
-            data-test-id='modal-drawer-right'
-            closeIcon={<CloseOutlined data-test-id='modal-drawer-right-button-close' />}
-            destroyOnClose={true}
-            placement={isLaptop ? 'right' : 'bottom'}
-            height={555}
+            dataTestId='modal-drawer-right'
         >
             <div className={styles.data}>
                 <Badge
@@ -88,6 +79,6 @@ export const DrawerAddExercise = ({
                     будет невозможно
                 </p>
             )}
-        </Drawer>
+        </DrawerComponent>
     );
 };

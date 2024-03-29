@@ -2,8 +2,7 @@
 
 .card_body {
     width: 100%;
-    display: flex;
-    justify-content: center;
+    @include m.flex;
     gap: var(--gap-8);
     padding: 19px 0;
     line-height: 130%;

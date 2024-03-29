@@ -8,6 +8,7 @@
     --border-style-base: 1px solid #d9d9d9;
     --border-radius-xs: 2px;
     --border-radius-s: 4px;
+    --border-radius-m: 8px;
     --border-radius-circle: 50%;
     --box-shadow-dark: 0 2px 0 0 rgba(0, 0, 0, 0.04);
     --box-shadow-light: 0 2px 0 0 rgba(0, 0, 0, 0.02);
@@ -37,8 +38,13 @@
     --gap-22: 22px;
     --gap-24: 24px;
     --gap-26: 26px;
+    --gap-28: 28px;
+    --gap-30: 30px;
     --gap-32: 32px;
     --gap-42: 42px;
+    --gap-44: 44px;
+    --gap-46: 46px;
+    --gap-48: 48px;
 
 
     /* colors */

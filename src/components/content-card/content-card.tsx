@@ -1,26 +1,21 @@
-import { CSSProperties, ReactNode } from 'react';
+import { CSSProperties } from 'react';
 import { Card } from 'antd';
+import { CardProps } from 'antd/lib/card';
 
-type ContentCardProps = {
-    content: JSX.Element;
+type ContentCardProps = CardProps & {
     className: string;
-    bordered?: boolean;
-    title?: ReactNode;
-    extra?: ReactNode;
-    actions?: ReactNode[];
-    headStyle?: CSSProperties;
-    bodyStyle?: CSSProperties;
     style?: CSSProperties;
     dataTestId?: string;
 };
 
 export const ContentCard = ({
     title,
-    content,
+    children,
     className,
     bordered,
     extra,
     actions,
+    cover,
     headStyle,
     bodyStyle,
     style,
@@ -31,12 +26,13 @@ export const ContentCard = ({
         bordered={bordered}
         extra={extra}
         actions={actions}
+        cover={cover}
         headStyle={headStyle}
         bodyStyle={bodyStyle}
         className={className}
         style={style}
         data-test-id={dataTestId}
     >
-        {content}
+        {children}
     </Card>
 );

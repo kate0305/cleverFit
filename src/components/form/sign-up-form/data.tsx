@@ -4,7 +4,7 @@ import { FormItemProps } from '../form-item/form-item';
 
 type SignUpFormFild = FormItemProps & {
     id: string;
-}
+};
 
 export const signUpFormFildsData: SignUpFormFild[] = [
     {

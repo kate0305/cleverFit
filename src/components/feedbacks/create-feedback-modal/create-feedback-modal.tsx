@@ -36,7 +36,6 @@ export const CreateReviewModal = ({
 
     const onSubmit = async (values: FeedbackReq) => {
         dispatch(setReviewData(values));
-        await postFeedback(values);
         try {
             await postFeedback(values).unwrap();
             setOpenSuccessPostModal(true);

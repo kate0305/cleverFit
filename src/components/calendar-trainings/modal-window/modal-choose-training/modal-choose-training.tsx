@@ -56,7 +56,7 @@ export const ModalChooseTraining = ({
         trainingsListForSelectedDay[editTrainingIndex] ?? [];
 
     const dayTrainingList = useMemo(
-        () => trainingsListForSelectedDay.map(({ name }) => name) ?? [],
+        () => trainingsListForSelectedDay?.map(({ name }) => name),
         [trainingsListForSelectedDay],
     );
 
@@ -156,23 +156,22 @@ export const ModalChooseTraining = ({
                     />,
                 ]}
                 dataTestId='modal-create-exercise'
-                content={
-                    exerciseForRender ? (
-                        <ul className={styles.content}>
-                            {exerciseForRender.map(({ name }, index) => (
-                                <li className={styles.exircise} key={name}>
-                                    <p className={styles.name} key={name}>
-                                        {name}
-                                    </p>
-                                    <EditBtn index={index} onClick={openAddExercise} />
-                                </li>
-                            ))}
-                        </ul>
-                    ) : (
-                        <EmptyBlock />
-                    )
-                }
-            />
+            >
+                {exerciseForRender ? (
+                    <ul className={styles.content}>
+                        {exerciseForRender.map(({ name }, index) => (
+                            <li className={styles.exircise} key={name}>
+                                <p className={styles.name} key={name}>
+                                    {name}
+                                </p>
+                                <EditBtn index={index} onClick={openAddExercise} />
+                            </li>
+                        ))}
+                    </ul>
+                ) : (
+                    <EmptyBlock />
+                )}
+            </ContentCard>
             <DrawerAddExercise
                 date={date}
                 isOpenDrawer={isOpenAddExercise}

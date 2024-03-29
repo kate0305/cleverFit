@@ -21,8 +21,8 @@ import { useMediaQuery } from '@utils/use-media-query';
 import { SettingsBtn } from '@components/buttons/settings-button';
 import { Calendar } from '@components/calendar-trainings/calendar';
 import { ModalContainer } from '@components/calendar-trainings/modal-window/modal-container';
-import { getModalErr } from '@components/calendar-trainings/modal-window/modal-err/modal-err';
 import { TrainingList } from '@components/calendar-trainings/training-list';
+import { getModalErr } from '@components/modal-window/modal-err/modal-err';
 import { Portal } from '@components/portal';
 
 import styles from './calendar-page.module.scss';

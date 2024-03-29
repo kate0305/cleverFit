@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import { CalendarTwoTone, HeartFilled, IdcardOutlined, TrophyFilled } from '@ant-design/icons';
 import { Paths } from '@type/paths';
 import { getListItemWithIcon, MenuItem } from '@utils/get-list-item-with-icon';
@@ -10,7 +12,7 @@ const data = [
         icon: (
             <CalendarTwoTone style={{ fontSize: '14px' }} twoToneColor={['#061178', '#061178']} />
         ),
-        label: 'Календарь',
+        label: <Link to={Paths.CALENDAR}>Календарь</Link>,
     },
     {
         key: 'training',
@@ -23,9 +25,9 @@ const data = [
         label: 'Достижения',
     },
     {
-        key: 'profile',
+        key: Paths.PROFILE,
         icon: <IdcardOutlined style={{ color: '#061178', fontSize: '14px' }} />,
-        label: 'Профиль',
+        label: <Link to={Paths.PROFILE}>Профиль</Link>,
     },
 ];
 

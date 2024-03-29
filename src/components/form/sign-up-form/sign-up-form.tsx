@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Form } from 'antd';
-import { selectUserData, setSignUpData } from '@redux/redusers/user-data-slice';
+import { selectUserAuthData, setSignUpData } from '@redux/redusers/user-data-slice';
 
 import { REGISTRATION_ERR, REGISTRATION_ERR_409, REGISTRATION_SUCCESS } from '@constants/index';
 import { useAppDispatch, useAppSelector } from '@hooks/index';
@@ -24,7 +24,7 @@ export const SignUpForm: React.FC = () => {
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
     const [form] = Form.useForm<UserReq>();
-    const userData = useAppSelector(selectUserData);
+    const userData = useAppSelector(selectUserAuthData);
     const [signUpUser, { error, isSuccess }] = useSignUpUserMutation();
 
     const fromError = location.state && location.state.fromErr;

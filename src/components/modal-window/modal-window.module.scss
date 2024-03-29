@@ -14,5 +14,11 @@
                 letter-spacing: -0.1px;
             }
         }
+        .ant-modal-close-x {
+            width: 14px;
+            height: 14px;
+            margin: 24px;
+            @include m.font;
+        }
     }
 }

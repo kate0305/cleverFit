@@ -11,7 +11,7 @@ import { useLogOut } from '@utils/use-logout';
 import { PrimaryBtn } from '@components/buttons/primary-button';
 import { DrawerComponent } from '@components/drawer';
 import { ModalWindow } from '@components/modal-window';
-import { ResultWithEmail } from '@components/request-result/result-with-email/result-with-email';
+import { ResultWithEmail } from '@components/request-result/result-with-email';
 
 import { TariffComparisonTable } from '../tariff-comparison-table';
 import { TariffPriceForm } from '../tariff-price-form';

@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Checkbox, Form, Input } from 'antd';
+import { Checkbox, Form } from 'antd';
 import { selectUserEmail, setEmail, setToken } from '@redux/redusers/user-data-slice';
 
 import { CHECK_EMAIL_ERR, CHECK_EMAIL_ERR_404, CONFIRM_EMAIL, LOGIN_ERR } from '@constants/index';
@@ -14,6 +14,8 @@ import { useLocalStorage } from '@utils/use-local-storage';
 
 import { GoogleAuthBtn } from '@components/buttons/google-auth-button';
 import { PrimaryBtn } from '@components/buttons/primary-button';
+import { EmailInput } from '@components/inputs/email-input';
+import { PasswordInput } from '@components/inputs/password-input';
 
 import styles from './sign-in-form.module.scss';
 
@@ -123,29 +125,15 @@ export const SignInForm: React.FC = () => {
                 onValuesChange={onFormValuesChange}
                 onFinish={onSubmit}
             >
-                <Form.Item
-                    name='email'
-                    rules={[
-                        { required: true, message: '' },
-                        { pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: '' },
-                    ]}
-                >
-                    <Input addonBefore='e-mail:' data-test-id='login-email' autoComplete='email' />
-                </Form.Item>
-                <Form.Item
-                    name='password'
+                <EmailInput inputName='email' dataTestId='login-email' />
+
+                <PasswordInput
+                    inputName='password'
                     validateTrigger='onSubmit'
-                    rules={[
-                        { required: true, message: '' },
-                        { pattern: /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[a-zA-Z\d]{8,}/, message: '' },
-                    ]}
-                >
-                    <Input.Password
-                        placeholder='Пароль'
-                        data-test-id='login-password'
-                        autoComplete='new-password'
-                    />
-                </Form.Item>
+                    withHelp={false}
+                    required={true}
+                    dataTestId='login-password'
+                />
                 <Form.Item>
                     <Form.Item name='remember' valuePropName='checked' noStyle={true}>
                         <Checkbox data-test-id='login-remember'>Запомнить меня</Checkbox>

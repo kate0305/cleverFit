@@ -1,12 +1,7 @@
 import React, { useLayoutEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { Layout } from 'antd';
-import { reset } from '@redux/redusers/user-data-slice';
 
 import { XS_WIDTH } from '@constants/index';
-import { useAppDispatch } from '@hooks/typed-react-redux-hooks';
-import { Paths } from '@type/paths';
-import { useLocalStorage } from '@utils/use-local-storage';
 import { useMediaQuery } from '@utils/use-media-query';
 
 import { ExitBtn } from '@components/buttons/exit-button';
@@ -19,9 +14,6 @@ import styles from './sidebar.module.scss';
 const { Sider } = Layout;
 
 export const Sidebar: React.FC = () => {
-    const dispatch = useAppDispatch();
-    const navigate = useNavigate();
-    const [, , removeLocalStorageItem] = useLocalStorage('token', null);
     const [collapsed, setCollapsed] = useState(false);
     const isMobilePhone = useMediaQuery(`(max-width: ${XS_WIDTH})`);
     const defaultCollapsedWidth = 64;
@@ -38,12 +30,6 @@ export const Sidebar: React.FC = () => {
         } else {
             setCollapsedWidth(defaultCollapsedWidth);
         }
-    };
-
-    const logOut = () => {
-        dispatch(reset());
-        removeLocalStorageItem();
-        navigate(Paths.AUTH, { replace: true });
     };
 
     return (
@@ -64,7 +50,7 @@ export const Sidebar: React.FC = () => {
                 isClosedSidebar={collapsed}
                 isWidthChanged={isWidthChanged}
             />
-            <ExitBtn isClosedSidebar={collapsed} isWidthChanged={isWidthChanged} onClick={logOut} />
+            <ExitBtn isClosedSidebar={collapsed} isWidthChanged={isWidthChanged} />
         </Sider>
     );
 };

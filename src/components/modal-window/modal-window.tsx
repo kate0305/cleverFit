@@ -9,6 +9,7 @@ type ModalWindowgProps = {
     closable?: boolean;
     title?: ReactNode;
     footer?: ReactNode;
+    closeIcon?: ReactNode;
     okText?: string;
     onOk?: () => void;
     onCancel?: () => void;
@@ -23,6 +24,7 @@ export const ModalWindow = ({
     closable,
     title,
     footer,
+    closeIcon,
     okText,
     onOk,
     onCancel,
@@ -34,7 +36,9 @@ export const ModalWindow = ({
         centered={true}
         title={title}
         open={isOpen}
+        closeIcon={closeIcon}
         closable={closable || false}
+        destroyOnClose={true}
         maskClosable={false}
         footer={footer || null}
         okText={okText}

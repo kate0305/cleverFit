@@ -22,6 +22,12 @@
     }
 }
 
+@mixin phone-s {
+    @media screen and (max-width: 320px) {
+        @content;
+    }
+}
+
 @mixin flex($display: flex, $j-c: center, $items: center) {
     display: $display;
     justify-content: $j-c;

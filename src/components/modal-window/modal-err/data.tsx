@@ -22,6 +22,8 @@ export type ModalErrDataProps = {
 export type ModalErrDataKeys = {
     getTrainingListErr: ModalErrDataProps;
     saveTrainingErr: ModalErrDataProps;
+    saveUserPhotoErr: ModalErrDataProps;
+    updateUserDataErr: ModalErrDataProps;
 };
 
 export const ModalErrData: ModalErrDataKeys = {
@@ -64,6 +66,36 @@ export const ModalErrData: ModalErrDataKeys = {
         icon: <CloseCircleOutlined style={{ color: '#ff4d4f' }} />,
         okText: 'Закрыть',
         bntDataTestId: 'modal-error-user-training-button',
+        maskStyle: { background: 'rgba(121, 156, 212, 0.10)', backdropFilter: 'blur(6px)' },
+        closable: false,
+        className: styles.modal_save_training_err,
+    },
+
+    saveUserPhotoErr: {
+        title: <Text>Файл слишком большой</Text>,
+        message: (
+            <Text type='secondary' data-test-id='modal-error-user-training-subtitle'>
+                Выберите файл размером до 5 МБ.
+            </Text>
+        ),
+        icon: <CloseCircleOutlined style={{ color: '#ff4d4f' }} />,
+        okText: 'Закрыть',
+        bntDataTestId: 'big-file-error-close',
+        maskStyle: { background: 'rgba(121, 156, 212, 0.10)', backdropFilter: 'blur(6px)' },
+        closable: false,
+        className: styles.modal_save_training_err,
+    },
+
+    updateUserDataErr: {
+        title: <Text>При сохранении данных произошла ошибка</Text>,
+        message: (
+            <Text type='secondary' data-test-id='modal-error-user-training-subtitle'>
+                Придётся попробовать ещё раз
+            </Text>
+        ),
+        icon: <CloseCircleOutlined style={{ color: '#ff4d4f' }} />,
+        okText: 'Закрыть',
+        bntDataTestId: 'big-file-error-close',
         maskStyle: { background: 'rgba(121, 156, 212, 0.10)', backdropFilter: 'blur(6px)' },
         closable: false,
         className: styles.modal_save_training_err,
