@@ -1,0 +1,73 @@
+@use '@sass/mixins.scss' as m;
+
+.wrapper {
+    margin-top: 74px;
+    padding: var(--gap-12) 0;
+
+    .title {
+        margin-bottom: 0;
+        padding-bottom: var(--gap-24);
+        @include m.font($weight: 700);
+        color: var(--light-title-85);
+        border: none;
+        @include m.phone {
+            padding-bottom: var(--gap-12);
+        }
+    }
+    @include m.phone {
+        margin-top: 0;
+        padding: 33px 0 0;
+    }
+}
+
+.tafiffs {
+    margin-bottom: 0;
+    padding-right: var(--gap-16);
+}
+
+.btn_group {
+    @include m.flex($j-c: flex-start, $items: flex-start);
+    flex-direction: column;
+    gap: var(--gap-16);
+    @include m.phone {
+        gap: var(--gap-4);
+    }
+}
+
+.radio {
+    width: 100%;
+    @include m.flex($j-c: flex-start);
+    flex-direction: row-reverse;
+    :global {
+        span.ant-radio + * {
+            padding: 0;
+        }
+        .ant-radio {
+            top: 0;
+            margin-left: var(--gap-48);
+        }
+    }
+}
+
+.radio_container {
+    width: 264px;
+    @include m.flex($j-c: space-between);
+    gap: var(--gap-48);
+    @include m.tablet {
+        width: 248px;
+    }
+}
+
+.period,
+.price {
+    color: var(--light-title-85);
+}
+
+.period {
+    @include m.font;
+}
+
+.price {
+    padding: 5.5px 0;
+    @include m.font($size: var(--font-size-m), $weight: 500);
+}
