@@ -1,8 +1,11 @@
+import { TariffPeriod } from './tariff';
 import { UserTraining } from './training';
+import { UserTariff } from './user';
 
 export enum Tags {
     FEEDBACKS = 'Feedbacks',
     TRAINING = 'Training',
+    USER = 'User',
 }
 
 export type UserReq = {
@@ -47,3 +50,28 @@ export type UpdateTrainingReq = UserTrainingReq & {
     id: string;
 };
 
+export type UserDataResp = {
+    email: string;
+    firstName: string;
+    lastName: string;
+    birthday: string;
+    imgSrc: string;
+    readyForJointTraining: boolean;
+    sendNotification: boolean;
+    tariff: UserTariff;
+};
+
+export type UserDataReq = Partial<Omit<UserDataResp, 'tariff'> & {
+    password: string;
+}>;
+
+export type TariffResp = {
+    _id: string;
+    name: string;
+    periods: TariffPeriod[];
+};
+
+export type PayNewTariffResp = {
+    tariffId: string;
+    days: number;
+};

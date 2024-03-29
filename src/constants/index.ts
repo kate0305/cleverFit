@@ -9,6 +9,7 @@ export const LG_WIDTH = '992px';
 
 // base and part url for API
 export const BASE_URL = 'https://marathon-api.clevertec.ru';
+export const BASE_AVATAR_URL = 'https://training-api.clevertec.ru';
 export const SIGN_UP = '/auth/registration';
 export const SIGN_IN = '/auth/login';
 export const GOOGLE_AUTH = '/auth/google';
@@ -18,6 +19,11 @@ export const CHANGE_PASSWORD_URL = '/auth/change-password';
 export const FEEDBACK = '/feedback';
 export const TRAINING = '/training';
 export const TRAINING_LIST = '/catalogs/training-list';
+export const TARIFF_LIST = '/catalogs/tariff-list';
+export const USER = '/user';
+export const USER_ME = '/user/me';
+export const UPLOAD_IMG = '/upload-image';
+export const PAY_NEW_TARIFF = '/tariff';
 
 
 // route paths
@@ -41,9 +47,39 @@ export const DATE_OPTIONS: Intl.DateTimeFormatOptions = {
     day: 'numeric',
 };
 
+export const LOCALE_OPTIONS = {
+    monthsShort: [
+        'Янв',
+        'Фев',
+        'Мар',
+        'Апр',
+        'Май',
+        'Июн',
+        'Июл',
+        'Авг',
+        'Сен',
+        'Окт',
+        'Ноя',
+        'Дек',
+    ],
+    weekdaysMin: ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
+};
+
 
 // breadcrumbs
 export const BREADCRUMB_NAMES: Record<string, string> = {
     '/feedbacks': 'Отзывы пользователей',
     '/calendar': 'Календарь',
 };
+
+
+// file size
+export const maxImgSize = 5;
+
+
+// patterns
+export const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+export const PASSWORD_PATTERN = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[a-zA-Z\d]{8,}/;
+
+// errors message
+export const CONFIRM_PASSWORD_ERR = 'Пароли не совпадают';
