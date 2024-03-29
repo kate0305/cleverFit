@@ -11,7 +11,11 @@ import { Sidebar } from '@components/sidebar';
 
 import styles from './main-layout.module.scss';
 
-export const MainLayout = () => {
+type MainLayoutProps = {
+    withHeader?: boolean;
+};
+
+export const MainLayout = ({ withHeader }: MainLayoutProps) => {
     const { pathname } = useLocation();
     const fromPage = pathname;
     const isMainPage = pathname === Paths.MAIN;
@@ -20,7 +24,7 @@ export const MainLayout = () => {
         <Layout className={styles.wrapper}>
             <Sidebar />
             <Layout style={{ background: 'transparent' }}>
-                <AppHeader fromPage={fromPage} />
+                {withHeader && <AppHeader fromPage={fromPage} />}
                 <Suspense fallback={<Loader />}>
                     <Outlet />
                 </Suspense>
