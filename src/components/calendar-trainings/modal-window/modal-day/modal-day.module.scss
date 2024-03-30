@@ -35,11 +35,11 @@
         }
         .ant-card-actions {
             border: none;
-            box-shadow: 0px 1px 0px 0px #f0f0f0 inset;
+            box-shadow: 0 1px 0 0 #f0f0f0 inset;
         }
         .ant-card-actions {
             & li {
-                margin: var(--gap-mm);
+                margin: var(--gap-12);
             }
         }
     }
@@ -62,7 +62,7 @@
 }
 
 .title {
-    padding: var(--gap-l) var(--gap-mm);
+    padding: var(--gap-16) var(--gap-12);
     @include m.flex($j-c: space-between);
     button {
         align-self: flex-start;

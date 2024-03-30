@@ -1,4 +1,4 @@
-import { AndroidFilled, AppleFilled } from "@ant-design/icons";
+import { AndroidFilled, AppleFilled } from '@ant-design/icons';
 
 export const appsList = [
     {

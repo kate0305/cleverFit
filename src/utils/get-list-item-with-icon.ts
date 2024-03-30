@@ -10,8 +10,7 @@ export const getListItemWithIcon = (
     className?: string,
     children?: MenuItem[],
     type?: 'group',
-): MenuItem => {
-    return {
+): MenuItem => ({
         key,
         icon,
         className,
@@ -19,5 +18,4 @@ export const getListItemWithIcon = (
         children,
         label,
         type,
-    } as MenuItem;
-};
+    } as MenuItem);

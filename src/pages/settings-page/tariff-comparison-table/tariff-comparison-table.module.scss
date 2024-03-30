@@ -1,0 +1,51 @@
+@use '@sass/mixins.scss' as m;
+
+.wrapper {
+    padding-top: var(--gap-24);
+}
+
+.title {
+    @include m.flex($j-c: flex-end);
+    gap: var(--gap-14);
+    margin-bottom: var(--gap-24);
+    .text_mark,
+    .text_mark_color {
+        @include m.font($size: var(--font-size-s));
+        text-transform: uppercase;
+    }
+    .text_mark_color {
+        padding: var(--gap-4) var(--gap-16);
+        background-color: var(--primary-light-1);
+        color: var(--primary-light-7);
+    }
+    .text_pro {
+        @extend .text_mark_color;
+        padding: var(--gap-4) var(--gap-10);
+        font-size: var(--font-size-base);
+        font-weight: 500;
+        span {
+            margin-right: -8px;
+            margin-left: var(--gap-4);
+            color: var(--light-success);
+            font-size: var(--font-size-base);
+        }
+    }
+    @include m.phone {
+        margin-bottom: var(--gap-12);
+    }
+}
+
+.text_mark {
+    padding: var(--gap-4) var(--gap-14);
+    background-color: var(--light-dividers);
+}
+
+.condition {
+    padding-right: 16px;
+    @include m.flex($j-c: space-between);
+    .condition_text {
+        max-width: 187px;
+        width: 100%;
+        @include m.font;
+    }
+}

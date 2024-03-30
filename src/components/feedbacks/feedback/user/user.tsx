@@ -1,4 +1,5 @@
 import { Avatar, Typography } from 'antd';
+
 import { UserOutlined } from '@ant-design/icons';
 
 import styles from './user.module.scss';
@@ -13,6 +14,7 @@ type UserProps = {
 export const User = ({ fullName, image }: UserProps) => {
     const name = fullName ?? 'Пользователь';
     const arrOfName = name.split(' ');
+
     return (
         <div className={styles.wrapper}>
             <Avatar

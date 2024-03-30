@@ -1,0 +1,22 @@
+@use '@sass/mixins.scss' as m;
+
+.wrapper {
+    position: relative;
+    max-width: 100%;
+    height: calc(100vh - 138px);
+    margin: var(--gap-24) var(--gap-24) var(--gap-42);
+    padding: var(--gap-24);
+    @include m.flex($j-c: flex-start, $items: flex-start);
+    background-color: var(--base-light);
+    border-radius: var(--border-radius-m);
+    overflow-y: auto;
+    @include m.tablet-l {
+        height: calc(100vh - 162px);
+    }
+    @include m.phone {
+        height: calc(100vh - 148px);
+        margin: var(--gap-24) 0 var(--gap-42);
+        padding: var(--gap-16) var(--gap-24);
+        border-radius: 0;
+    }
+}

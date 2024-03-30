@@ -2,14 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { Form, Input, Typography } from 'antd';
 import { Rule } from 'antd/lib/form';
-
 import { selectChangePasswordData, setChangePasswordData } from '@redux/redusers/user-data-slice';
+
+import { CHANGE_PASSWORD_ERR, CHANGE_PASSWORD_SUCCESS } from '@constants/index';
 import { useAppDispatch, useAppSelector } from '@hooks/index';
 import { useChangePasswordMutation } from '@services/auth-service';
-
 import { Paths } from '@type/paths';
 import { ChangePasswordReq } from '@type/service';
-import { CHANGE_PASSWORD_ERR, CHANGE_PASSWORD_SUCCESS } from '@constants/index';
 
 import { PrimaryBtn } from '@components/buttons/primary-button';
 
@@ -32,9 +31,11 @@ export const ChangePasswordForm: React.FC = () => {
     const validateConfirmPassword = async (_: Rule, value: string) => {
         if (!value || form.getFieldValue('password') === value) {
             setBtnDisable(false);
+
             return Promise.resolve();
         }
         setBtnDisable(true);
+
         return Promise.reject(new Error('Пароли не совпадают'));
     };
 
@@ -59,70 +60,60 @@ export const ChangePasswordForm: React.FC = () => {
         }
     }, [changePassword, changePasswordData, error, fromError, isSuccess, navigate]);
 
-    return (
-        <>
-            {fromConfirm || fromError ? (
-                <div className={styles.wrapper}>
-                    <div className={styles.container}>
-                        <Title className={styles.title}>Восстановление аккауанта</Title>
-                        <Form
-                            name='sign-up'
-                            className={styles.form}
-                            form={form}
-                            onFinish={onSubmit}
-                        >
-                            <Form.Item
-                                name='password'
-                                help='Пароль не менее 8 символов, с заглавной буквой и цифрой'
-                                rules={[
-                                    { required: true, message: '' },
-                                    {
-                                        pattern: /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[a-zA-Z\d]{8,}/,
-                                        message:
-                                            'Пароль не менее 8 символов, с заглавной буквой и цифрой',
-                                    },
-                                ]}
-                            >
-                                <Input.Password
-                                    placeholder='Новый пароль'
-                                    data-test-id='change-password'
-                                    autoComplete='new-password'
-                                />
-                            </Form.Item>
-                            <Form.Item
-                                name='confirmPassword'
-                                dependencies={['password']}
-                                rules={[
-                                    {
-                                        required: true,
-                                        message: '',
-                                    },
-                                    { validator: validateConfirmPassword },
-                                ]}
-                            >
-                                <Input.Password
-                                    placeholder='Повторите пароль'
-                                    data-test-id='change-confirm-password'
-                                    autoComplete='off'
-                                />
-                            </Form.Item>
+    return fromConfirm || fromError ? (
+        <div className={styles.wrapper}>
+            <div className={styles.container}>
+                <Title className={styles.title}>Восстановление аккауанта</Title>
+                <Form name='sign-up' className={styles.form} form={form} onFinish={onSubmit}>
+                    <Form.Item
+                        name='password'
+                        help='Пароль не менее 8 символов, с заглавной буквой и цифрой'
+                        rules={[
+                            { required: true, message: '' },
+                            {
+                                pattern: /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[a-zA-Z\d]{8,}/,
+                                message: 'Пароль не менее 8 символов, с заглавной буквой и цифрой',
+                            },
+                        ]}
+                    >
+                        <Input.Password
+                            placeholder='Новый пароль'
+                            data-test-id='change-password'
+                            autoComplete='new-password'
+                        />
+                    </Form.Item>
+                    <Form.Item
+                        name='confirmPassword'
+                        dependencies={['password']}
+                        rules={[
+                            {
+                                required: true,
+                                message: '',
+                            },
+                            { validator: validateConfirmPassword },
+                        ]}
+                    >
+                        <Input.Password
+                            placeholder='Повторите пароль'
+                            data-test-id='change-confirm-password'
+                            autoComplete='off'
+                        />
+                    </Form.Item>
 
-                            <Form.Item>
-                                <PrimaryBtn
-                                    type='primary'
-                                    disabled={isBtnDisable}
-                                    htmlType='submit'
-                                    btnText='Сохранить'
-                                    className={styles.btn_change_password}
-                                    dataTestId='change-submit-button'
-                                />
-                            </Form.Item>
-                        </Form>
-                    </div>
-                </div>
-            ) : (
-                <Navigate to={Paths.AUTH} />
-            )}
-        </>
+                    <Form.Item>
+                        <PrimaryBtn
+                            type='primary'
+                            disabled={isBtnDisable}
+                            htmlType='submit'
+                            btnText='Сохранить'
+                            className={styles.btn_change_password}
+                            dataTestId='change-submit-button'
+                        />
+                    </Form.Item>
+                </Form>
+            </div>
+        </div>
+    ) : (
+        <Navigate to={Paths.AUTH} />
     );
 };

@@ -1,13 +1,12 @@
-import { useEffect } from 'react';
+import { Fragment, useEffect } from 'react';
 import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { Result } from 'antd';
-
 import { selectUserEmail } from '@redux/redusers/user-data-slice';
+
+import { CHANGE_PASSWORD } from '@constants/index';
 import { useAppSelector } from '@hooks/index';
 import { useConfirmEmailMutation } from '@services/auth-service';
-
 import { Paths } from '@type/paths';
-import { CHANGE_PASSWORD } from '@constants/index';
 
 import { VerificationCodeInput } from '@components/inputs/verification-input';
 
@@ -23,6 +22,7 @@ export const ConfirmEmailForm = () => {
     const onComplete = async (code: string) => {
         const email = userEmail ?? '';
         const reqData = { email, code };
+
         await confirmEmail(reqData);
     };
 
@@ -34,46 +34,43 @@ export const ConfirmEmailForm = () => {
         }
     }, [isSuccess, navigate]);
 
-    const Message = (prop: { email: string | null }) => (
-        <>
-            <p className={styles.message}>
-                Мы отправили вам на e-mail <span className={styles.email}>{prop.email}</span>
-            </p>
-            <p className={styles.message}>шестизначный код. Введите его в поле ниже.</p>
-        </>
-    );
-
-    const Title = () => (
+    const title = (
         <p className={styles.message}>
             Введите код <br /> для восстановления аккауанта
         </p>
     );
 
-    const ErrTitle = () => (
+    const errTitle = (
         <p className={styles.message}>
             Неверный код. Введите код <br />
             для восстановления аккауанта
         </p>
     );
 
-    return (
-        <>
-            {fromLogin ? (
-                <div className={styles.wrapper}>
-                    <div className={styles.container}>
-                        <Result
-                            status={isError ? 'error' : 'info'}
-                            title={isError ? <ErrTitle /> : <Title />}
-                            subTitle={<Message email={userEmail} />}
-                            className={styles.result}
-                        />
-                        <VerificationCodeInput onComplete={onComplete} isError={isError} />
-                        <p className={styles.footer}>Не пришло письмо? Проверьте папку Спам.</p>
-                    </div>
-                </div>
-            ) : (
-                <Navigate to={Paths.AUTH} />
-            )}
-        </>
+    return fromLogin ? (
+        <div className={styles.wrapper}>
+            <div className={styles.container}>
+                <Result
+                    status={isError ? 'error' : 'info'}
+                    title={isError ? errTitle : title}
+                    subTitle={
+                        <Fragment>
+                            <p className={styles.message}>
+                                Мы отправили вам на e-mail
+                                <span className={styles.email}>{userEmail}</span>
+                            </p>
+                            <p className={styles.message}>
+                                шестизначный код. Введите его в поле ниже.
+                            </p>
+                        </Fragment>
+                    }
+                    className={styles.result}
+                />
+                <VerificationCodeInput onComplete={onComplete} isError={isError} />
+                <p className={styles.footer}>Не пришло письмо? Проверьте папку Спам.</p>
+            </div>
+        </div>
+    ) : (
+        <Navigate to={Paths.AUTH} />
     );
 };

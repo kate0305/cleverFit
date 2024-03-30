@@ -2,8 +2,8 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Tabs } from 'antd';
 
-import { Paths } from '@type/paths';
 import { REGISTRATION } from '@constants/index';
+import { Paths } from '@type/paths';
 
 import { SignInForm } from '@components/form/sign-in-form';
 import { SignUpForm } from '@components/form/sign-up-form';

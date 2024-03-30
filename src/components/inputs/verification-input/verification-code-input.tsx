@@ -24,8 +24,8 @@ export const VerificationCodeInput = ({ onComplete, isError }: VerificationCodeI
         character: className,
     };
 
-    const handleOnComplete = (value: string) => {
-        onComplete(value);
+    const handleOnComplete = (code: string) => {
+        onComplete(code);
         setValue('');
     }
 
@@ -35,7 +35,7 @@ export const VerificationCodeInput = ({ onComplete, isError }: VerificationCodeI
             value={value}
             onChange={setValue}
             onComplete={handleOnComplete}
-            autoFocus
+            autoFocus={true}
             classNames={classNames}
             inputProps={{ 'data-test-id': 'verification-input' }}
         />

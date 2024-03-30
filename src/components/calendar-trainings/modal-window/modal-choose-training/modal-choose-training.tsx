@@ -1,20 +1,18 @@
-import { useMemo, useState } from 'react';
+import { Fragment, useMemo, useState } from 'react';
 import { Select } from 'antd';
 import { Dayjs } from 'dayjs';
-import { ArrowLeftOutlined } from '@ant-design/icons';
-
 import {
     resetTraining,
     selectTrainingData,
     setEditTrainingData,
     setEditTrainingId,
 } from '@redux/redusers/trainings-slice';
+
+import { ArrowLeftOutlined } from '@ant-design/icons';
 import { useAppDispatch, useAppSelector } from '@hooks/index';
-
-import { checkIsPastDate } from '@utils/is-past-date';
-
 import { TrainingResp } from '@type/service';
 import { UserTraining } from '@type/training';
+import { checkIsPastDate } from '@utils/check-is-past-date';
 
 import { EditBtn } from '@components/buttons/edit-button';
 import { PrimaryBtn } from '@components/buttons/primary-button';
@@ -58,7 +56,7 @@ export const ModalChooseTraining = ({
         trainingsListForSelectedDay[editTrainingIndex] ?? [];
 
     const dayTrainingList = useMemo(
-        () => trainingsListForSelectedDay.map(({ name }) => name) ?? [],
+        () => trainingsListForSelectedDay?.map(({ name }) => name),
         [trainingsListForSelectedDay],
     );
 
@@ -80,6 +78,8 @@ export const ModalChooseTraining = ({
         if (selectedTraining && isHaveDayExercise) {
             return exercises;
         }
+
+        return null;
     };
 
     const exerciseForRender = getExerciseForRender();
@@ -105,7 +105,7 @@ export const ModalChooseTraining = ({
     };
 
     return (
-        <>
+        <Fragment>
             <ContentCard
                 className={isRightModalPosition ? styles.wrapper_last_day : styles.wrapper}
                 title={
@@ -156,23 +156,22 @@ export const ModalChooseTraining = ({
                     />,
                 ]}
                 dataTestId='modal-create-exercise'
-                content={
-                    exerciseForRender ? (
-                        <ul className={styles.content}>
-                            {exerciseForRender.map(({ name }, index) => (
-                                <li className={styles.exircise} key={name}>
-                                    <p className={styles.name} key={name}>
-                                        {name}
-                                    </p>
-                                    <EditBtn index={index} onClick={openAddExercise} />
-                                </li>
-                            ))}
-                        </ul>
-                    ) : (
-                        <EmptyBlock />
-                    )
-                }
-            />
+            >
+                {exerciseForRender ? (
+                    <ul className={styles.content}>
+                        {exerciseForRender.map(({ name }, index) => (
+                            <li className={styles.exircise} key={name}>
+                                <p className={styles.name} key={name}>
+                                    {name}
+                                </p>
+                                <EditBtn index={index} onClick={openAddExercise} />
+                            </li>
+                        ))}
+                    </ul>
+                ) : (
+                    <EmptyBlock />
+                )}
+            </ContentCard>
             <DrawerAddExercise
                 date={date}
                 isOpenDrawer={isOpenAddExercise}
@@ -180,6 +179,6 @@ export const ModalChooseTraining = ({
                 trainingsListForSelectedDay={trainingsListForSelectedDay}
                 setCloseDrawer={setOpenAddExercise}
             />
-        </>
+        </Fragment>
     );
 };

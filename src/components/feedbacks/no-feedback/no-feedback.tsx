@@ -1,7 +1,8 @@
+import { Fragment } from 'react';
 import { Typography } from 'antd';
 import classnames from 'classnames/bind';
-
 import { selectIsOpenSideBar } from '@redux/redusers/app-slice';
+
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
 
 import { ContentCard } from '@components/content-card';
@@ -20,16 +21,16 @@ export const NoFeedback = () => {
         with_extra_padding: !isOpenSidebar,
     });
 
-    const Content = () => (
-        <>
+    const content = (
+        <Fragment>
             <Title>Оставьте свой отзыв первым</Title>
             <Paragraph className={styles.text}>
                 Вы можете быть первым, кто оставит отзыв об этом фитнесс приложении. Поделитесь
                 своим мнением и опытом с другими пользователями, <br />и помогите им сделать
                 правильный выбор.
             </Paragraph>
-        </>
+        </Fragment>
     );
 
-    return <ContentCard bordered={false} className={card} content={<Content />} />;
+    return <ContentCard bordered={false} className={card} content={content} />;
 };

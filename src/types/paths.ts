@@ -5,6 +5,9 @@ export enum Paths {
     RESULT = '/result',
     FEEDBACKS = '/feedbacks',
     CALENDAR = '/calendar',
+    PROFILE = '/profile',
+    SETTINGS = '/settings',
+    NOT_FOUND = '*',
 }
 
 export enum AuthPaths {

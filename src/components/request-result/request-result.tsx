@@ -19,7 +19,7 @@ export type RequestResultProps = {
 export const RequestResult = ({ keyErr, buttonsGroup }: RequestResultProps) => {
     const location = useLocation();
     const isFeedbackPage =
-        location.pathname === Paths.FEEDBACKS || location.pathname === Paths.MAIN;
+        location.pathname === Paths.FEEDBACKS || location.pathname === Paths.MAIN || Paths.PROFILE;
     const fromError = location.state && (location.state.fromErr || location.state.fromServer);
     const isShowResult = isFeedbackPage || fromError;
     const { status, title, message, btnText, navigateTo, state, dataTestId } =
@@ -40,27 +40,23 @@ export const RequestResult = ({ keyErr, buttonsGroup }: RequestResultProps) => {
         />
     );
 
-    return (
-        <>
-            {isShowResult ? (
-                <div className={isClassNameForErr500 ? styles.wrapper_err_500 : styles.wrapper}>
-                    <div className={isClassNameForErr500 ? styles.err_500 : styles.container}>
-                        <Result
-                            status={status}
-                            title={title}
-                            subTitle={message}
-                            extra={buttonsGroup || button}
-                            className={
-                                keyErr === ResultRequestKeys.CHECK_EMAIL_ERR_404
-                                    ? styles.result_err_confirm
-                                    : styles.result
-                            }
-                        />
-                    </div>
-                </div>
-            ) : (
-                <Navigate to={Paths.AUTH} replace />
-            )}
-        </>
+    return isShowResult ? (
+        <div className={isClassNameForErr500 ? styles.wrapper_err_500 : styles.wrapper}>
+            <div className={isClassNameForErr500 ? styles.err_500 : styles.container}>
+                <Result
+                    status={status}
+                    title={title}
+                    subTitle={message}
+                    extra={buttonsGroup || button}
+                    className={
+                        keyErr === ResultRequestKeys.CHECK_EMAIL_ERR_404
+                            ? styles.result_err_confirm
+                            : styles.result
+                    }
+                />
+            </div>
+        </div>
+    ) : (
+        <Navigate to={Paths.AUTH} replace={true} />
     );
 };

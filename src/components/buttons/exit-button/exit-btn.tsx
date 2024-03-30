@@ -1,5 +1,7 @@
 import { Button } from 'antd';
 
+import { useLogOut } from '@utils/use-logout';
+
 import { ExitIcon } from '@components/icons/exit-icon';
 
 import styles from './exit-btn.module.scss';
@@ -7,16 +9,19 @@ import styles from './exit-btn.module.scss';
 type ExitBtnProps = {
     isClosedSidebar: boolean;
     isWidthChanged: boolean;
-    onClick: () => void;
 };
 
-export const ExitBtn = ({ isClosedSidebar, isWidthChanged, onClick }: ExitBtnProps) => (
-    <Button
-        block
-        icon={!isWidthChanged && <ExitIcon />}
-        onClick={onClick}
-        className={styles.button}
-    >
-        {!isClosedSidebar && 'Выход'}
-    </Button>
-);
+export const ExitBtn = ({ isClosedSidebar, isWidthChanged }: ExitBtnProps) => {
+    const logOut = useLogOut();
+
+    return (
+        <Button
+            block={true}
+            icon={!isWidthChanged && <ExitIcon />}
+            onClick={logOut}
+            className={styles.button}
+        >
+            {!isClosedSidebar && 'Выход'}
+        </Button>
+    );
+};

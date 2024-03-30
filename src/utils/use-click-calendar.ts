@@ -2,7 +2,6 @@ import { useLayoutEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { useLazyGetUserTrainingsQuery } from '@services/training-service';
-
 import { Paths } from '@type/paths';
 
 export const useCalendarClick = () => {

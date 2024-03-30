@@ -1,10 +1,9 @@
 import { Dispatch, useState } from 'react';
 import { Form, Input } from 'antd';
-
 import { selectReviewData, setReviewData } from '@redux/redusers/user-data-slice';
+
 import { useAppDispatch, useAppSelector } from '@hooks/index';
 import { useCreateFeedbackMutation } from '@services/feedbacks-service';
-
 import { FeedbackReq } from '@type/service';
 
 import { PrimaryBtn } from '@components/buttons/primary-button';
@@ -37,7 +36,6 @@ export const CreateReviewModal = ({
 
     const onSubmit = async (values: FeedbackReq) => {
         dispatch(setReviewData(values));
-        await postFeedback(values);
         try {
             await postFeedback(values).unwrap();
             setOpenSuccessPostModal(true);
@@ -51,7 +49,7 @@ export const CreateReviewModal = ({
     return (
         <ModalWindow
             isOpen={isOpen}
-            closable
+            closable={true}
             title='Ваш отзыв'
             okText='Опубликовать'
             className={styles.wrapper}

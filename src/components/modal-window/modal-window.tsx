@@ -9,6 +9,7 @@ type ModalWindowgProps = {
     closable?: boolean;
     title?: ReactNode;
     footer?: ReactNode;
+    closeIcon?: ReactNode;
     okText?: string;
     onOk?: () => void;
     onCancel?: () => void;
@@ -23,35 +24,37 @@ export const ModalWindow = ({
     closable,
     title,
     footer,
+    closeIcon,
     okText,
     onOk,
     onCancel,
     maskStyle,
     className,
     dataTestId,
-}: ModalWindowgProps) => {
-    return (
-        <Modal
-            centered
-            title={title}
-            open={isOpen}
-            closable={closable || false}
-            maskClosable={false}
-            footer={footer || null}
-            okText={okText}
-            width={539}
-            onOk={onOk}
-            onCancel={onCancel}
-            maskStyle={
-                maskStyle || {
-                    background: 'rgba(121, 156, 212, 0.50)',
-                    backdropFilter: 'blur(6px)',
-                }
+}: ModalWindowgProps) => (
+    <Modal
+        centered={true}
+        title={title}
+        open={isOpen}
+        closeIcon={closeIcon}
+        closable={closable || false}
+        destroyOnClose={true}
+        maskClosable={false}
+        footer={footer || null}
+        okText={okText}
+        width={539}
+        onOk={onOk}
+        onCancel={onCancel}
+        maskStyle={
+            maskStyle || {
+                background: 'rgba(121, 156, 212, 0.50)',
+                backdropFilter: 'blur(6px)',
             }
-            className={className || styles.modal}
-            zIndex={1}
-            children={children}
-            data-test-id={dataTestId}
-        />
-    );
-};
+        }
+        className={className || styles.modal}
+        zIndex={1}
+        data-test-id={dataTestId}
+    >
+        {children}
+    </Modal>
+);

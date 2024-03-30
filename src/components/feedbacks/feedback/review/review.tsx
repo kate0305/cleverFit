@@ -20,7 +20,7 @@ export const Review = ({ rating, date, message }: ReviewProps) => {
     return (
         <div className={styles.wrapper}>
             <div className={styles.header}>
-                <Rating disabled defaultValue={rating} size='16' />
+                <Rating disabled={true} defaultValue={rating} size='16' />
                 <Paragraph className={styles.data}>{formattedDate}</Paragraph>
             </div>
             <div className={styles.review}>{message}</div>

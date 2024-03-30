@@ -4,17 +4,11 @@
     height: auto;
     padding: var(--padding-block);
     background-color: var(--primary-light-1);
-
+    line-height: var(--line-height-base);
     .title {
         margin: 0;
-        padding: var(--gap-ss) 0;
-        @include m.font(
-            $size: 3var
-                (
-                    --gap-ms,
-                ),
-            $weight: 700
-        );
+        padding: var(--gap-6) 0;
+        @include m.font($size: 32px, $weight: 700);
         color: var(--light-title-85);
         @media screen and (max-width: 992px) {
             @include m.font($size: var(--gap-24), $weight: 500);
@@ -23,13 +17,76 @@
             font-size: var(--font-size-l);
         }
     }
+
+    .title_profile {
+        margin-bottom: var(--gap-2);
+        padding: var(--gap-6) 0;
+        @include m.font($size: 20px, $weight: 500);
+        color: var(--light-title-85);
+        @include m.tablet-l {
+            margin: 0;
+            padding: 0;
+            @include m.font;
+        }
+    }
 }
 
-.container {
+.container_main {
     display: flex;
     justify-content: space-between;
-    margin-top: var(--gap-ms);
+    margin-top: var(--gap-8);
     @media screen and (max-width: 576px) {
         margin-top: 0;
+    }
+}
+
+.container_profile {
+    @include m.flex($j-c: space-between);
+    @include m.tablet-l {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+.btn_profile {
+    align-self: flex-end;
+    margin-left: var(--gap-10);
+    padding: 7px 15px;
+    line-height: var(--line-height-base);
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    @include m.tablet-l {
+        margin: var(--gap-8) 0 var(--gap-6);
+    }
+    @include m.phone {
+        margin: 0;
+        padding: var(--gap-8) 0;
+        font-size: var(--font-size-base);
+        border-radius: var(--border-radius-circle);
+        border: none;
+        box-shadow: none;
+        background: none;
+    }
+}
+
+.btn_settings {
+    @include m.flex;
+    padding: var(--gap-6) 0;
+    @include m.font($size: var(--font-size-l), $weight: 500);
+    border: none;
+    box-shadow: none;
+    :global {
+        .anticon {
+            line-height: 0;
+        }
+        .anticon + span {
+            margin-left: var(--gap-16);
+        }
+    }
+    @include m.phone {
+        font-size: var(--font-size-base);
+        font-weight: 400;
     }
 }

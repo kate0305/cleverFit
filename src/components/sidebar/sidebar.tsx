@@ -1,15 +1,8 @@
 import React, { useLayoutEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { Layout } from 'antd';
 
-import { reset } from '@redux/redusers/user-data-slice';
-import { useAppDispatch } from '@hooks/typed-react-redux-hooks';
-
-import { useLocalStorage } from '@utils/use-local-storage';
-import { useMediaQuery } from '@utils/use-media-query';
-
-import { Paths } from '@type/paths';
 import { XS_WIDTH } from '@constants/index';
+import { useMediaQuery } from '@utils/use-media-query';
 
 import { ExitBtn } from '@components/buttons/exit-button';
 import { SideToggleBtn } from '@components/buttons/toggle-side-menu-button';
@@ -21,9 +14,6 @@ import styles from './sidebar.module.scss';
 const { Sider } = Layout;
 
 export const Sidebar: React.FC = () => {
-    const dispatch = useAppDispatch();
-    const navigate = useNavigate();
-    const [, , removeLocalStorageItem] = useLocalStorage('token', null);
     const [collapsed, setCollapsed] = useState(false);
     const isMobilePhone = useMediaQuery(`(max-width: ${XS_WIDTH})`);
     const defaultCollapsedWidth = 64;
@@ -32,7 +22,7 @@ export const Sidebar: React.FC = () => {
 
     useLayoutEffect(() => {
         if (isMobilePhone) setCollapsed(true);
-    }, [collapsed, isMobilePhone]);
+    }, [isMobilePhone]);
 
     const handleBreakpoint = (broken: boolean) => {
         if (broken) {
@@ -42,21 +32,15 @@ export const Sidebar: React.FC = () => {
         }
     };
 
-    const logOut = () => {
-        dispatch(reset());
-        removeLocalStorageItem();
-        navigate(Paths.AUTH, { replace: true });
-    };
-
     return (
         <Sider
             trigger={null}
             breakpoint='sm'
             onBreakpoint={handleBreakpoint}
-            collapsible
+            collapsible={true}
             collapsed={collapsed}
             collapsedWidth={collapsedWidth}
-            width={!isWidthChanged ? 208 : 106}
+            width={isWidthChanged ? 106 : 208}
             className={styles.wrapper}
         >
             <Logo isClosedSidebar={collapsed} />
@@ -66,7 +50,7 @@ export const Sidebar: React.FC = () => {
                 isClosedSidebar={collapsed}
                 isWidthChanged={isWidthChanged}
             />
-            <ExitBtn isClosedSidebar={collapsed} isWidthChanged={isWidthChanged} onClick={logOut} />
+            <ExitBtn isClosedSidebar={collapsed} isWidthChanged={isWidthChanged} />
         </Sider>
     );
 };

@@ -11,6 +11,7 @@ export const Breadcrumbs = () => {
 
     const extraBreadcrumbItems = pathSnippets.map((_, index) => {
         const url = `/${pathSnippets.slice(0, index + 1).join('/')}`;
+
         return (
             <Breadcrumb.Item key={url}>
                 <Link to={url}>{BREADCRUMB_NAMES[url]}</Link>

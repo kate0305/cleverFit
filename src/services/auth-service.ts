@@ -1,12 +1,3 @@
-import { commonOnQueryStarted } from '@utils/api-query-started';
-
-import type {
-    ChangePasswordReq,
-    ConfirmEmailReq,
-    EmailResp,
-    LoginResp,
-    UserReq,
-} from '@type/service';
 import {
     CHANGE_PASSWORD_URL,
     CHECK_EMAIL,
@@ -14,6 +5,14 @@ import {
     SIGN_IN,
     SIGN_UP,
 } from '@constants/index';
+import type {
+    ChangePasswordReq,
+    ConfirmEmailReq,
+    EmailResp,
+    LoginResp,
+    UserReq,
+} from '@type/service';
+import { commonOnQueryStarted } from '@utils/api-query-started';
 
 import { cleverFitApi } from './base-query';
 

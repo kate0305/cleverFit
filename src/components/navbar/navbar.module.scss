@@ -4,8 +4,8 @@
     padding-top: 50px;
     :global {
         .ant-menu-item {
-            margin-top: var(--gap-ll);
-            &::after {
+            margin-top: var(--gap-18);
+            &:after {
                 border-color: var(--blue-light-6);
             }
         }
@@ -13,18 +13,18 @@
             margin-top: 0;
         }
         .ant-menu-item:hover,
-        .ant-menu-item-active,
-        .ant-menu-item-selected {
+        .ant-menu-item-active a,
+        .ant-menu-item-selected a{
             color: var(--primary-light-5);
         }
     }
 
     @include m.phone {
-        padding-top: var(--gap-l);
+        padding-top: var(--gap-16);
         :global {
             .ant-menu-item {
-                margin-top: var(--gap-m);
-                padding-right: var(--gap-ms);
+                margin-top: var(--gap-10);
+                padding-right: var(--gap-8);
             }
         }
     }

@@ -2,8 +2,8 @@ import { ReactNode } from 'react';
 import { LinkProps } from 'react-router-dom';
 import { ResultStatusType } from 'antd/lib/result';
 
-import { Paths } from '@type/paths';
 import { CHANGE_PASSWORD, REGISTRATION } from '@constants/index';
+import { Paths } from '@type/paths';
 
 export type ResultProps = {
     status: ResultStatusType;

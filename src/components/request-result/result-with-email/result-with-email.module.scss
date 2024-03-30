@@ -1,0 +1,76 @@
+@use '@sass/mixins.scss' as m;
+
+.wrapper {
+    @include m.form-wrapper;
+    max-width: 539px;
+    padding-top: 68px;
+    padding-bottom: 56px;
+    :global {
+        .ant-result-icon {
+            margin-bottom: 28px;
+        }
+        .anticon-check-circle > svg {
+            color: var(--primary-dark-6);
+        }
+        .ant-modal-close-x {
+            margin: var(--gap-28);
+            @include m.font;
+        }
+    }
+    @include m.phone {
+        padding: var(--gap-32);
+    }
+}
+
+.container {
+    @include m.form-container;
+    margin: 0 auto;
+    max-width: 475px;
+    gap: var(--gap-24);
+    @include m.phone {
+        max-width: 264px;
+    }
+}
+
+.result {
+    padding: 0;
+    @include m.phone {
+        margin: 0 -8px;
+    }
+    :global {
+        .ant-result-icon {
+            .anticon {
+                &.anticon-exclamation-circle {
+                    color: var(--primary-light-6);
+                }
+            }
+        }
+        .ant-result-title {
+            font-weight: 500;
+            line-height: var(--line-height-base);
+            color: var(--light-title-85);
+        }
+
+        .ant-result-subtitle {
+            line-height: var(--line-height-base);
+            color: var(--light-secondary-45);
+        }
+    }
+}
+
+.message {
+    margin-bottom: 0;
+}
+
+.email {
+    font-weight: 700;
+}
+
+.footer {
+    @include m.font;
+    text-align: center;
+    color: var(--light-secondary-45);
+    @include m.phone {
+        max-width: 250px;
+    }
+}

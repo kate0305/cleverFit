@@ -1,14 +1,13 @@
-import { Dispatch } from 'react';
+import { Dispatch, Fragment } from 'react';
 import { Card } from 'antd';
 import { Dayjs } from 'dayjs';
+
 import { CloseOutlined } from '@ant-design/icons';
-
-import { getFormattedDate } from '@utils/get-formatted-date';
-import { checkIsPastDate } from '@utils/is-past-date';
-
 import { DateFormats } from '@type/dates';
 import { TrainingResp } from '@type/service';
 import { UserTraining } from '@type/training';
+import { checkIsPastDate } from '@utils/check-is-past-date';
+import { getFormattedDate } from '@utils/get-formatted-date';
 
 import { PrimaryBtn } from '@components/buttons/primary-button';
 import { TrainingList } from '@components/calendar-trainings/training-list';
@@ -18,6 +17,7 @@ import { EmptyBlock } from '@components/empty-block';
 import styles from './modal-day.module.scss';
 
 const { Meta } = Card;
+
 type ModalDayProps = {
     date: Dayjs;
     trainingsListForSelectedDay: UserTraining[];
@@ -56,8 +56,8 @@ export const ModalDay = ({
                 />,
             ]}
             dataTestId='modal-create-training'
-            content={
-                <>
+        >
+            <Fragment>
                     <div className={styles.title}>
                         <Meta
                             title={`Тренировки на ${formattedDate}`}
@@ -81,8 +81,7 @@ export const ModalDay = ({
                     ) : (
                         <EmptyBlock />
                     )}
-                </>
-            }
-        />
+                </Fragment>
+        </ContentCard>
     );
 };

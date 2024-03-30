@@ -1,8 +1,7 @@
-import { commonOnQueryStarted } from '@utils/api-query-started';
-
+import { FEEDBACK } from '@constants/index';
 import { Review } from '@type/feedbacks';
 import { FeedbackReq, Tags } from '@type/service';
-import { FEEDBACK } from '@constants/index';
+import { commonOnQueryStarted } from '@utils/api-query-started';
 
 import { cleverFitApi } from './base-query';
 

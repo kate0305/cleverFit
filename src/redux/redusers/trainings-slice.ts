@@ -1,8 +1,7 @@
 import { RootState } from '@redux/configure-store';
 
-import { TrainingResp, UserTrainingReq, UserTrainingResp } from '@type/service';
-
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { TrainingResp, UserTrainingReq, UserTrainingResp } from '@type/service';
 
 type EditTraining = {
     isEditMode: boolean;

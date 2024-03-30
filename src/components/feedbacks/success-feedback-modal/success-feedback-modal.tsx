@@ -17,22 +17,19 @@ export const SuccessFeedbackModal = ({ isOpen, setOpenModal }: ReviewProps) => {
     const closeModal = () => setOpenModal(false);
 
     return (
-        <ModalWindow
-            isOpen={isOpen}
-            children={
-                <RequestResult
-                    keyErr={ResultRequestKeys.POST_FEEDBACK_SUCCESS}
-                    buttonsGroup={
-                        <PrimaryBtn
-                            type='primary'
-                            htmlType='button'
-                            className={styles.btn_success}
-                            btnText='Отлично'
-                            onClick={closeModal}
-                        />
-                    }
-                />
-            }
-        />
+        <ModalWindow isOpen={isOpen}>
+            <RequestResult
+                keyErr={ResultRequestKeys.POST_FEEDBACK_SUCCESS}
+                buttonsGroup={
+                    <PrimaryBtn
+                        type='primary'
+                        htmlType='button'
+                        className={styles.btn_success}
+                        btnText='Отлично'
+                        onClick={closeModal}
+                    />
+                }
+            />
+        </ModalWindow>
     );
 };
