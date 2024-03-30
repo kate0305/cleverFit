@@ -5,7 +5,7 @@
     height: calc(100vh - 70px);
     padding: var(--gap-24) var(--gap-24) var(--gap-42);
     @include m.flex($j-c: flex-start, $items: flex-start);
-    background-color: var(--light-disable-25);
+    background-color: var(--light-dividers);
     overflow-y: auto;
     @include m.phone {
         height: calc(100% - 62px);
