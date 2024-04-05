@@ -70,6 +70,7 @@ export const LOCALE_OPTIONS = {
 export const BREADCRUMB_NAMES: Record<string, string> = {
     '/feedbacks': 'Отзывы пользователей',
     '/calendar': 'Календарь',
+    '/training': 'Тренировки',
 };
 
 

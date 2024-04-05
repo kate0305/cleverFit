@@ -28,7 +28,7 @@ export type UserTraining = {
     userId: string;
     exercises: ExerciseData[];
     isImplementation?: boolean;
-    parameters?: TrainingParameters;
+    parameters?: Partial<TrainingParameters>;
 };
 
 export enum BadgeColors {

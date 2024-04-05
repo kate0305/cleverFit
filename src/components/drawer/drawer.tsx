@@ -1,18 +1,19 @@
 import { ReactNode } from 'react';
-import { Drawer, DrawerProps, Typography } from 'antd';
+import { Drawer, DrawerProps } from 'antd';
 
 import { CloseOutlined } from '@ant-design/icons';
 import { MD_WIDTH } from '@constants/index';
+import { DrawerTitleProps } from '@type/drawer';
 import { useMediaQuery } from '@utils/use-media-query';
 
-import styles from './drawer.module.scss';
+import { DrawerTitle } from './drawer-title';
 
-const { Title } = Typography;
+import styles from './drawer.module.scss';
 
 type DrawerComponentProps = DrawerProps & {
     isOpenDrawer: boolean;
     children: ReactNode;
-    titleChildren: ReactNode;
+    titleChildren: DrawerTitleProps;
     setCloseDrawer: () => void;
     dataTestId?: string;
 };
@@ -29,11 +30,7 @@ export const DrawerComponent = ({
 
     return (
         <Drawer
-            title={
-                <Title level={4} className={styles.title}>
-                    {titleChildren}
-                </Title>
-            }
+            title={<DrawerTitle {...titleChildren} />}
             footer={footer}
             onClose={setCloseDrawer}
             open={isOpenDrawer}
@@ -46,9 +43,9 @@ export const DrawerComponent = ({
             width={408}
             height={555}
             className={styles.wrapper}
-            data-test-id={dataTestId}
+            data-test-id={dataTestId || 'modal-drawer-right'}
         >
-            {children}
+            <div className={styles.body}>{children}</div>
         </Drawer>
     );
 };

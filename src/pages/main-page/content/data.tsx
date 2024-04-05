@@ -22,12 +22,12 @@ export const possibilities = [
 
 export const actions = [
     {
-        id: '1',
+        id: Paths.WORKOUTS,
         title: 'Расписать тренировки',
         iconLabel: 'Тренировки',
         icon: <HeartFilled style={{ color: '#2f54eb' }} />,
         navigateTo: '',
-        dataTestId: '',
+        dataTestId: 'menu-button-training',
     },
     {
         id: Paths.CALENDAR,

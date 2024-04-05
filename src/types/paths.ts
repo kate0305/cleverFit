@@ -7,6 +7,7 @@ export enum Paths {
     CALENDAR = '/calendar',
     PROFILE = '/profile',
     SETTINGS = '/settings',
+    WORKOUTS = '/training',
     NOT_FOUND = '*',
 }
 

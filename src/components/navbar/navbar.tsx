@@ -1,8 +1,14 @@
+import { Fragment } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Menu, MenuProps } from 'antd';
 
 import { Paths } from '@type/paths';
+import { ResultRequestKeys } from '@type/result-request-keys';
 import { useCalendarClick } from '@utils/use-click-calendar';
+
+import { PrimaryBtn } from '@components/buttons/primary-button';
+import { ModalWindow } from '@components/modal-window';
+import { RequestResult } from '@components/request-result';
 
 import { createMenuItemsArr } from './data';
 
@@ -16,25 +22,44 @@ type NavbarProps = {
 export const Navbar = ({ isWidthChanged, isClosedSidebar }: NavbarProps) => {
     const { pathname } = useLocation();
 
-    const { handleClick } = useCalendarClick();
+    const { isErr, handleClick, closeErrModal } = useCalendarClick();
+    
     const handleMenuItemsClick: MenuProps['onClick'] = (e) => {
         switch (e.key) {
             case Paths.CALENDAR:
-                handleClick();
+                handleClick(Paths.CALENDAR);
                 break;
 
-            default:
+            case Paths.WORKOUTS:
+                handleClick(Paths.WORKOUTS);
                 break;
         }
     };
 
     return (
-        <Menu
-            className={styles.wrapper}
-            selectedKeys={[pathname]}
-            mode='inline'
-            onClick={handleMenuItemsClick}
-            items={createMenuItemsArr(isWidthChanged, isClosedSidebar)}
-        />
+        <Fragment>
+            <Menu
+                className={styles.wrapper}
+                selectedKeys={[pathname]}
+                mode='inline'
+                onClick={handleMenuItemsClick}
+                items={createMenuItemsArr(isWidthChanged, isClosedSidebar)}
+            />
+            <ModalWindow isOpen={isErr} dataTestId='modal-no-review'>
+                <RequestResult
+                    keyErr={ResultRequestKeys.GET_FEEDBACK_ERR}
+                    buttonsGroup={
+                        <PrimaryBtn
+                            type='primary'
+                            htmlType='button'
+                            className={styles.btn_err}
+                            btnText='Назад'
+                            onClick={closeErrModal}
+                            dataTestId='write-review-not-saved-modal'
+                        />
+                    }
+                />
+            </ModalWindow>
+        </Fragment>
     );
 };

@@ -12,10 +12,10 @@ const data = [
         icon: (
             <CalendarTwoTone style={{ fontSize: '14px' }} twoToneColor={['#061178', '#061178']} />
         ),
-        label: <Link to={Paths.CALENDAR}>Календарь</Link>,
+        label: 'Календарь',
     },
     {
-        key: 'training',
+        key: Paths.WORKOUTS,
         icon: <HeartFilled style={{ color: '#061178', fontSize: '14px' }} />,
         label: 'Тренировки',
     },

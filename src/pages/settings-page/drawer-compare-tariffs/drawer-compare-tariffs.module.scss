@@ -1,7 +1,7 @@
 @use '@sass/mixins.scss' as m;
 
 .body {
-    padding: var(--gap-24) var(--gap-32) 0;
+    padding-top: var(--gap-24);
     .subtitle {
         margin-bottom: var(--gap-24);
         padding: var(--gap-14) 0;
@@ -13,9 +13,6 @@
             margin-top: var(--gap-24);
             margin-bottom: 0;
         }
-    }
-    @include m.phone {
-        padding: 0 var(--gap-16);
     }
 }
 

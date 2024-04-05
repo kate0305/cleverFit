@@ -58,11 +58,13 @@
     }
 }
 
-.title {
-    @include m.flex($j-c: flex-start);
-    gap: var(--gap-10);
-}
-
 .mask {
     background-color: transparent;
+}
+
+.body {
+    padding: 0 var(--gap-32);
+    @include m.phone {
+        padding: 0 var(--gap-16);
+    }
 }

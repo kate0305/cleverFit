@@ -28,6 +28,9 @@ export const getModalErr = (modalType: ModalErrTypes, onClick?: () => void) => {
         closable,
         closeIcon,
         className,
+        afterClose() {
+            Modal.destroyAll();
+        },
         onCancel() {
             Modal.destroyAll();
         },

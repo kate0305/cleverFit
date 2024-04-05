@@ -6,6 +6,7 @@ import { selectUserData } from '@redux/redusers/user-data-slice';
 import { CloseOutlined } from '@ant-design/icons';
 import { useAppSelector } from '@hooks/index';
 import { DateFormats } from '@type/dates';
+import { DrawerTitleKeys } from '@type/drawer';
 import { useLogOut } from '@utils/use-logout';
 
 import { PrimaryBtn } from '@components/buttons/primary-button';
@@ -62,7 +63,7 @@ export const DrawerCompareTariffs = ({
             <DrawerComponent
                 isOpenDrawer={isOpenDrawer}
                 setCloseDrawer={closeDrawer}
-                titleChildren='Сравнить тарифы'
+                titleChildren={{ type: DrawerTitleKeys.COMPARE, text: 'Сравнить тарифы' }}
                 footer={
                     !isProTatiff && (
                         <PrimaryBtn
