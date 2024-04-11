@@ -1,0 +1,30 @@
+@use '@sass/mixins.scss' as m;
+
+.wrapper {
+    margin-top: var(--gap-24);
+    padding-top: 27vh;
+    width: 100%;
+    height: 100%;
+    @include m.flex;
+    flex-direction: column;
+    text-align: center;
+    .title {
+        @include m.font($size: var(--font-size-xl), $weight: 500);
+        color: var(--primary-light-9);
+    }
+    @include m.tablet-l {
+        padding-top: 20vh;
+        .title {
+            max-width: 280px;
+        }
+    }
+    @include m.phone {
+        padding-top: 15vh;
+    }
+}
+
+.subtitle {
+    margin-top: var(--gap-48);
+    @include m.font;
+    color: var(--light-secondary-45);
+}
