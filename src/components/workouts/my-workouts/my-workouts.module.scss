@@ -1,0 +1,47 @@
+@use '@sass/mixins.scss' as m;
+
+.container {
+    .title {
+        padding: 56px 130px;
+        font-weight: 500;
+        line-height: var(--line-height-base);
+        text-align: center;
+    }
+    @include m.tablet-l {
+        .title {
+            margin: var(--gap-34) 0;
+        }
+    }
+    @include m.phone {
+        .title {
+            margin: 75px 0;
+            padding: 56px var(--gap-12);
+        }
+    }
+}
+
+.empty_training {
+    padding-top: 148px;
+    @include m.flex;
+    flex-direction: column;
+    @include m.phone {
+        margin-top: var(--gap-24);
+        padding-top: 0;
+    }
+}
+
+.btn_create {
+    @include m.primary-btn;
+    width: fit-content;
+    margin-top: var(--gap-20);
+    padding: var(--padding-primary-btn);
+    @include m.font;
+    @include m.tablet-l {
+        margin-top: var(--gap-24);
+    }
+    @include m.phone {
+        width: 100%;
+        margin-top: var(--gap-20);
+    }
+}
+

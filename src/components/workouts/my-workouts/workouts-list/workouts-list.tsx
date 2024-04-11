@@ -11,11 +11,13 @@ import {
 import { DownOutlined, PlusOutlined } from '@ant-design/icons';
 import { useAppDispatch, useAppSelector } from '@hooks/index';
 import { BadgeColors, UserTraining } from '@type/training';
+import { getElement } from '@utils/get-target-element';
 import { getWorkoutPeriodName } from '@utils/get-workout-period-name';
 
 import { EditBtn } from '@components/buttons/edit-button';
 import { PrimaryBtn } from '@components/buttons/primary-button';
 import { ModalChooseTraining } from '@components/calendar-trainings/modal-window/modal-choose-training';
+import { Portal } from '@components/portal';
 
 import styles from './workouts-list.module.scss';
 
@@ -30,12 +32,12 @@ export const WorkoutsList = ({ handleClick }: WorkoutsListProps) => {
     const [isShowPortal, setShowPortal] = useState('');
 
     const workoutList = Object.values(userTrainingsList)
-        .flatMap((workouts) => workouts)
+        .flat()
         // eslint-disable-next-line no-underscore-dangle
         .map((workout) => ({ ...workout, key: workout._id }));
 
     const closeModal = () => setShowPortal('');
-    
+
     const handleModalBtnClick = (index: number, editTrainingId: string) => {
         dispatch(setEditTrainingData({ isEditMode: true, editTrainingIndex: index }));
         dispatch(setEditTrainingId({ editTrainingId: editTrainingId || '' }));
@@ -48,7 +50,7 @@ export const WorkoutsList = ({ handleClick }: WorkoutsListProps) => {
             dataIndex: 'type',
             key: 'type',
             render: (_, { _id, name, date, exercises }, index) => (
-                <div className={styles.training_type}>
+                <div id={_id} className={styles.training_type}>
                     <Badge color={BadgeColors[name as keyof typeof BadgeColors]} text={name} />
                     <PrimaryBtn
                         type='link'
@@ -57,20 +59,24 @@ export const WorkoutsList = ({ handleClick }: WorkoutsListProps) => {
                         onClick={() => setShowPortal(_id || '')}
                     />
                     {isShowPortal === _id && (
-                        <ModalChooseTraining
-                            date={dayjs(date)}
-                            trainingsListForSelectedDay={[]}
-                            workoutName={name}
-                            exercisesList={exercises}
-                            setCloseModal={closeModal}
-                            fromTrainingPage={true}
-                            className={styles.portal}
-                            addExercise={() => handleModalBtnClick(index, _id)}
+                        <Portal
+                            element={
+                                <ModalChooseTraining
+                                    date={dayjs(date)}
+                                    trainingsListForSelectedDay={[]}
+                                    workoutName={name}
+                                    exercisesList={exercises}
+                                    setCloseModal={closeModal}
+                                    fromTrainingPage={true}
+                                    className={styles.portal}
+                                    addExercise={() => handleModalBtnClick(index, _id)}
+                                />
+                            }
+                            container={getElement(`[id='${_id}']`) || document.body}
                         />
                     )}
                 </div>
             ),
-            className: styles.column,
         },
         {
             title: 'Периодичность',
@@ -95,7 +101,6 @@ export const WorkoutsList = ({ handleClick }: WorkoutsListProps) => {
                     onClick={handleClick}
                 />
             ),
-            className: styles.column_empty,
         },
     ];
 

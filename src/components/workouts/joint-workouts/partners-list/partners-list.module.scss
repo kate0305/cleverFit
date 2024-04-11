@@ -1,0 +1,25 @@
+@use '@sass/mixins.scss' as m;
+
+.container {
+    margin-top: var(--gap-24);
+    padding: var(--gap-16) 0 var(--gap-20);
+    .title {
+        @include m.font($size: var(--font-size-l), $weight: 500);
+    }
+
+    @include m.phone {
+        margin-top: var(--gap-20);
+    }
+}
+
+.list {
+    @include m.flex($j-c: flex-start);
+    flex-wrap: wrap;
+    gap: var(--gap-16);
+    margin-top: var(--gap-12);
+}
+
+.subtitle {
+    @include m.font;
+    color: var(--light-secondary-45);
+}

@@ -1,0 +1,78 @@
+@use '@sass/mixins.scss' as m;
+
+.wrapper {
+    width: 100%;
+    margin: var(--gap-16) 0;
+    padding: var(--gap-20);
+    padding-left: var(--gap-12);
+    border-radius: var(--gap-2) var(--gap-16) var(--gap-16) var(--gap-16);
+    background-color: var(--base-light);
+    box-shadow: var(--box-shadow-light);
+
+    :global {
+        .ant-card-body {
+            @include m.flex($j-c: flex-start);
+            @include m.tablet-xl {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    }
+}
+
+.info {
+    @include m.flex($items: flex-start);
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: var(--gap-8);
+    margin: 0 var(--gap-8);
+    @include m.tablet-xl {
+        padding-bottom: var(--gap-16);
+        margin: 0;
+    }
+}
+
+.date {
+    @include m.font($size: var(--font-size-s));
+    color: var(--light-disable-25);
+}
+
+.message {
+    @include m.font($size: var(--font-size-m), $weight: 700);
+    color: var(--primary-light-9);
+}
+
+.target {
+    position: relative;
+}
+
+.details {
+    padding-left: 0;
+}
+
+.btn_group {
+    align-self: flex-start;
+    max-width: 206px;
+    width: 100%;
+    padding-left: var(--gap-16);
+    @include m.flex;
+    flex-direction: column;
+    gap: var(--gap-16);
+    @include m.tablet-xl {
+        max-width: 100%;
+        gap: var(--gap-12);
+        margin-top: var(--gap-16);
+        padding-left: 0;
+    }
+}
+
+.btn {
+    width: 100%;
+    padding: var(--gap-10) 15px;
+    @include m.font;
+}
+
+.btn_cancel {
+    @extend .btn;
+    color: var(--light-title-85);
+}

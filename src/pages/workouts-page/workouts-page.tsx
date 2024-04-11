@@ -1,7 +1,9 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
+import { useGetInvitesQuery } from '@services/invite-service';
 import { useGetUserTrainingsQuery, useLazyGetTrainingListQuery } from '@services/training-service';
 import { ModalErrTypes } from '@type/modal-types';
+import { WorkoutsTabsKeys } from '@type/workouts-tabs';
 
 import { getModalErr } from '@components/modal-window/modal-err/modal-err';
 
@@ -11,8 +13,13 @@ import styles from './workouts-page.module.scss';
 
 export const WorkoutsPage = () => {
     useGetUserTrainingsQuery();
+    useGetInvitesQuery();
 
     const [getTrainingList, { isError }] = useLazyGetTrainingListQuery();
+
+    const [currentTab, setCurrentTab] = useState('');
+
+    const handleChangeTab = (activeKey: string) => setCurrentTab(activeKey);
 
     useEffect(() => {
         getTrainingList();
@@ -25,8 +32,12 @@ export const WorkoutsPage = () => {
     }, [getTrainingList, isError]);
 
     return (
-        <main className={styles.wrapper}>
-            <WorkoutsTabs />
+        <main
+            className={
+                currentTab === WorkoutsTabsKeys.MARATHONS ? styles.marathons : styles.wrapper
+            }
+        >
+            <WorkoutsTabs onChange={handleChangeTab} />
         </main>
     );
 };

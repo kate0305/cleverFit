@@ -1,0 +1,33 @@
+@use '@sass/mixins.scss' as m;
+
+.wrapper {
+    margin-top: var(--gap-24);
+    padding: var(--gap-16) var(--gap-24) var(--gap-24);
+    border-radius: var(--border-radius-xs);
+    border: 1px solid var(--light-dividers);
+    background-color: var(--neutral-gray-2);
+    box-shadow: var(--box-shadow-light);
+    .list_item {
+        border-bottom: none;
+    }
+    :global {
+        .ant-typography ul,
+        .ant-typography ul li {
+            margin: 0;
+            padding: 0;
+        }
+    }
+    @include m.tablet-xl {
+        padding: var(--gap-12);
+    }
+}
+
+.icon {
+    font-size: var(--font-size-s);
+    color: var(--primary-light-6);
+    transition: transform 0.3s ease-in-out;
+}
+
+.icon_rotate {
+    transform: rotate(180deg);
+}

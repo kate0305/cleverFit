@@ -1,0 +1,21 @@
+@use '@sass/mixins.scss' as m;
+
+.block {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-6);
+}
+
+.description {
+    @include m.flex($j-c: flex-start);
+    gap: var(--gap-16);
+    @include m.font($size: var(--font-size-s));
+    color: var(--light-secondary-45);
+    span:first-child {
+        min-width: 110px;
+    }
+    span:nth-child(2) {
+        font-size: var(--font-size-base);
+        color: var(--primary-light-6);
+    }
+}

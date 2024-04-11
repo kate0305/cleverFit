@@ -1,0 +1,61 @@
+@use '@sass/mixins.scss' as m;
+
+.wrapper {
+    margin-top: var(--gap-24);
+    @include m.phone {
+        margin-top: var(--gap-20);
+    }
+}
+
+.header {
+    max-width: 734px;
+    width: 100%;
+    margin-bottom: var(--gap-24);
+    @include m.flex($j-c: space-between);
+    gap: 64px;
+    @include m.tablet-xl {
+        max-width: 535px;
+    }
+    @include m.phone {
+        margin-bottom: var(--gap-20);
+        align-items: flex-start;
+        flex-direction: column;
+        gap: var(--gap-8);
+    }
+}
+
+.search {
+    max-width: 484px;
+    width: 100%;
+    :global(.ant-btn) {
+        height: 32px;
+    }
+}
+
+.list {
+    @include m.flex($items: flex-start);
+    flex-direction: column;
+    flex-wrap: wrap;
+
+    margin-top: var(--gap-12);
+    :global {
+        .ant-list-pagination {
+            margin-top: 0;
+        }
+        .ant-list-grid .ant-col > .ant-list-item {
+            @media screen and (max-width: 1038px) {
+                margin-bottom: 12px;
+            }
+        }
+    }
+    @include m.phone {
+        padding-bottom: var(--gap-20);
+    }
+}
+
+.list_item {
+    width: 234px;
+    @include m.phone {
+        width: 100%;
+    }
+}

@@ -1,0 +1,134 @@
+@use '@sass/mixins.scss' as m;
+
+.wrapper {
+    max-width: 555px;
+    width: 100%;
+    margin-top: var(--gap-24);
+    padding-bottom: var(--gap-30);
+
+    :global {
+        .ant-table {
+            @include m.font;
+        }
+        .ant-table > *,
+        .ant-table table {
+            border-radius: 0;
+        }
+
+        .ant-table-thead:after {
+            content: '';
+            display: block;
+            width: 100%;
+            height: var(--gap-24);
+            background: transparent;
+            @include m.phone {
+                height: var(--gap-12);
+            }
+        }
+
+        .ant-table-thead > tr > th {
+            font-weight: 400;
+            border-bottom: 1px solid var(--light-dividers);
+            background: var(--light-dividers);
+            &:nth-child(3) {
+                border-bottom: none;
+                background-color: transparent;
+            }
+        }
+        .ant-table.ant-table-small .ant-table-tbody > tr > td {
+            padding: 0;
+        }
+        .ant-table-thead
+            > tr
+            > th:not(:last-child):not(.ant-table-selection-column):not(
+                .ant-table-row-expand-icon-cell
+            ):not([colspan])::before {
+            display: none;
+        }
+        .ant-table.ant-table-small .ant-table-thead > tr > th {
+            @include m.phone {
+                padding: 3px var(--gap-8);
+                font-size: var(--font-size-s);
+            }
+        }
+    }
+}
+
+.training_type {
+    max-width: 259px;
+    width: 100%;
+    @include m.flex($j-c: space-between);
+    :global {
+        .ant-badge-status-text {
+            margin-left: var(--gap-12);
+        }
+    }
+}
+
+.btn_down {
+    padding: 0;
+    color: var(--light-title-85);
+    :global {
+        .ant-btn-icon-only {
+            width: fit-content;
+        }
+    }
+}
+
+.btn_add {
+    @include m.primary-btn;
+    width: fit-content;
+    margin-top: var(--gap-24);
+    font-size: var(--font-size-base);
+    @include m.phone {
+        width: 100%;
+        margin-top: var(--gap-20);
+    }
+}
+
+.portal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 253px;
+    width: 100%;
+    @include m.card-base;
+    box-shadow: var(--box-shadow-custom-modal);
+    z-index: 4;
+    @include m.phone {
+        min-width: 312px;
+    }
+    :global {
+        .ant-card-head {
+            margin: 0;
+            padding: 0 var(--gap-12);
+        }
+
+        .ant-card-body {
+            min-height: 131px;
+            padding: var(--gap-16) 0;
+        }
+
+        .ant-card-head-title > div {
+            justify-content: flex-start;
+            padding: 15px 0;
+        }
+        .ant-card-actions {
+            flex-direction: column;
+            padding: var(--gap-12);
+            box-shadow: 0 1px 0 0 #f0f0f0 inset;
+            border: none;
+            & li {
+                width: 100% !important;
+                margin: 0;
+            }
+            & li:first-child {
+                & span > button {
+                    width: 100%;
+                    margin-bottom: 0;
+                    padding: var(--gap-6) var(--gap-12);
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,84 @@
+@use '@sass/mixins.scss' as m;
+
+.body {
+    padding-top: var(--gap-24);
+    @include m.flex($items: flex-start);
+    margin-top: var(--gap-24);
+    flex-direction: column;
+    :global {
+        .ant-form-item,
+        .ant-select {
+            @include m.font;
+        }
+        .ant-select-single.ant-select-sm:not(.ant-select-customize-input) .ant-select-selector {
+            height: 28px;
+        }
+        .ant-select-single.ant-select-sm:not(.ant-select-customize-input) .ant-select-selector {
+            padding: var(--gap-4) var(--gap-12);
+        }
+        .ant-select-single.ant-select-sm:not(.ant-select-customize-input)
+            .ant-select-selector
+            .ant-select-selection-placeholder,
+        .ant-select-single.ant-select-sm:not(.ant-select-customize-input)
+            .ant-select-selector
+            .ant-select-selection-item {
+            line-height: var(--line-height-base);
+        }
+    }
+    @include m.phone {
+        padding: 0;
+    }
+}
+
+.select {
+    width: 100%;
+}
+
+.datepicker {
+    max-width: 156px;
+}
+
+.inputs_group {
+    @include m.flex($j-c: space-between);
+    gap: var(--gap-32);
+    :global {
+        .ant-form-item,
+        .ant-select {
+            margin-bottom: 0;
+            @include m.font;
+        }
+        .ant-checkbox + span {
+            padding-right: 0;
+        }
+        .ant-picker-input > input {
+            padding: var(--gap-4) 0;
+            @include m.font;
+        }
+        .ant-select-single.ant-select-sm:not(.ant-select-customize-input)
+            .ant-select-selector
+            .ant-select-selection-placeholder {
+            line-height: var(--line-height-base);
+        }
+    }
+}
+
+.select_petiod {
+    min-width: 156px;
+    margin-top: var(--gap-8);
+    margin-bottom: 0;
+}
+
+.btn_save {
+    @include m.primary-btn;
+    font-size: var(--font-size-base);
+}
+
+.mobile_day {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 50%;
+    left: 50%;
+    background-color: var(--primary-light-1);
+    transform: translate(-50%, -50%);
+}

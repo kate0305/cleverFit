@@ -1,8 +1,9 @@
 import { Fragment, useEffect, useState } from 'react';
 import { Typography } from 'antd';
+import { selectIsOpenDrawer, toggleDrawer } from '@redux/redusers/app-slice';
 import { selectTrainingData } from '@redux/redusers/trainings-slice';
 
-import { useAppSelector } from '@hooks/index';
+import { useAppDispatch, useAppSelector } from '@hooks/index';
 import { useLazyGetTrainingListQuery } from '@services/training-service';
 
 import { AlertComponent } from '@components/alert';
@@ -17,17 +18,18 @@ import styles from './my-workouts.module.scss';
 const { Title } = Typography;
 
 export const MyWorkouts = () => {
+    const dispatch = useAppDispatch();
     const { userTrainingsList } = useAppSelector(selectTrainingData);
+    const isOpenCreateWorkout = useAppSelector(selectIsOpenDrawer);
+    
     const [getTrainingList] = useLazyGetTrainingListQuery();
 
-    const [isOpenCreateWorkout, setOpenCreateWorkout] = useState(false);
     const [alertMessage, setAlertMessage] = useState('');
 
     const isUserHasWorkouts = Object.keys(userTrainingsList).length;
 
-    const openDrawer = () => setOpenCreateWorkout(true);
+    const openDrawer = () => dispatch(toggleDrawer());
     const closeAlert = () => setAlertMessage('');
-
 
     useEffect(() => {
         getTrainingList();
@@ -55,8 +57,6 @@ export const MyWorkouts = () => {
             )}
             {isOpenCreateWorkout && (
                 <DrawerCreateWorkout
-                    isOpenDrawer={isOpenCreateWorkout}
-                    setCloseDrawer={setOpenCreateWorkout}
                     setAlertMessage={setAlertMessage}
                 />
             )}
