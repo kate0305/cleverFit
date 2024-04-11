@@ -2,7 +2,10 @@
 
 .form {
     width: 100%;
-    padding: var(--gap-24) var(--gap-32);
+    padding: var(--gap-24) 0;
+    @include m.tablet {
+        padding: var(--gap-24) 0;
+    }
     :global {
         .ant-form-item-label {
             width: 100%;
@@ -27,9 +30,6 @@
         .ant-form-item-control-input-content {
             line-height: var(--line-height-base);
         }
-        @include m.tablet {
-            padding: var(--gap-24) var(--gap-16);
-        }
     }
 }
 
@@ -38,12 +38,13 @@
 }
 
 .input_block:not(:first-child) {
-    margin-top: var(--gap-24);
+    margin-top: var(--gap-16);
 }
 
 .btn_add {
     width: 100%;
-    padding: 11px var(--gap-12);
+    margin-top: var(--gap-16);
+    padding: var(--gap-8) var(--gap-12);
     background-color: var(--light-dividers);
     border: none;
     border-radius: var(--gap-2) var(--gap-2) var(--gap-6) var(--gap-6);
@@ -91,9 +92,10 @@
 
 .btn_add_edit {
     @extend .btn_add;
+    margin-top: 0;
     width: 50%;
-    padding: var(--gap-12) var(--gap-12);
-    border-radius:  0 0 var(--gap-6) 0;
+    padding: 9px var(--gap-12);
+    border-radius: 0 0 var(--gap-6) 0;
     text-align: center;
 }
 

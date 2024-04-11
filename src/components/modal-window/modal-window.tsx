@@ -15,6 +15,7 @@ type ModalWindowgProps = {
     onCancel?: () => void;
     maskStyle?: CSSProperties;
     className?: string;
+    width?: number;
     dataTestId?: string;
 };
 
@@ -30,6 +31,7 @@ export const ModalWindow = ({
     onCancel,
     maskStyle,
     className,
+    width,
     dataTestId,
 }: ModalWindowgProps) => (
     <Modal
@@ -42,7 +44,7 @@ export const ModalWindow = ({
         maskClosable={false}
         footer={footer || null}
         okText={okText}
-        width={539}
+        width={width || 539}
         onOk={onOk}
         onCancel={onCancel}
         maskStyle={

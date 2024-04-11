@@ -1,11 +1,10 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Layout, Typography } from 'antd';
 
-import { ArrowLeftOutlined } from '@ant-design/icons';
 import { Paths } from '@type/paths';
 
 import { Breadcrumbs } from '@components/breadcrumbs';
-import { PrimaryBtn } from '@components/buttons/primary-button';
+import { GoBackBtn } from '@components/buttons/go-back-button';
 import { SettingsBtn } from '@components/buttons/settings-button';
 
 import styles from './header.module.scss';
@@ -32,27 +31,26 @@ export const AppHeader = (props: { fromPage: string }) => {
     const profileTitle = (
         <div className={styles.container_profile}>
             <Title className={styles.title_profile}>Профиль</Title>
-            <SettingsBtn className={styles.btn_profile} isPage={pathname}/>
+            <SettingsBtn className={styles.btn_profile} isPage={pathname} />
         </div>
     );
 
-    const settingsTitle = (
-        <PrimaryBtn
-            type='ghost'
-            className={styles.btn_settings}
-            onClick={goBack}
-            btnText='Настройки'
-            icon={<ArrowLeftOutlined style={{ fontSize: '14px', color: '#262626' }} />}
-            dataTestId='settings-back'
-        />
+    const workoutsTitle = (
+        <div className={styles.container_workouts}>
+            <SettingsBtn className={styles.btn_profile} isPage={pathname} />
+        </div>
     );
 
     return (
         <Header className={styles.header}>
-            {props.fromPage !== Paths.PROFILE && props.fromPage !== Paths.SETTINGS && <Breadcrumbs />}
+            {(props.fromPage === Paths.MAIN ||
+                props.fromPage === Paths.FEEDBACKS ||
+                props.fromPage === Paths.CALENDAR ||
+                props.fromPage === Paths.WORKOUTS) && <Breadcrumbs />}
             {props.fromPage === Paths.MAIN && mainTitle}
             {props.fromPage === Paths.PROFILE && profileTitle}
-            {props.fromPage === Paths.SETTINGS && settingsTitle}
+            {props.fromPage === Paths.SETTINGS && <GoBackBtn text='Настройки' onClick={goBack} />}
+            {props.fromPage === Paths.WORKOUTS && workoutsTitle}
         </Header>
     );
 };

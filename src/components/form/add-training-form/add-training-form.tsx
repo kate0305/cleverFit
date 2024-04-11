@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { Fragment, useState } from 'react';
 import { Checkbox, Form, FormInstance, Input, InputNumber } from 'antd';
 import dayjs, { Dayjs } from 'dayjs';
 import { createTraining, selectTrainingData } from '@redux/redusers/trainings-slice';
@@ -12,22 +12,28 @@ import { PrimaryBtn } from '@components/buttons/primary-button';
 
 import styles from './add-training-form.module.scss';
 
-type FormValues = Exercise & {
+export type ExersiceFormValues = Exercise & {
     isChecked?: boolean;
 };
 
 type AddTrainingFormProps = {
-    form: FormInstance<Record<string, FormValues[]>>;
-    date: Dayjs;
-    name: string;
+    form: FormInstance<Record<string, ExersiceFormValues[]>>;
+    trainingName: string;
     trainingsListForSelectedDay: UserTraining[];
+    date?: Dayjs;
+    btnText?: string;
+    fromWorkoutsPage?: boolean;
+    exercisesList?: Array<Partial<Exercise>>;
 };
 
 export const AddTrainingForm = ({
     form,
-    date,
-    name,
+    trainingName,
     trainingsListForSelectedDay,
+    date,
+    btnText,
+    fromWorkoutsPage,
+    exercisesList,
 }: AddTrainingFormProps) => {
     const dispatch = useAppDispatch();
     const { editTrainingData, training } = useAppSelector(selectTrainingData);
@@ -37,15 +43,16 @@ export const AddTrainingForm = ({
 
     const [formValuesChecked, setFormValuesChecked] = useState<number[]>([]);
 
-    const pastDate = checkIsPastDate(date);
+    const pastDate = date && checkIsPastDate(date);
 
     const isHaveExerisesForEdit = trainingsListForSelectedDay[editTrainingIndex] ?? false;
 
     const exerisesForEdit =
-        isHaveExerisesForEdit && trainingsListForSelectedDay[editTrainingIndex].exercises;
+        (fromWorkoutsPage && exercisesList) ||
+        (isHaveExerisesForEdit && trainingsListForSelectedDay[editTrainingIndex].exercises);
 
     const getInitialFormValues = () => {
-        if (exercises.length) return { fields: exercises };
+        if (exercises.length && !fromWorkoutsPage) return { fields: exercises };
         if (isEditMode && exerisesForEdit.length) return { fields: exerisesForEdit };
 
         return { fields: [{}] };
@@ -53,12 +60,12 @@ export const AddTrainingForm = ({
 
     const initialFormValues = getInitialFormValues();
 
-    const onFinish = (values: Record<string, FormValues[]>) => {
+    const onFinish = (values: Record<string, ExersiceFormValues[]>) => {
         const trainings = [...values.fields].filter((value) => value.name);
 
         dispatch(
             createTraining({
-                name,
+                name: trainingName,
                 date: dayjs(date).toISOString(),
                 exercises: trainings,
                 isImplementation: pastDate,
@@ -82,8 +89,8 @@ export const AddTrainingForm = ({
     return (
         <Form
             form={form}
-            id='add-training'
-            name='add-training'
+            id='exercises'
+            name='exercises'
             layout='vertical'
             size='small'
             className={styles.form}
@@ -94,7 +101,7 @@ export const AddTrainingForm = ({
         >
             <Form.List name='fields'>
                 {(fields, { add, remove }) => (
-                    <div>
+                    <Fragment>
                         <div className={styles.container}>
                             {fields.map(({ key, name, ...restField }, index) => (
                                 <div className={styles.input_block} key={key}>
@@ -172,7 +179,7 @@ export const AddTrainingForm = ({
                                         />
                                     }
                                     onClick={() => add()}
-                                    btnText='Добавить ещё'
+                                    btnText={btnText || 'Добавить ещё'}
                                     className=''
                                 />
                             </Form.Item>
@@ -189,7 +196,7 @@ export const AddTrainingForm = ({
                                 />
                             )}
                         </div>
-                    </div>
+                    </Fragment>
                 )}
             </Form.List>
         </Form>

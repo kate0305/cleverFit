@@ -32,5 +32,5 @@ export const NoFeedback = () => {
         </Fragment>
     );
 
-    return <ContentCard bordered={false} className={card} content={content} />;
+    return <ContentCard bordered={false} className={card}>{content}</ContentCard>;
 };

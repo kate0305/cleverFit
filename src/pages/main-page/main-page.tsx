@@ -3,6 +3,7 @@ import { Col, Layout, Row, Typography } from 'antd';
 import { selectUserData } from '@redux/redusers/user-data-slice';
 
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
+import { useGetInvitesQuery } from '@services/invite-service';
 import { useLazyGetUserDataQuery } from '@services/user-service';
 import { ResultRequestKeys } from '@type/result-request-keys';
 import { useCalendarClick } from '@utils/use-click-calendar';
@@ -21,6 +22,8 @@ const { Content } = Layout;
 const { Paragraph } = Typography;
 
 export const MainPage = () => {
+    useGetInvitesQuery();
+
     const { isErr, handleClick, closeErrModal } = useCalendarClick();
     const userData = useAppSelector(selectUserData);
     const [getUserData] = useLazyGetUserDataQuery();

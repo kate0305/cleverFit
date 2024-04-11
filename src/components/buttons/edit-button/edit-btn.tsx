@@ -1,7 +1,7 @@
 import { Button } from 'antd';
 import { setEditTrainingData, setEditTrainingId } from '@redux/redusers/trainings-slice';
 
-import { EditOutlined, EditTwoTone } from '@ant-design/icons';
+import { EditOutlined } from '@ant-design/icons';
 import { useAppDispatch } from '@hooks/typed-react-redux-hooks';
 
 import styles from './edit-btn.module.scss';
@@ -43,10 +43,7 @@ export const EditBtn = ({
             block={true}
             icon={
                 disabled ? (
-                    <EditTwoTone
-                        twoToneColor={['#bfbfbf', '#bfbfbf']}
-                        style={{ fontSize: `${size || 18}px` }}
-                    />
+                    <EditOutlined style={{ color: '#bfbfbf', fontSize: `${size || 18}px` }} />
                 ) : (
                     <EditOutlined style={{ color: '#2f54eb', fontSize: `${size || 18}px` }} />
                 )
