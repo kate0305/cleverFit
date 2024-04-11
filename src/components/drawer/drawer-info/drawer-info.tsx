@@ -1,5 +1,6 @@
 import { Badge, Typography } from 'antd';
 
+import { UserCardTypes } from '@type/card';
 import { BadgeColors } from '@type/training';
 
 import { User } from '@components/feedbacks/feedback/user';
@@ -28,7 +29,7 @@ export const DrawerInfo = ({
             <User
                 fullName={userName ?? null}
                 image={imageSrc ?? null}
-                type='card'
+                type={UserCardTypes.CARD}
             />
         )}
         <Badge

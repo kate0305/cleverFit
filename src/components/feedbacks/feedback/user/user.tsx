@@ -3,6 +3,7 @@ import { Avatar, Typography } from 'antd';
 import classnames from 'classnames/bind';
 
 import { UserOutlined } from '@ant-design/icons';
+import { UserCardTypes } from '@type/card';
 import { getHighlightedText } from '@utils/get-highlighted-text';
 
 import styles from './user.module.scss';
@@ -27,18 +28,18 @@ export const User = ({ image, fullName, firstName, surname, type, searchValue }:
 
     const wrapper = cx({
         wrapper: !type,
-        wrapper_card: type === 'card',
-        wrapper_message: type === 'message',
+        wrapper_card: type === UserCardTypes.CARD,
+        wrapper_message: type === UserCardTypes.MESSAGE,
     });
 
     const avatar = cx({
         avatar: !type,
-        avatar_card: type === 'card',
+        avatar_card: type === UserCardTypes.CARD,
     });
 
     const text = cx({
         name: !type,
-        name_card: type === 'card',
+        name_card: type === UserCardTypes.CARD,
     });
 
     return (
@@ -50,7 +51,7 @@ export const User = ({ image, fullName, firstName, surname, type, searchValue }:
                 className={avatar}
             />
             <Paragraph className={text}>
-                {type === 'message' ? (
+                {type === UserCardTypes.MESSAGE ? (
                     <Fragment>
                         <span>{firstName}</span>
                         <span>{surname}</span>

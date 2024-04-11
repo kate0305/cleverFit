@@ -4,11 +4,12 @@ import ru from 'antd/es/calendar/locale/ru_RU';
 import dayjs, { Dayjs } from 'dayjs';
 import { selectTrainingData } from '@redux/redusers/trainings-slice';
 
-import { MD_WIDTH } from '@constants/index';
+import { MD_WIDTH, XS_WIDTH } from '@constants/index';
 import { useAppSelector } from '@hooks/index';
 import {
     useCreateTrainingMutation,
     useEditTrainingMutation,
+    useGetUserTrainingsQuery,
     useLazyGetTrainingListQuery,
     useLazyGetUserTrainingsQuery,
 } from '@services/training-service';
@@ -20,6 +21,7 @@ import { useMediaQuery } from '@utils/use-media-query';
 
 import { SettingsBtn } from '@components/buttons/settings-button';
 import { Calendar } from '@components/calendar-trainings/calendar';
+import { CustomDate } from '@components/calendar-trainings/custom-date';
 import { ModalContainer } from '@components/calendar-trainings/modal-window/modal-container';
 import { TrainingList } from '@components/calendar-trainings/training-list';
 import { getModalErr } from '@components/modal-window/modal-err/modal-err';
@@ -36,9 +38,12 @@ const locale: typeof ru = {
 };
 
 export const CalendarPage = () => {
+    useGetUserTrainingsQuery();
+
     const { userTrainingsList, editTrainingData, training } = useAppSelector(selectTrainingData);
 
     const isLaptop = useMediaQuery(`(min-width: ${MD_WIDTH})`);
+    const isMobile = useMediaQuery(`(max-width: ${XS_WIDTH})`);
 
     const [isShowPortal, setShowPortal] = useState<Element | null>(null);
     const [selectedDay, setSelectedDay] = useState(dayjs());
@@ -62,6 +67,18 @@ export const CalendarPage = () => {
         }
     };
 
+    const handleDateClick = (
+        e: React.MouseEvent<HTMLDivElement, MouseEvent> | React.KeyboardEvent<HTMLDivElement>,
+        day: Dayjs,
+    ) => {
+        e.preventDefault();
+        e.stopPropagation();
+        setSelectedDay(day);
+        const parentElem = document.querySelector(`[title*='${day.format(DateFormats.EN)}']`);
+
+        setShowPortal(parentElem);
+    };
+
     const dateCellRender = (date: Dayjs) => {
         const trainingsListForSelectedDay =
             userTrainingsList[getFormattedDate(date, DateFormats.EN)] ?? [];
@@ -71,6 +88,20 @@ export const CalendarPage = () => {
                 isInCalendar={true}
                 trainingsListForSelectedDay={trainingsListForSelectedDay}
                 isLaptop={isLaptop}
+            />
+        );
+    };
+
+    const dateFullCellRender = (date: Dayjs) => {
+        const trainingsListForSelectedDay =
+            userTrainingsList[getFormattedDate(date, DateFormats.EN)] ?? [];
+
+        return (
+            <CustomDate
+                date={date}
+                isLaptop={isLaptop}
+                trainingList={trainingsListForSelectedDay}
+                onClick={handleDateClick}
             />
         );
     };
@@ -132,6 +163,7 @@ export const CalendarPage = () => {
                 className={styles.calendar}
                 onSelect={selectDate}
                 onPanelChange={onPanelChange}
+                dateFullCellRender={isMobile ? undefined : dateFullCellRender}
                 dateCellRender={dateCellRender}
                 locale={locale}
             />

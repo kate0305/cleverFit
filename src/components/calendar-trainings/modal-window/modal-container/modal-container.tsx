@@ -64,7 +64,6 @@ export const ModalContainer = ({ date, setClosePortal, saveTraining }: ModalCont
                     date={date}
                     saveTraining={saveTraining}
                     trainingsListForSelectedDay={trainingsListForSelectedDay}
-                    appTrainingList={appTrainingList}
                     isRightModalPosition={isRightModalPosition}
                 />
             )}

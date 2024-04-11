@@ -1,5 +1,4 @@
 import { Fragment, useMemo, useState } from 'react';
-import { Select } from 'antd';
 import { Dayjs } from 'dayjs';
 import {
     resetTraining,
@@ -10,8 +9,7 @@ import {
 
 import { ArrowLeftOutlined } from '@ant-design/icons';
 import { useAppDispatch, useAppSelector } from '@hooks/index';
-import { TrainingResp } from '@type/service';
-import { UserTraining } from '@type/training';
+import { BadgeColors, ExerciseData, UserTraining } from '@type/training';
 import { checkIsPastDate } from '@utils/check-is-past-date';
 
 import { EditBtn } from '@components/buttons/edit-button';
@@ -19,16 +17,21 @@ import { PrimaryBtn } from '@components/buttons/primary-button';
 import { DrawerAddExercise } from '@components/calendar-trainings/drawer-add-exercise';
 import { ContentCard } from '@components/content-card';
 import { EmptyBlock } from '@components/empty-block';
+import { SelectTraining } from '@components/select/select-training';
 
 import styles from './modal-choose-training.module.scss';
 
 type ModalChooseTrainingProps = {
     date: Dayjs;
-    saveTraining: () => Promise<void>;
+    saveTraining?: () => Promise<void>;
     setCloseModal: () => void;
     trainingsListForSelectedDay: UserTraining[];
-    appTrainingList: TrainingResp[];
-    isRightModalPosition: boolean;
+    isRightModalPosition?: boolean;
+    fromTrainingPage?: boolean;
+    workoutName?: string;
+    exercisesList?: ExerciseData[];
+    className?: string;
+    addExercise?: () => void;
 };
 
 export const ModalChooseTraining = ({
@@ -36,8 +39,12 @@ export const ModalChooseTraining = ({
     saveTraining,
     setCloseModal,
     trainingsListForSelectedDay,
-    appTrainingList,
     isRightModalPosition,
+    fromTrainingPage,
+    workoutName,
+    exercisesList,
+    className,
+    addExercise,
 }: ModalChooseTrainingProps) => {
     const dispatch = useAppDispatch();
     const { updateTrainingLoading, training, editTrainingData } =
@@ -50,7 +57,7 @@ export const ModalChooseTraining = ({
     const [selectedTraining, setSelectedTraining] = useState<string | null>(null);
 
     const pastDate = checkIsPastDate(date);
-    const isHaveDayExercise = useMemo(() => exercises.find(({ name }) => name), [exercises]);
+    const isHaveDayExercise = useMemo(() => exercises?.find(({ name }) => name), [exercises]);
 
     const { _id: editTrainingId, exercises: editTrainingExercise } =
         trainingsListForSelectedDay[editTrainingIndex] ?? [];
@@ -58,14 +65,6 @@ export const ModalChooseTraining = ({
     const dayTrainingList = useMemo(
         () => trainingsListForSelectedDay?.map(({ name }) => name),
         [trainingsListForSelectedDay],
-    );
-
-    const trainingListForSelect = useMemo(
-        () =>
-            appTrainingList.filter(({ name }) =>
-                dayTrainingList.length ? !dayTrainingList.includes(name) : name,
-            ),
-        [appTrainingList, dayTrainingList],
     );
 
     const getExerciseForRender = () => {
@@ -78,6 +77,7 @@ export const ModalChooseTraining = ({
         if (selectedTraining && isHaveDayExercise) {
             return exercises;
         }
+        if (fromTrainingPage) return exercisesList;
 
         return null;
     };
@@ -100,14 +100,16 @@ export const ModalChooseTraining = ({
     };
 
     const handleSaveBtn = async () => {
-        await saveTraining();
+        if (saveTraining) await saveTraining();
         closeModal();
     };
 
     return (
         <Fragment>
             <ContentCard
-                className={isRightModalPosition ? styles.wrapper_last_day : styles.wrapper}
+                className={
+                    className || (isRightModalPosition ? styles.wrapper_last_day : styles.wrapper)
+                }
                 title={
                     <div className={styles.title}>
                         <PrimaryBtn
@@ -117,24 +119,15 @@ export const ModalChooseTraining = ({
                             dataTestId='modal-exercise-training-button-close'
                             className={styles.btn_close}
                         />
-                        <Select
-                            placeholder='Выбор типа тренировки'
-                            defaultValue={
-                                isEditMode
-                                    ? dayTrainingList && dayTrainingList[editTrainingIndex]
-                                    : null
-                            }
-                            style={{ width: 269 }}
-                            onChange={handleChangeSelect}
-                            options={
-                                trainingListForSelect &&
-                                trainingListForSelect.map(({ name }) => ({
-                                    value: name,
-                                    label: name,
-                                }))
-                            }
-                            data-test-id='modal-create-exercise-select'
-                        />
+                        {fromTrainingPage ? (
+                            <p className={styles.workout_name}>{workoutName}</p>
+                        ) : (
+                            <SelectTraining
+                                trainingsListForSelectedDay={trainingsListForSelectedDay}
+                                handleChangeSelect={handleChangeSelect}
+                                className={styles.select}
+                            />
+                        )}
                     </div>
                 }
                 actions={[
@@ -142,19 +135,30 @@ export const ModalChooseTraining = ({
                         btnText='Добавить упражнения'
                         htmlType='button'
                         className={styles.btn_add}
-                        disabled={!selectedTraining && !editTrainingExercise}
-                        onClick={openAddExercise}
+                        disabled={!fromTrainingPage && !selectedTraining && !editTrainingExercise}
+                        onClick={addExercise || openAddExercise}
                     />,
-                    <PrimaryBtn
-                        type='link'
-                        btnText={pastDate ? 'Сохранить изменения' : 'Сохранить'}
-                        htmlType='button'
-                        loading={updateTrainingLoading}
-                        onClick={handleSaveBtn}
-                        className={styles.btn_save}
-                        disabled={!isHaveDayExercise}
-                    />,
+                    !fromTrainingPage && (
+                        <PrimaryBtn
+                            type='link'
+                            btnText={pastDate ? 'Сохранить изменения' : 'Сохранить'}
+                            htmlType='button'
+                            loading={updateTrainingLoading}
+                            onClick={handleSaveBtn}
+                            className={styles.btn_save}
+                            disabled={!isHaveDayExercise}
+                        />
+                    ),
                 ]}
+                headStyle={
+                    fromTrainingPage
+                        ? {
+                              borderBottom: `2px solid ${
+                                  BadgeColors[workoutName as keyof typeof BadgeColors]
+                              }`,
+                          }
+                        : {}
+                }
                 dataTestId='modal-create-exercise'
             >
                 {exerciseForRender ? (
@@ -164,7 +168,9 @@ export const ModalChooseTraining = ({
                                 <p className={styles.name} key={name}>
                                     {name}
                                 </p>
-                                <EditBtn index={index} onClick={openAddExercise} />
+                                {!fromTrainingPage && (
+                                    <EditBtn index={index} onClick={openAddExercise} />
+                                )}
                             </li>
                         ))}
                     </ul>

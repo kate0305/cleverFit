@@ -1,7 +1,9 @@
 import { Fragment } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Menu, MenuProps } from 'antd';
+import { selectUserInvites } from '@redux/redusers/training-partners-slice';
 
+import { useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { Paths } from '@type/paths';
 import { ResultRequestKeys } from '@type/result-request-keys';
 import { useCalendarClick } from '@utils/use-click-calendar';
@@ -20,10 +22,12 @@ type NavbarProps = {
 };
 
 export const Navbar = ({ isWidthChanged, isClosedSidebar }: NavbarProps) => {
+    const userInvites = useAppSelector(selectUserInvites);
+
     const { pathname } = useLocation();
 
     const { isErr, handleClick, closeErrModal } = useCalendarClick();
-    
+
     const handleMenuItemsClick: MenuProps['onClick'] = (e) => {
         switch (e.key) {
             case Paths.CALENDAR:
@@ -43,7 +47,12 @@ export const Navbar = ({ isWidthChanged, isClosedSidebar }: NavbarProps) => {
                 selectedKeys={[pathname]}
                 mode='inline'
                 onClick={handleMenuItemsClick}
-                items={createMenuItemsArr(isWidthChanged, isClosedSidebar)}
+                items={createMenuItemsArr(
+                    isWidthChanged,
+                    isClosedSidebar,
+                    userInvites.length,
+                    pathname,
+                )}
             />
             <ModalWindow isOpen={isErr} dataTestId='modal-no-review'>
                 <RequestResult

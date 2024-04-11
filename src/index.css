@@ -86,7 +86,3 @@ h4.ant-typography,
 h5.ant-typography {
     color: var(--light-title-85)
 }
-
-body + .ant-drawer {
-    overflow-y: hidden;
-}

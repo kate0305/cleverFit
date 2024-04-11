@@ -51,6 +51,7 @@
             border: none;
             & li {
                 margin: 0;
+                width: 100% !important;
             }
         }
     }
@@ -71,7 +72,7 @@
 }
 
 .title {
-    padding: 12px 0;
+    padding: var(--gap-12) 0;
     @include m.flex($j-c: space-between);
     div {
         @include m.font;
@@ -84,12 +85,9 @@
 
 .btn_add {
     margin-bottom: var(--gap-8);
-    padding: var(--gap-6) var(--gap-42);
+    padding: var(--gap-6) var(--gap-12);
     font-size: var(--font-size-base);
     color: var(--light-title-85);
-    @include m.tablet {
-        width: 288px;
-    }
 }
 
 .btn_save {
@@ -113,4 +111,12 @@
     margin: 0;
     @include m.font;
     color: var(--light-secondary-45);
+}
+
+.select {
+    width: 269px;
+}
+
+.workout_name {
+    @include m.font;
 }

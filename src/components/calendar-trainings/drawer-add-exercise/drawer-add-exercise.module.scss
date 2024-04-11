@@ -6,15 +6,12 @@
 
 .data {
     @include m.flex($j-c: space-between);
-    padding: 0 var(--gap-32) var(--gap-8);
+    padding-bottom: var(--gap-8);
     :global {
         .ant-typography {
             @include m.font($weight: 500);
             color: var(--light-secondary-45);
         }
-    }
-    @include m.tablet {
-        padding: 0 var(--gap-16) var(--gap-8);
     }
 }
 

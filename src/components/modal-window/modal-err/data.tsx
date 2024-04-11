@@ -26,7 +26,7 @@ export type ModalErrDataKeys = {
     updateUserDataErr: ModalErrDataProps;
 };
 
-export const ModalErrData: ModalErrDataKeys = {
+export const modalErrData: ModalErrDataKeys = {
     getTrainingListErr: {
         title: (
             <Text data-test-id='modal-error-user-training-title'>
