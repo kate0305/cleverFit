@@ -1,10 +1,14 @@
 import {
+    setPartnersList,
+    setUsersForJointTrainings,
+} from '@redux/redusers/training-partners-slice';
+import {
     setAppTrainingsList,
     setTrainingLoading,
     setUserTrainingsList,
 } from '@redux/redusers/trainings-slice';
 
-import { TRAINING, TRAINING_LIST } from '@constants/index';
+import { PARTNERS_LIST, TRAINING, TRAINING_LIST, USERS_FOR_JOINT_WORKOUTS } from '@constants/index';
 import { DateFormats } from '@type/dates';
 import {
     Tags,
@@ -13,14 +17,14 @@ import {
     UserTrainingReq,
     UserTrainingResp,
 } from '@type/service';
-import { UserTraining } from '@type/training';
+import { TrainingPartner, UserTraining } from '@type/training';
 import { commonOnQueryStarted } from '@utils/api-query-started';
 import { getFormattedDate } from '@utils/get-formatted-date';
 
 import { cleverFitApi } from './base-query';
 
 export const trainingApi = cleverFitApi
-    .enhanceEndpoints({ addTagTypes: [Tags.TRAINING] })
+    .enhanceEndpoints({ addTagTypes: [Tags.TRAINING, Tags.RARTNERS, Tags.USERS_FOR_JOINT_WORKOUT] })
     .injectEndpoints({
         endpoints: (builder) => ({
             getUserTrainings: builder.query<UserTrainingResp, void>({
@@ -36,6 +40,7 @@ export const trainingApi = cleverFitApi
                     }
                 },
                 transformResponse: (response: UserTraining[]): UserTrainingResp => {
+                    console.log('response', response);
                     const dateArr = response.map((training) =>
                         getFormattedDate(training.date, DateFormats.EN),
                     );
@@ -43,7 +48,7 @@ export const trainingApi = cleverFitApi
 
                     dateArr.forEach((date) => {
                         userTraining[date] = response.filter(
-                            (training) => getFormattedDate(training.date, DateFormats.EN) === date
+                            (training) => getFormattedDate(training.date, DateFormats.EN) === date,
                         );
 
                         return userTraining[date];
@@ -68,7 +73,7 @@ export const trainingApi = cleverFitApi
                 },
             }),
 
-            createTraining: builder.mutation<void, UserTrainingReq>({
+            createTraining: builder.mutation<UserTraining, UserTrainingReq>({
                 query: (data) => ({
                     url: TRAINING,
                     method: 'POST',
@@ -83,18 +88,14 @@ export const trainingApi = cleverFitApi
                         dispatch(setTrainingLoading(false));
                     }
                 },
-                invalidatesTags: [Tags.TRAINING],
+                invalidatesTags: (_, err) => (err ? [] : [Tags.TRAINING]),
             }),
+
             editTraining: builder.mutation<void, UpdateTrainingReq>({
                 query: (data) => ({
                     url: `${TRAINING}/${data.id}`,
                     method: 'PUT',
-                    body: {
-                        name: data.name,
-                        date: data.date,
-                        exercises: data.exercises,
-                        isImplementation: data.isImplementation,
-                    },
+                    body: data,
                 }),
                 async onQueryStarted(_, { dispatch, queryFulfilled }) {
                     try {
@@ -105,14 +106,56 @@ export const trainingApi = cleverFitApi
                         dispatch(setTrainingLoading(false));
                     }
                 },
-                invalidatesTags: [Tags.TRAINING],
+                invalidatesTags: (_, err) => (err ? [] : [Tags.TRAINING]),
+            }),
+
+            getPartnersList: builder.query<TrainingPartner[], void>({
+                query: () => PARTNERS_LIST,
+                async onQueryStarted(_, { dispatch, queryFulfilled }) {
+                    try {
+                        await commonOnQueryStarted({ dispatch, queryFulfilled }, true);
+                        const { data: partnersList } = await queryFulfilled;
+
+                        dispatch(setPartnersList(partnersList));
+                    } catch (e) {
+                        console.log(e);
+                    }
+                },
+                providesTags: [Tags.RARTNERS],
+            }),
+
+            getUsersForJointTrainings: builder.query<
+                TrainingPartner[],
+                { trainingType?: string; status?: string | null }
+            >({
+                query: (params) => ({
+                    url: USERS_FOR_JOINT_WORKOUTS,
+                    method: 'GET',
+                    params,
+                }),
+                async onQueryStarted(_, { dispatch, queryFulfilled }) {
+                    try {
+                        await commonOnQueryStarted({ dispatch, queryFulfilled }, true);
+                        const { data: usersList } = await queryFulfilled;
+
+                        dispatch(setUsersForJointTrainings(usersList));
+                    } catch (e) {
+                        console.log(e);
+                    }
+                },
+                providesTags: [Tags.USERS_FOR_JOINT_WORKOUT],
             }),
         }),
     });
 
 export const {
+    useGetUserTrainingsQuery,
     useLazyGetUserTrainingsQuery,
     useLazyGetTrainingListQuery,
     useCreateTrainingMutation,
     useEditTrainingMutation,
+    useGetPartnersListQuery,
+    useLazyGetPartnersListQuery,
+    useGetUsersForJointTrainingsQuery,
+    useLazyGetUsersForJointTrainingsQuery,
 } = trainingApi;

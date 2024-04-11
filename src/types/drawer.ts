@@ -7,8 +7,9 @@ export type DrawerTitleProps = {
 };
 
 export enum DrawerTitleKeys {
-    EDIT = 'edit',
-    COMPARE = 'compare',
-    NEW_EXERCISE = 'new exersise',
-    NEW_WORKOUT = 'new workout',
+    EDIT = 'Редактирование',
+    COMPARE = 'Сравнить тарифы',
+    NEW_EXERCISE = 'Добавление упражнений',
+    NEW_WORKOUT = 'Новая тренировка',
+    JOINT_WORKOUT = 'Совместная тренировка',
 }

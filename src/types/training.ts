@@ -1,3 +1,5 @@
+import { InvitateStatus } from './invite';
+
 export type TrainingData = {
     name: string;
     date: string;
@@ -38,3 +40,43 @@ export enum BadgeColors {
     'Грудь' = '#52c41a',
     'Спина' = '#fa8c16',
 }
+
+export type TrainingPartner = {
+    id: string;
+    name: string;
+    trainingType: string;
+    imageSrc: string | null;
+    avgWeightInWeek: number;
+    inviteId: string;
+    status: InvitateStatus;
+};
+
+export enum TrainingTypes {
+    'Ноги' = 'legs',
+    'Силовая' = 'strength',
+    'Руки' = 'hands',
+    'Грудь' = 'chest',
+    'Спина' = 'back',
+}
+
+export enum TypesWorkoutForMessage {
+    'Ноги' = 'тренировок на ноги',
+    'Силовая' = 'силовых тренировок',
+    'Руки' = 'тренировок на ноги',
+    'Грудь' = 'тренировок на грудь',
+    'Спина' = 'тренировок на спину',
+}
+
+export enum UserStatus {
+    ACCEPTED = 'accepted',
+    PENDING = 'pending',
+    REJECTED = 'rejected',
+}
+
+export type JointTrainingDrawerData = {
+    isJointWorkout: boolean;
+    trainingName: string;
+    userId: string;
+    userName: string;
+    imageSrc: string | null;
+};
