@@ -10,7 +10,7 @@
 }
 .character {
     align-self: center;
-    padding: 11px 12px;
+    padding: 11px var(--gap-12);
     @include m.font;
     color: var(--light-title-85);
     border-radius: var(--border-radius-xs);

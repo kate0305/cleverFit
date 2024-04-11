@@ -175,7 +175,10 @@ export const AddTrainingForm = ({
                                     type='link'
                                     icon={
                                         <PlusOutlined
-                                            style={{ fontSize: '14px', color: '#2f54eb' }}
+                                            style={{
+                                                fontSize: 'var(--font-size-base)',
+                                                color: 'var(--primary-light-6)',
+                                            }}
                                         />
                                     }
                                     onClick={() => add()}
@@ -186,7 +189,11 @@ export const AddTrainingForm = ({
                             {isEditMode && (
                                 <PrimaryBtn
                                     type='ghost'
-                                    icon={<MinusOutlined style={{ fontSize: '14px' }} />}
+                                    icon={
+                                        <MinusOutlined
+                                            style={{ fontSize: 'var(--font-size-base)' }}
+                                        />
+                                    }
                                     onClick={() => {
                                         remove(formValuesChecked);
                                     }}

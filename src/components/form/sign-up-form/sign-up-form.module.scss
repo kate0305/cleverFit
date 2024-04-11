@@ -14,7 +14,7 @@
                 margin-bottom: var(--gap-32);
             }
             &:nth-child(2) {
-                margin-bottom: 30px;
+                margin-bottom: var(--gap-30);
             }
             &:nth-child(3) {
                 padding: var(--gap-16) 0 62px 0;
@@ -49,11 +49,11 @@
         }
         .ant-checkbox-checked {
             .ant-checkbox-inner {
-                border-radius: 2px;
+                border-radius: var(--border-radius-xs);
             }
         }
         .ant-form-item-explain {
-            font-size: 12px;
+            font-size: var(--font-size-s);
             line-height: var(--line-height-base);
         }
     }

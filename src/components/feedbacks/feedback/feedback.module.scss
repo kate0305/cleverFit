@@ -2,7 +2,7 @@
 
 .feedback {
     width: 100%;
-    margin-bottom: 20px;
+    margin-bottom: var(--gap-20);
     padding: var(--gap-16);
     @include m.card-base;
     @include m.font;

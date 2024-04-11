@@ -1,9 +1,9 @@
 @use '@sass/mixins.scss' as m;
 
 .wrapper {
-    padding-top: 30px;
-    background-color: #fff;
-    box-shadow: 0 2px var(--gap-8) rgba(0, 0, 0, 0.15);
+    padding-top: var(--gap-30);
+    background-color: var(--base-light);
+    box-shadow: 0 var(--gap-2) var(--gap-8) rgba(0, 0, 0, 0.15);
     @include m.phone {
         padding-top: 0;
         position: fixed;

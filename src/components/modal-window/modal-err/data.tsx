@@ -38,7 +38,7 @@ export const modalErrData: ModalErrDataKeys = {
                 Попробуйте ещё раз.
             </Text>
         ),
-        icon: <CloseCircleOutlined style={{ color: '#2f54eb' }} />,
+        icon: <CloseCircleOutlined style={{ color: 'var(--primary-light-6)' }} />,
         okText: 'Обновить',
         bntDataTestId: 'modal-error-user-training-button',
         maskStyle: { background: 'rgba(121, 156, 212, 0.10)', backdropFilter: 'blur(6px)' },
@@ -47,7 +47,7 @@ export const modalErrData: ModalErrDataKeys = {
         closeIcon: (
             <CloseOutlined
                 data-test-id='modal-error-user-training-button-close'
-                style={{ fontSize: '14px' }}
+                style={{ fontSize: 'var(--font-size-base)' }}
             />
         ),
     },
@@ -63,7 +63,7 @@ export const modalErrData: ModalErrDataKeys = {
                 Придётся попробовать ещё раз
             </Text>
         ),
-        icon: <CloseCircleOutlined style={{ color: '#ff4d4f' }} />,
+        icon: <CloseCircleOutlined style={{ color: 'var(--light-error)' }} />,
         okText: 'Закрыть',
         bntDataTestId: 'modal-error-user-training-button',
         maskStyle: { background: 'rgba(121, 156, 212, 0.10)', backdropFilter: 'blur(6px)' },
@@ -78,7 +78,7 @@ export const modalErrData: ModalErrDataKeys = {
                 Выберите файл размером до 5 МБ.
             </Text>
         ),
-        icon: <CloseCircleOutlined style={{ color: '#ff4d4f' }} />,
+        icon: <CloseCircleOutlined style={{ color: 'var(--light-error)' }} />,
         okText: 'Закрыть',
         bntDataTestId: 'big-file-error-close',
         maskStyle: { background: 'rgba(121, 156, 212, 0.10)', backdropFilter: 'blur(6px)' },
@@ -93,7 +93,7 @@ export const modalErrData: ModalErrDataKeys = {
                 Придётся попробовать ещё раз
             </Text>
         ),
-        icon: <CloseCircleOutlined style={{ color: '#ff4d4f' }} />,
+        icon: <CloseCircleOutlined style={{ color: 'var(--light-error)' }} />,
         okText: 'Закрыть',
         bntDataTestId: 'big-file-error-close',
         maskStyle: { background: 'rgba(121, 156, 212, 0.10)', backdropFilter: 'blur(6px)' },

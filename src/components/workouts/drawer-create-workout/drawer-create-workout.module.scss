@@ -42,6 +42,9 @@
     width: 100%;
     @include m.flex($j-c: space-between);
     gap: var(--gap-32);
+    @include m.phone {
+        gap: 0;
+    }
     :global {
         .ant-form-item,
         .ant-select {

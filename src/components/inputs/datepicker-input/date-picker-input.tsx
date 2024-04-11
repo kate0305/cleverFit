@@ -35,7 +35,11 @@ export const DatePickerInput = ({
             disabledDate={disabledDate}
             dateRender={dateRender}
             placeholder={placeholder || 'Дата рождения'}
-            suffixIcon={<CalendarTwoTone twoToneColor={['#bfbfbf', '#bfbfbf']} />}
+            suffixIcon={
+                <CalendarTwoTone
+                    twoToneColor={['var(--light-disable-25)', 'var(--light-disable-25)']}
+                />
+            }
             className={className || styles.datepicker}
             data-test-id={dataTestId}
         />

@@ -1,4 +1,4 @@
-import { Button } from 'antd';
+import { Button, ButtonProps } from 'antd';
 import { setEditTrainingData, setEditTrainingId } from '@redux/redusers/trainings-slice';
 
 import { EditOutlined } from '@ant-design/icons';
@@ -6,10 +6,9 @@ import { useAppDispatch } from '@hooks/typed-react-redux-hooks';
 
 import styles from './edit-btn.module.scss';
 
-type EditBtnProps = {
+type EditBtnProps = ButtonProps & {
     index: number;
     onClick?: () => void;
-    disabled?: boolean;
     fromModalDay?: boolean;
     fromWorkoutsPage?: boolean;
     editTrainingId?: string;
@@ -43,9 +42,13 @@ export const EditBtn = ({
             block={true}
             icon={
                 disabled ? (
-                    <EditOutlined style={{ color: '#bfbfbf', fontSize: `${size || 18}px` }} />
+                    <EditOutlined
+                        style={{ color: 'var(--light-disable-25)', fontSize: `${size || 18}px` }}
+                    />
                 ) : (
-                    <EditOutlined style={{ color: '#2f54eb', fontSize: `${size || 18}px` }} />
+                    <EditOutlined
+                        style={{ color: 'var(--primary-light-6)', fontSize: `${size || 18}px` }}
+                    />
                 )
             }
             onClick={handleCLick}

@@ -154,7 +154,7 @@ export const DrawerCreateWorkout = ({ setAlertMessage }: DrawerCreateWorkoutProp
         const date = getFormattedDate(current, DateFormats.EN);
 
         if (!!date === Object.prototype.hasOwnProperty.call(userTrainingsList, date)) {
-            style.backgroundColor = '#f0f5ff';
+            style.backgroundColor = 'var(--primary-light-1)';
         }
 
         return (

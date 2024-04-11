@@ -60,7 +60,9 @@ export const TariffCard = ({
                         <div className={styles.footer}>
                             <p className={styles.footer_text}>
                                 активен
-                                {!tariffIexpired && <CheckOutlined style={{ fontSize: '16px' }} />}
+                                {!tariffIexpired && (
+                                    <CheckOutlined style={{ fontSize: 'var(--font-size-m)' }} />
+                                )}
                             </p>
                             {tariffIexpired && (
                                 <p className={styles.footer_text}>до {expiredDate}</p>

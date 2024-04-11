@@ -7,7 +7,7 @@
     padding-bottom: 56px;
     :global {
         .ant-result-icon {
-            margin-bottom: 28px;
+            margin-bottom: var(--gap-28);
         }
         .anticon-check-circle > svg {
             color: var(--primary-dark-6);

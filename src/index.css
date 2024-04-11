@@ -52,12 +52,12 @@ fieldset {
 /* reset styles ant design */
 .ant-tabs,
 .ant-form {
-    line-height: 130%;
-    color: #262626;
+    line-height: var(--line-height-base);
+    color: var(--light-title-85);
 }
 
 .ant-tabs {
-    font-size: 16px;
+    font-size: var(--font-size-m);
 }
 .ant-tabs > *,
 .ant-form > * {
@@ -66,7 +66,7 @@ fieldset {
 a.ant-btn,
 .ant-btn {
     height: auto;
-    line-height: 130%;
+    line-height: var(--line-height-base);
 }
 
 h1 .ant-typography,

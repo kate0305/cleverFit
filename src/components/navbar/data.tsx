@@ -7,33 +7,42 @@ import { getListItemWithIcon, MenuItem } from '@utils/get-list-item-with-icon';
 
 import styles from './navbar.module.scss';
 
+const iconStyle = { color: 'var(--primary-light-9)', fontSize: 'var(--font-size-base)' };
+const selectedIconStyle = { color: 'var(--primary-light-5)', fontSize: 'var(--font-size-base)' };
+
 const data = [
     {
         key: Paths.CALENDAR,
         icon: (
-            <CalendarTwoTone style={{ fontSize: '14px' }} twoToneColor={['#061178', '#061178']} />
+            <CalendarTwoTone
+                style={{ fontSize: 'var(--font-size-base)' }}
+                twoToneColor={['var(--primary-light-9)', 'var(--primary-light-9)']}
+            />
         ),
         selectedIcon: (
-            <CalendarTwoTone style={{ fontSize: '14px' }} twoToneColor={['#597ef7', '#597ef7']} />
+            <CalendarTwoTone
+                style={{ fontSize: 'var(--font-size-base)' }}
+                twoToneColor={['var(--primary-light-5)', 'var(--primary-light-5)']}
+            />
         ),
         label: 'Календарь',
     },
     {
         key: Paths.WORKOUTS,
-        icon: <HeartFilled style={{ color: '#061178', fontSize: '14px' }} />,
-        selectedIcon: <HeartFilled style={{ color: '#597ef7', fontSize: '14px' }} />,
+        icon: <HeartFilled style={iconStyle} />,
+        selectedIcon: <HeartFilled style={selectedIconStyle} />,
         label: 'Тренировки',
     },
     {
         key: 'achievements',
-        icon: <TrophyFilled style={{ color: '#061178', fontSize: '14px' }} />,
-        selectedIcon: <TrophyFilled style={{ color: '#597ef7', fontSize: '14px' }} />,
+        icon: <TrophyFilled style={iconStyle} />,
+        selectedIcon: <TrophyFilled style={selectedIconStyle} />,
         label: 'Достижения',
     },
     {
         key: Paths.PROFILE,
-        icon: <IdcardOutlined style={{ color: '#061178', fontSize: '14px' }} />,
-        selectedIcon: <IdcardOutlined style={{ color: '#597ef7', fontSize: '14px' }} />,
+        icon: <IdcardOutlined style={iconStyle} />,
+        selectedIcon: <IdcardOutlined style={selectedIconStyle} />,
         label: <Link to={Paths.PROFILE}>Профиль</Link>,
     },
 ];

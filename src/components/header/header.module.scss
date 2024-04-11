@@ -21,7 +21,7 @@
     .title_profile {
         margin-bottom: var(--gap-2);
         padding: var(--gap-6) 0;
-        @include m.font($size: 20px, $weight: 500);
+        @include m.font($size: var(--font-size-l), $weight: 500);
         color: var(--light-title-85);
         @include m.tablet-l {
             margin: 0;

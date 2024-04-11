@@ -47,7 +47,10 @@ export const User = ({ image, fullName, firstName, surname, type, searchValue }:
             <Avatar
                 size={42}
                 src={image ?? <UserOutlined />}
-                style={{ color: '#262626', backgroundColor: '#f5f5f5' }}
+                style={{
+                    color: 'var(--light-title-85)',
+                    backgroundColor: 'var(--light-background)',
+                }}
                 className={avatar}
             />
             <Paragraph className={text}>

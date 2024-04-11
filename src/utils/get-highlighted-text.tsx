@@ -2,7 +2,7 @@ export const getHighlightedText = (textForSearching: string, text: string): JSX.
     textForSearching?.split(new RegExp(`(${text})`, 'gi')).map((match: string) => (
         <span
             key={Math.random()}
-            style={match.toLowerCase() === text.toLowerCase() ? { color: '#ff7875' } : {}}
+            style={match.toLowerCase() === text.toLowerCase() ? { color: 'var(--light-red-4)' } : {}}
         >
             {match}
         </span>

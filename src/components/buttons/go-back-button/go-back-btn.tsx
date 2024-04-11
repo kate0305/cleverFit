@@ -16,7 +16,7 @@ export const GoBackBtn = ({ onClick, text, dataTestId }: GoBackBtnProps) => (
         className={styles.button}
         onClick={onClick}
         btnText={text}
-        icon={<ArrowLeftOutlined style={{ fontSize: '14px', color: '#262626' }} />}
+        icon={<ArrowLeftOutlined style={{ fontSize: 'var(--gap-14)', color: 'var(--light-title-85)' }} />}
         dataTestId={dataTestId || 'settings-back'}
     />
 );

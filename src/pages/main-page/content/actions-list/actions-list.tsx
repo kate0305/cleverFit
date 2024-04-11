@@ -21,7 +21,7 @@ export const ActionsList = ({ onClick }: ActionsListProps) => (
             { xs: 0, sm: 16 },
             { xs: 8, sm: 16 },
         ]}
-        style={{ maxWidth: '768px', marginTop: '16px' }}
+        style={{ maxWidth: '768px', marginTop: 'var(--gap-16)' }}
     >
         {actions.map(({ id, title, iconLabel, icon, dataTestId, navigateTo }) => {
             const handleClick = () => onClick(id);

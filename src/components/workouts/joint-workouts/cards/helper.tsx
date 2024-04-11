@@ -16,7 +16,9 @@ export const getInfoStatus = (status: string) => {
         return (
             <Paragraph className={styles.status}>
                 тренировка одобрена
-                <CheckCircleFilled style={{ color: '#52c41a', fontSize: '14px' }} />
+                <CheckCircleFilled
+                    style={{ color: 'var(--light-success)', fontSize: 'var(--font-size-base)' }}
+                />
             </Paragraph>
         );
     }
@@ -28,11 +30,16 @@ export const getInfoStatus = (status: string) => {
                 <Tooltip
                     placement='topRight'
                     title='повторный запрос будет доступнен через 2 недели'
-                    color='#000'
+                    color='var(--neutral-gray-13)'
                     overlayClassName={styles.tooltip}
                     defaultOpen={true}
                 >
-                    <ExclamationCircleOutlined style={{ color: '#8c8c8c', fontSize: '14px' }} />
+                    <ExclamationCircleOutlined
+                        style={{
+                            color: 'var(--light-secondary-45)',
+                            fontSize: 'var(--font-size-base)',
+                        }}
+                    />
                 </Tooltip>
             </Paragraph>
         );

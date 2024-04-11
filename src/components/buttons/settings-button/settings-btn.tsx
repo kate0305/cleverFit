@@ -30,7 +30,7 @@ export const SettingsBtn = ({ className, isPage }: SettingsBtnProps) => {
 
     const desktopBtn = (
         <Button
-            icon={<SettingOutlined style={{ marginRight: '2px' }} />}
+            icon={<SettingOutlined style={{ marginRight: 'var(--gap-2)' }} />}
             onClick={handleClick}
             className={className || styles.button}
             data-test-id='header-settings'

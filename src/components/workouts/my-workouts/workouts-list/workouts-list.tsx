@@ -121,7 +121,7 @@ export const WorkoutsList = ({ handleClick }: WorkoutsListProps) => {
             />
             <PrimaryBtn
                 type='primary'
-                icon={<PlusOutlined style={{ fontSize: '14px' }} />}
+                icon={<PlusOutlined style={{ fontSize: 'var(--font-size-base)' }} />}
                 onClick={handleClick}
                 btnText='Новая тренировка'
                 className={styles.btn_add}

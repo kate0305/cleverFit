@@ -41,7 +41,7 @@
     gap: var(--gap-24);
     :global {
         .ant-form-item:not(:last-child) {
-            margin-bottom: 16px;
+            margin-bottom: var(--gap-16);
         }
         .ant-form-item:last-child {
             margin-bottom: 0;

@@ -50,12 +50,12 @@ export const DrawerAddExercise = ({
                     ? {
                           type: DrawerTitleKeys.EDIT,
                           text: 'Редактирование',
-                          icon: <EditOutlined style={{ fontSize: '14px' }} />,
+                          icon: <EditOutlined style={{ fontSize: 'var(--font-size-base)' }} />,
                       }
                     : {
                           type: DrawerTitleKeys.NEW_EXERCISE,
                           text: 'Добавление упражнений',
-                          icon: <PlusOutlined style={{ fontSize: '14px' }} />,
+                          icon: <PlusOutlined style={{ fontSize: 'var(--font-size-base)' }} />,
                       }
             }
         >

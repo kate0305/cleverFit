@@ -55,7 +55,14 @@ export const DrawerCompareTariffs = ({
                 isOpen={isOpenModal}
                 closable={true}
                 onCancel={logOut}
-                closeIcon={<CloseOutlined style={{ fontSize: '14px', color: '#8c8c8c' }} />}
+                closeIcon={
+                    <CloseOutlined
+                        style={{
+                            fontSize: 'var(--font-size-base)',
+                            color: 'var(--light-secondary-45)',
+                        }}
+                    />
+                }
                 dataTestId='tariff-modal-success'
             >
                 <ResultWithEmail email={userData?.email} />

@@ -58,30 +58,30 @@ export const ModalDay = ({
             dataTestId='modal-create-training'
         >
             <Fragment>
-                    <div className={styles.title}>
-                        <Meta
-                            title={`Тренировки на ${formattedDate}`}
-                            description={!trainingsListLength && 'Нет активных тренировок'}
-                            className={styles.text}
-                        />
-                        <PrimaryBtn
-                            type='text'
-                            icon={<CloseOutlined style={{ fontSize: '12px' }} />}
-                            onClick={closeModal}
-                            dataTestId='modal-create-training-button-close'
-                            className={styles.btn_close}
-                        />
-                    </div>
-                    {trainingsListLength ? (
-                        <TrainingList
-                            fromModalDay={true}
-                            onClick={openChooseTraining}
-                            trainingsListForSelectedDay={trainingsListForSelectedDay}
-                        />
-                    ) : (
-                        <EmptyBlock />
-                    )}
-                </Fragment>
+                <div className={styles.title}>
+                    <Meta
+                        title={`Тренировки на ${formattedDate}`}
+                        description={!trainingsListLength && 'Нет активных тренировок'}
+                        className={styles.text}
+                    />
+                    <PrimaryBtn
+                        type='text'
+                        icon={<CloseOutlined style={{ fontSize: 'var(--font-size-s)' }} />}
+                        onClick={closeModal}
+                        dataTestId='modal-create-training-button-close'
+                        className={styles.btn_close}
+                    />
+                </div>
+                {trainingsListLength ? (
+                    <TrainingList
+                        fromModalDay={true}
+                        onClick={openChooseTraining}
+                        trainingsListForSelectedDay={trainingsListForSelectedDay}
+                    />
+                ) : (
+                    <EmptyBlock />
+                )}
+            </Fragment>
         </ContentCard>
     );
 };

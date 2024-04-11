@@ -65,7 +65,7 @@ export const MainPage = () => {
                         { xs: 0, sm: 16 },
                         { xs: 6, sm: 16 },
                     ]}
-                    style={{ maxWidth: '768px', marginTop: '24px' }}
+                    style={{ maxWidth: '768px', marginTop: 'var(--gap-24)' }}
                 >
                     <Col span={24}>
                         <ContentCard className={styles.main_card} bordered={false}>

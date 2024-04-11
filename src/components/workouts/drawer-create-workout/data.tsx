@@ -37,18 +37,18 @@ export const getDrawerTitle = (isEditMode: boolean, isJointWorkout?: boolean) =>
         return {
             type: DrawerTitleKeys.EDIT,
             text: DrawerTitleKeys.EDIT,
-            icon: <EditOutlined style={{ fontSize: '14px' }} />,
+            icon: <EditOutlined style={{ fontSize: 'var(--font-size-base)' }} />,
         };
     if (isJointWorkout)
         return {
             type: DrawerTitleKeys.JOINT_WORKOUT,
             text: DrawerTitleKeys.JOINT_WORKOUT,
-            icon: <PlusOutlined style={{ fontSize: '14px' }} />,
+            icon: <PlusOutlined style={{ fontSize: 'var(--font-size-base)' }} />,
         };
 
     return {
         type: DrawerTitleKeys.NEW_EXERCISE,
         text: DrawerTitleKeys.NEW_EXERCISE,
-        icon: <PlusOutlined style={{ fontSize: '14px' }} />,
+        icon: <PlusOutlined style={{ fontSize: 'var(--font-size-base)' }} />,
     };
 };

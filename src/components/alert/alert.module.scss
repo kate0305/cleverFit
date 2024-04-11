@@ -7,14 +7,14 @@
     transform: translate(-50%, 0);
     max-width: 395px;
     width: 100%;
-    padding: 8px 18px;
+    padding: var(--gap-8) var(--gap-18);
     @include m.phone {
-        bottom: 48px;
+        bottom: var(--gap-48);
         max-width: calc(100% - 48px);
     }
     :global {
         .ant-alert-icon {
-            margin-right: 12px;
+            margin-right: var(--gap-12);
         }
         .ant-alert-message {
             @include m.font;

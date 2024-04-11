@@ -5,7 +5,7 @@
     .subtitle {
         margin-bottom: var(--gap-24);
         padding: var(--gap-14) 0;
-        @include m.font($size: 16px, $weight: 500);
+        @include m.font($size: var(--font-size-m), $weight: 500);
         color: var(--primary-light-10);
         background-color: var(--primary-light-1);
         text-align: center;
@@ -24,7 +24,7 @@
 .subtitle {
     margin-bottom: var(--gap-24);
     padding: var(--gap-14) 0;
-    @include m.font($size: 16px, $weight: 500);
+    @include m.font($size: var(--font-size-m), $weight: 500);
     color: var(--primary-light-10);
     background-color: var(--primary-light-1);
     text-align: center;
