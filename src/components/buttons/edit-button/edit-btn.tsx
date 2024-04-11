@@ -34,7 +34,9 @@ export const EditBtn = ({
             dispatch(setEditTrainingData({ isEditMode: true, editTrainingIndex: index }));
             dispatch(setEditTrainingId({ editTrainingId: editTrainingId || '' }));
         }
-        if (onClick) onClick();
+        if (onClick) {
+            onClick();
+        }
     };
 
     return (

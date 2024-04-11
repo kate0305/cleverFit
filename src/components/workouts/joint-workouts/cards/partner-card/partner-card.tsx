@@ -85,7 +85,9 @@ export const PartnerCard = ({ partnerData, searchValue, type, index }: PartnerCa
     });
 
     useEffect(() => {
-        if (isError) getModalErr(ModalErrTypes.SAVE_TRAINING);
+        if (isError) {
+            getModalErr(ModalErrTypes.SAVE_TRAINING);
+        }
     }, [isError]);
 
     return (

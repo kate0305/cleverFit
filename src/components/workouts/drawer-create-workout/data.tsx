@@ -33,18 +33,21 @@ export const periodOptions = [
 ];
 
 export const getDrawerTitle = (isEditMode: boolean, isJointWorkout?: boolean) => {
-    if (isEditMode)
+    if (isEditMode) {
         return {
             type: DrawerTitleKeys.EDIT,
             text: DrawerTitleKeys.EDIT,
             icon: <EditOutlined style={{ fontSize: 'var(--font-size-base)' }} />,
         };
-    if (isJointWorkout)
+    }
+
+    if (isJointWorkout) {
         return {
             type: DrawerTitleKeys.JOINT_WORKOUT,
             text: DrawerTitleKeys.JOINT_WORKOUT,
             icon: <PlusOutlined style={{ fontSize: 'var(--font-size-base)' }} />,
         };
+    }
 
     return {
         type: DrawerTitleKeys.NEW_EXERCISE,

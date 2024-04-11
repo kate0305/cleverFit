@@ -18,7 +18,9 @@ export const SubmitButton = (prop: { form: FormInstance }) => {
             .catch(() => {
                 const isTouched = prop.form.isFieldsTouched();
 
-                if (isTouched) setIsSubmitDisabled(true);
+                if (isTouched) {
+                    setIsSubmitDisabled(true);
+                }
             });
     }, [prop.form, values]);
 

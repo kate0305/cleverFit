@@ -21,7 +21,9 @@ export const Sidebar: React.FC = () => {
     const isWidthChanged = collapsedWidth !== defaultCollapsedWidth;
 
     useLayoutEffect(() => {
-        if (isMobilePhone) setCollapsed(true);
+        if (isMobilePhone) {
+            setCollapsed(true);
+        }
     }, [isMobilePhone]);
 
     const handleBreakpoint = (broken: boolean) => {

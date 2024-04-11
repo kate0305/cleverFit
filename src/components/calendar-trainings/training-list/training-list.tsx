@@ -22,8 +22,12 @@ export const TrainingList = ({
     isLaptop,
 }: TrainingListProps) => {
     const getClassName = (isImplementation: boolean) => {
-        if (isImplementation) return styles.training_disabled;
-        if (isInCalendar) return styles.training;
+        if (isImplementation) {
+            return styles.training_disabled;
+        }
+        if (isInCalendar) {
+            return styles.training;
+        }
 
         return styles.training_modal;
     };

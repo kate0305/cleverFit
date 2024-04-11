@@ -82,8 +82,12 @@ export const DrawerCreateWorkout = ({ setAlertMessage }: DrawerCreateWorkoutProp
     const pastDate = checkIsPastDate(dayjs(editWorkout?.date));
 
     const closeDrawer = () => {
-        if (isEditMode) dispatch(resetEditTrainingData());
-        if (isJointWorkout) dispatch(resetJointTrainingDarwerData());
+        if (isEditMode) {
+            dispatch(resetEditTrainingData());
+        }
+        if (isJointWorkout) {
+            dispatch(resetJointTrainingDarwerData());
+        }
         dispatch(toggleDrawer());
     };
 
@@ -172,8 +176,12 @@ export const DrawerCreateWorkout = ({ setAlertMessage }: DrawerCreateWorkoutProp
         if (createTrainingErr || editTrainingErr || sendInviteErr) {
             getModalErr(ModalErrTypes.SAVE_TRAINING);
         }
-        if (createTrainingSucc) setAlertMessage(AlertMessage.ADD_NEW_WORKOUT);
-        if (editTrainingSucc) setAlertMessage(AlertMessage.EDIT_WORKOUT);
+        if (createTrainingSucc) {
+            setAlertMessage(AlertMessage.ADD_NEW_WORKOUT);
+        }
+        if (editTrainingSucc) {
+            setAlertMessage(AlertMessage.EDIT_WORKOUT);
+        }
     }, [
         createTrainingErr,
         createTrainingSucc,

@@ -77,7 +77,9 @@ export const ModalChooseTraining = ({
         if (selectedTraining && isHaveDayExercise) {
             return exercises;
         }
-        if (fromTrainingPage) return exercisesList;
+        if (fromTrainingPage) {
+            return exercisesList;
+        }
 
         return null;
     };
@@ -86,7 +88,9 @@ export const ModalChooseTraining = ({
 
     const handleChangeSelect = (trainingName: string) => {
         setSelectedTraining(trainingName);
-        if (isEditMode) dispatch(setEditTrainingData({ isEditMode: false, editTrainingIndex: 0 }));
+        if (isEditMode) {
+            dispatch(setEditTrainingData({ isEditMode: false, editTrainingIndex: 0 }));
+        }
     };
 
     const closeModal = () => {
@@ -95,12 +99,16 @@ export const ModalChooseTraining = ({
     };
 
     const openAddExercise = () => {
-        if (isEditMode) dispatch(setEditTrainingId({ editTrainingId }));
+        if (isEditMode) {
+            dispatch(setEditTrainingId({ editTrainingId }));
+        }
         setOpenAddExercise(true);
     };
 
     const handleSaveBtn = async () => {
-        if (saveTraining) await saveTraining();
+        if (saveTraining) {
+            await saveTraining();
+        }
         closeModal();
     };
 

@@ -55,10 +55,11 @@ export const SignInForm: React.FC = () => {
 
                 if (errStatus === StatusCode.NOT_FOUND && errMsg.includes('Email не найден')) {
                     navigate(CHECK_EMAIL_ERR_404, { state: { fromServer: true } });
-                } else
+                } else {
                     navigate(CHECK_EMAIL_ERR, {
                         state: { fromServer: true },
                     });
+                }
             }
         },
         [checkEmail, navigate],
@@ -106,7 +107,9 @@ export const SignInForm: React.FC = () => {
             const { accessToken } = userLoginData;
 
             dispatch(setToken(accessToken));
-            if (isChecked) setLocalStorageItem(accessToken);
+            if (isChecked) {
+                setLocalStorageItem(accessToken);
+            }
             navigate(Paths.MAIN);
         }
         if (isError) {

@@ -27,9 +27,13 @@ export const ProfilePage = () => {
     };
 
     useEffect(() => {
-        if (isError) getModalErr(ModalErrTypes.UPDATE_USER_DATA);
+        if (isError) {
+            getModalErr(ModalErrTypes.UPDATE_USER_DATA);
+        }
 
-        if (isSuccess) setShowAlert(true);
+        if (isSuccess) {
+            setShowAlert(true);
+        }
     }, [isError, isSuccess]);
 
     return (

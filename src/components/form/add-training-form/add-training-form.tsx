@@ -52,8 +52,12 @@ export const AddTrainingForm = ({
         (isHaveExerisesForEdit && trainingsListForSelectedDay[editTrainingIndex].exercises);
 
     const getInitialFormValues = () => {
-        if (exercises.length && !fromWorkoutsPage) return { fields: exercises };
-        if (isEditMode && exerisesForEdit.length) return { fields: exerisesForEdit };
+        if (exercises.length && !fromWorkoutsPage) {
+            return { fields: exercises };
+        }
+        if (isEditMode && exerisesForEdit.length) {
+            return { fields: exerisesForEdit };
+        }
 
         return { fields: [{}] };
     };

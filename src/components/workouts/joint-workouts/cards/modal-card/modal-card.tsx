@@ -30,7 +30,9 @@ export const ModalCard = ({ partnerData, closeModal }: ModalCardProps) => {
     };
 
     useEffect(() => {
-        if (isError) getModalErr(ModalErrTypes.SAVE_TRAINING);
+        if (isError) {
+            getModalErr(ModalErrTypes.SAVE_TRAINING);
+        }
     }, [isError]);
 
     return (
