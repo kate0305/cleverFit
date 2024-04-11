@@ -17,6 +17,16 @@ body {
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+
+    ::-webkit-scrollbar {
+        width: 8px;
+        background-color: var(--base-light);
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: var(--light-disable-25);
+        border-radius: 99px;
+    }
 }
 
 h1 {
@@ -48,7 +58,6 @@ fieldset {
 
 .ant-tabs {
     font-size: 16px;
-
 }
 .ant-tabs > *,
 .ant-form > * {
@@ -58,11 +67,11 @@ a.ant-btn,
 .ant-btn {
     height: auto;
     line-height: 130%;
- }
+}
 
 h1 .ant-typography,
-div .ant-typography{
-  margin-bottom: 0;
+div .ant-typography {
+    margin-bottom: 0;
 }
 
 .ant-card > * {
@@ -84,5 +93,5 @@ h2.ant-typography,
 h3.ant-typography,
 h4.ant-typography,
 h5.ant-typography {
-    color: var(--light-title-85)
+    color: var(--light-title-85);
 }

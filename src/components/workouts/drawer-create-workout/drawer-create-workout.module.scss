@@ -39,6 +39,7 @@
 }
 
 .inputs_group {
+    width: 100%;
     @include m.flex($j-c: space-between);
     gap: var(--gap-32);
     :global {
@@ -46,6 +47,11 @@
         .ant-select {
             margin-bottom: 0;
             @include m.font;
+        }
+        .ant-form-item:first-child {
+            @include m.phone {
+                max-width: 148px;
+            }
         }
         .ant-checkbox + span {
             padding-right: 0;
