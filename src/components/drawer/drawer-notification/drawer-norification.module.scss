@@ -1,0 +1,11 @@
+@use '@sass/mixins.scss' as m;
+
+.watning {
+    margin: 0;
+    margin-top: auto;
+    padding: var(--gap-32);
+    padding-top: 0;
+    @include m.font($size: var(--font-size-s));
+    color: var(--light-secondary-45);
+    text-align: center;
+}

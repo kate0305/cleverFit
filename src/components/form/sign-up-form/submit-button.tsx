@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Form, FormInstance } from 'antd';
 
+import { DATA_TEST_ID } from '@constants/data-test-id';
+
 import { PrimaryBtn } from '@components/buttons/primary-button';
 
 import styles from './sign-up-form.module.scss';
@@ -18,7 +20,9 @@ export const SubmitButton = (prop: { form: FormInstance }) => {
             .catch(() => {
                 const isTouched = prop.form.isFieldsTouched();
 
-                if (isTouched) setIsSubmitDisabled(true);
+                if (isTouched) {
+                    setIsSubmitDisabled(true);
+                }
             });
     }, [prop.form, values]);
 
@@ -29,7 +33,7 @@ export const SubmitButton = (prop: { form: FormInstance }) => {
             btnText='Войти'
             disabled={isSubmitDisabled}
             className={styles.btn}
-            dataTestId='registration-submit-button'
+            dataTestId={DATA_TEST_ID.registrationSubmitBtn}
         />
     );
 };

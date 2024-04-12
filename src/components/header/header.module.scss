@@ -21,7 +21,7 @@
     .title_profile {
         margin-bottom: var(--gap-2);
         padding: var(--gap-6) 0;
-        @include m.font($size: 20px, $weight: 500);
+        @include m.font($size: var(--font-size-l), $weight: 500);
         color: var(--light-title-85);
         @include m.tablet-l {
             margin: 0;
@@ -45,6 +45,19 @@
     @include m.tablet-l {
         flex-direction: column;
         align-items: flex-start;
+    }
+}
+
+.container_workouts {
+    @include m.flex($items: flex-start);
+    flex-direction: column;
+    & button {
+        margin: var(--gap-8) 0 var(--gap-6);
+    }
+    @include m.phone {
+        & button {
+            margin: 0;
+        }
     }
 }
 

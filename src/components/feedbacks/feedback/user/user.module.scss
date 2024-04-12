@@ -12,6 +12,21 @@
     }
 }
 
+.wrapper_card {
+    @include m.flex($j-c: flex-start);
+    gap: var(--gap-8);
+}
+
+.wrapper_message {
+    @extend .wrapper;
+    @include m.tablet-xl {
+        flex-direction: row;
+        justify-content: flex-start;
+        gap: var(--gap-16);
+        margin-bottom: var(--gap-16);
+    }
+}
+
 .avatar {
     margin-bottom: var(--gap-12);
     @include m.tablet-l {
@@ -19,7 +34,20 @@
     }
 }
 
+.avatar_card {
+    margin-bottom: 0;
+}
+
 .name {
     @include m.flex;
     flex-direction: column;
+    @include m.font($size: var(--font-size-m));
+    color: var(--light-title-85);
+}
+
+.name_card {
+    @extend .name;
+    width: 85px;
+    @include m.flex($items: flex-start);
+    font-size: var(--font-size-base);
 }

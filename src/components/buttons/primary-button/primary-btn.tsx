@@ -1,17 +1,10 @@
-import { ReactNode } from 'react';
 import { Button } from 'antd';
-import { ButtonType } from 'antd/lib/button';
+import { ButtonProps } from 'antd/lib/button';
 
-export type PrimaryBtnProps = {
+export type PrimaryBtnProps = ButtonProps & {
     className: string;
-    type?: ButtonType;
-    icon?: ReactNode;
-    htmlType?: React.ButtonHTMLAttributes<HTMLButtonElement>['type'];
     btnText?: string;
-    href?: string;
     onClick?: () => void;
-    disabled?: boolean;
-    loading?: boolean;
     dataTestId?: string;
 };
 

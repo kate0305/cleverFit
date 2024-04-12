@@ -1,0 +1,21 @@
+@use '@sass/mixins.scss' as m;
+
+.button {
+    @include m.flex;
+    padding: var(--gap-6) 0;
+    @include m.font($size: var(--font-size-l), $weight: 500);
+    border: none;
+    box-shadow: none;
+    :global {
+        .anticon {
+            line-height: 0;
+        }
+        .anticon + span {
+            margin-left: var(--gap-16);
+        }
+    }
+    @include m.phone {
+        font-size: var(--font-size-base);
+        font-weight: 400;
+    }
+}

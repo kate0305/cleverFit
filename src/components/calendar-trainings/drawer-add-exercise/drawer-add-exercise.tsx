@@ -1,21 +1,20 @@
-import { Dispatch, Fragment } from 'react';
-import { Badge, Form, Typography } from 'antd';
+import { Dispatch } from 'react';
+import { Form } from 'antd';
 import { Dayjs } from 'dayjs';
 import { selectEditTrainingData } from '@redux/redusers/trainings-slice';
 
 import { EditOutlined, PlusOutlined } from '@ant-design/icons';
 import { useAppSelector } from '@hooks/index';
 import { DateFormats } from '@type/dates';
-import { BadgeColors, UserTraining } from '@type/training';
+import { DrawerTitleKeys } from '@type/drawer';
+import { UserTraining } from '@type/training';
 import { checkIsPastDate } from '@utils/check-is-past-date';
 import { getFormattedDate } from '@utils/get-formatted-date';
 
 import { DrawerComponent } from '@components/drawer';
+import { DrawerInfo } from '@components/drawer/drawer-info';
+import { DrawerNotification } from '@components/drawer/drawer-notification';
 import { AddTrainingForm } from '@components/form/add-training-form';
-
-import styles from './drawer-add-exercise.module.scss';
-
-const { Paragraph } = Typography;
 
 type DrawerAddExerciseProps = {
     date: Dayjs;
@@ -46,39 +45,27 @@ export const DrawerAddExercise = ({
             isOpenDrawer={isOpenDrawer}
             setCloseDrawer={closeDrawer}
             titleChildren={
-                <Fragment>
-                    <span className={styles.icon}>
-                        {isEditMode ? (
-                            <EditOutlined style={{ fontSize: '14px' }} />
-                        ) : (
-                            <PlusOutlined style={{ fontSize: '14px' }} />
-                        )}
-                    </span>
-                    {isEditMode ? 'Редактирование' : 'Добавление упражнений'}
-                </Fragment>
+                isEditMode
+                    ? {
+                          type: DrawerTitleKeys.EDIT,
+                          text: 'Редактирование',
+                          icon: <EditOutlined style={{ fontSize: 'var(--font-size-base)' }} />,
+                      }
+                    : {
+                          type: DrawerTitleKeys.NEW_EXERCISE,
+                          text: 'Добавление упражнений',
+                          icon: <PlusOutlined style={{ fontSize: 'var(--font-size-base)' }} />,
+                      }
             }
-            dataTestId='modal-drawer-right'
         >
-            <div className={styles.data}>
-                <Badge
-                    color={BadgeColors[trainingName as keyof typeof BadgeColors]}
-                    text={trainingName}
-                    className={styles.badge}
-                />
-                <Paragraph>{formattedDate}</Paragraph>
-            </div>
+            <DrawerInfo trainingName={trainingName} date={formattedDate} />
             <AddTrainingForm
                 form={form}
                 date={date}
-                name={trainingName}
+                trainingName={trainingName}
                 trainingsListForSelectedDay={trainingsListForSelectedDay}
             />
-            {isEditMode && checkIsPastDate(date) && (
-                <p className={styles.watning}>
-                    После сохранения внесенных изменений отредактировать проведенную тренировку
-                    будет невозможно
-                </p>
-            )}
+            {isEditMode && checkIsPastDate(date) && <DrawerNotification />}
         </DrawerComponent>
     );
 };

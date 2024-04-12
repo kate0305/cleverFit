@@ -1,3 +1,4 @@
+import { InvitateStatus, InviteFrom } from './invite';
 import { TariffPeriod } from './tariff';
 import { UserTraining } from './training';
 import { UserTariff } from './user';
@@ -6,6 +7,9 @@ export enum Tags {
     FEEDBACKS = 'Feedbacks',
     TRAINING = 'Training',
     USER = 'User',
+    RARTNERS = 'Partners',
+    USERS_FOR_JOINT_WORKOUT = 'Joint_workouts',
+    INVITE = 'JInvite',
 }
 
 export type UserReq = {
@@ -61,9 +65,11 @@ export type UserDataResp = {
     tariff: UserTariff;
 };
 
-export type UserDataReq = Partial<Omit<UserDataResp, 'tariff'> & {
-    password: string;
-}>;
+export type UserDataReq = Partial<
+    Omit<UserDataResp, 'tariff'> & {
+        password: string;
+    }
+>;
 
 export type TariffResp = {
     _id: string;
@@ -74,4 +80,22 @@ export type TariffResp = {
 export type PayNewTariffResp = {
     tariffId: string;
     days: number;
+};
+
+export type InviteReq = {
+    to: string;
+    trainingId: string;
+};
+
+export type InviteResp = {
+    _id: string;
+    from: InviteFrom;
+    training: UserTraining;
+    status: InvitateStatus;
+    createdAt: string;
+};
+
+export type InviteAnswerReq = {
+    id: string;
+    status: 'accepted' | 'rejected';
 };

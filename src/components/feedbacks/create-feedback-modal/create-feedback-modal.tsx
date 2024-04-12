@@ -2,6 +2,7 @@ import { Dispatch, useState } from 'react';
 import { Form, Input } from 'antd';
 import { selectReviewData, setReviewData } from '@redux/redusers/user-data-slice';
 
+import { DATA_TEST_ID } from '@constants/data-test-id';
 import { useAppDispatch, useAppSelector } from '@hooks/index';
 import { useCreateFeedbackMutation } from '@services/feedbacks-service';
 import { FeedbackReq } from '@type/service';
@@ -64,7 +65,7 @@ export const CreateReviewModal = ({
                     disabled={!rating}
                     onClick={form.submit}
                     className={styles.btn}
-                    dataTestId='new-review-submit-button'
+                    dataTestId={DATA_TEST_ID.newReviewSubmitBtn}
                 />
             }
         >

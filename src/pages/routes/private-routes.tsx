@@ -13,6 +13,7 @@ export const PrivateRoute = (prop: { children: JSX.Element }) => {
     const [localStorageValue, setLocalStorageItem] = useLocalStorage('token', '');
 
     const token = useAppSelector(selectToken);
+
     const isHaveToken = tokenFromQueryParams || localStorageValue || token;
 
     useEffect(() => {

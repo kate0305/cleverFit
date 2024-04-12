@@ -12,7 +12,7 @@ import { actions } from '../data';
 import styles from './actions-list.module.scss';
 
 type ActionsListProps = {
-    onClick: () => Promise<void>;
+    onClick: (path: string) => Promise<void>;
 };
 
 export const ActionsList = ({ onClick }: ActionsListProps) => (
@@ -21,35 +21,39 @@ export const ActionsList = ({ onClick }: ActionsListProps) => (
             { xs: 0, sm: 16 },
             { xs: 8, sm: 16 },
         ]}
-        style={{ maxWidth: '768px', marginTop: '16px' }}
+        style={{ maxWidth: '768px', marginTop: 'var(--gap-16)' }}
     >
-        {actions.map(({ id, title, iconLabel, icon, dataTestId, navigateTo }) => (
-            <Col md={{ span: 8 }} sm={{ span: 24 }} xs={{ span: 24 }} key={id}>
-                <ContentCard title={title} className={styles.main_card_mini} bordered={false}>
-                    {id === Paths.CALENDAR ? (
-                        <PrimaryBtn
-                            type='link'
-                            icon={icon}
-                            htmlType='button'
-                            className={styles.card_body}
-                            btnText={iconLabel}
-                            dataTestId={dataTestId}
-                            onClick={id === Paths.CALENDAR ? onClick : undefined}
-                        />
-                    ) : (
-                        <Link
-                            to={navigateTo}
-                            className={styles.card_body}
-                            data-test-id={dataTestId}
-                        >
-                            <Fragment>
-                                {icon}
-                                {iconLabel}
-                            </Fragment>
-                        </Link>
-                    )}
-                </ContentCard>
-            </Col>
-        ))}
+        {actions.map(({ id, title, iconLabel, icon, dataTestId, navigateTo }) => {
+            const handleClick = () => onClick(id);
+
+            return (
+                <Col md={{ span: 8 }} sm={{ span: 24 }} xs={{ span: 24 }} key={id}>
+                    <ContentCard title={title} className={styles.main_card_mini} bordered={false}>
+                        {id === Paths.PROFILE ? (
+                            <Link
+                                to={navigateTo}
+                                className={styles.card_body}
+                                data-test-id={dataTestId}
+                            >
+                                <Fragment>
+                                    {icon}
+                                    {iconLabel}
+                                </Fragment>
+                            </Link>
+                        ) : (
+                            <PrimaryBtn
+                                type='link'
+                                icon={icon}
+                                htmlType='button'
+                                className={styles.card_body}
+                                btnText={iconLabel}
+                                dataTestId={dataTestId}
+                                onClick={handleClick}
+                            />
+                        )}
+                    </ContentCard>
+                </Col>
+            );
+        })}
     </Row>
 );

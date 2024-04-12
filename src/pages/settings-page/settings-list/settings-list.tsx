@@ -44,11 +44,14 @@ export const SettingsList = () => {
                             <Tooltip
                                 placement={isMobile ? 'topLeft' : 'bottomLeft'}
                                 title={tooltipText}
-                                color='#000'
+                                color='var(--neutral-gray-13)'
                                 overlayClassName={styles.tooltip}
                             >
                                 <ExclamationCircleOutlined
-                                    style={{ fontSize: '16px', color: '#8c8c8c' }}
+                                    style={{
+                                        fontSize: 'var(--font-size-m)',
+                                        color: 'var(--light-secondary-45)',
+                                    }}
                                     data-test-id={iconTestId}
                                 />
                             </Tooltip>

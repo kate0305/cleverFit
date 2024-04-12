@@ -21,9 +21,9 @@ export const Rating = ({ disabled, defaultValue, size, value, onChange }: Rating
         style={{ fontSize: `${size}px` }}
         character={({ value, index = 0 }) =>
             value && value > index ? (
-                <StarFilled style={{ color: '#faad14' }} />
+                <StarFilled style={{ color: 'var(--light-warning)' }} />
             ) : (
-                <StarOutlined style={{ color: '#faad14' }} />
+                <StarOutlined style={{ color: 'var(--light-warning)' }} />
             )
         }
         className={styles.rating}

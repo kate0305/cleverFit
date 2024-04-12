@@ -1,0 +1,111 @@
+@use '@sass/mixins.scss' as m;
+
+.wrapper {
+    max-width: 234px;
+    width: 100%;
+    padding: var(--gap-12);
+    border: 1px solid var(--light-dividers);
+
+    :global {
+        .ant-card-actions {
+            flex-direction: column;
+            align-items: center;
+            padding: 0;
+            & li {
+                width: 100% !important;
+                &:not(:first-child) {
+                    margin: 0;
+                }
+            }
+        }
+    }
+
+    @include m.phone {
+        max-width: 100%;
+    }
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.with_bright_bg {
+    min-height: 194px;
+    padding: var(--gap-16);
+    padding-bottom: var(--gap-8);
+    border: none;
+    background-color: var(--primary-light-1);
+    :global {
+        .ant-card-meta-detail > div:not(:last-child) {
+            margin-bottom: var(--gap-12);
+        }
+        .ant-card-actions {
+            border-top: none;
+            background-color: var(--primary-light-1);
+        }
+    }
+}
+
+.with_gray_bg {
+    @extend .with_bright_bg;
+    background-color: var(--neutral-gray-2);
+    :global {
+        .ant-card-actions {
+            background-color: var(--neutral-gray-2);
+        }
+    }
+}
+
+.create_btn {
+    margin-top: 11px;
+    width: 100%;
+}
+
+.create_btn_cancel {
+    @extend .create_btn;
+    color: var(--light-title-85);
+    background-color: var(--base-light);
+    border: 1px solid var(--light-border);
+}
+
+.meta {
+    margin: 0;
+}
+
+.block {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-6);
+}
+
+.description {
+    @include m.flex($j-c: flex-start);
+    gap: var(--gap-16);
+    @include m.font($size: var(--font-size-s));
+    color: var(--light-secondary-45);
+    span:first-child {
+        min-width: 110px;
+    }
+    span:nth-child(2) {
+        font-size: var(--font-size-base);
+        color: var(--primary-light-6);
+    }
+}
+
+.status {
+    @include m.flex;
+    gap: var(--gap-8);
+    @include m.font($size: var(--font-size-s));
+    color: var(--light-title-85);
+    :global(.ant-tooltip-inner) {
+        width: 147px;
+        @include m.font;
+        box-shadow: none;
+    }
+}
+
+.tooltip {
+    width: 147px;
+    @include m.font;
+    box-shadow: none;
+}

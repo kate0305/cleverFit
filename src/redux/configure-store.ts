@@ -5,6 +5,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import { cleverFitApi } from '@services/base-query';
 
 import { appReduser } from './redusers/app-slice';
+import { trainingPartnersReduser } from './redusers/training-partners-slice';
 import { trainingReduser } from './redusers/trainings-slice';
 import { userDataReduser } from './redusers/user-data-slice';
 import { listenerMiddleware } from './listener-middleware';
@@ -19,6 +20,7 @@ export const store = configureStore({
         userDataReduser,
         appReduser,
         trainingReduser,
+        trainingPartnersReduser,
         router: routerReducer,
         [cleverFitApi.reducerPath]: cleverFitApi.reducer,
     },

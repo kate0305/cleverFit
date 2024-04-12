@@ -4,6 +4,7 @@ import { AuthPaths, Paths, ResultPaths } from '@type/paths';
 export const XS_WIDTH = '480px';
 export const SM_WIDTH = '576px';
 export const MD_WIDTH = '768px';
+export const TABLET_WIDTH = '834px';
 export const LG_WIDTH = '992px';
 
 
@@ -20,10 +21,13 @@ export const FEEDBACK = '/feedback';
 export const TRAINING = '/training';
 export const TRAINING_LIST = '/catalogs/training-list';
 export const TARIFF_LIST = '/catalogs/tariff-list';
+export const PARTNERS_LIST = '/catalogs/training-pals';
+export const USERS_FOR_JOINT_WORKOUTS = '/catalogs/user-joint-training-list';
 export const USER = '/user';
 export const USER_ME = '/user/me';
 export const UPLOAD_IMG = '/upload-image';
 export const PAY_NEW_TARIFF = '/tariff';
+export const INVITE = '/invite';
 
 
 // route paths
@@ -70,12 +74,11 @@ export const LOCALE_OPTIONS = {
 export const BREADCRUMB_NAMES: Record<string, string> = {
     '/feedbacks': 'Отзывы пользователей',
     '/calendar': 'Календарь',
+    '/training': 'Тренировки',
 };
 
-
-// file size
-export const maxImgSize = 5;
-
+// sizes
+export const MAX_NUMBER_WORKOUT_PARTNERS = 4;
 
 // patterns
 export const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;

@@ -1,10 +1,17 @@
 @use '@sass/mixins.scss' as m;
 
-.wrapper {
+.wrapper.ant-menu-inline-collapsed {
     padding-top: 50px;
     :global {
         .ant-menu-item {
             margin-top: var(--gap-18);
+            & .ant-badge + span {
+                margin-left: 10px;
+                opacity: 1;
+                transition: opacity 0.3s cubic-bezier(0.645, 0.045, 0.355, 1), margin 0.3s,
+                    color 0.3s;
+            }
+
             &:after {
                 border-color: var(--blue-light-6);
             }
@@ -14,7 +21,8 @@
         }
         .ant-menu-item:hover,
         .ant-menu-item-active a,
-        .ant-menu-item-selected a{
+        .ant-menu-item-selected,
+        .ant-menu-item-selected a {
             color: var(--primary-light-5);
         }
     }
@@ -27,5 +35,29 @@
                 padding-right: var(--gap-8);
             }
         }
+    }
+}
+
+.badge {
+    & + span {
+        margin-left: 10px;
+        opacity: 1;
+        transition: opacity 0.3s cubic-bezier(0.645, 0.045, 0.355, 1), margin 0.3s, color 0.3s;
+    }
+    :global(.ant-badge-count) {
+        min-width: var(--gap-16);
+        height: var(--gap-16);
+        padding: 0 var(--gap-4);
+        line-height: var(--line-height-base);
+    }
+}
+
+:global {
+    .ant-menu.ant-menu-inline-collapsed > .ant-menu-item .ant-badge + span {
+        display: inline-block;
+        opacity: 0;
+    }
+    .ant-menu.ant-menu-inline-collapsed > .ant-menu-item .ant-badge > span {
+        line-height: var(--line-height-base);
     }
 }

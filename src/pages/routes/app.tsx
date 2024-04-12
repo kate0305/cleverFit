@@ -11,6 +11,7 @@ import { ResultRequestKeys } from '@type/result-request-keys';
 import { NotFoundPage } from '@pages/not-found-page';
 import { ProfilePage } from '@pages/profile-page';
 import { SettingsPage } from '@pages/settings-page';
+import { WorkoutsPage } from '@pages/workouts-page';
 import { ChangePasswordForm } from '@components/form/change-password-form';
 import { ConfirmEmailForm } from '@components/form/confirm-email-form';
 import { AuthLayout } from '@components/layouts/auth-layout';
@@ -43,6 +44,7 @@ export const App = () => {
                         <Route path={Paths.CALENDAR} element={<CalendarPage />} />
                         <Route path={Paths.PROFILE} element={<ProfilePage />} />
                         <Route path={Paths.SETTINGS} element={<SettingsPage />} />
+                        <Route path={Paths.WORKOUTS} element={<WorkoutsPage />} />
                     </Route>
                     <Route
                         path={Paths.AUTH}

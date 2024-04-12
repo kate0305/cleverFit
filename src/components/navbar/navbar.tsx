@@ -1,8 +1,17 @@
+import { Fragment } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Menu, MenuProps } from 'antd';
+import { selectUserInvites } from '@redux/redusers/training-partners-slice';
 
+import { DATA_TEST_ID } from '@constants/data-test-id';
+import { useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { Paths } from '@type/paths';
+import { ResultRequestKeys } from '@type/result-request-keys';
 import { useCalendarClick } from '@utils/use-click-calendar';
+
+import { PrimaryBtn } from '@components/buttons/primary-button';
+import { ModalWindow } from '@components/modal-window';
+import { RequestResult } from '@components/request-result';
 
 import { createMenuItemsArr } from './data';
 
@@ -14,27 +23,53 @@ type NavbarProps = {
 };
 
 export const Navbar = ({ isWidthChanged, isClosedSidebar }: NavbarProps) => {
+    const userInvites = useAppSelector(selectUserInvites);
+
     const { pathname } = useLocation();
 
-    const { handleClick } = useCalendarClick();
+    const { isErr, handleClick, closeErrModal } = useCalendarClick();
+
     const handleMenuItemsClick: MenuProps['onClick'] = (e) => {
         switch (e.key) {
             case Paths.CALENDAR:
-                handleClick();
+                handleClick(Paths.CALENDAR);
                 break;
 
-            default:
+            case Paths.WORKOUTS:
+                handleClick(Paths.WORKOUTS);
                 break;
         }
     };
 
     return (
-        <Menu
-            className={styles.wrapper}
-            selectedKeys={[pathname]}
-            mode='inline'
-            onClick={handleMenuItemsClick}
-            items={createMenuItemsArr(isWidthChanged, isClosedSidebar)}
-        />
+        <Fragment>
+            <Menu
+                className={styles.wrapper}
+                selectedKeys={[pathname]}
+                mode='inline'
+                onClick={handleMenuItemsClick}
+                items={createMenuItemsArr(
+                    isWidthChanged,
+                    isClosedSidebar,
+                    userInvites.length,
+                    pathname,
+                )}
+            />
+            <ModalWindow isOpen={isErr} dataTestId={DATA_TEST_ID.modalNoReview}>
+                <RequestResult
+                    keyErr={ResultRequestKeys.GET_FEEDBACK_ERR}
+                    buttonsGroup={
+                        <PrimaryBtn
+                            type='primary'
+                            htmlType='button'
+                            className={styles.btn_err}
+                            btnText='Назад'
+                            onClick={closeErrModal}
+                            dataTestId={DATA_TEST_ID.writeReviewNotSavedModal}
+                        />
+                    }
+                />
+            </ModalWindow>
+        </Fragment>
     );
 };

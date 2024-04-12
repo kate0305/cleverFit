@@ -9,7 +9,7 @@ export const cleverFitApi = createApi({
         baseUrl: BASE_URL,
         credentials: 'include',
         prepareHeaders: (headers, { getState }) => {
-            const {token} = (getState() as RootState).userDataReduser;
+            const { token } = (getState() as RootState).userDataReduser;
 
             if (token) {
                 headers.set('Authorization', `Bearer ${token}`);

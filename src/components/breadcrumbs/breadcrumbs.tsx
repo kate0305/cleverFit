@@ -2,6 +2,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { Breadcrumb } from 'antd';
 
 import { BREADCRUMB_NAMES } from '@constants/index';
+import { Paths } from '@type/paths';
 
 import styles from './breadcrumbs.module.scss';
 
@@ -21,7 +22,7 @@ export const Breadcrumbs = () => {
 
     const breadcrumbItems = [
         <Breadcrumb.Item key='home'>
-            <Link to='/main'>Главная</Link>
+            <Link to={Paths.MAIN}>Главная</Link>
         </Breadcrumb.Item>,
     ].concat(extraBreadcrumbItems);
 

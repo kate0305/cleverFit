@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Col, Layout, Row } from 'antd';
 
+import { DATA_TEST_ID } from '@constants/data-test-id';
 import { Paths } from '@type/paths';
 
 import { LinkButton } from '@components/buttons/link-button';
@@ -39,7 +40,11 @@ export const AppFooter: React.FC = () => {
                     </ContentCard>
                 </Col>
                 <Col md={{ order: 1 }} sm={24} className={styles.item}>
-                    <Link to={Paths.FEEDBACKS} className={styles.link} data-test-id='see-reviews'>
+                    <Link
+                        to={Paths.FEEDBACKS}
+                        className={styles.link}
+                        data-test-id={DATA_TEST_ID.seeReview}
+                    >
                         Смотреть отзывы
                     </Link>
                 </Col>

@@ -1,5 +1,6 @@
 import { Fragment, useMemo, useState } from 'react';
 
+import { DATA_TEST_ID } from '@constants/data-test-id';
 import { Review } from '@type/feedbacks';
 
 import { PrimaryBtn } from '@components/buttons/primary-button';
@@ -49,7 +50,7 @@ export const FeedbacksContainer = ({ feedbacks, isHaveFeedbacks, openReviewModal
                     type='primary'
                     btnText='Написать отзыв'
                     className={styles.feedback_btn}
-                    dataTestId='write-review'
+                    dataTestId={DATA_TEST_ID.writeReview}
                     onClick={openReviewModal}
                 />
                 {isHaveFeedbacks && (
@@ -58,7 +59,7 @@ export const FeedbacksContainer = ({ feedbacks, isHaveFeedbacks, openReviewModal
                         btnText={isAllFeedbacks ? 'Свернуть все отзывы' : 'Развернуть все отзывы'}
                         className={styles.all_feedbacks_btn}
                         onClick={toogleAmountFeedbacks}
-                        dataTestId='all-reviews-button'
+                        dataTestId={DATA_TEST_ID.allReviewBtn}
                     />
                 )}
             </div>

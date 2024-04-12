@@ -2,7 +2,7 @@ import { Modal } from 'antd';
 
 import { ModalErrTypes } from '@type/modal-types';
 
-import { ModalErrData } from './data';
+import { modalErrData } from './data';
 
 export const getModalErr = (modalType: ModalErrTypes, onClick?: () => void) => {
     const {
@@ -15,7 +15,7 @@ export const getModalErr = (modalType: ModalErrTypes, onClick?: () => void) => {
         closable,
         closeIcon,
         className,
-    } = ModalErrData[modalType];
+    } = modalErrData[modalType];
 
     Modal.error({
         title,
@@ -35,7 +35,6 @@ export const getModalErr = (modalType: ModalErrTypes, onClick?: () => void) => {
             if (onClick) {
                 onClick();
             }
-            Modal.destroyAll();
         },
     });
 };

@@ -26,7 +26,7 @@ const initialState: TrainingReducerState = {
 };
 
 export const trainingSlice = createSlice({
-    name: 'user',
+    name: 'training',
     initialState,
     reducers: {
         setAppTrainingsList(state, action: PayloadAction<TrainingResp[]>) {
@@ -45,6 +45,9 @@ export const trainingSlice = createSlice({
         setEditTrainingId(state, action: PayloadAction<Pick<EditTraining, 'editTrainingId'>>) {
             state.editTrainingData.editTrainingId = action.payload.editTrainingId;
         },
+        resetEditTrainingData(state) {
+            state.editTrainingData = initialState.editTrainingData;
+        },
         resetTraining(state) {
             state.training = initialState.training;
         },
@@ -60,6 +63,7 @@ export const {
     createTraining,
     setEditTrainingData,
     setEditTrainingId,
+    resetEditTrainingData,
     resetTraining,
     setTrainingLoading,
 } = trainingSlice.actions;
@@ -70,3 +74,4 @@ export const selectEditTrainingData = (state: RootState) => state.trainingReduse
 export const selectUpdateTrainingLoading = (state: RootState) =>
     state.trainingReduser.updateTrainingLoading;
 export const selectTrainingData = (state: RootState) => state.trainingReduser;
+export const selectUserTrainingList = (state: RootState) => state.trainingReduser.userTrainingsList;

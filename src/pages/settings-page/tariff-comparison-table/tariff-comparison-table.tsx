@@ -14,8 +14,14 @@ export type TariffComparisonTableProps = {
 };
 
 export const TariffComparisonTable = ({ isProTatiff }: TariffComparisonTableProps) => {
-    const checkIconStyle: CSSProperties = { color: '#262626', fontSize: '18px' };
-    const closeIconStyle: CSSProperties = { color: '#bfbfbf', fontSize: '18px' };
+    const checkIconStyle: CSSProperties = {
+        color: 'var(--light-title-85)',
+        fontSize: 'var(--gap-18)',
+    };
+    const closeIconStyle: CSSProperties = {
+        color: 'var(--light-disable-25)',
+        fontSize: 'var(--gap-18)',
+    };
 
     return (
         <div className={styles.wrapper}>

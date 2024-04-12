@@ -1,7 +1,7 @@
 @use '@sass/mixins.scss' as m;
 
 .footer {
-    padding: 0 var(--gap-24) 42px;
+    padding: 0 var(--gap-24) var(--gap-42);
     background: transparent;
     @include m.tablet {
         padding-left: var(--gap-16);

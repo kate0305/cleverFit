@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { Checkbox, Form } from 'antd';
 import { selectUserEmail, setEmail, setToken } from '@redux/redusers/user-data-slice';
 
+import { DATA_TEST_ID } from '@constants/data-test-id';
 import { CHECK_EMAIL_ERR, CHECK_EMAIL_ERR_404, CONFIRM_EMAIL, LOGIN_ERR } from '@constants/index';
 import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { useCheckEmailMutation, useSignInUserMutation } from '@services/auth-service';
@@ -55,10 +56,11 @@ export const SignInForm: React.FC = () => {
 
                 if (errStatus === StatusCode.NOT_FOUND && errMsg.includes('Email не найден')) {
                     navigate(CHECK_EMAIL_ERR_404, { state: { fromServer: true } });
-                } else
+                } else {
                     navigate(CHECK_EMAIL_ERR, {
                         state: { fromServer: true },
                     });
+                }
             }
         },
         [checkEmail, navigate],
@@ -106,7 +108,9 @@ export const SignInForm: React.FC = () => {
             const { accessToken } = userLoginData;
 
             dispatch(setToken(accessToken));
-            if (isChecked) setLocalStorageItem(accessToken);
+            if (isChecked) {
+                setLocalStorageItem(accessToken);
+            }
             navigate(Paths.MAIN);
         }
         if (isError) {
@@ -125,18 +129,20 @@ export const SignInForm: React.FC = () => {
                 onValuesChange={onFormValuesChange}
                 onFinish={onSubmit}
             >
-                <EmailInput inputName='email' dataTestId='login-email' />
+                <EmailInput inputName='email' dataTestId={DATA_TEST_ID.loginEmail} />
 
                 <PasswordInput
                     inputName='password'
                     validateTrigger='onSubmit'
                     withHelp={false}
                     required={true}
-                    dataTestId='login-password'
+                    dataTestId={DATA_TEST_ID.loginPassword}
                 />
                 <Form.Item>
                     <Form.Item name='remember' valuePropName='checked' noStyle={true}>
-                        <Checkbox data-test-id='login-remember'>Запомнить меня</Checkbox>
+                        <Checkbox data-test-id={DATA_TEST_ID.loginRemember}>
+                            Запомнить меня
+                        </Checkbox>
                     </Form.Item>
 
                     <PrimaryBtn
@@ -146,7 +152,7 @@ export const SignInForm: React.FC = () => {
                         className={styles.forgot_btn}
                         disabled={isForgotDisabled}
                         onClick={handleForgotPassword}
-                        dataTestId='login-forgot-button'
+                        dataTestId={DATA_TEST_ID.loginForgotBtn}
                     />
                 </Form.Item>
 
@@ -156,7 +162,7 @@ export const SignInForm: React.FC = () => {
                         htmlType='submit'
                         btnText='Войти'
                         className={styles.sign_in_btn}
-                        dataTestId='login-submit-button'
+                        dataTestId={DATA_TEST_ID.loginSubmitBtn}
                     />
                 </Form.Item>
             </Form>

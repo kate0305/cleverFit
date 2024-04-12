@@ -1,31 +1,26 @@
-import { useLayoutEffect, useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { useLazyGetUserTrainingsQuery } from '@services/training-service';
-import { Paths } from '@type/paths';
 
 export const useCalendarClick = () => {
     const navigate = useNavigate();
     const [isErr, setErr] = useState(false);
 
-    const [getUserTrainingList, { isError, isSuccess }] = useLazyGetUserTrainingsQuery();
-
-    const handleClick = async () => {
-        await getUserTrainingList();
-    };
+    const [getUserTrainingList] = useLazyGetUserTrainingsQuery();
 
     const closeErrModal = () => {
         setErr(false);
     };
 
-    useLayoutEffect(() => {
-        if (isError) {
+    const handleClick = async (path: string) => {
+        try {
+            await getUserTrainingList().unwrap();
+            navigate(path);
+        } catch (e) {
             setErr(true);
         }
-        if (isSuccess) {
-            navigate(Paths.CALENDAR);
-        }
-    }, [isError, isSuccess, navigate]);
+    };
 
     return {
         isErr,

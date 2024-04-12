@@ -148,6 +148,7 @@
         .ant-picker-calendar-mode-switch > label {
             width: auto;
         }
+
         .ant-picker-cell-in-view.ant-picker-cell-selected .ant-picker-cell-inner {
             @include m.tablet {
                 color: var(--light-title-85);

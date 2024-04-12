@@ -2,7 +2,9 @@ import { Fragment, useEffect } from 'react';
 import { Col, Layout, Row, Typography } from 'antd';
 import { selectUserData } from '@redux/redusers/user-data-slice';
 
+import { DATA_TEST_ID } from '@constants/data-test-id';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
+import { useGetInvitesQuery } from '@services/invite-service';
 import { useLazyGetUserDataQuery } from '@services/user-service';
 import { ResultRequestKeys } from '@type/result-request-keys';
 import { useCalendarClick } from '@utils/use-click-calendar';
@@ -21,6 +23,8 @@ const { Content } = Layout;
 const { Paragraph } = Typography;
 
 export const MainPage = () => {
+    useGetInvitesQuery();
+
     const { isErr, handleClick, closeErrModal } = useCalendarClick();
     const userData = useAppSelector(selectUserData);
     const [getUserData] = useLazyGetUserDataQuery();
@@ -33,7 +37,7 @@ export const MainPage = () => {
 
     return (
         <Fragment>
-            <ModalWindow isOpen={isErr} dataTestId='modal-no-review'>
+            <ModalWindow isOpen={isErr} dataTestId={DATA_TEST_ID.modalNoReview}>
                 <RequestResult
                     keyErr={ResultRequestKeys.GET_FEEDBACK_ERR}
                     buttonsGroup={
@@ -43,7 +47,7 @@ export const MainPage = () => {
                             className={styles.btn_err}
                             btnText='Назад'
                             onClick={closeErrModal}
-                            dataTestId='write-review-not-saved-modal'
+                            dataTestId={DATA_TEST_ID.writeReviewNotSavedModal}
                         />
                     }
                 />
@@ -62,7 +66,7 @@ export const MainPage = () => {
                         { xs: 0, sm: 16 },
                         { xs: 6, sm: 16 },
                     ]}
-                    style={{ maxWidth: '768px', marginTop: '24px' }}
+                    style={{ maxWidth: '768px', marginTop: 'var(--gap-24)' }}
                 >
                     <Col span={24}>
                         <ContentCard className={styles.main_card} bordered={false}>

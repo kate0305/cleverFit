@@ -1,0 +1,72 @@
+@use '@sass/mixins.scss' as m;
+
+.wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 312px;
+    width: 100%;
+    @include m.card-base;
+    border-radius: var(--border-radius-xs);
+    box-shadow: var(--box-shadow-custom-modal);
+    z-index: 1;
+    @include m.tablet-l {
+        width: 312px;
+        position: fixed;
+        top: 28%;
+        left: 35%;
+    }
+    @media screen and (max-width: 670px) {
+        left: -12px;
+        min-width: 288px;
+    }
+    :global {
+        .ant-card-head {
+            padding: 13px var(--gap-12);
+        }
+        .ant-card-head-wrapper {
+            @include m.flex;
+        }
+        .ant-card-head-title {
+            flex: 0 0 fit-content;
+        }
+        .ant-badge-status-text {
+            color: var(--light-title-85);
+        }
+    }
+}
+
+.content {
+    width: 100%;
+    min-height: 150px;
+    padding: var(--gap-24) var(--gap-12);
+}
+
+.btn_close {
+    width: fit-content;
+    color: var(--light-title-85);
+}
+
+.title {
+    @include m.flex($j-c: space-between);
+    padding-bottom: var(--gap-4);
+    @include m.font;
+    color: var(--light-title-85);
+    & span:first-child {
+        font-size: var(--font-size-m);
+        font-weight: 500;
+    }
+}
+
+.exercise {
+    @include m.flex($j-c: space-between);
+    margin-top: var(--gap-8);
+    @include m.font;
+    color: var(--light-secondary-45);
+}
+
+.exercise_data {
+    align-self: flex-start;
+    font-size: var(--font-size-s);
+    color: var(--primary-light-6);
+}

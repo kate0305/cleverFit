@@ -2,6 +2,7 @@ import { Suspense } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import { Layout } from 'antd';
 
+import { useGetInvitesQuery } from '@services/invite-service';
 import { Paths } from '@type/paths';
 
 import { AppFooter } from '@components/footer';
@@ -16,6 +17,7 @@ type MainLayoutProps = {
 };
 
 export const MainLayout = ({ withHeader }: MainLayoutProps) => {
+    useGetInvitesQuery();
     const { pathname } = useLocation();
     const fromPage = pathname;
     const isMainPage = pathname === Paths.MAIN;

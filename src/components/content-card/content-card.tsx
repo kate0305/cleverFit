@@ -15,7 +15,9 @@ export const ContentCard = ({
     bordered,
     extra,
     actions,
+    tabList,
     cover,
+    onClick,
     headStyle,
     bodyStyle,
     style,
@@ -26,7 +28,9 @@ export const ContentCard = ({
         bordered={bordered}
         extra={extra}
         actions={actions}
+        tabList={tabList}
         cover={cover}
+        onClick={onClick}
         headStyle={headStyle}
         bodyStyle={bodyStyle}
         className={className}

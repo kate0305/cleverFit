@@ -56,10 +56,11 @@ export const SignUpForm: React.FC = () => {
                 navigate(REGISTRATION_ERR_409, {
                     state: { fromServer: true },
                 });
-            else
+            else {
                 navigate(REGISTRATION_ERR, {
                     state: { fromServer: true },
                 });
+            }
         }
     }, [error, fromError, handleSignUpUser, isSuccess, navigate, userData]);
 

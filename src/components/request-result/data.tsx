@@ -2,6 +2,7 @@ import { ReactNode } from 'react';
 import { LinkProps } from 'react-router-dom';
 import { ResultStatusType } from 'antd/lib/result';
 
+import { DATA_TEST_ID } from '@constants/data-test-id';
 import { CHANGE_PASSWORD, REGISTRATION } from '@constants/index';
 import { Paths } from '@type/paths';
 
@@ -36,7 +37,7 @@ export const RequestResultData: RequestResultKeys = {
         message: 'Что-то пошло не так. Попробуйте еще раз',
         btnText: 'Повторить',
         navigateTo: Paths.AUTH,
-        dataTestId: 'login-retry-button',
+        dataTestId: DATA_TEST_ID.loginRetryBtn,
     },
     signUpSuccess: {
         status: 'success',
@@ -45,7 +46,7 @@ export const RequestResultData: RequestResultKeys = {
             'Регистрация прошла успешно. Зайдите в\u00A0приложение, используя свои e-mail и пароль.',
         btnText: 'Войти',
         navigateTo: Paths.AUTH,
-        dataTestId: 'registration-enter-button',
+        dataTestId: DATA_TEST_ID.registrationEnterBtn,
     },
     signUpErr: {
         status: 'error',
@@ -54,7 +55,7 @@ export const RequestResultData: RequestResultKeys = {
         btnText: 'Повторить',
         navigateTo: REGISTRATION,
         state: { fromErr: true },
-        dataTestId: 'registration-retry-button',
+        dataTestId: DATA_TEST_ID.registrationEnterBtn,
     },
     signUpErr409: {
         status: 'error',
@@ -63,7 +64,7 @@ export const RequestResultData: RequestResultKeys = {
             'Такой e-mail уже записан в системе. Попробуйте зарегистрироваться по другому e-mail.',
         btnText: 'Назад к регистрации',
         navigateTo: REGISTRATION,
-        dataTestId: 'registration-back-button',
+        dataTestId: DATA_TEST_ID.registrationEnterBtn,
     },
     checkEmailErr: {
         status: '500',
@@ -72,7 +73,7 @@ export const RequestResultData: RequestResultKeys = {
         btnText: 'Назад',
         navigateTo: Paths.AUTH,
         state: { fromErr: true },
-        dataTestId: 'check-back-button',
+        dataTestId: DATA_TEST_ID.checkBackBtn,
     },
     checkEmailErr404: {
         status: 'error',
@@ -80,7 +81,7 @@ export const RequestResultData: RequestResultKeys = {
         message: 'Мы не нашли в базе вашего e-mail. Попробуйте войти с другим e-mail.',
         btnText: 'Попробовать снова',
         navigateTo: Paths.AUTH,
-        dataTestId: 'check-retry-button',
+        dataTestId: DATA_TEST_ID.checkRetryBtn,
     },
     changePasswordSuccess: {
         status: 'success',
@@ -88,7 +89,7 @@ export const RequestResultData: RequestResultKeys = {
         message: 'Теперь можно войти в аккаунт, используя свой\u00A0логин и новый пароль',
         btnText: 'Вход',
         navigateTo: Paths.AUTH,
-        dataTestId: 'change-entry-button',
+        dataTestId: DATA_TEST_ID.changeEntryBtn,
     },
     changePasswordErr: {
         status: 'error',
@@ -97,7 +98,7 @@ export const RequestResultData: RequestResultKeys = {
         btnText: 'Повторить',
         navigateTo: CHANGE_PASSWORD,
         state: { fromErr: true },
-        dataTestId: 'change-retry-button',
+        dataTestId: DATA_TEST_ID.changeRetryBtn,
     },
     getFeedbacksErr: {
         status: '500',

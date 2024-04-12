@@ -26,7 +26,7 @@ export const feedbacksApi = cleverFitApi
                 async onQueryStarted(_, { dispatch, queryFulfilled }) {
                     await commonOnQueryStarted({ dispatch, queryFulfilled }, true);
                 },
-                invalidatesTags: [Tags.FEEDBACKS],
+                invalidatesTags: (_, err) => (err ? [] : [Tags.FEEDBACKS]),
             }),
         }),
     });

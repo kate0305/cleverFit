@@ -41,7 +41,7 @@
 }
 
 .condition {
-    padding-right: 16px;
+    padding-right: var(--font-size-m);
     @include m.flex($j-c: space-between);
     .condition_text {
         max-width: 187px;

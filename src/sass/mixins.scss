@@ -53,8 +53,8 @@
     width: 100%;
     padding: 64px 32px;
     background-color: var(--base-light);
-    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.15);
-    border-radius: 2px;
+    box-shadow: 0 var(--gap-2) var(--gap-8) 0 rgba(0, 0, 0, 0.15);
+    border-radius: var(--border-radius-xs);
     @include phone {
         max-width: var(--max-width-modal);
     }
@@ -77,7 +77,7 @@
     width: 100%;
     @include flex;
     padding: 9px 15px;
-    @include font($size: 16px);
+    @include font($size: var(--font-size-m));
     text-shadow: none;
     background: var(--primary-light-6);
     border: 1px solid var(--primary-light-6);
@@ -89,7 +89,7 @@
 }
 
 @mixin input-affix-wrapper {
-    padding: 10px 12px;
+    padding: var(--gap-10) var(--gap-12);
     border-radius: var(-border-radius-xs);
     border-color: var(--light-border);
 }

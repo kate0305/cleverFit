@@ -2,6 +2,7 @@ import { CSSProperties, ReactNode } from 'react';
 import { Typography } from 'antd';
 
 import { CloseCircleOutlined, CloseOutlined } from '@ant-design/icons';
+import { DATA_TEST_ID } from '@constants/data-test-id';
 
 import styles from './modal-err.module.scss';
 
@@ -26,46 +27,46 @@ export type ModalErrDataKeys = {
     updateUserDataErr: ModalErrDataProps;
 };
 
-export const ModalErrData: ModalErrDataKeys = {
+export const modalErrData: ModalErrDataKeys = {
     getTrainingListErr: {
         title: (
-            <Text data-test-id='modal-error-user-training-title'>
+            <Text data-test-id={DATA_TEST_ID.modalErrorUserTrainingTitle}>
                 При открытии данных произошла ошибка
             </Text>
         ),
         message: (
-            <Text type='secondary' data-test-id='modal-error-user-training-subtitle'>
+            <Text type='secondary' data-test-id={DATA_TEST_ID.modalErrorUserTrainingSubTitle}>
                 Попробуйте ещё раз.
             </Text>
         ),
-        icon: <CloseCircleOutlined style={{ color: '#2f54eb' }} />,
+        icon: <CloseCircleOutlined style={{ color: 'var(--primary-light-6)' }} />,
         okText: 'Обновить',
-        bntDataTestId: 'modal-error-user-training-button',
+        bntDataTestId: DATA_TEST_ID.modalErrorUserTrainingButton,
         maskStyle: { background: 'rgba(121, 156, 212, 0.10)', backdropFilter: 'blur(6px)' },
         closable: true,
         className: styles.modal_training_list_err,
         closeIcon: (
             <CloseOutlined
-                data-test-id='modal-error-user-training-button-close'
-                style={{ fontSize: '14px' }}
+                data-test-id={DATA_TEST_ID.modalErrorUserTrainingButtonClose}
+                style={{ fontSize: 'var(--font-size-base)' }}
             />
         ),
     },
 
     saveTrainingErr: {
         title: (
-            <Text data-test-id='modal-error-user-training-title'>
+            <Text data-test-id={DATA_TEST_ID.modalErrorUserTrainingTitle}>
                 При сохранении данных произошла ошибка
             </Text>
         ),
         message: (
-            <Text type='secondary' data-test-id='modal-error-user-training-subtitle'>
+            <Text type='secondary' data-test-id={DATA_TEST_ID.modalErrorUserTrainingSubTitle}>
                 Придётся попробовать ещё раз
             </Text>
         ),
-        icon: <CloseCircleOutlined style={{ color: '#ff4d4f' }} />,
+        icon: <CloseCircleOutlined style={{ color: 'var(--light-error)' }} />,
         okText: 'Закрыть',
-        bntDataTestId: 'modal-error-user-training-button',
+        bntDataTestId: DATA_TEST_ID.modalErrorUserTrainingButton,
         maskStyle: { background: 'rgba(121, 156, 212, 0.10)', backdropFilter: 'blur(6px)' },
         closable: false,
         className: styles.modal_save_training_err,
@@ -74,11 +75,11 @@ export const ModalErrData: ModalErrDataKeys = {
     saveUserPhotoErr: {
         title: <Text>Файл слишком большой</Text>,
         message: (
-            <Text type='secondary' data-test-id='modal-error-user-training-subtitle'>
+            <Text type='secondary' data-test-id={DATA_TEST_ID.modalErrorUserTrainingSubTitle}>
                 Выберите файл размером до 5 МБ.
             </Text>
         ),
-        icon: <CloseCircleOutlined style={{ color: '#ff4d4f' }} />,
+        icon: <CloseCircleOutlined style={{ color: 'var(--light-error)' }} />,
         okText: 'Закрыть',
         bntDataTestId: 'big-file-error-close',
         maskStyle: { background: 'rgba(121, 156, 212, 0.10)', backdropFilter: 'blur(6px)' },
@@ -89,11 +90,11 @@ export const ModalErrData: ModalErrDataKeys = {
     updateUserDataErr: {
         title: <Text>При сохранении данных произошла ошибка</Text>,
         message: (
-            <Text type='secondary' data-test-id='modal-error-user-training-subtitle'>
+            <Text type='secondary' data-test-id={DATA_TEST_ID.modalErrorUserTrainingSubTitle}>
                 Придётся попробовать ещё раз
             </Text>
         ),
-        icon: <CloseCircleOutlined style={{ color: '#ff4d4f' }} />,
+        icon: <CloseCircleOutlined style={{ color: 'var(--light-error)' }} />,
         okText: 'Закрыть',
         bntDataTestId: 'big-file-error-close',
         maskStyle: { background: 'rgba(121, 156, 212, 0.10)', backdropFilter: 'blur(6px)' },

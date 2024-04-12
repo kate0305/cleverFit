@@ -17,6 +17,16 @@ body {
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+
+    ::-webkit-scrollbar {
+        width: 8px;
+        background-color: var(--base-light);
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: var(--light-disable-25);
+        border-radius: 99px;
+    }
 }
 
 h1 {
@@ -42,13 +52,12 @@ fieldset {
 /* reset styles ant design */
 .ant-tabs,
 .ant-form {
-    line-height: 130%;
-    color: #262626;
+    line-height: var(--line-height-base);
+    color: var(--light-title-85);
 }
 
 .ant-tabs {
-    font-size: 16px;
-
+    font-size: var(--font-size-m);
 }
 .ant-tabs > *,
 .ant-form > * {
@@ -57,12 +66,12 @@ fieldset {
 a.ant-btn,
 .ant-btn {
     height: auto;
-    line-height: 130%;
- }
+    line-height: var(--line-height-base);
+}
 
 h1 .ant-typography,
-div .ant-typography{
-  margin-bottom: 0;
+div .ant-typography {
+    margin-bottom: 0;
 }
 
 .ant-card > * {
@@ -84,9 +93,5 @@ h2.ant-typography,
 h3.ant-typography,
 h4.ant-typography,
 h5.ant-typography {
-    color: var(--light-title-85)
-}
-
-body + .ant-drawer {
-    overflow-y: hidden;
+    color: var(--light-title-85);
 }

@@ -1,0 +1,20 @@
+@use '@sass/mixins.scss' as m;
+
+.data {
+    @include m.flex($j-c: space-between);
+    padding-bottom: var(--gap-8);
+    :global {
+        .ant-typography {
+            @include m.font($weight: 400);
+        }
+    }
+}
+
+.badge {
+    :global {
+        .ant-badge-status-text {
+            @include m.font($weight: 500);
+            color: var(--light-secondary-45);
+        }
+    }
+}

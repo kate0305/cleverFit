@@ -1,4 +1,5 @@
 import { CalendarTwoTone, HeartFilled, IdcardOutlined } from '@ant-design/icons';
+import { DATA_TEST_ID } from '@constants/data-test-id';
 import { Paths } from '@type/paths';
 
 export const possibilities = [
@@ -22,27 +23,29 @@ export const possibilities = [
 
 export const actions = [
     {
-        id: '1',
+        id: Paths.WORKOUTS,
         title: 'Расписать тренировки',
         iconLabel: 'Тренировки',
-        icon: <HeartFilled style={{ color: '#2f54eb' }} />,
+        icon: <HeartFilled style={{ color: 'var(--primary-light-6)' }} />,
         navigateTo: '',
-        dataTestId: '',
+        dataTestId: DATA_TEST_ID.menuButtonTraining,
     },
     {
         id: Paths.CALENDAR,
         title: 'Назначить календарь',
         iconLabel: 'Календарь',
-        icon: <CalendarTwoTone twoToneColor={['#2f54eb', '#2f54eb']} />,
+        icon: (
+            <CalendarTwoTone twoToneColor={['var(--primary-light-6)', 'var(--primary-light-6)']} />
+        ),
         navigateTo: '',
-        dataTestId: 'menu-button-calendar',
+        dataTestId: DATA_TEST_ID.menuButtonCalendar,
     },
     {
         id: Paths.PROFILE,
         title: 'Заполнить профиль',
         iconLabel: 'Профиль',
-        icon: <IdcardOutlined style={{ color: '#2f54eb' }} />,
+        icon: <IdcardOutlined style={{ color: 'var(--primary-light-6)' }} />,
         navigateTo: Paths.PROFILE,
-        dataTestId: 'menu-button-profile',
+        dataTestId: DATA_TEST_ID.menuButtonProfile,
     },
 ];

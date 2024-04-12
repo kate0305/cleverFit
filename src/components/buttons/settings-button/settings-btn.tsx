@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { Button } from 'antd';
 
 import { SettingOutlined } from '@ant-design/icons';
+import { DATA_TEST_ID } from '@constants/data-test-id';
 import { LG_WIDTH, SM_WIDTH, XS_WIDTH } from '@constants/index';
 import { useLazyGetTariffListQuery } from '@services/user-service';
 import { Paths } from '@type/paths';
@@ -30,10 +31,10 @@ export const SettingsBtn = ({ className, isPage }: SettingsBtnProps) => {
 
     const desktopBtn = (
         <Button
-            icon={<SettingOutlined style={{ marginRight: '2px' }} />}
+            icon={<SettingOutlined style={{ marginRight: 'var(--gap-2)' }} />}
             onClick={handleClick}
             className={className || styles.button}
-            data-test-id='header-settings'
+            data-test-id={DATA_TEST_ID.headerSettings}
         >
             Настройки
         </Button>
@@ -42,7 +43,7 @@ export const SettingsBtn = ({ className, isPage }: SettingsBtnProps) => {
     const desktopLGBtn = (
         <Button
             onClick={handleClick}
-            data-test-id='header-settings'
+            data-test-id={DATA_TEST_ID.headerSettings}
             className={className || styles.button}
         >
             Настройки
@@ -55,7 +56,7 @@ export const SettingsBtn = ({ className, isPage }: SettingsBtnProps) => {
             shape='circle'
             icon={<SettingOutlined />}
             className={className || styles.button}
-            data-test-id='header-settings'
+            data-test-id={DATA_TEST_ID.headerSettings}
         />
     );
 

@@ -3,6 +3,7 @@ import { Form, FormInstance } from 'antd';
 import dayjs from 'dayjs';
 import { selectUserData } from '@redux/redusers/user-data-slice';
 
+import { DATA_TEST_ID } from '@constants/data-test-id';
 import { useAppSelector } from '@hooks/index';
 import { UserDataReq } from '@type/service';
 import { UserFormData } from '@type/user';
@@ -74,18 +75,18 @@ export const ProfileForm = ({ updateData, form }: ProfileFormProps) => {
                         inputName='imgSrc'
                         imgUrl={imgUrl}
                         setBtnDisable={setSubmitBtnDisabled}
-                        dataTestId='profile-avatar'
+                        dataTestId={DATA_TEST_ID.profileAvatar}
                     />
                     <div className={styles.inputs_column}>
                         <TextInput
                             inputName='firstName'
                             placeholder='Имя'
-                            dataTestId='profile-name'
+                            dataTestId={DATA_TEST_ID.profileName}
                         />
                         <TextInput
                             inputName='lastName'
                             placeholder='Фамилия'
-                            dataTestId='profile-surname'
+                            dataTestId={DATA_TEST_ID.profileSurname}
                         />
                         <DatePickerInput inputName='birthday' dataTestId='profile-birthday' />
                     </div>
@@ -94,17 +95,17 @@ export const ProfileForm = ({ updateData, form }: ProfileFormProps) => {
             <fieldset className={styles.auth_wrapper}>
                 <legend className={styles.title}>Приватность и авторизация</legend>
                 <div>
-                    <EmailInput inputName='email' dataTestId='profile-email' />
+                    <EmailInput inputName='email' dataTestId={DATA_TEST_ID.profileEmail} />
                     <PasswordInput
                         inputName='password'
                         withHelp={true}
                         required={isHavePasswordValue}
-                        dataTestId='profile-password'
+                        dataTestId={DATA_TEST_ID.profilePassword}
                     />
                     <ConfirmPasswordInput
                         inputName='confirmPassword'
                         required={isHavePasswordValue}
-                        dataTestId='profile-repeat-password'
+                        dataTestId={DATA_TEST_ID.profileRepeatPassword}
                     />
                 </div>
             </fieldset>
@@ -115,7 +116,7 @@ export const ProfileForm = ({ updateData, form }: ProfileFormProps) => {
                     btnText='Сохранить изменения'
                     disabled={isSubmitBtnDisabled}
                     className={styles.btn}
-                    dataTestId='profile-submit'
+                    dataTestId={DATA_TEST_ID.profileSubmit}
                 />
             </Form.Item>
         </Form>

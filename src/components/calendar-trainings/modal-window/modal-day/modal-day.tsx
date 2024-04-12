@@ -3,6 +3,7 @@ import { Card } from 'antd';
 import { Dayjs } from 'dayjs';
 
 import { CloseOutlined } from '@ant-design/icons';
+import { DATA_TEST_ID } from '@constants/data-test-id';
 import { DateFormats } from '@type/dates';
 import { TrainingResp } from '@type/service';
 import { UserTraining } from '@type/training';
@@ -55,33 +56,33 @@ export const ModalDay = ({
                     onClick={openChooseTraining}
                 />,
             ]}
-            dataTestId='modal-create-training'
+            dataTestId={DATA_TEST_ID.modalCreateTraining}
         >
             <Fragment>
-                    <div className={styles.title}>
-                        <Meta
-                            title={`Тренировки на ${formattedDate}`}
-                            description={!trainingsListLength && 'Нет активных тренировок'}
-                            className={styles.text}
-                        />
-                        <PrimaryBtn
-                            type='text'
-                            icon={<CloseOutlined style={{ fontSize: '12px' }} />}
-                            onClick={closeModal}
-                            dataTestId='modal-create-training-button-close'
-                            className={styles.btn_close}
-                        />
-                    </div>
-                    {trainingsListLength ? (
-                        <TrainingList
-                            fromModalDay={true}
-                            onClick={openChooseTraining}
-                            trainingsListForSelectedDay={trainingsListForSelectedDay}
-                        />
-                    ) : (
-                        <EmptyBlock />
-                    )}
-                </Fragment>
+                <div className={styles.title}>
+                    <Meta
+                        title={`Тренировки на ${formattedDate}`}
+                        description={!trainingsListLength && 'Нет активных тренировок'}
+                        className={styles.text}
+                    />
+                    <PrimaryBtn
+                        type='text'
+                        icon={<CloseOutlined style={{ fontSize: 'var(--font-size-s)' }} />}
+                        onClick={closeModal}
+                        dataTestId={DATA_TEST_ID.modalCreateTrainingButtonClose}
+                        className={styles.btn_close}
+                    />
+                </div>
+                {trainingsListLength ? (
+                    <TrainingList
+                        fromModalDay={true}
+                        onClick={openChooseTraining}
+                        trainingsListForSelectedDay={trainingsListForSelectedDay}
+                    />
+                ) : (
+                    <EmptyBlock />
+                )}
+            </Fragment>
         </ContentCard>
     );
 };

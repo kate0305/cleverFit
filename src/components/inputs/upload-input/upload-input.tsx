@@ -90,7 +90,11 @@ export const UploadInput = ({ inputName, imgUrl, setBtnDisable, dataTestId }: Up
                 headers={{ authorization: `Bearer ${token}` }}
                 listType={isMobile ? 'picture' : 'picture-card'}
                 maxCount={1}
-                progress={{ strokeWidth: 4, strokeColor: '#2f54eb', showInfo: false }}
+                progress={{
+                    strokeWidth: 4,
+                    strokeColor: 'var(--primary-light-6)',
+                    showInfo: false,
+                }}
                 onChange={uploadImg}
             >
                 {isHasAvatar && (isMobile ? mobileView : desctopView)}
