@@ -5,7 +5,7 @@ export const actions = [
         id: '1',
         name: 'FREE',
         isActive: true,
-        img: '/images/free-tariff.jpg',
+        img: '/public/images/free-tariff.jpg',
         tariffIexpired: '',
         dataTestId: '',
     },

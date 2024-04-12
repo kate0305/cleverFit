@@ -75,6 +75,7 @@ export const TariffCard = ({
                             className={styles.activate_btn}
                             btnText='Активировать'
                             dataTestId={DATA_TEST_ID.activateTariffBtn}
+                            onClick={getDetails}
                         />
                     ),
                 ]}

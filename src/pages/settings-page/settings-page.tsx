@@ -1,9 +1,10 @@
-import { Fragment, useMemo, useState } from 'react';
+import { Fragment, useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Col, Row, Typography } from 'antd';
 import { selectUser } from '@redux/redusers/user-data-slice';
 
 import { useAppSelector } from '@hooks/index';
+import { useGetTariffListQuery, useGetUserDataQuery, useLazyGetUserDataQuery } from '@services/user-service';
 import { Paths } from '@type/paths';
 
 import { PrimaryBtn } from '@components/buttons/primary-button';
@@ -20,6 +21,9 @@ import styles from './settings-page.module.scss';
 const { Title } = Typography;
 
 export const SettingsPage = () => {
+    useGetTariffListQuery();
+    useGetUserDataQuery();
+
     const [isOpenCreateFeedback, setOpenCreateFeedback] = useState(false);
     const [isOpenErrPostModal, setOpenErrPostModal] = useState(false);
     const [isOpenSuccessPostModal, setOpenSuccessPostModal] = useState(false);
@@ -40,7 +44,7 @@ export const SettingsPage = () => {
                     id: _id,
                     name,
                     isActive: _id === userTariffId,
-                    img: `/images/${tariffName}-tariff.jpg`,
+                    img: `/public/images/${tariffName}-tariff.jpg`,
                     periods,
                     tariffIexpired: userTariffIexpired,
                     dataTestId: `${tariffName}-tariff-card`,
