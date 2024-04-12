@@ -9,7 +9,7 @@
     width: 100%;
     padding: var(--gap-8) var(--gap-18);
     @include m.phone {
-        bottom: var(--gap-48);
+        bottom: 105px;
         max-width: calc(100% - 48px);
     }
     :global {
