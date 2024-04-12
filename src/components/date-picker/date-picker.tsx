@@ -1,6 +1,6 @@
 import generatePicker from 'antd/es/date-picker/generatePicker';
 import dayjs, { Dayjs } from 'dayjs';
-import * as updateLocale from 'dayjs/plugin/updateLocale';
+import updateLocale from 'dayjs/plugin/updateLocale';
 import dayjsGenerateConfig from 'rc-picker/lib/generate/dayjs';
 
 import { LOCALE_OPTIONS } from '@constants/index';

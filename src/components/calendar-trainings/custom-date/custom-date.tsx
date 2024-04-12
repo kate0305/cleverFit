@@ -1,5 +1,5 @@
 import dayjs, { Dayjs } from 'dayjs';
-import * as today from 'dayjs/plugin/isToday';
+import today from 'dayjs/plugin/isToday';
 
 import { DateFormats } from '@type/dates';
 import { UserTraining } from '@type/training';
