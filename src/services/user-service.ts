@@ -74,6 +74,7 @@ export const {
     useLazyGetUserDataQuery,
     useGetUserDataQuery,
     useUpdateUserDataMutation,
+    useGetTariffListQuery,
     useLazyGetTariffListQuery,
     usePayNewTariffMutation,
 } = userApi;
