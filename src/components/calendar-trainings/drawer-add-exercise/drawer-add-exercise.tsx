@@ -13,9 +13,8 @@ import { getFormattedDate } from '@utils/get-formatted-date';
 
 import { DrawerComponent } from '@components/drawer';
 import { DrawerInfo } from '@components/drawer/drawer-info';
+import { DrawerNotification } from '@components/drawer/drawer-notification';
 import { AddTrainingForm } from '@components/form/add-training-form';
-
-import styles from './drawer-add-exercise.module.scss';
 
 type DrawerAddExerciseProps = {
     date: Dayjs;
@@ -66,12 +65,7 @@ export const DrawerAddExercise = ({
                 trainingName={trainingName}
                 trainingsListForSelectedDay={trainingsListForSelectedDay}
             />
-            {isEditMode && checkIsPastDate(date) && (
-                <p className={styles.watning}>
-                    После сохранения внесенных изменений отредактировать проведенную тренировку
-                    будет невозможно
-                </p>
-            )}
+            {isEditMode && checkIsPastDate(date) && <DrawerNotification />}
         </DrawerComponent>
     );
 };

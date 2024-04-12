@@ -1,6 +1,13 @@
 import { EditOutlined, PlusOutlined } from '@ant-design/icons';
 import { DrawerTitleKeys } from '@type/drawer';
 
+export type WorkoutFormData = {
+    date: string;
+    training: string;
+    isPeriodically: boolean;
+    periodically: number;
+};
+
 export const periodOptions = [
     {
         value: 1,

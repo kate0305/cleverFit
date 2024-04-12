@@ -27,7 +27,7 @@ export const DrawerInfo = ({
     <div className={styles.data}>
         {isJointDrawer && (
             <User
-                fullName={userName ?? null}
+                fullName={userName}
                 image={imageSrc ?? null}
                 type={UserCardTypes.CARD}
             />
