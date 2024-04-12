@@ -1,10 +1,10 @@
-import { Fragment, useEffect, useMemo, useState } from 'react';
+import { Fragment, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Col, Row, Typography } from 'antd';
 import { selectUser } from '@redux/redusers/user-data-slice';
 
 import { useAppSelector } from '@hooks/index';
-import { useGetTariffListQuery, useGetUserDataQuery, useLazyGetUserDataQuery } from '@services/user-service';
+import { useGetTariffListQuery, useGetUserDataQuery } from '@services/user-service';
 import { Paths } from '@type/paths';
 
 import { PrimaryBtn } from '@components/buttons/primary-button';
