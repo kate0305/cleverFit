@@ -33,12 +33,12 @@ export const User = ({ image, fullName, firstName, surname, type, searchValue }:
     });
 
     const avatar = cx({
-        avatar: !type,
+        avatar: !type || type === UserCardTypes.MESSAGE,
         avatar_card: type === UserCardTypes.CARD,
     });
 
     const text = cx({
-        name: !type,
+        name: !type || type === UserCardTypes.MESSAGE,
         name_card: type === UserCardTypes.CARD,
     });
 
@@ -61,9 +61,9 @@ export const User = ({ image, fullName, firstName, surname, type, searchValue }:
                     </Fragment>
                 ) : (
                     arrOfName.map((partOfName) => (
-                        <Paragraph key={new Date().toDateString()}>
+                        <span key={`${Math.random}`}>
                             {searchValue ? getHighlightedText(partOfName, searchValue) : partOfName}{' '}
-                        </Paragraph>
+                        </span>
                     ))
                 )}
             </Paragraph>

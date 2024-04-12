@@ -7,7 +7,7 @@ import { User } from './user';
 
 import styles from './feedback.module.scss';
 
-type UserProps = {
+type FeedbackProps = {
     fullName: string | null;
     image: string | null;
     message: string | null;
@@ -15,7 +15,7 @@ type UserProps = {
     date: string;
 };
 
-export const Feedback = ({ fullName, image, message, rating, date }: UserProps) => (
+export const Feedback = ({ fullName, image, message, rating, date }: FeedbackProps) => (
     <ContentCard bordered={false} className={styles.feedback}>
         <Fragment>
             <User fullName={fullName} image={image} />

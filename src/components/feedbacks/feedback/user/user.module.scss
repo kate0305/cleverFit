@@ -39,8 +39,7 @@
 }
 
 .name {
-    width: 85px;
-    @include m.flex($items: flex-start);
+    @include m.flex;
     flex-direction: column;
     @include m.font($size: var(--font-size-m));
     color: var(--light-title-85);
@@ -48,5 +47,7 @@
 
 .name_card {
     @extend .name;
+    width: 85px;
+    @include m.flex($items: flex-start);
     font-size: var(--font-size-base);
 }

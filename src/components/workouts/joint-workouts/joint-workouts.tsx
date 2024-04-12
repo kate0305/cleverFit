@@ -29,7 +29,6 @@ export const JointWorkouts = () => {
     const { userTrainingsList } = useAppSelector(selectTrainingData);
     const invites = useAppSelector(selectUserInvites);
 
-
     const maxNumberOfPartners = 4;
 
     const [isShowRandomUsersList, setShowRandomUsersList] = useState(false);
@@ -67,11 +66,13 @@ export const JointWorkouts = () => {
         isSuccess,
     ]);
 
-    if (isShowRandomUsersList) return <JointTrainingList handleGoBackClick={goBack} />;
+    if (isShowRandomUsersList) {
+        return <JointTrainingList handleGoBackClick={goBack} />;
+    }
 
     return (
         <Fragment>
-            {!!invites.length && partnersList.length < maxNumberOfPartners &&   <MessageList />}
+            {!!invites.length && partnersList.length < maxNumberOfPartners && <MessageList />}
             {partnersList.length < maxNumberOfPartners && (
                 <Info
                     handleRandomChoise={handleClickRandomBtn}

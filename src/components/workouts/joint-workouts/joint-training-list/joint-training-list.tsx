@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { Input, List } from 'antd';
 import { selectUsersForJointTrainings } from '@redux/redusers/training-partners-slice';
 
@@ -29,8 +29,10 @@ export const JointTrainingList = ({ handleGoBackClick }: JointTrainingListProps)
 
     const [searchValue, setSearchValue] = useState('');
 
-    const filteredList = sortedList.filter(({ name }) =>
-        name.toLowerCase().includes(searchValue.toLowerCase()),
+    const filteredList = useMemo(
+        () =>
+            sortedList.filter(({ name }) => name.toLowerCase().includes(searchValue.toLowerCase())),
+        [searchValue, sortedList],
     );
 
     const handleSearch = (value: string) => setSearchValue(value);
