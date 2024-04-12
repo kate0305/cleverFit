@@ -4,6 +4,7 @@ import { Form, Input, Typography } from 'antd';
 import { Rule } from 'antd/lib/form';
 import { selectChangePasswordData, setChangePasswordData } from '@redux/redusers/user-data-slice';
 
+import { DATA_TEST_ID } from '@constants/data-test-id';
 import { CHANGE_PASSWORD_ERR, CHANGE_PASSWORD_SUCCESS } from '@constants/index';
 import { useAppDispatch, useAppSelector } from '@hooks/index';
 import { useChangePasswordMutation } from '@services/auth-service';
@@ -78,7 +79,7 @@ export const ChangePasswordForm: React.FC = () => {
                     >
                         <Input.Password
                             placeholder='Новый пароль'
-                            data-test-id='change-password'
+                            data-test-id={DATA_TEST_ID.changePassword}
                             autoComplete='new-password'
                         />
                     </Form.Item>
@@ -95,7 +96,7 @@ export const ChangePasswordForm: React.FC = () => {
                     >
                         <Input.Password
                             placeholder='Повторите пароль'
-                            data-test-id='change-confirm-password'
+                            data-test-id={DATA_TEST_ID.changeConformPassword}
                             autoComplete='off'
                         />
                     </Form.Item>
@@ -107,7 +108,7 @@ export const ChangePasswordForm: React.FC = () => {
                             htmlType='submit'
                             btnText='Сохранить'
                             className={styles.btn_change_password}
-                            dataTestId='change-submit-button'
+                            dataTestId={DATA_TEST_ID.changeSubmitBtn}
                         />
                     </Form.Item>
                 </Form>

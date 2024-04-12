@@ -1,5 +1,7 @@
 import { Input } from 'antd';
 
+import { DATA_TEST_ID } from '@constants/data-test-id';
+
 import { FormItemProps } from '../form-item/form-item';
 
 type SignUpFormFild = FormItemProps & {
@@ -15,7 +17,11 @@ export const signUpFormFildsData: SignUpFormFild[] = [
             { pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: '' },
         ],
         children: (
-            <Input addonBefore='e-mail:' data-test-id='registration-email' autoComplete='email' />
+            <Input
+                addonBefore='e-mail:'
+                data-test-id={DATA_TEST_ID.registrationEmail}
+                autoComplete='email'
+            />
         ),
     },
     {
@@ -32,7 +38,7 @@ export const signUpFormFildsData: SignUpFormFild[] = [
         children: (
             <Input.Password
                 placeholder='Пароль'
-                data-test-id='registration-password'
+                data-test-id={DATA_TEST_ID.registrationPassword}
                 autoComplete='new-password'
             />
         ),
@@ -59,7 +65,7 @@ export const signUpFormFildsData: SignUpFormFild[] = [
         children: (
             <Input.Password
                 placeholder='Повторите пароль'
-                data-test-id='registration-confirm-password'
+                data-test-id={DATA_TEST_ID.registrationConfirmPassword}
                 autoComplete='off'
             />
         ),

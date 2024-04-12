@@ -4,6 +4,7 @@ import { selectIsOpenDrawer } from '@redux/redusers/app-slice';
 import { selectJointTrainingData } from '@redux/redusers/training-partners-slice';
 import { selectTrainingData } from '@redux/redusers/trainings-slice';
 
+import { DATA_TEST_ID } from '@constants/data-test-id';
 import { useAppSelector } from '@hooks/index';
 import { DateFormats } from '@type/dates';
 import { checkIsPastDate } from '@utils/check-is-past-date';
@@ -80,7 +81,7 @@ export const DrawerCreateWorkout = () => {
                     className={styles.btn_save}
                     disabled={isSaveBtnDisabled && !isEditMode}
                     onClick={handleSaveBtnClick}
-                    dataTestId='tariff-submit'
+                    dataTestId={DATA_TEST_ID.tariffSubmit}
                 />
             }
         >
@@ -125,12 +126,12 @@ export const DrawerCreateWorkout = () => {
                                 disabledDate={disabledDate}
                                 className={styles.datepicker}
                                 dateRender={dateCellRender}
-                                dataTestId='modal-drawer-right-date-picker'
+                                dataTestId={DATA_TEST_ID.modalDrawerRightDatePicker}
                             />
                         </Form.Item>
 
                         <Form.Item name='isPeriodically' valuePropName='checked'>
-                            <Checkbox data-test-id='modal-drawer-right-checkbox-period'>
+                            <Checkbox data-test-id={DATA_TEST_ID.modalDrawerRightCheckboxPeriod}>
                                 С периодичностью
                             </Checkbox>
                         </Form.Item>
@@ -141,7 +142,7 @@ export const DrawerCreateWorkout = () => {
                             <Select
                                 options={periodOptions}
                                 size='small'
-                                data-test-id='modal-drawer-right-select-period'
+                                data-test-id={DATA_TEST_ID.modalDrawerRightSelectPeriod}
                             />
                         </Form.Item>
                     )}

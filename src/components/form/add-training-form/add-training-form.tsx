@@ -4,6 +4,7 @@ import dayjs, { Dayjs } from 'dayjs';
 import { createTraining, selectTrainingData } from '@redux/redusers/trainings-slice';
 
 import { MinusOutlined, PlusOutlined } from '@ant-design/icons';
+import { DATA_TEST_ID } from '@constants/data-test-id';
 import { useAppDispatch, useAppSelector } from '@hooks/index';
 import { Exercise, UserTraining } from '@type/training';
 import { checkIsPastDate } from '@utils/check-is-past-date';
@@ -112,7 +113,7 @@ export const AddTrainingForm = ({
                                     <Form.Item {...restField} name={[name, 'name']}>
                                         <Input
                                             placeholder='Упражнение'
-                                            data-test-id={`modal-drawer-right-input-exercise${index}`}
+                                            data-test-id={`${DATA_TEST_ID.modalDrawerRightInputExercise}${index}`}
                                             addonAfter={
                                                 isEditMode && (
                                                     <Form.Item
@@ -122,7 +123,7 @@ export const AddTrainingForm = ({
                                                         className={styles.checkBox}
                                                     >
                                                         <Checkbox
-                                                            data-test-id={`modal-drawer-right-checkbox-exercise${index}`}
+                                                            data-test-id={`${DATA_TEST_ID.modalDrawerRightCheckboxExercise}${index}`}
                                                         />
                                                     </Form.Item>
                                                 )
@@ -139,7 +140,7 @@ export const AddTrainingForm = ({
                                                 min={1}
                                                 placeholder='1'
                                                 addonBefore='+'
-                                                data-test-id={`modal-drawer-right-input-approach${index}`}
+                                                data-test-id={`${DATA_TEST_ID.modalDrawerRightInputApproach}${index}`}
                                             />
                                         </Form.Item>
                                         <div className={styles.wrap}>
@@ -151,7 +152,7 @@ export const AddTrainingForm = ({
                                                 <InputNumber
                                                     min={0}
                                                     placeholder='0'
-                                                    data-test-id={`modal-drawer-right-input-weight${index}`}
+                                                    data-test-id={`${DATA_TEST_ID.modalDrawerRightInputWeight}${index}`}
                                                 />
                                             </Form.Item>
                                             <span className={styles.divider}>x</span>
@@ -163,7 +164,7 @@ export const AddTrainingForm = ({
                                                 <InputNumber
                                                     min={1}
                                                     placeholder='3'
-                                                    data-test-id={`modal-drawer-right-input-quantity${index}`}
+                                                    data-test-id={`${DATA_TEST_ID.modalDrawerRightInputQuantity}${index}`}
                                                 />
                                             </Form.Item>
                                         </div>

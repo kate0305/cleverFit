@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react';
 import { Input, List } from 'antd';
 import { selectUsersForJointTrainings } from '@redux/redusers/training-partners-slice';
 
+import { DATA_TEST_ID } from '@constants/data-test-id';
 import { useAppSelector } from '@hooks/index';
 import { PartnerCardTypes } from '@type/card';
 import { getSortedUserList } from '@utils/get-sorted-user-lists';
@@ -45,7 +46,7 @@ export const JointTrainingList = ({ handleGoBackClick }: JointTrainingListProps)
                     placeholder='Поиск по имени'
                     onSearch={handleSearch}
                     className={styles.search}
-                    data-test-id='search-input'
+                    data-test-id={DATA_TEST_ID.searchInput}
                 />
             </div>
             <List

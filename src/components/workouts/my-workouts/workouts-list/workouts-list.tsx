@@ -9,6 +9,7 @@ import {
 } from '@redux/redusers/trainings-slice';
 
 import { DownOutlined, PlusOutlined } from '@ant-design/icons';
+import { DATA_TEST_ID } from '@constants/data-test-id';
 import { useAppDispatch, useAppSelector } from '@hooks/index';
 import { BadgeColors, UserTraining } from '@type/training';
 import { getElement } from '@utils/get-target-element';
@@ -97,7 +98,7 @@ export const WorkoutsList = ({ handleClick }: WorkoutsListProps) => {
                     fromWorkoutsPage={true}
                     editTrainingId={_id}
                     disabled={isImplementation}
-                    size='28'
+                    fontSize='28'
                     onClick={handleClick}
                 />
             ),
@@ -117,7 +118,7 @@ export const WorkoutsList = ({ handleClick }: WorkoutsListProps) => {
                 size='small'
                 rowClassName={styles.row}
                 className={styles.wrapper}
-                data-test-id='my-trainings-table'
+                data-test-id={DATA_TEST_ID.myTrainingsTable}
             />
             <PrimaryBtn
                 type='primary'
@@ -125,7 +126,7 @@ export const WorkoutsList = ({ handleClick }: WorkoutsListProps) => {
                 onClick={handleClick}
                 btnText='Новая тренировка'
                 className={styles.btn_add}
-                dataTestId='create-new-training-button'
+                dataTestId={DATA_TEST_ID.createNewTrainingButton}
             />
         </Fragment>
     );

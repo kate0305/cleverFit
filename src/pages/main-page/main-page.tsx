@@ -2,6 +2,7 @@ import { Fragment, useEffect } from 'react';
 import { Col, Layout, Row, Typography } from 'antd';
 import { selectUserData } from '@redux/redusers/user-data-slice';
 
+import { DATA_TEST_ID } from '@constants/data-test-id';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { useGetInvitesQuery } from '@services/invite-service';
 import { useLazyGetUserDataQuery } from '@services/user-service';
@@ -36,7 +37,7 @@ export const MainPage = () => {
 
     return (
         <Fragment>
-            <ModalWindow isOpen={isErr} dataTestId='modal-no-review'>
+            <ModalWindow isOpen={isErr} dataTestId={DATA_TEST_ID.modalNoReview}>
                 <RequestResult
                     keyErr={ResultRequestKeys.GET_FEEDBACK_ERR}
                     buttonsGroup={
@@ -46,7 +47,7 @@ export const MainPage = () => {
                             className={styles.btn_err}
                             btnText='Назад'
                             onClick={closeErrModal}
-                            dataTestId='write-review-not-saved-modal'
+                            dataTestId={DATA_TEST_ID.writeReviewNotSavedModal}
                         />
                     }
                 />

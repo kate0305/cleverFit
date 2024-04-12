@@ -7,6 +7,7 @@ import {
     setJointTrainingDarwerData,
 } from '@redux/redusers/training-partners-slice';
 
+import { DATA_TEST_ID } from '@constants/data-test-id';
 import { MAX_NUMBER_WORKOUT_PARTNERS, XS_WIDTH } from '@constants/index';
 import { useAppDispatch, useAppSelector } from '@hooks/index';
 import { useRejectInviteMutation } from '@services/invite-service';
@@ -122,7 +123,7 @@ export const PartnerCard = ({ partnerData, searchValue, type, index }: PartnerCa
                           ]
                         : []
                 }
-                dataTestId={`joint-training-cards${index}`}
+                dataTestId={`${DATA_TEST_ID.jointTrainingCards}${index}`}
             >
                 <Meta
                     title={

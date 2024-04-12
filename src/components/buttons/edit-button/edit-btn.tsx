@@ -2,6 +2,7 @@ import { Button, ButtonProps } from 'antd';
 import { setEditTrainingData, setEditTrainingId } from '@redux/redusers/trainings-slice';
 
 import { EditOutlined } from '@ant-design/icons';
+import { DATA_TEST_ID } from '@constants/data-test-id';
 import { useAppDispatch } from '@hooks/typed-react-redux-hooks';
 
 import styles from './edit-btn.module.scss';
@@ -12,13 +13,13 @@ type EditBtnProps = ButtonProps & {
     fromModalDay?: boolean;
     fromWorkoutsPage?: boolean;
     editTrainingId?: string;
-    size?: string;
+    fontSize?: string;
 };
 
 export const EditBtn = ({
     index,
     onClick,
-    size,
+    fontSize,
     disabled,
     fromModalDay,
     fromWorkoutsPage,
@@ -45,11 +46,14 @@ export const EditBtn = ({
             icon={
                 disabled ? (
                     <EditOutlined
-                        style={{ color: 'var(--light-disable-25)', fontSize: `${size || 18}px` }}
+                        style={{
+                            color: 'var(--light-disable-25)',
+                            fontSize: `${fontSize || 18}px`,
+                        }}
                     />
                 ) : (
                     <EditOutlined
-                        style={{ color: 'var(--primary-light-6)', fontSize: `${size || 18}px` }}
+                        style={{ color: 'var(--primary-light-6)', fontSize: `${fontSize || 18}px` }}
                     />
                 )
             }
@@ -58,8 +62,8 @@ export const EditBtn = ({
             className={styles.button}
             data-test-id={
                 fromWorkoutsPage
-                    ? `update-my-training-table-icon${index}`
-                    : `modal-update-training-edit-button${index}`
+                    ? `${DATA_TEST_ID.updateMyTrainingTableIcon}${index}`
+                    : `${DATA_TEST_ID.modalUpdateTrainingEditButton}${index}`
             }
         />
     );

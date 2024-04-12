@@ -2,6 +2,7 @@ import { ReactNode } from 'react';
 import { Drawer, DrawerProps } from 'antd';
 
 import { CloseOutlined } from '@ant-design/icons';
+import { DATA_TEST_ID } from '@constants/data-test-id';
 import { MD_WIDTH } from '@constants/index';
 import { DrawerTitleProps } from '@type/drawer';
 import { useMediaQuery } from '@utils/use-media-query';
@@ -34,7 +35,7 @@ export const DrawerComponent = ({
             footer={footer}
             onClose={setCloseDrawer}
             open={isOpenDrawer}
-            closeIcon={<CloseOutlined data-test-id='modal-drawer-right-button-close' />}
+            closeIcon={<CloseOutlined data-test-id={DATA_TEST_ID.modalDrawerRightButtonClose} />}
             destroyOnClose={true}
             placement={isLaptop ? 'right' : 'bottom'}
             mask={true}
@@ -43,7 +44,7 @@ export const DrawerComponent = ({
             width={408}
             height={555}
             className={styles.wrapper}
-            data-test-id={dataTestId || 'modal-drawer-right'}
+            data-test-id={dataTestId || DATA_TEST_ID.modalDrawerRight}
         >
             <div className={styles.body}>{children}</div>
         </Drawer>

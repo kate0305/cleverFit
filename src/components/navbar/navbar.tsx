@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { Menu, MenuProps } from 'antd';
 import { selectUserInvites } from '@redux/redusers/training-partners-slice';
 
+import { DATA_TEST_ID } from '@constants/data-test-id';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { Paths } from '@type/paths';
 import { ResultRequestKeys } from '@type/result-request-keys';
@@ -54,7 +55,7 @@ export const Navbar = ({ isWidthChanged, isClosedSidebar }: NavbarProps) => {
                     pathname,
                 )}
             />
-            <ModalWindow isOpen={isErr} dataTestId='modal-no-review'>
+            <ModalWindow isOpen={isErr} dataTestId={DATA_TEST_ID.modalNoReview}>
                 <RequestResult
                     keyErr={ResultRequestKeys.GET_FEEDBACK_ERR}
                     buttonsGroup={
@@ -64,7 +65,7 @@ export const Navbar = ({ isWidthChanged, isClosedSidebar }: NavbarProps) => {
                             className={styles.btn_err}
                             btnText='Назад'
                             onClick={closeErrModal}
-                            dataTestId='write-review-not-saved-modal'
+                            dataTestId={DATA_TEST_ID.writeReviewNotSavedModal}
                         />
                     }
                 />

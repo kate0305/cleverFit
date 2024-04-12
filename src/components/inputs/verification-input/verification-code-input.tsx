@@ -2,6 +2,8 @@ import { useState } from 'react';
 import VerificationInput from 'react-verification-input';
 import classnames from 'classnames/bind';
 
+import { DATA_TEST_ID } from '@constants/data-test-id';
+
 import styles from './verification-code-input.module.scss';
 
 const cx = classnames.bind(styles);
@@ -37,7 +39,7 @@ export const VerificationCodeInput = ({ onComplete, isError }: VerificationCodeI
             onComplete={handleOnComplete}
             autoFocus={true}
             classNames={classNames}
-            inputProps={{ 'data-test-id': 'verification-input' }}
+            inputProps={{ 'data-test-id': DATA_TEST_ID.verificationInput }}
         />
     );
 };

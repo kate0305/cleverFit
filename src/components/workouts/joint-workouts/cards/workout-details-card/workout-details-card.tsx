@@ -1,8 +1,9 @@
 import { Badge, Typography } from 'antd';
 import dayjs from 'dayjs';
-import * as relativeTime from 'dayjs/plugin/relativeTime';
+import relativeTime from 'dayjs/plugin/relativeTime';
 
 import { CloseOutlined } from '@ant-design/icons';
+import { DATA_TEST_ID } from '@constants/data-test-id';
 import { DateFormats } from '@type/dates';
 import { BadgeColors, Exercise } from '@type/training';
 import { getFormattedDate } from '@utils/get-formatted-date';
@@ -46,7 +47,7 @@ export const WorkoutDetailsCard = ({ date, workoutName, exercise, closeModal }: 
                     className={styles.btn_close}
                 />
             }
-            dataTestId='joint-training-review-card'
+            dataTestId={DATA_TEST_ID.jointTrainingReviewCard}
         >
             <div className={styles.content}>
                 <Paragraph className={styles.title}>

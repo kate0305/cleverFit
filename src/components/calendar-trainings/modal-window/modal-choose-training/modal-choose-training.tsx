@@ -8,6 +8,7 @@ import {
 } from '@redux/redusers/trainings-slice';
 
 import { ArrowLeftOutlined } from '@ant-design/icons';
+import { DATA_TEST_ID } from '@constants/data-test-id';
 import { useAppDispatch, useAppSelector } from '@hooks/index';
 import { BadgeColors, ExerciseData, UserTraining } from '@type/training';
 import { checkIsPastDate } from '@utils/check-is-past-date';
@@ -124,7 +125,7 @@ export const ModalChooseTraining = ({
                             type='text'
                             icon={<ArrowLeftOutlined />}
                             onClick={closeModal}
-                            dataTestId='modal-exercise-training-button-close'
+                            dataTestId={DATA_TEST_ID.modalExerciseTrainingButtonClose}
                             className={styles.btn_close}
                         />
                         {fromTrainingPage ? (
@@ -167,7 +168,7 @@ export const ModalChooseTraining = ({
                           }
                         : {}
                 }
-                dataTestId='modal-create-exercise'
+                dataTestId={DATA_TEST_ID.modalCreateExercise}
             >
                 {exerciseForRender ? (
                     <ul className={styles.content}>

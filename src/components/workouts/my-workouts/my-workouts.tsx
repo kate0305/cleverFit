@@ -1,8 +1,9 @@
-import { Fragment, useEffect, useState } from 'react';
+import { Fragment, useEffect } from 'react';
 import { Typography } from 'antd';
-import { selectIsOpenDrawer, toggleDrawer } from '@redux/redusers/app-slice';
+import { selectAppData, setAlert, toggleDrawer } from '@redux/redusers/app-slice';
 import { selectTrainingData } from '@redux/redusers/trainings-slice';
 
+import { DATA_TEST_ID } from '@constants/data-test-id';
 import { useAppDispatch, useAppSelector } from '@hooks/index';
 import { useLazyGetTrainingListQuery } from '@services/training-service';
 
@@ -20,16 +21,14 @@ const { Title } = Typography;
 export const MyWorkouts = () => {
     const dispatch = useAppDispatch();
     const { userTrainingsList } = useAppSelector(selectTrainingData);
-    const isOpenCreateWorkout = useAppSelector(selectIsOpenDrawer);
-    
-    const [getTrainingList] = useLazyGetTrainingListQuery();
+    const { isOpenDrawer, alert } = useAppSelector(selectAppData);
 
-    const [alertMessage, setAlertMessage] = useState('');
+    const [getTrainingList] = useLazyGetTrainingListQuery();
 
     const isUserHasWorkouts = Object.keys(userTrainingsList).length;
 
     const openDrawer = () => dispatch(toggleDrawer());
-    const closeAlert = () => setAlertMessage('');
+    const closeAlert = () => dispatch(setAlert({ isShowAlert: false, message: '' }));
 
     useEffect(() => {
         getTrainingList();
@@ -50,21 +49,17 @@ export const MyWorkouts = () => {
                             btnText='Создать тренировку'
                             onClick={openDrawer}
                             className={styles.btn_create}
-                            dataTestId='create-new-training-button'
+                            dataTestId={DATA_TEST_ID.createNewTrainingButton}
                         />
                     </div>
                 </div>
             )}
-            {isOpenCreateWorkout && (
-                <DrawerCreateWorkout
-                    setAlertMessage={setAlertMessage}
-                />
-            )}
-            {alertMessage && (
+            {isOpenDrawer && <DrawerCreateWorkout />}
+            {alert.isShowAlert && (
                 <AlertComponent
-                    message={alertMessage}
+                    message={alert.message}
                     onClose={closeAlert}
-                    dataTestId='create-training-success-alert'
+                    dataTestId={DATA_TEST_ID.createTrainingSuccessAlert}
                 />
             )}
         </Fragment>

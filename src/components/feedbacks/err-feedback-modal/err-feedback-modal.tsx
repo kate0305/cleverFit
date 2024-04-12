@@ -1,5 +1,6 @@
 import { Dispatch } from 'react';
 
+import { DATA_TEST_ID } from '@constants/data-test-id';
 import { ResultRequestKeys } from '@type/result-request-keys';
 
 import { PrimaryBtn } from '@components/buttons/primary-button';
@@ -32,7 +33,7 @@ export const ErrFeedbackModal = ({ isOpen, setOpenModal, setOpenCreateFeedback }
                         className={styles.btn_err}
                         btnText='Написать отзыв'
                         onClick={writeReview}
-                        dataTestId='write-review-not-saved-modal'
+                        dataTestId={DATA_TEST_ID.writeReviewNotSavedModal}
                     />,
                     <PrimaryBtn
                         htmlType='button'

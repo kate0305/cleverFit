@@ -3,6 +3,7 @@ import { Card } from 'antd';
 import { Dayjs } from 'dayjs';
 
 import { CloseOutlined } from '@ant-design/icons';
+import { DATA_TEST_ID } from '@constants/data-test-id';
 import { DateFormats } from '@type/dates';
 import { TrainingResp } from '@type/service';
 import { UserTraining } from '@type/training';
@@ -55,7 +56,7 @@ export const ModalDay = ({
                     onClick={openChooseTraining}
                 />,
             ]}
-            dataTestId='modal-create-training'
+            dataTestId={DATA_TEST_ID.modalCreateTraining}
         >
             <Fragment>
                 <div className={styles.title}>
@@ -68,7 +69,7 @@ export const ModalDay = ({
                         type='text'
                         icon={<CloseOutlined style={{ fontSize: 'var(--font-size-s)' }} />}
                         onClick={closeModal}
-                        dataTestId='modal-create-training-button-close'
+                        dataTestId={DATA_TEST_ID.modalCreateTrainingButtonClose}
                         className={styles.btn_close}
                     />
                 </div>

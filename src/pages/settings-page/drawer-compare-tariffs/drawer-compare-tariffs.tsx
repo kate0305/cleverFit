@@ -4,6 +4,7 @@ import dayjs from 'dayjs';
 import { selectUserData } from '@redux/redusers/user-data-slice';
 
 import { CloseOutlined } from '@ant-design/icons';
+import { DATA_TEST_ID } from '@constants/data-test-id';
 import { useAppSelector } from '@hooks/index';
 import { DateFormats } from '@type/dates';
 import { DrawerTitleKeys } from '@type/drawer';
@@ -80,11 +81,11 @@ export const DrawerCompareTariffs = ({
                             className={styles.btn_pay}
                             disabled={isBtnDisabled}
                             onClick={submitForm}
-                            dataTestId='tariff-submit'
+                            dataTestId={DATA_TEST_ID.tariffSubmit}
                         />
                     )
                 }
-                dataTestId='tariff-sider'
+                dataTestId={DATA_TEST_ID.tariffSider}
             >
                 <div className={styles.body}>
                     {isProTatiff && (

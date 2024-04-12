@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Badge } from 'antd';
 
 import { CalendarTwoTone, HeartFilled, IdcardOutlined, TrophyFilled } from '@ant-design/icons';
+import { DATA_TEST_ID } from '@constants/data-test-id';
 import { Paths } from '@type/paths';
 import { getListItemWithIcon, MenuItem } from '@utils/get-list-item-with-icon';
 
@@ -62,7 +63,7 @@ export const createMenuItemsArr = (
                     <Badge
                         count={numberOfInvites}
                         className={styles.badge}
-                        data-test-id='notification-about-joint-training'
+                        data-test-id={DATA_TEST_ID.notificationAboutJointTraining}
                     >
                         {currentIcon}
                     </Badge>

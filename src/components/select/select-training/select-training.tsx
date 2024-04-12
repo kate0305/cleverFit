@@ -3,6 +3,7 @@ import { Select } from 'antd';
 import { SizeType } from 'antd/es/config-provider/SizeContext';
 import { selectTrainingData } from '@redux/redusers/trainings-slice';
 
+import { DATA_TEST_ID } from '@constants/data-test-id';
 import { useAppSelector } from '@hooks/index';
 import { UserTraining } from '@type/training';
 
@@ -56,7 +57,7 @@ export const SelectTraining = ({
             disabled={!!defaultValue}
             size={size}
             className={className}
-            data-test-id={dataTestId || 'modal-create-exercise-select'}
+            data-test-id={dataTestId || DATA_TEST_ID.modalCreateExerciseSelect}
         />
     );
 };

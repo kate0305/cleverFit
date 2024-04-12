@@ -3,6 +3,7 @@ import classnames from 'classnames/bind';
 import dayjs from 'dayjs';
 
 import { CheckOutlined } from '@ant-design/icons';
+import { DATA_TEST_ID } from '@constants/data-test-id';
 import { DateFormats } from '@type/dates';
 
 import { DrawerCompareTariffs } from '@pages/settings-page/drawer-compare-tariffs';
@@ -73,7 +74,7 @@ export const TariffCard = ({
                             type='primary'
                             className={styles.activate_btn}
                             btnText='Активировать'
-                            dataTestId='activate-tariff-btn'
+                            dataTestId={DATA_TEST_ID.activateTariffBtn}
                         />
                     ),
                 ]}
