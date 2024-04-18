@@ -7,7 +7,7 @@ import { selectActiveTab } from '@redux/redusers/achievements-slice';
 import { useAppSelector } from '@hooks/index';
 import { AchievementsTabsKeys } from '@type/tabs';
 import { StatisticsType, TrainingDataForStatistics } from '@type/training';
-import { getDataForPieChart } from '@utils/calcutate-data-for-achievements';
+import { getDataForPieChart } from '@utils/get-data-for-achievements';
 import { getMostFrequentExerciseForMonth } from '@utils/get-data-per-week';
 
 import { PieChart } from '../diagrams/pie-chart';

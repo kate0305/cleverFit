@@ -1,4 +1,4 @@
-import { Fragment } from 'react';
+import { Fragment, useMemo } from 'react';
 import dayjs from 'dayjs';
 import { selectAchievements } from '@redux/redusers/achievements-slice';
 import { selectTrainingData } from '@redux/redusers/trainings-slice';
@@ -12,9 +12,8 @@ import { useAppSelector } from '@hooks/index';
 import { DateFormats } from '@type/dates';
 import { AchievementsTabsKeys } from '@type/tabs';
 import { StatisticsType } from '@type/training';
-import { getTrainingsForSelectedPeriod } from '@utils/calcutate-data-for-achievements';
-import { getTrainingDataForStatistics } from '@utils/get-data-for-achievements';
-import { getFirstDayOfPeriod } from '@utils/get-first-day-of-period';
+import { getTrainingDataForStatistics, getTrainingsForSelectedPeriod } from '@utils/get-data-for-achievements';
+import { getFirstDayOfPeriod } from '@utils/get-date';
 
 import { LoadChart } from '@components/achievements/diagrams/load-chart';
 
@@ -43,12 +42,12 @@ export const WeekAchievements = () => {
 
     const firstDay = getFirstDayOfPeriod(durationOfPeriod, DateFormats.DAY_UNIT, lastDay);
 
-    const trainigsForSelectedPeriod = getTrainingsForSelectedPeriod(
+    const trainigsForSelectedPeriod = useMemo(() => getTrainingsForSelectedPeriod(
         userTrainingsList,
         firstDay,
         lastDay,
         selectedTrainingFilter,
-    );
+    ), [firstDay, lastDay, selectedTrainingFilter, userTrainingsList]);
 
     const data = getTrainingDataForStatistics(
         trainigsForSelectedPeriod,

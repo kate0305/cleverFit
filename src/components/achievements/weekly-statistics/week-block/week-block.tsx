@@ -3,8 +3,10 @@ import { Typography } from 'antd';
 import { selectActiveTab } from '@redux/redusers/achievements-slice';
 
 import { useAppSelector } from '@hooks/index';
+import { DateFormats } from '@type/dates';
 import { AchievementsTabsKeys } from '@type/tabs';
 import { StatisticsDataByWeek, StatisticsType, TrainingDataForStatistics } from '@type/training';
+import { getFormattedDate } from '@utils/get-date';
 
 import { ListByWeek } from '../list-by-week';
 import { TitleByWeek } from '../title-by-week';
@@ -37,7 +39,7 @@ export const WeekBlock = ({ title, data, type }: WeeklyStatisticsProps) => {
                 </Fragment>
             ) : (
                 (data as StatisticsDataByWeek[]).map(({ weekStart, weekEnd, weekData }) => (
-                    <div className={styles.week}>
+                    <div className={styles.week} key={getFormattedDate(weekStart, DateFormats.EN)}>
                         <TitleByWeek weekStart={weekStart} weekEnd={weekEnd} />
                         <ListByWeek data={weekData} type={type} />
                     </div>
