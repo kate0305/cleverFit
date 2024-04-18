@@ -1,0 +1,44 @@
+@use '@sass/mixins.scss' as m;
+
+.wrapper {
+    max-width: 645px;
+    width: 100%;
+    margin: var(--gap-24) 0;
+    padding: var(--gap-32) var(--gap-12);
+    @include m.flex($items: flex-start);
+    flex-direction: column;
+    gap: var(--gap-16);
+    @include m.ant-tablet-xl {
+        max-width: 100%;
+        padding: var(--gap-12) 0;
+        margin: 0;
+        margin-bottom: var(--gap-24);
+    }
+}
+
+.row {
+    width: 100%;
+    @include m.flex($j-c: flex-start);
+    gap: var(--gap-46);
+    @include m.phone {
+        justify-content: space-between;
+        gap: var(--gap-8);
+    }
+}
+
+.title {
+    flex: 0 0 157px;
+    @include m.font;
+    color: var(--light-secondary-45);
+    @include m.phone {
+        flex: 0 1 40%;
+    }
+}
+
+.value {
+    @include m.font($size: 24px, $weight: 500);
+    color: var(--light-title-85);
+    @include m.phone {
+        flex: 0 1 40%;
+    }
+}

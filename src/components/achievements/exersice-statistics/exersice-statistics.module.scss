@@ -1,0 +1,75 @@
+@use '@sass/mixins.scss' as m;
+
+.wrapper {
+    @include m.flex($j-c: center, $items: flex-start);
+    flex-direction: column;
+    .title {
+        max-width: 194px;
+        @include m.font;
+        margin-bottom: var(--gap-20);
+    }
+}
+
+.container {
+    :global {
+        .ant-list-item {
+            padding: 7px 0;
+            border-bottom: none;
+        }
+    }
+}
+
+.row {
+    width: 100%;
+    justify-content: flex-start;
+    gap: var(--gap-16);
+    :global {
+        .ant-row {
+            @include m.flex($j-c: flex-start);
+        }
+    }
+    &:not(:first-child) {
+        margin-top: var(--gap-4);
+    }
+}
+
+.weekday,
+.data {
+    @include m.font;
+}
+
+.weekday {
+    width: 92px;
+    color: var(--light-secondary-45);
+    text-transform: capitalize;
+    align-self: flex-start;
+}
+
+.data {
+    font-weight: 700;
+    color: var(--light-title-85);
+}
+
+.badge {
+    height: 16px;
+    :global {
+        .ant-badge-count {
+            min-width: 16px;
+            height: 16px;
+            padding: 0;
+            line-height: var(--line-height-base);
+        }
+        .ant-scroll-number-only {
+            height: 16px;
+        }
+    }
+}
+
+.empty {
+    :global {
+        .ant-badge-count {
+            color: var(--light-error);
+            background-color: var(--light-error-2);
+        }
+    }
+}

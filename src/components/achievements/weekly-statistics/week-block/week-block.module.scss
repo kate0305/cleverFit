@@ -1,0 +1,32 @@
+@use '@sass/mixins.scss' as m;
+
+.wrapper {
+    @include m.flex($j-c: center, $items: flex-start);
+    flex-direction: column;
+    .title {
+        @include m.font;
+        margin-bottom: var(--gap-20);
+        max-width: 125px;
+    }
+    @include m.tablet-xl {
+        .title {
+            max-width: 100%;
+        }
+    }
+}
+
+.wrapper_month {
+    width: 100%;
+    @include m.flex($j-c: space-between);
+    flex-direction: row;
+    .title {
+        @include m.font;
+        margin-bottom: var(--gap-20);
+    }
+    @include m.tablet-xl {
+    }
+}
+
+.week > :first-child {
+    margin-bottom: var(--gap-20);
+}
