@@ -13,7 +13,7 @@ const initialState: AppReducerState = {
     isLoading: false,
     isOpenSideBar: true,
     isOpenDrawer: false,
-    alert: {isShowAlert: false, message: '' },
+    alert: { isShowAlert: false, message: '' },
 };
 
 export const appSlice = createSlice({

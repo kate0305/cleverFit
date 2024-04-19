@@ -6,7 +6,7 @@ import { UserCardTypes } from '@type/card';
 import { DateFormats } from '@type/dates';
 import { InviteResp } from '@type/service';
 import { TypesWorkoutForMessage, UserStatus } from '@type/training';
-import { getFormattedDate } from '@utils/get-formatted-date';
+import { getFormattedDate } from '@utils/get-date';
 import { getElement } from '@utils/get-target-element';
 
 import { PrimaryBtn } from '@components/buttons/primary-button';

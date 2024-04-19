@@ -1,14 +1,21 @@
 export const DATA_TEST_ID = {
     createNewTrainingButton: 'create-new-training-button',
+    googleSubmitBtn: 'google-submit-button',
+    bigFileErrorClose: 'big-file-error-close',
+    alert: 'alert',
+    loader: 'loader',
+    headerSettings: 'header-settings',
+    settingsBack: 'settings-back',
+
+    menuButtonTraining: 'menu-button-training',
+    menuButtonCalendar: 'menu-button-calendar',
+    menuButtonProfile: 'menu-button-profile',
+
     modalNoReview: 'modal-no-review',
     modalErrorUserTrainingTitle: 'modal-error-user-training-title',
     modalErrorUserTrainingSubTitle: 'modal-error-user-training-subtitle',
     modalErrorUserTrainingButton: 'modal-error-user-training-button',
     modalErrorUserTrainingButtonClose: 'modal-error-user-training-button-close',
-
-    menuButtonTraining: 'menu-button-training',
-    menuButtonCalendar: 'menu-button-calendar',
-    menuButtonProfile: 'menu-button-profile',
     modalCreateTraining: 'modal-create-training',
     modalCreateTrainingButtonClose: 'modal-create-training-button-close',
     modalUpdateTrainingEditButton: 'modal-update-training-edit-button',
@@ -16,7 +23,6 @@ export const DATA_TEST_ID = {
     modalCreateExerciseButton: 'modal-create-exercise-button',
     modalCreateExerciseSelect: 'modal-create-exercise-select',
     modalExerciseTrainingButtonClose: 'modal-exercise-training-button-close',
-
     modalDrawerRight: 'modal-drawer-right',
     modalDrawerRightButtonClose: 'modal-drawer-right-button-close',
     modalDrawerRightInputExercise: 'modal-drawer-right-input-exercise',
@@ -33,8 +39,8 @@ export const DATA_TEST_ID = {
     createTrainingSuccessAlert: 'create-training-success-alert',
     searchInput: 'search-input',
     jointTrainingCards: 'joint-training-cards',
-    notificationAboutJointTraining: 'notification-about-joint-training',
     jointTrainingReviewCard: 'joint-training-review-card',
+    notificationAboutJointTraining: 'notification-about-joint-training',
     partnerModal: 'partner-modal',
 
     profileName: 'profile-name',
@@ -45,10 +51,7 @@ export const DATA_TEST_ID = {
     profileEmail: 'profile-email',
     profileBirthday: 'profile-birthday',
     profileSubmit: 'profile-submit',
-    bigFileErrorClose: 'big-file-error-close',
-    alert: 'alert',
-    headerSettings: 'header-settings',
-    settingsBack: 'settings-back',
+
     tarif: 'tariff-',
     proTarifCard: 'pro-tariff-card',
     activateTariffBtn: 'activate-tariff-btn',
@@ -62,18 +65,19 @@ export const DATA_TEST_ID = {
     tariffCost: 'tariff-cost',
     tariffSubmit: 'tariff-submit',
     tariffModalSuccess: 'tariff-modal-success',
-    newReviewSubmitBtn: 'new-review-submit-button',
 
     loginEmail: 'login-email',
     loginPassword: 'login-password',
     loginSubmitBtn: 'login-submit-button',
+    loginRetryBtn: 'login-retry-button',
+    loginRemember: 'login-remember',
+
     seeReview: 'see-reviews',
     writeReview: 'write-review',
     allReviewBtn: 'all-reviews-button',
     writeReviewNotSavedModal: 'write-review-not-saved-modal',
-    googleSubmitBtn: 'google-submit-button',
-    loginRetryBtn: 'login-retry-button',
-    loginRemember: 'login-remember',
+    newReviewSubmitBtn: 'new-review-submit-button',
+
     registrationEmail: 'registration-email',
     registrationPassword: 'registration-password',
     registrationConfirmPassword: 'registration-confirm-password',
@@ -89,7 +93,8 @@ export const DATA_TEST_ID = {
     changeEntryBtn: 'change-entry-button',
     checkRetryBtn: 'check-retry-button',
     changeRetryBtn: 'change-retry-button',
-    loader: 'loader',
+
     siderSwitch: 'sider-switch',
     siderSwitchMobile: 'sider-switch-mobile',
+    sidebarAchievements: 'sidebar-achievements',
 };

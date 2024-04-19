@@ -16,6 +16,7 @@
 }
 
 .wrapper_month {
+    max-width: 994px;
     width: 100%;
     @include m.flex($j-c: space-between);
     flex-direction: row;

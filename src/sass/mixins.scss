@@ -28,6 +28,18 @@
     }
 }
 
+@mixin ant-tablet-xl {
+    @media screen and (max-width: 991px) {
+        @content;
+    }
+}
+
+@mixin ant-mobile {
+    @media screen and (max-width: 576px ) {
+        @content;
+    }
+}
+
 @mixin flex($display: flex, $j-c: center, $items: center) {
     display: $display;
     justify-content: $j-c;

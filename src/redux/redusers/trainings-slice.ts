@@ -11,6 +11,7 @@ type EditTraining = {
 
 type TrainingReducerState = {
     appTrainingList: TrainingResp[];
+    isTrainingListErr: boolean;
     userTrainingsList: UserTrainingResp;
     training: UserTrainingReq;
     editTrainingData: EditTraining;
@@ -19,6 +20,7 @@ type TrainingReducerState = {
 
 const initialState: TrainingReducerState = {
     appTrainingList: [],
+    isTrainingListErr: false,
     userTrainingsList: {},
     training: { name: '', date: '', isImplementation: false, exercises: [] },
     editTrainingData: { isEditMode: false, editTrainingIndex: 0, editTrainingId: '' },
@@ -31,6 +33,9 @@ export const trainingSlice = createSlice({
     reducers: {
         setAppTrainingsList(state, action: PayloadAction<TrainingResp[]>) {
             state.appTrainingList = action.payload;
+        },
+        setIsTrainingListErr(state, action: PayloadAction<boolean>) {
+            state.isTrainingListErr = action.payload;
         },
         setUserTrainingsList(state, action: PayloadAction<UserTrainingResp>) {
             state.userTrainingsList = action.payload;
@@ -60,6 +65,7 @@ export const trainingSlice = createSlice({
 export const {
     setUserTrainingsList,
     setAppTrainingsList,
+    setIsTrainingListErr,
     createTraining,
     setEditTrainingData,
     setEditTrainingId,
@@ -75,3 +81,4 @@ export const selectUpdateTrainingLoading = (state: RootState) =>
     state.trainingReduser.updateTrainingLoading;
 export const selectTrainingData = (state: RootState) => state.trainingReduser;
 export const selectUserTrainingList = (state: RootState) => state.trainingReduser.userTrainingsList;
+export const selectIsTrainingListEr = (state: RootState) => state.trainingReduser.isTrainingListErr;

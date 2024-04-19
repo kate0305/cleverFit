@@ -3,3 +3,9 @@ export enum WorkoutsTabsKeys {
     JOINT_WORKOUTS = 'Совместные тренировки',
     MARATHONS = 'Марафоны',
 }
+
+export enum AchievementsTabsKeys {
+    WEEK = 'За неделю',
+    MONTH = 'За месяц',
+    ALL_TIME = 'За всё время (PRO)',
+};

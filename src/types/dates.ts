@@ -3,4 +3,6 @@ export enum DateFormats {
     EN = 'YYYY-MM-DD',
     DD_MM = 'DD.MM',
     DD = 'DD',
+    DAY_UNIT = 'd',
+    DAY_OF_WEEK_UNIT = 'dddd',
 }

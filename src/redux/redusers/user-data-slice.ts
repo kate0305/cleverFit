@@ -2,7 +2,6 @@ import { RootState } from '@redux/configure-store';
 
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ChangePasswordReq, FeedbackReq, TariffResp, UserDataResp, UserReq } from '@type/service';
-import { getLocalStorageValue } from '@utils/use-local-storage';
 
 type UserDataReducerState = {
     userData: UserDataResp | null;
@@ -19,7 +18,7 @@ const initialState: UserDataReducerState = {
     userAuthData: null,
     changePasswordData: null,
     email: null,
-    token: getLocalStorageValue('token', null),
+    token: null,
     reviewData: null,
     tariffList: [],
 };

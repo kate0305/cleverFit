@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { CalendarProps } from 'antd';
 import ru from 'antd/es/calendar/locale/ru_RU';
 import dayjs, { Dayjs } from 'dayjs';
@@ -15,12 +15,12 @@ import {
 } from '@services/training-service';
 import { DateFormats } from '@type/dates';
 import { ModalErrTypes } from '@type/modal-types';
-import { getFormattedDate } from '@utils/get-formatted-date';
+import { getFormattedDate } from '@utils/get-date';
 import { getTargetElement } from '@utils/get-target-element';
 import { useMediaQuery } from '@utils/use-media-query';
 
 import { SettingsBtn } from '@components/buttons/settings-button';
-import { Calendar } from '@components/calendar-trainings/calendar';
+import { Calendar } from '@components/calendar';
 import { CustomDate } from '@components/calendar-trainings/custom-date';
 import { ModalContainer } from '@components/calendar-trainings/modal-window/modal-container';
 import { TrainingList } from '@components/calendar-trainings/training-list';
@@ -55,12 +55,16 @@ export const CalendarPage = () => {
         }
     };
 
+    const handleSelectDate = (date: Dayjs) => {
+        setSelectedDay(date);
+        const parentElem = getTargetElement(date, DateFormats.EN);
+
+        setShowPortal(parentElem);
+    };
+
     const selectDate = (date: Dayjs) => {
         if (date.month() === selectedMonth) {
-            setSelectedDay(date);
-            const parentElem = getTargetElement(date, DateFormats.EN);
-
-            setShowPortal(parentElem);
+            handleSelectDate(date);
         }
         if (isLaptop && date.month() !== selectedMonth) {
             setShowPortal(null);
@@ -73,10 +77,7 @@ export const CalendarPage = () => {
     ) => {
         e.preventDefault();
         e.stopPropagation();
-        setSelectedDay(day);
-        const parentElem = document.querySelector(`[title*='${day.format(DateFormats.EN)}']`);
-
-        setShowPortal(parentElem);
+        handleSelectDate(day);
     };
 
     const dateCellRender = (date: Dayjs) => {
@@ -130,7 +131,7 @@ export const CalendarPage = () => {
         }
     };
 
-    useLayoutEffect(() => {
+    useEffect(() => {
         getTrainingList();
     }, [getTrainingList]);
 

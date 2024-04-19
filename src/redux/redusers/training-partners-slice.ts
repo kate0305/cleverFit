@@ -4,14 +4,14 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { InviteResp } from '@type/service';
 import { JointTrainingDrawerData, TrainingPartner, UserStatus } from '@type/training';
 
-type TrainingReducerState = {
+type TrainingPartnersReducerState = {
     partnersList: TrainingPartner[];
     usersForJointTrainings: TrainingPartner[];
     jointTrainingDrawerData: JointTrainingDrawerData;
     userInvites: InviteResp[];
 };
 
-const initialState: TrainingReducerState = {
+const initialState: TrainingPartnersReducerState = {
     partnersList: [],
     usersForJointTrainings: [],
     jointTrainingDrawerData: {
@@ -19,7 +19,7 @@ const initialState: TrainingReducerState = {
         trainingName: '',
         userId: '',
         userName: '',
-        imageSrc: null,
+        imageSrc: '',
     },
     userInvites: [],
 };

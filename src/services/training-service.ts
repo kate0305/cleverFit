@@ -4,6 +4,7 @@ import {
 } from '@redux/redusers/training-partners-slice';
 import {
     setAppTrainingsList,
+    setIsTrainingListErr,
     setTrainingLoading,
     setUserTrainingsList,
 } from '@redux/redusers/trainings-slice';
@@ -19,7 +20,7 @@ import {
 } from '@type/service';
 import { TrainingPartner, UserTraining } from '@type/training';
 import { commonOnQueryStarted } from '@utils/api-query-started';
-import { getFormattedDate } from '@utils/get-formatted-date';
+import { getFormattedDate } from '@utils/get-date';
 
 import { cleverFitApi } from './base-query';
 
@@ -40,7 +41,6 @@ export const trainingApi = cleverFitApi
                     }
                 },
                 transformResponse: (response: UserTraining[]): UserTrainingResp => {
-                    console.log('response', response);
                     const dateArr = response.map((training) =>
                         getFormattedDate(training.date, DateFormats.EN),
                     );
@@ -66,9 +66,10 @@ export const trainingApi = cleverFitApi
                         await commonOnQueryStarted({ dispatch, queryFulfilled }, true);
                         const { data: appTrainingList } = await queryFulfilled;
 
+                        dispatch(setIsTrainingListErr(false));
                         dispatch(setAppTrainingsList(appTrainingList));
                     } catch (e) {
-                        console.log(e);
+                        dispatch(setIsTrainingListErr(true));
                     }
                 },
             }),
@@ -151,6 +152,7 @@ export const trainingApi = cleverFitApi
 export const {
     useGetUserTrainingsQuery,
     useLazyGetUserTrainingsQuery,
+    useGetTrainingListQuery,
     useLazyGetTrainingListQuery,
     useCreateTrainingMutation,
     useEditTrainingMutation,

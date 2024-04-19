@@ -3,7 +3,7 @@ import { Collapse } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
 import { DateFormats } from '@type/dates';
 import { StatisticsDataByWeek, StatisticsType, TrainingDataForStatistics } from '@type/training';
-import { getFormattedDate } from '@utils/get-formatted-date';
+import { getFormattedDate } from '@utils/get-date';
 
 import { ListByWeek } from '../weekly-statistics/list-by-week';
 import { TitleByWeek } from '../weekly-statistics/title-by-week';

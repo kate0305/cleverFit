@@ -2,7 +2,7 @@ import { Typography } from 'antd';
 import { Dayjs } from 'dayjs';
 
 import { DateFormats } from '@type/dates';
-import { getFormattedDate } from '@utils/get-formatted-date';
+import { getFormattedDate } from '@utils/get-date';
 
 import styles from './title-by-week.module.scss';
 

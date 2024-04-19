@@ -38,6 +38,10 @@ export const Navbar = ({ isWidthChanged, isClosedSidebar }: NavbarProps) => {
             case Paths.WORKOUTS:
                 handleClick(Paths.WORKOUTS);
                 break;
+
+            case Paths.ACHIEVEMENTS:
+                handleClick(Paths.ACHIEVEMENTS);
+                break;
         }
     };
 

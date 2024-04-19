@@ -6,7 +6,7 @@ import { useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { DateFormats } from '@type/dates';
 import { AchievementsTabsKeys } from '@type/tabs';
 import { StatisticsType, TrainingDataForStatistics } from '@type/training';
-import { getFormattedDate } from '@utils/get-formatted-date';
+import { getFormattedDate } from '@utils/get-date';
 
 import styles from './list-by-week.module.scss';
 

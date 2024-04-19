@@ -1,11 +1,11 @@
-import { Dispatch, Fragment,useState } from 'react';
+import { Dispatch, Fragment, useState } from 'react';
 import { Dayjs } from 'dayjs';
 import { selectTrainingData } from '@redux/redusers/trainings-slice';
 
 import { MD_WIDTH } from '@constants/index';
 import { useAppSelector } from '@hooks/index';
 import { DateFormats } from '@type/dates';
-import { getFormattedDate } from '@utils/get-formatted-date';
+import { getFormattedDate } from '@utils/get-date';
 import { useMediaQuery } from '@utils/use-media-query';
 
 import { ModalChooseTraining } from '../modal-choose-training';

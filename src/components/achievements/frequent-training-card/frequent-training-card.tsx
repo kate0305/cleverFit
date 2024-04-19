@@ -4,7 +4,7 @@ import { selectSelectedTrainingFilter } from '@redux/redusers/achievements-slice
 
 import { useAppSelector } from '@hooks/index';
 import { TrainingNames, UserTraining } from '@type/training';
-import { getMostFrequentValue } from '@utils/calcutate-data-for-achievements';
+import { findMostFrequentValue } from '@utils/calcutate-data-for-achievements';
 
 import styles from './frequent-training-card.module.scss';
 
@@ -29,8 +29,8 @@ export const FrequentTrainingCard = ({ trainigs }: FrequentTrainingCardProps) =>
         [selectedFilter, trainigs],
     );
 
-    const mostFrequentWorkout = getMostFrequentValue(trainingNames).toLocaleLowerCase();
-    const mostFrequentExercise = getMostFrequentValue(exerciseNames).toLocaleLowerCase();
+    const mostFrequentWorkout = findMostFrequentValue(trainingNames).toLocaleLowerCase();
+    const mostFrequentExercise = findMostFrequentValue(exerciseNames).toLocaleLowerCase();
 
     return (
         <div className={styles.wrapper}>

@@ -9,7 +9,7 @@ import { DateFormats } from '@type/dates';
 import { DrawerTitleKeys } from '@type/drawer';
 import { UserTraining } from '@type/training';
 import { checkIsPastDate } from '@utils/check-is-past-date';
-import { getFormattedDate } from '@utils/get-formatted-date';
+import { getFormattedDate } from '@utils/get-date';
 
 import { DrawerComponent } from '@components/drawer';
 import { DrawerInfo } from '@components/drawer/drawer-info';

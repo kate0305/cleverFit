@@ -8,7 +8,7 @@ import { DateFormats } from '@type/dates';
 import { TrainingResp } from '@type/service';
 import { UserTraining } from '@type/training';
 import { checkIsPastDate } from '@utils/check-is-past-date';
-import { getFormattedDate } from '@utils/get-formatted-date';
+import { getFormattedDate } from '@utils/get-date';
 
 import { PrimaryBtn } from '@components/buttons/primary-button';
 import { TrainingList } from '@components/calendar-trainings/training-list';

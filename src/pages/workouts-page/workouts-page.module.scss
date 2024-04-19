@@ -16,5 +16,5 @@
 
 .marathons {
     @extend .wrapper;
-    background: url('@public/images/marathon_bg.jpg') center / cover no-repeat;
+    background: url('/images/marathon_bg.jpg') center / cover no-repeat;
 }

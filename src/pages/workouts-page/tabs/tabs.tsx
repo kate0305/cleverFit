@@ -3,7 +3,7 @@ import { Badge, Tabs } from 'antd';
 import { selectUserInvites } from '@redux/redusers/training-partners-slice';
 
 import { useAppSelector } from '@hooks/index';
-import { WorkoutsTabsKeys } from '@type/workouts-tabs';
+import { WorkoutsTabsKeys } from '@type/tabs';
 
 import { JointWorkouts } from '@components/workouts/joint-workouts';
 import { Marathons } from '@components/workouts/marathons';

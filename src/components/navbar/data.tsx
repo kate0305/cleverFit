@@ -35,10 +35,10 @@ const data = [
         label: 'Тренировки',
     },
     {
-        key: 'achievements',
+        key: Paths.ACHIEVEMENTS,
         icon: <TrophyFilled style={iconStyle} />,
         selectedIcon: <TrophyFilled style={selectedIconStyle} />,
-        label: 'Достижения',
+        label: <span data-test-id={DATA_TEST_ID.sidebarAchievements}>Достижения</span>,
     },
     {
         key: Paths.PROFILE,
