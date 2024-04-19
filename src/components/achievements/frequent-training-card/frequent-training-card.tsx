@@ -5,6 +5,7 @@ import { selectSelectedTrainingFilter } from '@redux/redusers/achievements-slice
 import { useAppSelector } from '@hooks/index';
 import { TrainingNames, UserTraining } from '@type/training';
 import { findMostFrequentValue } from '@utils/calcutate-data-for-achievements';
+import { findExersiceByName } from '@utils/find-exercise-by-name';
 
 import styles from './frequent-training-card.module.scss';
 
@@ -20,12 +21,7 @@ export const FrequentTrainingCard = ({ trainigs }: FrequentTrainingCardProps) =>
     const trainingNames = trainigs.map(({ name }) => name);
 
     const exerciseNames = useMemo(
-        () =>
-            trainigs
-                .filter(
-                    ({ name }) => selectedFilter === TrainingNames.ALL || name === selectedFilter,
-                )
-                .flatMap(({ exercises }) => exercises.map(({ name }) => name)),
+        () => findExersiceByName(trainigs, selectedFilter),
         [selectedFilter, trainigs],
     );
 

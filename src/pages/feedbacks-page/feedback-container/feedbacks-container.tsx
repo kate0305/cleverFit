@@ -2,6 +2,7 @@ import { Fragment, useMemo, useState } from 'react';
 
 import { DATA_TEST_ID } from '@constants/data-test-id';
 import { Review } from '@type/feedbacks';
+import { sortFeedbacks } from '@utils/sort-feedback';
 
 import { PrimaryBtn } from '@components/buttons/primary-button';
 import { Feedback, NoFeedback } from '@components/feedbacks';
@@ -19,10 +20,7 @@ export const FeedbacksContainer = ({ feedbacks, isHaveFeedbacks, openReviewModal
     const [isAllFeedbacks, toogleAllFeedbacks] = useState(false);
     const toogleAmountFeedbacks = () => toogleAllFeedbacks(!isAllFeedbacks);
 
-    const sortedFeedbacks = useMemo(
-        () => feedbacks && [...feedbacks].sort((a, b) => b.createdAt.localeCompare(a.createdAt)),
-        [feedbacks],
-    );
+    const sortedFeedbacks = useMemo(() => feedbacks && sortFeedbacks(feedbacks), [feedbacks]);
     const partOfFeedbacks = sortedFeedbacks?.slice(0, 4);
     const feedbacksForRender = isAllFeedbacks ? sortedFeedbacks : partOfFeedbacks;
 

@@ -21,7 +21,7 @@ export const TrainingList = ({
     isInCalendar,
     isLaptop,
 }: TrainingListProps) => {
-    const getClassName = (isImplementation: boolean) => {
+    const getClassName = (isImplementation?: boolean) => {
         if (isImplementation) {
             return styles.training_disabled;
         }

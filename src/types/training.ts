@@ -20,7 +20,7 @@ export type Exercise = {
     replays: number;
     weight: number;
     approaches: number;
-    isImplementation: boolean;
+    isImplementation?: boolean;
 };
 
 export type ExerciseData = Partial<Exercise>;
