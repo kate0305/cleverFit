@@ -8,8 +8,9 @@
     @include m.flex($j-c: flex-start);
     flex-direction: column;
     overflow-y: auto;
-    @include m.tablet {
+    @include m.phone {
         height: auto;
+        padding: 0 var(--gap-20) var(--gap-16);
         margin-top: -14px;
     }
 }

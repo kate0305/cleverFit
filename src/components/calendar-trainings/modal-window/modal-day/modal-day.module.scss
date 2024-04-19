@@ -17,6 +17,7 @@
     width: 100%;
     @include m.card-base;
     box-shadow: var(--box-shadow-custom-modal);
+    animation: fade-in 0.2s;
     z-index: 3;
     :global {
         .ant-card-meta {
@@ -86,3 +87,5 @@
     padding: var(--gap-4);
     width: fit-content;
 }
+
+@include m.animation-fade-in(fade-in);
