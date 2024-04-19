@@ -9,7 +9,7 @@ import styles from './feedback.module.scss';
 
 type FeedbackProps = {
     fullName: string | null;
-    image: string | null;
+    image: string;
     message: string | null;
     rating: number;
     date: string;

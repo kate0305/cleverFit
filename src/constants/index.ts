@@ -86,6 +86,8 @@ export const DURATION_PERIOD_FOR_WEEK = 6;
 export const DURATION_PERIOD_FOR_MONTH = 27;
 export const ONE_DAY_PERIOD = 1;
 export const SUNDAY_NUMBER_FOR_LOCAL = 6;
+export const SATURDAY_NUMBER_FOR_LOCAL = 5;
+export const FRIDAY_NUMBER_FOR_LOCAL = 4;
 export const NUMBER_OF_WEEKS_IN_MONTH = 4;
 export const NUMBER_OF_DAYS_IN_WEEK = 7;
 

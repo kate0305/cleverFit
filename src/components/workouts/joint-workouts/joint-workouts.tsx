@@ -2,6 +2,7 @@ import { Fragment, useCallback, useEffect, useState } from 'react';
 import { selectPartnersList, selectUserInvites } from '@redux/redusers/training-partners-slice';
 import { selectTrainingData } from '@redux/redusers/trainings-slice';
 
+import { MAX_NUMBER_WORKOUT_PARTNERS } from '@constants/index';
 import { useAppSelector } from '@hooks/index';
 import {
     useGetPartnersListQuery,
@@ -29,9 +30,9 @@ export const JointWorkouts = () => {
     const { userTrainingsList } = useAppSelector(selectTrainingData);
     const invites = useAppSelector(selectUserInvites);
 
-    const maxNumberOfPartners = 4;
-
     const [isShowRandomUsersList, setShowRandomUsersList] = useState(false);
+
+    const isShowBlock = partnersList.length < MAX_NUMBER_WORKOUT_PARTNERS;
 
     const handleClickRandomBtn = useCallback(
         async () => getUsersForJointWorkouts({}),
@@ -72,8 +73,8 @@ export const JointWorkouts = () => {
 
     return (
         <Fragment>
-            {!!invites.length && partnersList.length < maxNumberOfPartners && <MessageList />}
-            {partnersList.length < maxNumberOfPartners && (
+            {!!invites.length && isShowBlock && <MessageList />}
+            {isShowBlock && (
                 <Info
                     handleRandomChoise={handleClickRandomBtn}
                     handleMyTypeChoise={handleClickMyPopularType}

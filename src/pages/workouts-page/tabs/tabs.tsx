@@ -1,7 +1,8 @@
 import { Fragment } from 'react';
 import { Badge, Tabs } from 'antd';
-import { selectUserInvites } from '@redux/redusers/training-partners-slice';
+import { selectTrainingPartners } from '@redux/redusers/training-partners-slice';
 
+import { MAX_NUMBER_WORKOUT_PARTNERS } from '@constants/index';
 import { useAppSelector } from '@hooks/index';
 import { WorkoutsTabsKeys } from '@type/tabs';
 
@@ -16,7 +17,8 @@ type WorkoutsTabsProps = {
 };
 
 export const WorkoutsTabs = ({ onChange }: WorkoutsTabsProps) => {
-    const invites = useAppSelector(selectUserInvites);
+    const { userInvites, partnersList } = useAppSelector(selectTrainingPartners);
+    const isShowBadge = partnersList.length < MAX_NUMBER_WORKOUT_PARTNERS;
 
     return (
         <Tabs
@@ -32,7 +34,9 @@ export const WorkoutsTabs = ({ onChange }: WorkoutsTabsProps) => {
                     label: (
                         <Fragment>
                             {WorkoutsTabsKeys.JOINT_WORKOUTS}{' '}
-                            <Badge count={invites.length} className={styles.badge} />
+                            {isShowBadge && (
+                                <Badge count={userInvites.length} className={styles.badge} />
+                            )}
                         </Fragment>
                     ),
                     key: WorkoutsTabsKeys.JOINT_WORKOUTS,

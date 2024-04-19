@@ -2,7 +2,7 @@ import { Dispatch, Fragment, useState } from 'react';
 import { Dayjs } from 'dayjs';
 import { selectTrainingData } from '@redux/redusers/trainings-slice';
 
-import { MD_WIDTH } from '@constants/index';
+import { FRIDAY_NUMBER_FOR_LOCAL, LG_WIDTH, SATURDAY_NUMBER_FOR_LOCAL, SUNDAY_NUMBER_FOR_LOCAL } from '@constants/index';
 import { useAppSelector } from '@hooks/index';
 import { DateFormats } from '@type/dates';
 import { getFormattedDate } from '@utils/get-date';
@@ -19,14 +19,14 @@ type ModalContainerProps = {
 
 export const ModalContainer = ({ date, setClosePortal, saveTraining }: ModalContainerProps) => {
     const isMiddleScreen = useMediaQuery('(max-width: 1200px)');
-    const isTablet = useMediaQuery(`(min-width: ${MD_WIDTH})`);
+    const isTablet = useMediaQuery(`(max-width: ${LG_WIDTH})`);
 
-    const getDayOfWeek = date.day();
+    const getDayOfWeek = date.weekday();
 
     const isRightModalPosition =
-        getDayOfWeek === 0 ||
-        (getDayOfWeek === 6 && isMiddleScreen) ||
-        (getDayOfWeek === 5 && isTablet);
+        getDayOfWeek === SUNDAY_NUMBER_FOR_LOCAL ||
+        (getDayOfWeek === SATURDAY_NUMBER_FOR_LOCAL && isMiddleScreen) ||
+        (getDayOfWeek === FRIDAY_NUMBER_FOR_LOCAL && isTablet);
 
     const { appTrainingList, userTrainingsList } = useAppSelector(selectTrainingData);
 

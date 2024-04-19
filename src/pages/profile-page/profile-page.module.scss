@@ -3,7 +3,7 @@
 .wrapper {
     position: relative;
     max-width: 100%;
-    height: calc(100vh - 138px);
+    height: calc(100vh - 151px);
     margin: var(--gap-24) var(--gap-24) var(--gap-42);
     padding: var(--gap-24);
     @include m.flex($j-c: flex-start, $items: flex-start);
