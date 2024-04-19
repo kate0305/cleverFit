@@ -1,0 +1,75 @@
+@use '@sass/mixins.scss' as m;
+
+.wrapper {
+    max-width: 872px;
+    width: 100%;
+    padding: var(--gap-24) 0;
+    @include m.ant-tablet-xl {
+        max-width: 358px;
+    }
+    @include m.ant-mobile {
+        max-width: 100%;
+    }
+}
+
+.card {
+    padding: var(--gap-24);
+    @include m.card-base;
+    border: 1px solid var(--light-dividers);
+    @include m.ant-tablet-xl {
+        box-shadow: var(--box-shadow-custom-modal);
+    }
+    @include m.ant-mobile {
+        padding: var(--gap-16);
+    }
+}
+
+.container {
+    @include m.flex;
+    flex-direction: column;
+    gap: var(--gap-6);
+    &:first-child(4) {
+        .title {
+            max-width: 70px;
+        }
+    }
+     @include m.tablet-l {
+        gap: var(--gap-2);
+    }
+    @include m.ant-mobile {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+.value {
+    @include m.font($size: 38px, $weight: 700);
+    color: var(--light-title-85);
+}
+
+.title {
+    margin: 0 -6px;
+    max-width: 113px;
+    @include m.font;
+    color: var(--light-secondary-45);
+    text-align: center;
+    @include m.ant-mobile {
+        margin: 0;
+        max-width: 100%;
+    }
+    @include m.phone {
+        max-width: 100%;
+    }
+    @include m.phone-s {
+        max-width: 150px;
+        text-align: right;
+    }
+}
+
+.title_short {
+    @extend .title;
+    max-width: 90px;
+    @include m.ant-mobile {
+        max-width: 100%;
+    }
+}

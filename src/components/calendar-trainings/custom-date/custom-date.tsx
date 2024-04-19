@@ -1,13 +1,10 @@
 import dayjs, { Dayjs } from 'dayjs';
-import today from 'dayjs/plugin/isToday';
 
 import { DateFormats } from '@type/dates';
 import { UserTraining } from '@type/training';
-import { getFormattedDate } from '@utils/get-formatted-date';
+import { getFormattedDate } from '@utils/get-date';
 
 import { TrainingList } from '../training-list';
-
-dayjs.extend(today);
 
 type DrawerAddExerciseProps = {
     date: Dayjs;

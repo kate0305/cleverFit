@@ -1,3 +1,5 @@
+import { Dayjs } from 'dayjs';
+
 import { InvitateStatus } from './invite';
 
 export type TrainingData = {
@@ -18,7 +20,7 @@ export type Exercise = {
     replays: number;
     weight: number;
     approaches: number;
-    isImplementation: boolean;
+    isImplementation?: boolean;
 };
 
 export type ExerciseData = Partial<Exercise>;
@@ -28,7 +30,7 @@ export type UserTraining = {
     name: string;
     date: string;
     userId: string;
-    exercises: ExerciseData[];
+    exercises: Exercise[];
     isImplementation?: boolean;
     parameters?: Partial<TrainingParameters>;
 };
@@ -45,7 +47,7 @@ export type TrainingPartner = {
     id: string;
     name: string;
     trainingType: string;
-    imageSrc: string | null;
+    imageSrc: string;
     avgWeightInWeek: number;
     inviteId: string;
     status: InvitateStatus;
@@ -57,6 +59,15 @@ export enum TrainingTypes {
     'Руки' = 'hands',
     'Грудь' = 'chest',
     'Спина' = 'back',
+}
+
+export enum TrainingNames {
+    LEGS = 'Ноги',
+    STRENGTH = 'Силовая',
+    HANDS = 'Руки',
+    CHEST = 'Грудь',
+    BACK = 'Спина',
+    ALL = 'Все',
 }
 
 export enum TypesWorkoutForMessage {
@@ -78,5 +89,36 @@ export type JointTrainingDrawerData = {
     trainingName: string;
     userId: string;
     userName: string;
-    imageSrc: string | null;
+    imageSrc: string;
+};
+
+export type ExerciseField = 'replays' | 'approaches';
+
+export enum CalculationType {
+    LOAD = 'load',
+    REPLAYS = 'replays',
+    APPROACHES = 'approaches',
+}
+
+export type MostFrequentExercise = {
+    name: string;
+    count: number;
+};
+
+export type TrainingDataForStatistics = {
+    date: Dayjs;
+    dayOfWeek: number;
+    averageLoad: number;
+    mostFrequencyExercise: MostFrequentExercise;
+};
+
+export enum StatisticsType {
+    LOAD = 'load',
+    EXERCISE = 'exersice',
+}
+
+export type StatisticsDataByWeek = {
+    weekStart: Dayjs;
+    weekEnd: Dayjs;
+    weekData: TrainingDataForStatistics[];
 };

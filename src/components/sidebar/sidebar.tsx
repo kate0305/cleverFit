@@ -14,10 +14,12 @@ import styles from './sidebar.module.scss';
 const { Sider } = Layout;
 
 export const Sidebar: React.FC = () => {
+     const isMobilePhone = useMediaQuery(`(max-width: ${XS_WIDTH})`);
+     const defaultCollapsedWidth = 64;
+
     const [collapsed, setCollapsed] = useState(false);
-    const isMobilePhone = useMediaQuery(`(max-width: ${XS_WIDTH})`);
-    const defaultCollapsedWidth = 64;
     const [collapsedWidth, setCollapsedWidth] = useState(defaultCollapsedWidth);
+
     const isWidthChanged = collapsedWidth !== defaultCollapsedWidth;
 
     useLayoutEffect(() => {

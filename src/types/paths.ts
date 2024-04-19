@@ -8,6 +8,7 @@ export enum Paths {
     PROFILE = '/profile',
     SETTINGS = '/settings',
     WORKOUTS = '/training',
+    ACHIEVEMENTS = '/achievements',
     NOT_FOUND = '*',
 }
 

@@ -6,7 +6,7 @@ import dayjs from 'dayjs';
 import { CalendarTwoTone } from '@ant-design/icons';
 import { DateFormats } from '@type/dates';
 
-import { DatePicker } from '@components/date-picker';
+import { DatePicker } from '@components/calendar';
 
 import styles from './date-picker-input.module.scss';
 

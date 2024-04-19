@@ -35,7 +35,7 @@ export const AppHeader = (props: { fromPage: string }) => {
         </div>
     );
 
-    const workoutsTitle = (
+    const simpleTitle = (
         <div className={styles.container_workouts}>
             <SettingsBtn className={styles.btn_profile} isPage={pathname} />
         </div>
@@ -46,11 +46,13 @@ export const AppHeader = (props: { fromPage: string }) => {
             {(props.fromPage === Paths.MAIN ||
                 props.fromPage === Paths.FEEDBACKS ||
                 props.fromPage === Paths.CALENDAR ||
-                props.fromPage === Paths.WORKOUTS) && <Breadcrumbs />}
+                props.fromPage === Paths.WORKOUTS ||
+                props.fromPage === Paths.ACHIEVEMENTS) && <Breadcrumbs />}
             {props.fromPage === Paths.MAIN && mainTitle}
             {props.fromPage === Paths.PROFILE && profileTitle}
             {props.fromPage === Paths.SETTINGS && <GoBackBtn text='Настройки' onClick={goBack} />}
-            {props.fromPage === Paths.WORKOUTS && workoutsTitle}
+            {props.fromPage === Paths.WORKOUTS && simpleTitle}
+            {props.fromPage === Paths.ACHIEVEMENTS && simpleTitle}
         </Header>
     );
 };

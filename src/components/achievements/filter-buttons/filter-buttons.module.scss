@@ -1,0 +1,45 @@
+@use '@sass/mixins.scss' as m;
+
+.wrapper {
+    margin-top: var(--gap-24);
+    padding: var(--gap-16) 0;
+    @include m.flex($j-c: flex-start);
+    gap: var(--gap-24);
+    @include m.tablet-l {
+        margin-top: var(--gap-14);
+        gap: var(--gap-16);
+    }
+}
+
+.text {
+    flex: 0 0 118px;
+    align-self: flex-start;
+    @include m.font;
+    color: var(--light-title-85);
+}
+
+.btn_group {
+    @include m.flex($j-c: flex-start);
+    flex-wrap: wrap;
+    gap: var(--gap-12);
+    @include m.phone {
+        gap: var(--gap-8);
+    }
+    :global {
+        .ant-radio-button-wrapper {
+            height: fit-content;
+            padding: 1px var(--gap-8);
+            @include m.font($size: var(--font-size-s));
+            border-color: var(--light-dividers);
+            border-left-width: 1px;
+            border-radius: var(--border-radius-xs);
+            &::before {
+                display: none;
+            }
+        }
+        .ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled) {
+            background-color: var(--primary-light-1);
+            border-color: var(--primary-light-3);
+        }
+    }
+}

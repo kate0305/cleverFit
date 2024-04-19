@@ -35,10 +35,10 @@ const data = [
         label: 'Тренировки',
     },
     {
-        key: 'achievements',
+        key: Paths.ACHIEVEMENTS,
         icon: <TrophyFilled style={iconStyle} />,
         selectedIcon: <TrophyFilled style={selectedIconStyle} />,
-        label: 'Достижения',
+        label: <span data-test-id={DATA_TEST_ID.sidebarAchievements}>Достижения</span>,
     },
     {
         key: Paths.PROFILE,
@@ -53,20 +53,23 @@ export const createMenuItemsArr = (
     isClosedSidebar: boolean,
     numberOfInvites: number,
     isSelected: string,
+    isShowBadge: boolean,
 ): MenuItem[] => {
     const arr = data.map(({ key, icon, selectedIcon, label }) => {
-        const currentIcon = isSelected === key ? selectedIcon : icon
+        const currentIcon = isSelected === key ? selectedIcon : icon;
         const Icon = () => {
             if (isWidthChanged) return null;
             if (key === Paths.WORKOUTS && !!numberOfInvites) {
                 return (
-                    <Badge
-                        count={numberOfInvites}
-                        className={styles.badge}
-                        data-test-id={DATA_TEST_ID.notificationAboutJointTraining}
-                    >
-                        {currentIcon}
-                    </Badge>
+                    isShowBadge && (
+                        <Badge
+                            count={numberOfInvites}
+                            className={styles.badge}
+                            data-test-id={DATA_TEST_ID.notificationAboutJointTraining}
+                        >
+                            {currentIcon}
+                        </Badge>
+                    )
                 );
             }
 

@@ -44,7 +44,7 @@ export const SettingsPage = () => {
                     id: _id,
                     name,
                     isActive: _id === userTariffId,
-                    img: `/public/images/${tariffName}-tariff.jpg`,
+                    img: `public/images/${tariffName}-tariff.jpg`,
                     periods,
                     tariffIexpired: userTariffIexpired,
                     dataTestId: `${tariffName}-tariff-card`,

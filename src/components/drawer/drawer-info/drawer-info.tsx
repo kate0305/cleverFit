@@ -13,7 +13,7 @@ type DrawerInfoProps = {
     trainingName: string;
     date?: string;
     userName?: string;
-    imageSrc?: string | null;
+    imageSrc?: string;
     isJointDrawer?: boolean;
 };
 
@@ -28,7 +28,7 @@ export const DrawerInfo = ({
         {isJointDrawer && (
             <User
                 fullName={userName}
-                image={imageSrc ?? null}
+                image={imageSrc || ''}
                 type={UserCardTypes.CARD}
             />
         )}

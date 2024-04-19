@@ -1,0 +1,24 @@
+@use '@sass/mixins.scss' as m;
+
+.wrapper {
+    width: 100%;
+    margin-top: var(--gap-24);
+    padding-top: 112px;
+    @include m.flex;
+    flex-direction: column;
+    gap: var(--gap-24);
+    @include m.ant-mobile {
+        padding-top: 0;
+    }
+    .title {
+        @include m.font($size: var(--font-size-xl), $weight: 500);
+        color: var(--light-title-85);
+        text-align: center;
+    }
+}
+
+.icon {
+    width: 200px;
+    height: 175px;
+    background: url('/images/empty-data.svg') center / contain no-repeat;
+}

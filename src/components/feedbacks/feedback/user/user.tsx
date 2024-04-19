@@ -13,7 +13,7 @@ const cx = classnames.bind(styles);
 const { Paragraph } = Typography;
 
 type UserProps = {
-    image: string | null;
+    image: string;
     firstName?: string | null;
     surname?: string | null;
     fullName?: string | null;
@@ -46,11 +46,7 @@ export const User = ({ image, fullName, firstName, surname, type, searchValue }:
         <div className={wrapper}>
             <Avatar
                 size={42}
-                src={image ?? <UserOutlined />}
-                style={{
-                    color: 'var(--light-title-85)',
-                    backgroundColor: 'var(--light-background)',
-                }}
+                src={image || <UserOutlined style={{ color: 'var(--light-title-85)' }} />}
                 className={avatar}
             />
             <Paragraph className={text}>

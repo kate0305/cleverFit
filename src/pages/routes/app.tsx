@@ -8,6 +8,7 @@ import { useAppSelector } from '@hooks/index';
 import { AuthPaths, Paths, ResultPaths } from '@type/paths';
 import { ResultRequestKeys } from '@type/result-request-keys';
 
+import { AchievementsPage } from '@pages/achievements-page';
 import { NotFoundPage } from '@pages/not-found-page';
 import { ProfilePage } from '@pages/profile-page';
 import { SettingsPage } from '@pages/settings-page';
@@ -34,7 +35,7 @@ export const App = () => {
                         path={Paths.HOME}
                         element={
                             <PrivateRoute>
-                                <MainLayout withHeader={true}/>
+                                <MainLayout withHeader={true} />
                             </PrivateRoute>
                         }
                     >
@@ -45,6 +46,7 @@ export const App = () => {
                         <Route path={Paths.PROFILE} element={<ProfilePage />} />
                         <Route path={Paths.SETTINGS} element={<SettingsPage />} />
                         <Route path={Paths.WORKOUTS} element={<WorkoutsPage />} />
+                        <Route path={Paths.ACHIEVEMENTS} element={<AchievementsPage />} />
                     </Route>
                     <Route
                         path={Paths.AUTH}
@@ -99,7 +101,13 @@ export const App = () => {
                             }
                         />
                     </Route>
-                    <Route element={<MainLayout withHeader={false} />}>
+                    <Route
+                        element={
+                            <PrivateRoute>
+                                <MainLayout withHeader={false} />
+                            </PrivateRoute>
+                        }
+                    >
                         <Route path={Paths.NOT_FOUND} element={<NotFoundPage />} />
                     </Route>
                 </Routes>

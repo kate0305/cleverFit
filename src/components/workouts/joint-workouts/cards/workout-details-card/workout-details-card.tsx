@@ -1,19 +1,16 @@
 import { Badge, Typography } from 'antd';
 import dayjs from 'dayjs';
-import relativeTime from 'dayjs/plugin/relativeTime';
 
 import { CloseOutlined } from '@ant-design/icons';
 import { DATA_TEST_ID } from '@constants/data-test-id';
 import { DateFormats } from '@type/dates';
 import { BadgeColors, Exercise } from '@type/training';
-import { getFormattedDate } from '@utils/get-formatted-date';
+import { getFormattedDate } from '@utils/get-date';
 
 import { PrimaryBtn } from '@components/buttons/primary-button';
 import { ContentCard } from '@components/content-card';
 
 import styles from './workout-details-card.module.scss';
-
-dayjs.extend(relativeTime);
 
 const { Paragraph } = Typography;
 
@@ -26,7 +23,6 @@ type ModalDayProps = {
 
 export const WorkoutDetailsCard = ({ date, workoutName, exercise, closeModal }: ModalDayProps) => {
     const formattedDate = getFormattedDate(date, DateFormats.LOCAL);
-
     const numberDaysLater = dayjs(date).fromNow(true);
 
     return (

@@ -28,6 +28,18 @@
     }
 }
 
+@mixin ant-tablet-xl {
+    @media screen and (max-width: 991px) {
+        @content;
+    }
+}
+
+@mixin ant-mobile {
+    @media screen and (max-width: 576px) {
+        @content;
+    }
+}
+
 @mixin flex($display: flex, $j-c: center, $items: center) {
     display: $display;
     justify-content: $j-c;
@@ -93,3 +105,17 @@
     border-radius: var(-border-radius-xs);
     border-color: var(--light-border);
 }
+
+@mixin animation-fade-in($name) {
+    @keyframes #{$name} {
+        0% {
+            opacity: 0;
+            transform: scale(0.5);
+        }
+        100% {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+}
+

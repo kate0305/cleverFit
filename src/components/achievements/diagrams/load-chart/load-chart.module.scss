@@ -1,0 +1,25 @@
+@use '@sass/mixins.scss' as m;
+
+.wrapper {
+    width: 520px;
+    border-radius: var(--border-radius-xs);
+    border: 1px solid var(--light-dividers);
+    @include m.phone {
+        width: 100%;
+    }
+}
+
+.wrapper_month {
+    @extend .wrapper;
+    max-width: 1136px;
+    width: 100%;
+    @include m.phone {
+       width: 100%;
+    }
+}
+
+.title {
+    margin: var(--gap-24) 0;
+    padding: 7.5px 0;
+    @include m.font($size: var(--font-size-m), $weight: 500);
+}

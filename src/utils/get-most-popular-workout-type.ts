@@ -1,6 +1,8 @@
 import { UserTrainingResp } from '@type/service';
 import { TrainingTypes } from '@type/training';
 
+import { calculateTrainingTotalLoad } from './calcutate-data-for-achievements';
+
 export const getMostPopularWorkoutType = (userTrainingsList: UserTrainingResp) => {
     const mostPopularWorkout = {
         name: '',
@@ -10,15 +12,11 @@ export const getMostPopularWorkoutType = (userTrainingsList: UserTrainingResp) =
     Object.values(userTrainingsList)
         .flat()
         .forEach(({ name, exercises }) => {
-            const currentLoad = exercises.reduce(
-                (sum, { approaches, weight, replays }) =>
-                    sum + (approaches ?? 1) * (weight ?? 1) * (replays ?? 1),
-                0,
-            );
+            const currentLoad = calculateTrainingTotalLoad(exercises);
 
             if (mostPopularWorkout.totalLoad < currentLoad) {
                 mostPopularWorkout.name = name;
-                mostPopularWorkout.totalLoad = currentLoad
+                mostPopularWorkout.totalLoad = currentLoad;
             }
         });
 

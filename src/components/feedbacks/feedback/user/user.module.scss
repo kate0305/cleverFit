@@ -29,6 +29,7 @@
 
 .avatar {
     margin-bottom: var(--gap-12);
+    background-color: var(--light-background);
     @include m.tablet-l {
         margin-bottom: 0;
     }

@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useGetInvitesQuery } from '@services/invite-service';
 import { useGetUserTrainingsQuery, useLazyGetTrainingListQuery } from '@services/training-service';
 import { ModalErrTypes } from '@type/modal-types';
-import { WorkoutsTabsKeys } from '@type/workouts-tabs';
+import { WorkoutsTabsKeys } from '@type/tabs';
 
 import { getModalErr } from '@components/modal-window/modal-err/modal-err';
 

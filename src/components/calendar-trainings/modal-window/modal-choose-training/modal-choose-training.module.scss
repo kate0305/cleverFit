@@ -17,6 +17,7 @@
     width: 100%;
     @include m.card-base;
     box-shadow: var(--box-shadow-custom-modal);
+    animation: fade-in 0.2s;
     z-index: 4;
     :global {
         .ant-card-head {
@@ -84,6 +85,7 @@
 }
 
 .btn_add {
+    width: 100%;
     margin-bottom: var(--gap-8);
     padding: var(--gap-6) var(--gap-12);
     font-size: var(--font-size-base);
@@ -91,7 +93,8 @@
 }
 
 .btn_save {
-    padding: 7px 83px;
+    width: 100%;
+    padding: 7px 5px;
     @include m.tablet {
         width: 288px;
         span {
@@ -120,3 +123,5 @@
 .workout_name {
     @include m.font;
 }
+
+@include m.animation-fade-in(fade-in);

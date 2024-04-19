@@ -7,11 +7,11 @@ import { Paths } from '@type/paths';
 import styles from './breadcrumbs.module.scss';
 
 export const Breadcrumbs = () => {
-    const location = useLocation();
-    const pathSnippets = location.pathname.split('/').filter((i) => i);
+    const { pathname } = useLocation();
+    const pathSnippets = pathname.split(Paths.HOME).filter((i) => i);
 
     const extraBreadcrumbItems = pathSnippets.map((_, index) => {
-        const url = `/${pathSnippets.slice(0, index + 1).join('/')}`;
+        const url = `/${pathSnippets.slice(0, index + 1).join(Paths.HOME)}`;
 
         return (
             <Breadcrumb.Item key={url}>
@@ -21,10 +21,15 @@ export const Breadcrumbs = () => {
     });
 
     const breadcrumbItems = [
-        <Breadcrumb.Item key='home'>
+        <Breadcrumb.Item key={Paths.HOME}>
             <Link to={Paths.MAIN}>Главная</Link>
         </Breadcrumb.Item>,
-    ].concat(extraBreadcrumbItems);
+        ...extraBreadcrumbItems,
+    ];
 
-    return <Breadcrumb className={styles.breadcrumbs}>{breadcrumbItems}</Breadcrumb>;
+    return (
+        <Breadcrumb separator={pathname !== Paths.MAIN && '/'} className={styles.breadcrumbs}>
+            {breadcrumbItems}
+        </Breadcrumb>
+    );
 };

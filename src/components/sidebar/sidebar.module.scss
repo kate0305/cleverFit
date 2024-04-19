@@ -1,6 +1,7 @@
 @use '@sass/mixins.scss' as m;
 
 .wrapper {
+    height: 100vh;
     padding-top: var(--gap-30);
     background-color: var(--base-light);
     box-shadow: 0 var(--gap-2) var(--gap-8) rgba(0, 0, 0, 0.15);

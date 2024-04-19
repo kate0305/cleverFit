@@ -1,0 +1,16 @@
+@use '@sass/mixins.scss' as m;
+
+.wrapper {
+    height: calc(100vh - 162px);
+    margin: var(--gap-24) var(--gap-24) var(--gap-42);
+    padding: var(--gap-24);
+    background-color: var(--base-light);
+    border-radius: var(--border-radius-m);
+    @include m.phone {
+        margin-right: 0;
+        margin-left: 0;
+        padding: var(--gap-16);
+        border-radius: 0;
+    }
+}
+

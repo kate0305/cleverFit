@@ -6,6 +6,7 @@ export const SM_WIDTH = '576px';
 export const MD_WIDTH = '768px';
 export const TABLET_WIDTH = '834px';
 export const LG_WIDTH = '992px';
+export const XL_WIDTH = '1100px';
 
 
 // base and part url for API
@@ -75,10 +76,20 @@ export const BREADCRUMB_NAMES: Record<string, string> = {
     '/feedbacks': 'Отзывы пользователей',
     '/calendar': 'Календарь',
     '/training': 'Тренировки',
+    '/achievements': 'Достижения',
 };
 
 // sizes
 export const MAX_NUMBER_WORKOUT_PARTNERS = 4;
+export const WEEKDAY_NUMBER_FOR_SUNDAY = 7;
+export const DURATION_PERIOD_FOR_WEEK = 6;
+export const DURATION_PERIOD_FOR_MONTH = 27;
+export const ONE_DAY_PERIOD = 1;
+export const SUNDAY_NUMBER_FOR_LOCAL = 6;
+export const SATURDAY_NUMBER_FOR_LOCAL = 5;
+export const FRIDAY_NUMBER_FOR_LOCAL = 4;
+export const NUMBER_OF_WEEKS_IN_MONTH = 4;
+export const NUMBER_OF_DAYS_IN_WEEK = 7;
 
 // patterns
 export const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;

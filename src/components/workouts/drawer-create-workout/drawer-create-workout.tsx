@@ -8,7 +8,7 @@ import { DATA_TEST_ID } from '@constants/data-test-id';
 import { useAppSelector } from '@hooks/index';
 import { DateFormats } from '@type/dates';
 import { checkIsPastDate } from '@utils/check-is-past-date';
-import { getFormattedDate } from '@utils/get-formatted-date';
+import { getFormattedDate } from '@utils/get-date';
 
 import { PrimaryBtn } from '@components/buttons/primary-button';
 import { DrawerComponent } from '@components/drawer';

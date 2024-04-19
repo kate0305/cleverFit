@@ -1,14 +1,10 @@
-import { useCallback, useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { reset } from '@redux/redusers/user-data-slice';
+import { useEffect, useState } from 'react';
 
-import { useAppDispatch } from '@hooks/index';
 import { useGetFeedbackQuery } from '@services/feedbacks-service';
-import { Paths } from '@type/paths';
 import { ResultRequestKeys } from '@type/result-request-keys';
 import { StatusCode } from '@type/status-code';
 import { errorHandler } from '@utils/error-handler';
-import { useLocalStorage } from '@utils/use-local-storage';
+import { useLogOut } from '@utils/use-logout';
 
 import { CreateReviewModal } from '@components/feedbacks/create-feedback-modal';
 import { ErrFeedbackModal } from '@components/feedbacks/err-feedback-modal';
@@ -21,10 +17,6 @@ import { FeedbacksContainer } from './feedback-container';
 import styles from './feedbacks-page.module.scss';
 
 export const FeedbacksPage = () => {
-    const dispatch = useAppDispatch();
-    const navigate = useNavigate();
-
-    const [, , removeLocalStorageItem] = useLocalStorage('token', '');
     const { data: feedbacks, error } = useGetFeedbackQuery();
 
     const [isOpenCreateFeedback, setOpenCreateFeedback] = useState(false);
@@ -36,11 +28,7 @@ export const FeedbacksPage = () => {
 
     const openModalCreateFeedback = () => setOpenCreateFeedback(true);
 
-    const logOut = useCallback(() => {
-        dispatch(reset());
-        removeLocalStorageItem();
-        navigate(Paths.AUTH, { replace: true });
-    }, [dispatch, navigate, removeLocalStorageItem]);
+    const logOut = useLogOut();
 
     useEffect(() => {
         if (!error) return;
@@ -65,32 +53,28 @@ export const FeedbacksPage = () => {
                 feedbacks={feedbacks}
                 openReviewModal={openModalCreateFeedback}
             />
-            {isErrModalOpen && (
-                <ModalWindow isOpen={isErrModalOpen}>
-                    <RequestResult keyErr={ResultRequestKeys.GET_FEEDBACK_ERR} />
-                </ModalWindow>
-            )}
-            {isOpenCreateFeedback && (
-                <CreateReviewModal
-                    isOpen={isOpenCreateFeedback}
-                    setOpenModal={setOpenCreateFeedback}
-                    setOpenErrPostModal={setOpenErrPostModal}
-                    setOpenSuccessPostModal={setOpenSuccessPostModal}
-                />
-            )}
-            {isOpenSuccessPostModal && (
-                <SuccessFeedbackModal
-                    isOpen={isOpenSuccessPostModal}
-                    setOpenModal={setOpenSuccessPostModal}
-                />
-            )}
-            {isOpenErrPostModal && (
-                <ErrFeedbackModal
-                    isOpen={isOpenErrPostModal}
-                    setOpenModal={setOpenErrPostModal}
-                    setOpenCreateFeedback={setOpenCreateFeedback}
-                />
-            )}
+
+            <ModalWindow isOpen={isErrModalOpen}>
+                <RequestResult keyErr={ResultRequestKeys.GET_FEEDBACK_ERR} />
+            </ModalWindow>
+
+            <CreateReviewModal
+                isOpen={isOpenCreateFeedback}
+                setOpenModal={setOpenCreateFeedback}
+                setOpenErrPostModal={setOpenErrPostModal}
+                setOpenSuccessPostModal={setOpenSuccessPostModal}
+            />
+
+            <SuccessFeedbackModal
+                isOpen={isOpenSuccessPostModal}
+                setOpenModal={setOpenSuccessPostModal}
+            />
+
+            <ErrFeedbackModal
+                isOpen={isOpenErrPostModal}
+                setOpenModal={setOpenErrPostModal}
+                setOpenCreateFeedback={setOpenCreateFeedback}
+            />
         </main>
     );
 };

@@ -1,9 +1,10 @@
 import { Fragment } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Menu, MenuProps } from 'antd';
-import { selectUserInvites } from '@redux/redusers/training-partners-slice';
+import { selectTrainingPartners } from '@redux/redusers/training-partners-slice';
 
 import { DATA_TEST_ID } from '@constants/data-test-id';
+import { MAX_NUMBER_WORKOUT_PARTNERS } from '@constants/index';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { Paths } from '@type/paths';
 import { ResultRequestKeys } from '@type/result-request-keys';
@@ -23,11 +24,13 @@ type NavbarProps = {
 };
 
 export const Navbar = ({ isWidthChanged, isClosedSidebar }: NavbarProps) => {
-    const userInvites = useAppSelector(selectUserInvites);
+    const { userInvites, partnersList } = useAppSelector(selectTrainingPartners);
 
     const { pathname } = useLocation();
 
     const { isErr, handleClick, closeErrModal } = useCalendarClick();
+
+    const isShowBadge = partnersList.length < MAX_NUMBER_WORKOUT_PARTNERS;
 
     const handleMenuItemsClick: MenuProps['onClick'] = (e) => {
         switch (e.key) {
@@ -37,6 +40,10 @@ export const Navbar = ({ isWidthChanged, isClosedSidebar }: NavbarProps) => {
 
             case Paths.WORKOUTS:
                 handleClick(Paths.WORKOUTS);
+                break;
+
+            case Paths.ACHIEVEMENTS:
+                handleClick(Paths.ACHIEVEMENTS);
                 break;
         }
     };
@@ -53,6 +60,7 @@ export const Navbar = ({ isWidthChanged, isClosedSidebar }: NavbarProps) => {
                     isClosedSidebar,
                     userInvites.length,
                     pathname,
+                    isShowBadge,
                 )}
             />
             <ModalWindow isOpen={isErr} dataTestId={DATA_TEST_ID.modalNoReview}>
